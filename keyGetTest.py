@@ -8,5 +8,6 @@ config.read('../config/api_keys.cfg')
 BEARER_TOKEN = config.get('twitter','bearer_token')
 
 client = tweepy.Client(BEARER_TOKEN)
-thisUser = client.get_user(id=1148529339203543040)
+thisUser = client.get_user(username="AGCO_Power")
+#thisUser = client.get_user(id=1148529339203543040)
 print(thisUser)

@@ -28,9 +28,9 @@ thisUser = client.get_user(username='HINOJapan')
 #response = client.get_users_tweets(user_id)
 
 response = client.get_users_tweets(thisUser.data.id, max_results=5)
-print(json.dumps(str(response)))
-firstIteration = open('../firstIteration2.txt','w')
-firstIteration.write(json.dumps(str(response)))
+print(json.dumps(str(response),ensure_ascii=False))
+firstIteration = open('../firstIteration2.txt','w', encoding="utf-8")
+firstIteration.write(json.dumps(str(response),ensure_ascii=False))
 firstIteration.close()
 # By default, only the ID and text fields of each Tweet will be returned
 #for tweet in response.data:

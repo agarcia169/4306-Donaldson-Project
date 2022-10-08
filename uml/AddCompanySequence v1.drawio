@@ -1,11 +1,11 @@
-<mxfile host="app.diagrams.net" modified="2022-10-08T20:36:21.454Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" etag="mJW2XUjXkFg4mgV59lF_" version="20.3.7" type="github">
+<mxfile host="app.diagrams.net" modified="2022-10-08T20:38:19.038Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" etag="qM5MDvOHTweS0sk2tw1x" version="20.3.7" type="github">
   <diagram id="fekZhN-9DIX1WIRX_lU1" name="Page-1">
     <mxGraphModel dx="2272" dy="1862" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="9bxA_ej-zrlDuutFUla0-30" value="alt" style="shape=umlFrame;whiteSpace=wrap;html=1;width=60;height=30;boundedLbl=1;verticalAlign=middle;align=left;spacingLeft=5;" parent="1" vertex="1">
-          <mxGeometry x="-10" y="250" width="910" height="410" as="geometry" />
+          <mxGeometry x="-50" y="250" width="950" height="410" as="geometry" />
         </mxCell>
         <mxCell id="9bxA_ej-zrlDuutFUla0-39" value="Company Is &#xa;Not In &#xa;Database" style="fontStyle=0;dashed=1;align=left;" parent="1" vertex="1">
           <mxGeometry x="350" y="1250" width="580" height="320" as="geometry" />
@@ -121,7 +121,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="pdPbpq1VSYDjHhsiJAQx-10" value="" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;" vertex="1" parent="1">
+        <mxCell id="pdPbpq1VSYDjHhsiJAQx-10" value="User" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=bottom;spacingTop=36;outlineConnect=0;labelPosition=center;verticalLabelPosition=top;align=center;" vertex="1" parent="1">
           <mxGeometry x="20" y="70" width="20" height="610" as="geometry" />
         </mxCell>
         <mxCell id="9bxA_ej-zrlDuutFUla0-14" value="Add Company" style="verticalAlign=bottom;startArrow=oval;endArrow=block;startSize=8;shadow=0;strokeWidth=1;" parent="1" target="9bxA_ej-zrlDuutFUla0-13" edge="1" source="pdPbpq1VSYDjHhsiJAQx-10">

@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-10-08T20:27:50.820Z" agent="5.0 (Windows)" etag="nyoooekUVb3QqmcYgjFH" version="20.4.0" type="github">
+<mxfile host="app.diagrams.net" modified="2022-10-08T20:38:38.865Z" agent="5.0 (Windows)" etag="g7nkJ_jvS6yrX5K4Slsf" version="20.4.0" type="github">
   <diagram id="kgpKYQtTHZ0yAKxKKP6v" name="Page-1">
     <mxGraphModel dx="813" dy="430" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -21,12 +21,12 @@
             <mxPoint x="275" y="236" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3nuBFxr9cyL0pnOWT2aG-8" value="query request for tweets" style="verticalAlign=bottom;endArrow=block;shadow=0;strokeWidth=1;" parent="1" source="3nuBFxr9cyL0pnOWT2aG-2" target="3nuBFxr9cyL0pnOWT2aG-6" edge="1">
-          <mxGeometry relative="1" as="geometry">
+        <mxCell id="3nuBFxr9cyL0pnOWT2aG-8" value="Query request for tweets" style="verticalAlign=bottom;endArrow=block;shadow=0;strokeWidth=1;exitX=1.029;exitY=0.238;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="3nuBFxr9cyL0pnOWT2aG-2" target="3nuBFxr9cyL0pnOWT2aG-6" edge="1">
+          <mxGeometry x="-0.0513" y="-10" relative="1" as="geometry">
             <mxPoint x="275" y="160" as="sourcePoint" />
-            <Array as="points">
-              <mxPoint x="260" y="180" />
-            </Array>
+            <mxPoint x="430" y="180" as="targetPoint" />
+            <Array as="points" />
+            <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="LV6bf5cG3JYAG6dapP-r-18" value="Database" style="shape=umlBoundary;whiteSpace=wrap;html=1;" vertex="1" parent="1">

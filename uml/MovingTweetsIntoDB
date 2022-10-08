@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-10-08T20:25:18.800Z" agent="5.0 (Windows)" etag="iOWMra3i7DGZXYGvKVaU" version="20.4.0" type="github">
+<mxfile host="app.diagrams.net" modified="2022-10-08T20:27:50.820Z" agent="5.0 (Windows)" etag="nyoooekUVb3QqmcYgjFH" version="20.4.0" type="github">
   <diagram id="kgpKYQtTHZ0yAKxKKP6v" name="Page-1">
     <mxGraphModel dx="813" dy="430" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -90,14 +90,14 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="LV6bf5cG3JYAG6dapP-r-34" value="Query for information on company" style="verticalAlign=bottom;startArrow=oval;endArrow=block;startSize=8;shadow=0;strokeWidth=1;exitX=0.743;exitY=0.002;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="3nuBFxr9cyL0pnOWT2aG-2" target="LV6bf5cG3JYAG6dapP-r-21">
+        <mxCell id="LV6bf5cG3JYAG6dapP-r-34" value="Query for information on company/companies" style="verticalAlign=bottom;startArrow=oval;endArrow=block;startSize=8;shadow=0;strokeWidth=1;exitX=0.743;exitY=0.002;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="3nuBFxr9cyL0pnOWT2aG-2" target="LV6bf5cG3JYAG6dapP-r-21">
           <mxGeometry x="-0.1005" y="-9" relative="1" as="geometry">
             <mxPoint x="320" y="110" as="sourcePoint" />
             <mxPoint x="495.19999999999993" y="110.25" as="targetPoint" />
             <mxPoint y="1" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="LV6bf5cG3JYAG6dapP-r-35" value="Sends back known information on company" style="verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;shadow=0;strokeWidth=1;exitX=0.114;exitY=0.121;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="LV6bf5cG3JYAG6dapP-r-21" target="3nuBFxr9cyL0pnOWT2aG-2">
+        <mxCell id="LV6bf5cG3JYAG6dapP-r-35" value="Sends back known information on company/companies" style="verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;shadow=0;strokeWidth=1;exitX=0.114;exitY=0.121;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="LV6bf5cG3JYAG6dapP-r-21" target="3nuBFxr9cyL0pnOWT2aG-2">
           <mxGeometry x="0.057" y="10" relative="1" as="geometry">
             <mxPoint x="270.00000000000006" y="140" as="targetPoint" />
             <mxPoint x="590" y="150" as="sourcePoint" />

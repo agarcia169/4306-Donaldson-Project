@@ -4,8 +4,6 @@ from mysql.connector import errorcode
 from configparser import RawConfigParser
 import os
 
-#print(os.path.realpath('../config/'))
-
 config = RawConfigParser()
 config.read('../config/server.cfg')
 config.read('../config/api_keys.cfg')

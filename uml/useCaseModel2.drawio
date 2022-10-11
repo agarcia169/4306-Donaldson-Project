@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-10-08T20:38:47.466Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" etag="71Y1vp_XD_H57z2lfbsM" version="20.3.7" type="github">
+<mxfile host="app.diagrams.net" modified="2022-10-09T20:35:09.496Z" agent="5.0 (Windows)" etag="0G94OBUfoMYzQFXpe-PA" version="20.3.3" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2249" dy="771" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -28,7 +28,7 @@
         <mxCell id="dUf09y3K6EBeG5PfccIv-0" value="Extends" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="yqF-D2ozc9erd8Vr5AWP-9" target="inVReueG3LNWZk-yZNzs-2" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="B-5NMpNP-1XRMS3BvUQb-1" value="Includes" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="yqF-D2ozc9erd8Vr5AWP-9" target="B-5NMpNP-1XRMS3BvUQb-0">
+        <mxCell id="B-5NMpNP-1XRMS3BvUQb-1" value="Includes" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="yqF-D2ozc9erd8Vr5AWP-9" target="B-5NMpNP-1XRMS3BvUQb-0" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="yqF-D2ozc9erd8Vr5AWP-9" value="Trigger analysis of company&#39;s Twitter history&lt;br&gt;[EXPENSIVE]" style="ellipse;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
@@ -128,8 +128,11 @@
         <mxCell id="dUf09y3K6EBeG5PfccIv-1" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://cdn.cms-twdigitalassets.com/content/dam/developer-twitter/images/Twitter_logo_blue_32.png;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="768" y="500" width="32" height="32" as="geometry" />
         </mxCell>
-        <mxCell id="B-5NMpNP-1XRMS3BvUQb-0" value="Sentiment Analysis" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="B-5NMpNP-1XRMS3BvUQb-0" value="Sentiment Analysis" style="ellipse;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="450" y="320" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="oT8zCkSMjCKcxF807o1x-0" value="Select Company/Companies" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-150" y="250" width="140" height="70" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

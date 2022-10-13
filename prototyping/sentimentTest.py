@@ -1,3 +1,6 @@
+#This is most of the example code
+#from https://www.nltk.org/howto/sentiment.html
+
 from nltk.classify import NaiveBayesClassifier
 from nltk.corpus import subjectivity
 from nltk.sentiment import SentimentAnalyzer

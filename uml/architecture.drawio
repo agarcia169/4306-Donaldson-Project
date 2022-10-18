@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-10-18T22:03:20.138Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" etag="aKoJnxFMkITzvMmRMIW1" version="20.4.0" type="github">
+<mxfile host="app.diagrams.net" modified="2022-10-18T22:05:03.155Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" etag="tRAS0u5nL1rkRvi_v66p" version="20.4.0" type="github">
   <diagram id="JktZAHXNQAXAAq4mOGnl" name="Page-1">
     <mxGraphModel dx="1673" dy="896" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -26,7 +26,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="GTtgWMJxd_jJ_gYCuKWm-75" value="Retrieve data from Twitter" style="swimlane;startSize=0;fontSize=11;verticalAlign=top;align=left;" parent="1" vertex="1">
-          <mxGeometry x="511.5" y="760" width="174" height="310" as="geometry" />
+          <mxGeometry x="488.5" y="700" width="174" height="310" as="geometry" />
         </mxCell>
         <mxCell id="GTtgWMJxd_jJ_gYCuKWm-76" value="&lt;div&gt;Collect Tweets From Twitter [EXPENSIVE API CALLS]&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;" parent="GTtgWMJxd_jJ_gYCuKWm-75" vertex="1">
           <mxGeometry x="14" y="125" width="140" height="70" as="geometry" />
@@ -34,7 +34,7 @@
         <mxCell id="GTtgWMJxd_jJ_gYCuKWm-78" value="Add or Remove Companies In Database" style="ellipse;whiteSpace=wrap;html=1;" parent="GTtgWMJxd_jJ_gYCuKWm-75" vertex="1">
           <mxGeometry x="17" y="30" width="140" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="GTtgWMJxd_jJ_gYCuKWm-81" value="Display API Limits (Persistent?)" style="ellipse;whiteSpace=wrap;html=1;" parent="GTtgWMJxd_jJ_gYCuKWm-75" vertex="1">
+        <mxCell id="GTtgWMJxd_jJ_gYCuKWm-81" value="Retrieve API Limits (Persistent?)" style="ellipse;whiteSpace=wrap;html=1;" parent="GTtgWMJxd_jJ_gYCuKWm-75" vertex="1">
           <mxGeometry x="14" y="220" width="140" height="70" as="geometry" />
         </mxCell>
         <mxCell id="GTtgWMJxd_jJ_gYCuKWm-109" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=11;startArrow=classic;startFill=1;endArrow=openThin;endFill=0;" parent="1" source="GTtgWMJxd_jJ_gYCuKWm-79" target="GTtgWMJxd_jJ_gYCuKWm-93" edge="1">
@@ -99,7 +99,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="GTtgWMJxd_jJ_gYCuKWm-87" value="Database Access" style="swimlane;startSize=0;fontSize=11;verticalAlign=top;align=left;" parent="1" vertex="1">
-          <mxGeometry x="395.5" y="360" width="360" height="300" as="geometry" />
+          <mxGeometry x="395.5" y="350" width="360" height="300" as="geometry" />
         </mxCell>
         <mxCell id="GTtgWMJxd_jJ_gYCuKWm-86" value="Retrieve Stored Tweet Data" style="ellipse;whiteSpace=wrap;html=1;fontSize=11;" parent="GTtgWMJxd_jJ_gYCuKWm-87" vertex="1">
           <mxGeometry x="30" y="30" width="140" height="70" as="geometry" />
@@ -119,7 +119,7 @@
         <mxCell id="GTtgWMJxd_jJ_gYCuKWm-107" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=11;startArrow=classic;startFill=1;endArrow=openThin;endFill=0;" parent="1" source="GTtgWMJxd_jJ_gYCuKWm-93" target="GTtgWMJxd_jJ_gYCuKWm-87" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="455.5" y="890" />
+              <mxPoint x="455" y="780" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -127,16 +127,16 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="GTtgWMJxd_jJ_gYCuKWm-100" value="Tweepy" style="swimlane;startSize=0;fontSize=11;verticalAlign=top;align=left;" parent="1" vertex="1">
-          <mxGeometry x="745.5" y="850" width="180" height="130" as="geometry" />
+          <mxGeometry x="735" y="790" width="180" height="130" as="geometry" />
         </mxCell>
         <mxCell id="GTtgWMJxd_jJ_gYCuKWm-101" value="Twitter API Access For Handle Verification and IDs" style="ellipse;whiteSpace=wrap;html=1;" parent="GTtgWMJxd_jJ_gYCuKWm-100" vertex="1">
           <mxGeometry x="20" y="30" width="140" height="70" as="geometry" />
         </mxCell>
         <mxCell id="GTtgWMJxd_jJ_gYCuKWm-102" value="Database" style="html=1;fontSize=11;" parent="1" vertex="1">
-          <mxGeometry x="795.5" y="485" width="110" height="50" as="geometry" />
+          <mxGeometry x="795.5" y="475" width="110" height="50" as="geometry" />
         </mxCell>
         <mxCell id="GTtgWMJxd_jJ_gYCuKWm-93" value="Feedback to user" style="swimlane;startSize=0;fontSize=11;verticalAlign=top;align=left;" parent="1" vertex="1">
-          <mxGeometry x="110.5" y="780" width="160" height="270" as="geometry" />
+          <mxGeometry x="110.5" y="720" width="160" height="270" as="geometry" />
         </mxCell>
         <mxCell id="GTtgWMJxd_jJ_gYCuKWm-94" value="Report Changes To Database" style="ellipse;whiteSpace=wrap;html=1;fontSize=11;" parent="GTtgWMJxd_jJ_gYCuKWm-93" vertex="1">
           <mxGeometry x="10" y="30" width="140" height="70" as="geometry" />
@@ -149,12 +149,12 @@
         </mxCell>
         <mxCell id="GTtgWMJxd_jJ_gYCuKWm-110" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=11;startArrow=classic;startFill=1;endArrow=classic;endFill=1;" parent="1" source="GTtgWMJxd_jJ_gYCuKWm-75" target="GTtgWMJxd_jJ_gYCuKWm-93" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="-90.5" y="915.0769230769229" as="sourcePoint" />
-            <mxPoint x="405.5" y="1170" as="targetPoint" />
+            <mxPoint x="-101" y="855.0769230769229" as="sourcePoint" />
+            <mxPoint x="395" y="1110" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="GTtgWMJxd_jJ_gYCuKWm-111" value="Twitter" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fontSize=11;" parent="1" vertex="1">
-          <mxGeometry x="820.5" y="700" width="30" height="60" as="geometry" />
+          <mxGeometry x="810" y="640" width="30" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

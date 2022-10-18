@@ -1,11 +1,11 @@
-<mxfile host="app.diagrams.net" modified="2022-10-18T19:32:07.772Z" agent="5.0 (Windows)" etag="UhnesJs1QkGU_3df5LKS" version="20.4.0" type="github">
+<mxfile host="app.diagrams.net" modified="2022-10-18T19:34:48.925Z" agent="5.0 (Windows)" etag="zGZ_TPKYXftiwJzXq3il" version="20.4.0" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="2181" dy="1903" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3076" dy="1940" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="EWG7cu__D6KZ0yjpO-NT-16" value="Donaldson Twitter Tool" style="swimlane;startSize=0;fontSize=11;container=0;verticalAlign=top;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-130" y="-110" width="930" height="1280" as="geometry" />
+          <mxGeometry x="-1530" y="-50" width="930" height="1280" as="geometry" />
         </mxCell>
         <mxCell id="wES4avDyxo2HSUDPWvLi-3" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;endArrow=none;endFill=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="yqF-D2ozc9erd8Vr5AWP-14" target="wES4avDyxo2HSUDPWvLi-2" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -26,6 +26,9 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="B-5NMpNP-1XRMS3BvUQb-1" value="&amp;lt;&amp;lt;includes&amp;gt;&amp;gt;" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;dashed=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="yqF-D2ozc9erd8Vr5AWP-9" target="B-5NMpNP-1XRMS3BvUQb-0" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="EWG7cu__D6KZ0yjpO-NT-43" value="&amp;lt;&amp;lt;includes&amp;gt;&amp;gt;" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;fontSize=11;endArrow=openThin;endFill=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="yqF-D2ozc9erd8Vr5AWP-9" target="EWG7cu__D6KZ0yjpO-NT-42">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="yqF-D2ozc9erd8Vr5AWP-9" value="Trigger analysis of company&#39;s stored Twitter history" style="ellipse;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
@@ -152,8 +155,8 @@
         <mxCell id="EWG7cu__D6KZ0yjpO-NT-28" value="&amp;lt;&amp;lt;includes&amp;gt;&amp;gt;" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;fontSize=11;endArrow=openThin;endFill=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="wES4avDyxo2HSUDPWvLi-2" target="EWG7cu__D6KZ0yjpO-NT-12">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="wES4avDyxo2HSUDPWvLi-2" value="&lt;div&gt;Retrieve Tweets&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="50" y="260" width="100" height="40" as="geometry" />
+        <mxCell id="wES4avDyxo2HSUDPWvLi-2" value="&lt;div&gt;Retrieve Tweets&lt;/div&gt;&amp;nbsp;From Twitter" style="ellipse;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="40" y="250" width="110" height="50" as="geometry" />
         </mxCell>
         <mxCell id="4H2aXtTbELUpke0D4KSC-14" value="Upload CSV of Companies" style="ellipse;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="208" y="340" width="102" height="40" as="geometry" />
@@ -204,7 +207,10 @@
           <mxGeometry x="406" y="850" width="140" height="70" as="geometry" />
         </mxCell>
         <mxCell id="EWG7cu__D6KZ0yjpO-NT-33" value="Retrieve Stored Sentiment Analysis Data" style="ellipse;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="160" y="585" width="140" height="70" as="geometry" />
+          <mxGeometry x="90" y="590" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="EWG7cu__D6KZ0yjpO-NT-42" value="Retrieve Stored Tweet Data" style="ellipse;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="256" y="690" width="140" height="70" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

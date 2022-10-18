@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-10-18T23:11:48.351Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" etag="E4lUFrrO7cu9fJlFwN6d" version="20.4.0" type="github">
+<mxfile host="app.diagrams.net" modified="2022-10-18T23:25:25.966Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" etag="av2DdrJ79Yfkve1lWvXV" version="20.4.0" type="github" pages="2">
   <diagram id="JktZAHXNQAXAAq4mOGnl" name="Page-1">
-    <mxGraphModel dx="2370" dy="2427" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2031" dy="2237" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -166,6 +166,136 @@
         </mxCell>
         <mxCell id="GTtgWMJxd_jJ_gYCuKWm-111" value="Twitter" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fontSize=11;" parent="1" vertex="1">
           <mxGeometry x="1205" y="280" width="30" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="0ZveStYJ1Dak4E-saB0T" name="Page-2">
+    <mxGraphModel dx="2031" dy="2237" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="NQMoq0zPhD_8OFKOlVzj-50" value="Model" style="swimlane;" vertex="1" parent="1">
+          <mxGeometry x="600" y="180" width="160" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="yIwsft5AF9R1HLL0Knfl-1" value="Database" style="html=1;fontSize=11;" vertex="1" parent="NQMoq0zPhD_8OFKOlVzj-50">
+          <mxGeometry y="30" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="auaeGm6XjBcfVo8oQDIX-1" value="Twitter" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fontSize=11;" vertex="1" parent="NQMoq0zPhD_8OFKOlVzj-50">
+          <mxGeometry x="120" y="30" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NQMoq0zPhD_8OFKOlVzj-51" value="View" style="swimlane;" vertex="1" parent="1">
+          <mxGeometry x="785" y="180" width="670" height="400" as="geometry" />
+        </mxCell>
+        <mxCell id="xUQoFxxdrhiITB6CVE3P-1" value="Output retrieved data" style="swimlane;startSize=0;fontSize=11;verticalAlign=top;align=left;" vertex="1" parent="NQMoq0zPhD_8OFKOlVzj-51">
+          <mxGeometry y="30" width="340" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="xUQoFxxdrhiITB6CVE3P-2" value="See Overall Global Mentions of Powertrain" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="xUQoFxxdrhiITB6CVE3P-1">
+          <mxGeometry x="20" y="45" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="xUQoFxxdrhiITB6CVE3P-3" value="Show Historical Mentions of Powertrain Tech by Company" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="xUQoFxxdrhiITB6CVE3P-1">
+          <mxGeometry x="20" y="135" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="xUQoFxxdrhiITB6CVE3P-4" value="Show Mentions of Selected Powertrains" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="xUQoFxxdrhiITB6CVE3P-1">
+          <mxGeometry x="190" y="135" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="xUQoFxxdrhiITB6CVE3P-5" value="See Powertrain Mentions By Percentage" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="xUQoFxxdrhiITB6CVE3P-1">
+          <mxGeometry x="190" y="45" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="vCzFEARElh9Zeg_fXnKm-1" value="Interface" style="swimlane;startSize=0;fontSize=11;verticalAlign=top;align=left;" vertex="1" parent="NQMoq0zPhD_8OFKOlVzj-51">
+          <mxGeometry x="340" y="30" width="329.5" height="370" as="geometry" />
+        </mxCell>
+        <mxCell id="vCzFEARElh9Zeg_fXnKm-2" value="Report Changes To Database" style="ellipse;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="vCzFEARElh9Zeg_fXnKm-1">
+          <mxGeometry x="169.5" y="30" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="vCzFEARElh9Zeg_fXnKm-3" value="Report Invalid Handles" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="vCzFEARElh9Zeg_fXnKm-1">
+          <mxGeometry x="169.5" y="270" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="vCzFEARElh9Zeg_fXnKm-4" value="Display API Limits (Persistent?)" style="ellipse;whiteSpace=wrap;html=1;container=0;" vertex="1" parent="vCzFEARElh9Zeg_fXnKm-1">
+          <mxGeometry x="169.5" y="110" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="vCzFEARElh9Zeg_fXnKm-5" value="Add or Remove Companies In Database" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="vCzFEARElh9Zeg_fXnKm-1">
+          <mxGeometry x="169.5" y="190" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="vCzFEARElh9Zeg_fXnKm-6" value="Make Selections of Company/Powertrain/Date" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="vCzFEARElh9Zeg_fXnKm-1">
+          <mxGeometry x="10" y="30" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="hLHkh55CIxxXEKjNrsDQ-1" value="Controller" style="swimlane;" vertex="1" parent="1">
+          <mxGeometry x="600" y="-310" width="855" height="470" as="geometry" />
+        </mxCell>
+        <mxCell id="ExvNn-Ryka_fX8hhS2p7-1" value="Retrieve data from Twitter" style="swimlane;startSize=0;fontSize=11;verticalAlign=top;align=left;" vertex="1" parent="hLHkh55CIxxXEKjNrsDQ-1">
+          <mxGeometry y="30" width="174" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="ExvNn-Ryka_fX8hhS2p7-2" value="&lt;div&gt;Collect Tweets From Twitter [EXPENSIVE API CALLS]&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="ExvNn-Ryka_fX8hhS2p7-1">
+          <mxGeometry x="17" y="40" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ExvNn-Ryka_fX8hhS2p7-3" value="Retrieve API Limits (Persistent?)" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="ExvNn-Ryka_fX8hhS2p7-1">
+          <mxGeometry x="17" y="135" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="PdAlDG5WelfrbbLJ-CBX-1" value="Companies and date range selection" style="swimlane;startSize=0;fontSize=11;verticalAlign=top;whiteSpace=wrap;align=left;" vertex="1" parent="hLHkh55CIxxXEKjNrsDQ-1">
+          <mxGeometry x="174" y="30" width="321" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="PdAlDG5WelfrbbLJ-CBX-2" value="Select a company or companies by handle or name." style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="PdAlDG5WelfrbbLJ-CBX-1">
+          <mxGeometry x="10" y="30" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="PdAlDG5WelfrbbLJ-CBX-3" value="By Keyboard" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="PdAlDG5WelfrbbLJ-CBX-1">
+          <mxGeometry x="182" y="20" width="98" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="PdAlDG5WelfrbbLJ-CBX-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=11;endArrow=blockThin;endFill=0;" edge="1" parent="PdAlDG5WelfrbbLJ-CBX-1" source="PdAlDG5WelfrbbLJ-CBX-3" target="PdAlDG5WelfrbbLJ-CBX-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PdAlDG5WelfrbbLJ-CBX-5" value="Upload CSV of Companies" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="PdAlDG5WelfrbbLJ-CBX-1">
+          <mxGeometry x="182" y="70" width="102" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="PdAlDG5WelfrbbLJ-CBX-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=11;endArrow=blockThin;endFill=0;" edge="1" parent="PdAlDG5WelfrbbLJ-CBX-1" source="PdAlDG5WelfrbbLJ-CBX-5" target="PdAlDG5WelfrbbLJ-CBX-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PdAlDG5WelfrbbLJ-CBX-7" value="Select Date Range" style="ellipse;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="PdAlDG5WelfrbbLJ-CBX-1">
+          <mxGeometry x="10" y="230" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="PdAlDG5WelfrbbLJ-CBX-8" value="Select Powertrain" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="PdAlDG5WelfrbbLJ-CBX-1">
+          <mxGeometry x="10" y="130" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="PdAlDG5WelfrbbLJ-CBX-9" value="&lt;div&gt;Tracked/saved selections&lt;/div&gt;" style="html=1;dropTarget=0;fontSize=11;" vertex="1" parent="PdAlDG5WelfrbbLJ-CBX-1">
+          <mxGeometry x="180" y="230" width="141" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="PdAlDG5WelfrbbLJ-CBX-10" value="" style="shape=module;jettyWidth=8;jettyHeight=4;fontSize=11;" vertex="1" parent="PdAlDG5WelfrbbLJ-CBX-9">
+          <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
+            <mxPoint x="-27" y="7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="16a7wM3_YmTIC3Rw9VZH-1" value="Tweepy" style="swimlane;startSize=0;fontSize=11;verticalAlign=top;align=left;" vertex="1" parent="hLHkh55CIxxXEKjNrsDQ-1">
+          <mxGeometry y="260" width="160" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="16a7wM3_YmTIC3Rw9VZH-2" value="Twitter API Access For Handle Verification and IDs" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="16a7wM3_YmTIC3Rw9VZH-1">
+          <mxGeometry x="10" y="25" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="Sd6Bf4dPuAm49oZyHnD4-1" value="Database Access" style="swimlane;startSize=0;fontSize=11;verticalAlign=top;align=left;" vertex="1" parent="hLHkh55CIxxXEKjNrsDQ-1">
+          <mxGeometry x="495" y="30" width="360" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="Sd6Bf4dPuAm49oZyHnD4-2" value="Retrieve Stored Tweet Data" style="ellipse;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="Sd6Bf4dPuAm49oZyHnD4-1">
+          <mxGeometry x="30" y="30" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="Sd6Bf4dPuAm49oZyHnD4-3" value="Retrieve Stored Sentiment Analysis Data" style="ellipse;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="Sd6Bf4dPuAm49oZyHnD4-1">
+          <mxGeometry x="30" y="120" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="Sd6Bf4dPuAm49oZyHnD4-4" value="Store Valid Twitter Handles and IDs in Database" style="ellipse;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="Sd6Bf4dPuAm49oZyHnD4-1">
+          <mxGeometry x="30" y="210" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="Sd6Bf4dPuAm49oZyHnD4-5" value="Retrieve Handles Of Companies For API Use" style="ellipse;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="Sd6Bf4dPuAm49oZyHnD4-1">
+          <mxGeometry x="200" y="120" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="Sd6Bf4dPuAm49oZyHnD4-6" value="Update Database With Data" style="ellipse;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="Sd6Bf4dPuAm49oZyHnD4-1">
+          <mxGeometry x="200" y="30" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="OQ767QOkkm9owWVx2KYy-1" value="Natural Language Toolkit" style="swimlane;startSize=0;fontSize=11;align=left;verticalAlign=top;" vertex="1" parent="hLHkh55CIxxXEKjNrsDQ-1">
+          <mxGeometry x="160" y="350" width="310" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="OQ767QOkkm9owWVx2KYy-2" value="Trigger analysis of company&#39;s stored Twitter history" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="OQ767QOkkm9owWVx2KYy-1">
+          <mxGeometry x="10" y="30" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="OQ767QOkkm9owWVx2KYy-3" value="Sentiment Analysis" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="OQ767QOkkm9owWVx2KYy-1">
+          <mxGeometry x="160" y="35" width="140" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

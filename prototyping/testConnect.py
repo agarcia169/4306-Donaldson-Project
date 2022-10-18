@@ -1,10 +1,12 @@
 import mysql.connector
 from mysql.connector import errorcode
 from configparser import RawConfigParser
-
+# RawConfigParser is used because certain keys from Twitter use % signs,
+# which the regular parser interprets non-literally.
 config = RawConfigParser()
 
 server_file_location = '../config/server.cfg'
+# An example file for server.cfg. Note the lack of spaces between = signs.
 # [mysql]
 # username=example
 # password=example
@@ -12,6 +14,7 @@ server_file_location = '../config/server.cfg'
 # database=example
 # port=example
 api_key_file_location = '../config/api_keys.cfg'
+# An example file for api_keys.cfg. Note the lack of = signs. 
 # [twitter]
 # API_KEY=example
 # API_KEY_SECRET=example

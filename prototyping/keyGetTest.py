@@ -1,7 +1,7 @@
 from configparser import RawConfigParser
 import tweepy
 config = RawConfigParser()
-config.read('../../config/api_keys.cfg')
+config.read('../config/api_keys.cfg')
 
 #API_KEY = config.get('twitter','api_key')
 #API_KEY_SECRET = config.get('twitter','api_key_secret')

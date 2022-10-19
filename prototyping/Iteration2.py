@@ -6,7 +6,6 @@ from nltk.corpus import subjectivity
 from nltk.sentiment import SentimentAnalyzer
 from nltk.sentiment.util import *
 import tweepy
-import json
 #import mysql.connector
 #from mysql.connector import errorcode
 from configparser import RawConfigParser

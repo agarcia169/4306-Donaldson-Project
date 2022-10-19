@@ -32,6 +32,9 @@ HOST = config.get('mysql','host')
 PASSWORD = config.get('mysql','password')
 PORT = config.get('mysql','port')
 
+# Some code below is from this website:
+# https://dev.mysql.com/doc/connector-python/en/connector-python-example-connecting.html
+
 try:
   cnx = mysql.connector.connect(user=USER,
                                 host=HOST,

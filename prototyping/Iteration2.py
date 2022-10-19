@@ -5,6 +5,46 @@ from nltk.classify import NaiveBayesClassifier
 from nltk.corpus import subjectivity
 from nltk.sentiment import SentimentAnalyzer
 from nltk.sentiment.util import *
+import tweepy
+import json
+
+
+
+
+API_KEY = "1417910633178206208-jL3Kg6wBxQRtoit6DOiAPnVXaAJcth"
+API_KEY_SECRET = "hZGVsE2aYKmXtHtkz7BzhPgSnOdQXqJdxwMgwN6aa5PDP"
+BEARER_TOKEN = "AAAAAAAAAAAAAAAAAAAAAKcugwEAAAAAKJLPTJchKBUQF9ixfCI%2B5iBJU74%3DQsYeYETYUssTBMYOFzBJFabVOa2PlX7AsDHyx8X0cGCIsMvq26"
+
+client = tweepy.Client(BEARER_TOKEN)
+thisUser = client.get_user(username='HINOJapan')
+#thisUser = client.get_user(id=1148529339203543040)
+# 1st method for pulling tweets thisUser2 = client.user_timeline(1148529339203543040,1570812262394302467,1570812262394302467,50,2)
+
+#print(thisUser2)
+
+#---------------------------------------------------------
+
+
+# Get User's Tweets
+
+# This endpoint/method returns Tweets composed by a single user, specified by
+# the requested user ID
+
+#user_id = 17341358
+#print(thisUser.data.id)
+#response = client.get_users_tweets(user_id)
+
+response = client.get_users_tweets(thisUser.data.id, max_results=5)
+# By default, only the ID and text fields of each Tweet will be returned
+#for tweet in response.data:
+#print(tweet.id)
+#print(tweet.text)
+sentences = []
+for tweet in response.data: 
+    sentences.append(tweet.text)
+
+# By default, the 10 most recent Tweets will be returned
+# You can retrieve up to 100 Tweets by specifying max_results
 
 n_instances = 100
 subj_docs = [(sent, 'subj') for sent in subjectivity.sents(categories='subj')[:n_instances]]
@@ -35,18 +75,6 @@ for key,value in sorted(sentim_analyzer.evaluate(test_set).items()):
     print('{0}: {1}'.format(key, value))
 
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
-sentences = [
-    "Welcome to a new era for safety. Where pioneering technology not only brings a greater understanding of the environment outside, but also of the driver's state inside. Coming soon with the Volvo EX90, our new fully electric flagship SUV. #SafetyInMind https://t.co/FVQcxQjCys",
-    "@FultonMurphy42 Hi, we are concerned to hear about this. Could you send us a direct message with your email address and VIN? We would be happy to look into this further!",
-    "@LouiseGriew @volvocars Hi Louise, we were made aware of your concerns with your vehicle. Could you send us a message with your email address and VIN? We would be happy to look into this further.",
-    "Join Volvo Cars CEO Jim Rowan as he announces a new era  for safety. Set a reminder on YouTube to watch the announcement live on 9.21.22: https://t.co/mQpyIjcqzl #SafetyInMind https://t.co/0UO6de4fzP",
-    "@plumdoc HI Kelley, you can send us a DM with your email address and VIN. We'd be happy to assist you with any questions.",
-    "@nataliapetrzela Hi Natalia, we are concerned to hear about this. Could you send us a DM with additional information, your email address, and your VIN? We would be happy to look into this further.",
-    "Rediscover the joy of driving with our refreshed road-loving sedan – the S60 Mild-Hybrid designed to go the extra mile. For all of life’s twists and turns. https://t.co/A70mo3auOJ",
-    "@meltball Hi Meltem, we are concerned to hear about this. Could you send us a DM with your email address and VIN? We would be happy to look into this further.",
-    "This #LaborDay -  and everyday - we honor and thank the men and women who build the cars our customers trust to protect them. Our people make our ambitions possible and they're our greatest strength. https://t.co/iARryYXUKf",
-    "“Volvo Cars engineers its vehicles for safety. They recognize that dogs are frequent passengers in their SUVs like the 2022 XC60.” Click to read why @AutoTrader_com selected the XC60 as one of 10 Best Cars for Dog Lovers. #NationalDogMonth https://t.co/fsacM9nZo4"
-]
 
 from nltk import tokenize
 #lines_list = tokenize.sent_tokenize(paragraph)

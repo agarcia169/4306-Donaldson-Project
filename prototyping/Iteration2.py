@@ -16,7 +16,7 @@ API_KEY_SECRET = "hZGVsE2aYKmXtHtkz7BzhPgSnOdQXqJdxwMgwN6aa5PDP"
 BEARER_TOKEN = "AAAAAAAAAAAAAAAAAAAAAKcugwEAAAAAKJLPTJchKBUQF9ixfCI%2B5iBJU74%3DQsYeYETYUssTBMYOFzBJFabVOa2PlX7AsDHyx8X0cGCIsMvq26"
 
 client = tweepy.Client(BEARER_TOKEN)
-thisUser = client.get_user(username='HINOJapan')
+thisUser = client.get_user(username='Honda')
 #thisUser = client.get_user(id=1148529339203543040)
 # 1st method for pulling tweets thisUser2 = client.user_timeline(1148529339203543040,1570812262394302467,1570812262394302467,50,2)
 
@@ -34,7 +34,7 @@ thisUser = client.get_user(username='HINOJapan')
 #print(thisUser.data.id)
 #response = client.get_users_tweets(user_id)
 
-response = client.get_users_tweets(thisUser.data.id, max_results=5)
+response = client.get_users_tweets(thisUser.data.id, max_results=10)
 # By default, only the ID and text fields of each Tweet will be returned
 #for tweet in response.data:
 #print(tweet.id)

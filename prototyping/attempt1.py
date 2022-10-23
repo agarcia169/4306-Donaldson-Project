@@ -133,6 +133,9 @@ tweetex = tweepy.Client(bearer_token=BEARER_TOKEN, return_type=requests.Response
 print(tweetex.get_user(username='Honda').headers['x-rate-limit-remaining'])
 print(tweetex.get_user(username='Honda').headers['x-rate-limit-reset'])
 
+#use on tweet ID to see if there is a change in headers
+#print(tweetex.get_user(username='Honda').headers['x-rate-limit-reset'])
+
 
 #print(dir(tweetex.get_user(username='Honda')))
 #print( dir(tweepy.Client(bearer_token=BEARER_TOKEN, return_type=requests.Response).request('Get',)))

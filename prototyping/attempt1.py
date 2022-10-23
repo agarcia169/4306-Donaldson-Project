@@ -1,6 +1,6 @@
-from sqlite3 import Cursor
 import mysql.connector
-import time
+import tweepy
+from os.path import abspath
 from getpass import getpass
 from mysql.connector import errorcode
 from configparser import RawConfigParser
@@ -26,12 +26,19 @@ api_key_file_location = '../config/api_keys.cfg'
 config.read(server_file_location)
 config.read(api_key_file_location)
 
-BEARER_TOKEN = config.get('twitter','bearer_token')
+API_CONFIG_SECTION = 'twitter'
+API_BEARER_TOKEN_VARIABLE_NAME = 'bearer_token'
+
+BEARER_TOKEN = config.get(API_CONFIG_SECTION,API_BEARER_TOKEN_VARIABLE_NAME, fallback=None)
 dbUser= config.get('mysql','username',fallback=None)
 DATABASE = config.get('mysql','database')
 HOST = config.get('mysql','host')
 dbPassword = config.get('mysql','password',fallback=None)
 PORT = config.get('mysql','port')
+
+if(BEARER_TOKEN == None):
+  print("Error: " + API_BEARER_TOKEN_VARIABLE_NAME + " is missing from [" + API_CONFIG_SECTION +  "] section in " + abspath(api_key_file_location))
+  exit()
 
 # Some code below is from this website:
 # https://dev.mysql.com/doc/connector-python/en/connector-python-example-connecting.html
@@ -40,8 +47,19 @@ if(dbUser == None):
 
 if(dbPassword == None):
   dbPassword = getpass("Please enter the database password for your account:")
+# And thus, the end of the config file read-in.
 
-
+twitClient = tweepy.Client(BEARER_TOKEN)
+dataObjectTest = twitClient.get_user(username='volvocars')
+print(dir(dataObjectTest))
+# print("Data: ", dir(dataObjectTest.data))
+# print("Errors: ", dir(dataObjectTest.errors))
+# print("Includes: ", dir(dataObjectTest.includes))
+# print("Meta: ", dir(dataObjectTest.meta))
+print(dataObjectTest.data.id)
+print(dataObjectTest.data.username)
+print(dataObjectTest.data.description)
+print(dataObjectTest.data.name)
 
 try:
   with mysql.connector.connect(user=dbUser,

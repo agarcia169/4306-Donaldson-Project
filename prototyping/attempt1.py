@@ -78,10 +78,22 @@ def add_twitter_handle(dbConnection,twitter_user):
 def get_twitter_handle(dbConnection,twitter_id):
   try:
     with dbConnection.cursor() as dbCursor:
-      dbCursor.execute("SELECT username FROM handles WHERE id = %s",int(twitter_id))
+      dbCursor.execute("SELECT username FROM handles WHERE id = %s",(str(twitter_id),))
+      result = dbCursor.fetchall()
+      if(len(result) > 1):
+        print("Warning: Multiple user handles returned with supposedly unique ID#%s"%twitter_id)
+      return result[0][0]
   except mysql.connector.cursor.Error as cursorErr:
     print(cursorErr)
 
+def get_twitter_id(dbConnection,twitter_handle):
+  try:
+    with dbConnection.cursor() as dbCursor:
+      dbCursor.execute("SELECT id FROM handles WHERE username = %s",(str(twitter_handle),))
+      result = dbCursor.fetchall()
+      return [item[0] for item in result]
+  except mysql.connector.cursor.Error as cursorErr:
+    print(cursorErr)
 
 # End of Database Functions
 
@@ -96,18 +108,6 @@ def get_twitter_handle(dbConnection,twitter_id):
 # Joel Testing Ground
 twitClient = tweepy.Client(BEARER_TOKEN)
 dataObjectTest = twitClient.get_user(username='volvocars')
-# print(dir(dataObjectTest))
-# print("Data: ", dir(dataObjectTest.data))
-# print("Errors: ", dir(dataObjectTest.errors))
-# print("Includes: ", dir(dataObjectTest.includes))
-# print("Meta: ", dir(dataObjectTest.meta))
-# print(dataObjectTest.data.id)
-# print(dataObjectTest.data.username)
-# print(dataObjectTest.data.description)
-# print(dataObjectTest.data.name)
-# print("The Meta: ", dir(dataObjectTest.meta))
-
-
 try:
   with mysql.connector.connect(user=dbUser,
                                 host=HOST,
@@ -115,6 +115,8 @@ try:
                                 port=PORT,
                                 database=DATABASE) as dbConnection:
       add_twitter_handle(dbConnection,dataObjectTest)
+      print("Get Handle Example:",get_twitter_handle(dbConnection,342772500))
+      print(get_twitter_id(dbConnection,'volvocars'))
 except mysql.connector.Error as err:
   if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
     print("Something is wrong with your user name or password")
@@ -133,18 +135,18 @@ else:
 # End of Alex Testing Ground
 
 # Bola Testing Ground
-tweetex = tweepy.Client(bearer_token=BEARER_TOKEN, return_type=requests.Response)
+# tweetex = tweepy.Client(bearer_token=BEARER_TOKEN, return_type=requests.Response)
 #x-rate-limit found by peering into headers[] file
-print(tweetex.get_user(username='Honda').headers['x-rate-limit-remaining'])
-print(tweetex.get_user(username='Honda').headers['x-rate-limit-reset'])
+# print(tweetex.get_user(username='Honda').headers['x-rate-limit-remaining'])
+# print(tweetex.get_user(username='Honda').headers['x-rate-limit-reset'])
 #percentage = (tweetex.get_user(username='Honda').headers['x-rate-limit-limit']) / (tweetex.get_user(username='Honda').headers['x-rate-limit-remaining'])
 #print (percentage)
 #----------------------------------------------------------------
 #Gathering tweets to find tweet ID
-Tester = twitClient.get_user(username='Honda')
-print(Tester)
+# Tester = twitClient.get_user(username='Honda')
+# print(Tester)
 
-print(tweetex.get_users_tweets(Tester.data.id, max_results = 5))
+# print(tweetex.get_users_tweets(Tester.data.id, max_results = 5))
 #use on tweet ID to see if there is a change in headers
 #print(tweetex.get_user(username='Honda').headers[])
 

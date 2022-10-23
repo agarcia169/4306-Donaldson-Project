@@ -23,8 +23,12 @@ api_key_file_location = '../config/api_keys.cfg'
 # API_KEY_SECRET=example
 # BEARER_TOKEN=example
 
-config.read(server_file_location)
-config.read(api_key_file_location)
+if(config.read(server_file_location) == []):
+  raise IOError("Could not open " + abspath(server_file_location))
+if(config.read(api_key_file_location) == []):
+  raise IOError("Could not open " + abspath(api_key_file_location))
+
+
 
 API_CONFIG_SECTION = 'twitter'
 API_BEARER_TOKEN_VARIABLE_NAME = 'bearer_token'
@@ -50,8 +54,19 @@ if(dbPassword == None):
 # And thus, the end of the config file read-in.
 
 # Define Database Functions Here
-def add_twitter_handle(database_cursor,twitter_user):
-  query_check_for_id = "SELECT id FROM handles WHERE id = " 
+
+# This checks to see if a handle exists in the database, and if it doesn't, adds it to the database.
+# Returns result? Exists, added, error??
+def add_twitter_handle(dbCursor,twitter_user):
+  query_check_for_id = "SELECT id FROM handles WHERE id = %s"
+  dbCursor.execute(query_check_for_id,(twitter_user.data.id,))
+  do_they_exist = dbCursor.fetchall()
+  print(dir(do_they_exist))
+  if(do_they_exist):
+    print("Empty!")
+  else:
+    print("Not empty")
+
 
 # End of Database Functions
 
@@ -84,10 +99,9 @@ try:
                                 database=DATABASE) as dbConnection:
     try: 
       with dbConnection.cursor() as dbCursor:
-        dbCursor.execute("show databases")
-        for results in dbCursor:
-          print(results, type(results))
-        dbConnection.commit()
+        # dbCursor.execute("show databases")
+        add_twitter_handle(dbCursor,dataObjectTest)
+        # dbConnection.commit()
     # Autocommit defaults to false.
     except mysql.connector.Cursor.error as cursorErr:
       print(cursorErr)

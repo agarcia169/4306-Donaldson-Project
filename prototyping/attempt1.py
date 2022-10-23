@@ -66,7 +66,7 @@ def add_twitter_handle(dbCursor,twitter_user):
     dbCursor.execute(query_add_user_to_db,(twitter_user.data.id,twitter_user.data.username,twitter_user.data.description,twitter_user.data.name))
     print(dbCursor.fetchall())
   else:
-    print(do_they_exist)
+    print("User `" + twitter_user.data.username + "` (" + str(twitter_user.data.id) + ") Exists In Database Already")
 
 
 # End of Database Functions
@@ -87,10 +87,12 @@ dataObjectTest = twitClient.get_user(username='volvocars')
 # print("Errors: ", dir(dataObjectTest.errors))
 # print("Includes: ", dir(dataObjectTest.includes))
 # print("Meta: ", dir(dataObjectTest.meta))
-print(dataObjectTest.data.id)
-print(dataObjectTest.data.username)
-print(dataObjectTest.data.description)
-print(dataObjectTest.data.name)
+# print(dataObjectTest.data.id)
+# print(dataObjectTest.data.username)
+# print(dataObjectTest.data.description)
+# print(dataObjectTest.data.name)
+# print("The Meta: ", dir(dataObjectTest.meta))
+
 
 try:
   with mysql.connector.connect(user=dbUser,

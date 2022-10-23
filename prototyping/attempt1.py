@@ -75,6 +75,7 @@ def add_twitter_handle(dbConnection,twitter_user):
     print(cursorErr)
 
 # TODO: #28 Define getters_from_db functions @JEnduriumK
+# TODO: #29 Add python docstrings, consider Sphinx? @JEnduriumK
 # def get_twitter_handle(dbConnection,twitter_id):
 
 # End of Database Functions

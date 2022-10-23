@@ -75,7 +75,13 @@ def add_twitter_handle(dbConnection,twitter_user):
     print(cursorErr)
 
 # TODO: #28 Define getters_from_db functions @JEnduriumK
-# def get_twitter_handle(dbConnection,twitter_id):
+def get_twitter_handle(dbConnection,twitter_id):
+  try:
+    with dbConnection.cursor() as dbCursor:
+      dbCursor.execute("SELECT username FROM handles WHERE id = %s",int(twitter_id))
+  except mysql.connector.cursor.Error as cursorErr:
+    print(cursorErr)
+
 
 # End of Database Functions
 

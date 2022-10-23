@@ -49,9 +49,24 @@ if(dbPassword == None):
   dbPassword = getpass("Please enter the database password for your account:")
 # And thus, the end of the config file read-in.
 
+# Define Database Functions Here
+def add_twitter_handle(database_cursor,twitter_user):
+  query_check_for_id = "SELECT id FROM handles WHERE id = " 
+
+# End of Database Functions
+
+# Define Tweepy Functions Here
+
+# End of Tweepy Functions
+
+# Define NLTK Functions Here
+
+# End of NLTK Functions
+
+# Joel Testing Ground
 twitClient = tweepy.Client(BEARER_TOKEN)
 dataObjectTest = twitClient.get_user(username='volvocars')
-print(dir(dataObjectTest))
+# print(dir(dataObjectTest))
 # print("Data: ", dir(dataObjectTest.data))
 # print("Errors: ", dir(dataObjectTest.errors))
 # print("Includes: ", dir(dataObjectTest.includes))
@@ -86,3 +101,13 @@ except mysql.connector.Error as err:
     print(err)
 else:
   dbConnection.close()
+
+# End of Joel Testing Ground
+
+# Alex Testing Ground
+
+# End of Alex Testing Ground
+
+# Bola Testing Ground
+
+# End of Bola Testing Ground

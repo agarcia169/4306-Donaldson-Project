@@ -132,9 +132,16 @@ tweetex = tweepy.Client(bearer_token=BEARER_TOKEN, return_type=requests.Response
 #x-rate-limit found by peering into headers[] file
 print(tweetex.get_user(username='Honda').headers['x-rate-limit-remaining'])
 print(tweetex.get_user(username='Honda').headers['x-rate-limit-reset'])
+#percentage = (tweetex.get_user(username='Honda').headers['x-rate-limit-limit']) / (tweetex.get_user(username='Honda').headers['x-rate-limit-remaining'])
+#print (percentage)
+#----------------------------------------------------------------
+#Gathering tweets to find tweet ID
+Tester = twitClient.get_user(username='Honda')
+print(Tester)
 
+print(tweetex.get_users_tweets(Tester.data.id, max_results = 5))
 #use on tweet ID to see if there is a change in headers
-#print(tweetex.get_user(username='Honda').headers['x-rate-limit-reset'])
+#print(tweetex.get_user(username='Honda').headers[])
 
 
 #print(dir(tweetex.get_user(username='Honda')))

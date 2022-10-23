@@ -1,5 +1,6 @@
 import mysql.connector
 import tweepy
+import requests
 from os.path import abspath
 from getpass import getpass
 from mysql.connector import errorcode
@@ -127,5 +128,14 @@ else:
 # End of Alex Testing Ground
 
 # Bola Testing Ground
+tweetex = tweepy.Client(bearer_token=BEARER_TOKEN, return_type=requests.Response)
+#x-rate-limit found by peering into headers[] file
+print(tweetex.get_user(username='Honda').headers['x-rate-limit-remaining'])
+print(tweetex.get_user(username='Honda').headers['x-rate-limit-reset'])
+
+
+#print(dir(tweetex.get_user(username='Honda')))
+#print( dir(tweepy.Client(bearer_token=BEARER_TOKEN, return_type=requests.Response).request('Get',)))
+
 
 # End of Bola Testing Ground

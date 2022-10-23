@@ -60,10 +60,13 @@ def add_twitter_handle(dbCursor,twitter_user):
   dbCursor.execute(query_check_for_id,(twitter_user.data.id,))
   do_they_exist = dbCursor.fetchall()
   print(dir(do_they_exist))
-  if(do_they_exist):
-    print("Empty!")
+  print(do_they_exist)
+  if(do_they_exist == []):
+    query_add_user_to_db = "INSERT INTO handles VALUES(%s,%s,%s,%s)"
+    dbCursor.execute(query_add_user_to_db,(twitter_user.data.id,twitter_user.data.username,twitter_user.data.description,twitter_user.data.name))
+    print(dbCursor.fetchall())
   else:
-    print("Not empty")
+    print(do_they_exist)
 
 
 # End of Database Functions
@@ -99,9 +102,10 @@ try:
       with dbConnection.cursor() as dbCursor:
         # dbCursor.execute("show databases")
         add_twitter_handle(dbCursor,dataObjectTest)
+        dbConnection.commit()
         # dbConnection.commit()
     # Autocommit defaults to false.
-    except mysql.connector.Cursor.error as cursorErr:
+    except mysql.connector.cursor.Error as cursorErr:
       print(cursorErr)
 except mysql.connector.Error as err:
   if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:

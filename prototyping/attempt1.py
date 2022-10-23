@@ -56,18 +56,23 @@ if(dbPassword == None):
 
 # This checks to see if a handle exists in the database, and if it doesn't, adds it to the database.
 # Returns result? Exists, added, error??
-def add_twitter_handle(dbCursor,twitter_user):
-  query_check_for_id = "SELECT id FROM handles WHERE id = %s"
-  dbCursor.execute(query_check_for_id,(twitter_user.data.id,))
-  do_they_exist = dbCursor.fetchall()
-  print(dir(do_they_exist))
-  print(do_they_exist)
-  if(do_they_exist == []):
-    query_add_user_to_db = "INSERT INTO handles VALUES(%s,%s,%s,%s)"
-    dbCursor.execute(query_add_user_to_db,(twitter_user.data.id,twitter_user.data.username,twitter_user.data.description,twitter_user.data.name))
-    print(dbCursor.fetchall())
-  else:
-    print("User `" + twitter_user.data.username + "` (" + str(twitter_user.data.id) + ") Exists In Database Already")
+def add_twitter_handle(dbConnection,twitter_user):
+  try:
+    with dbConnection.cursor() as dbCursor:
+      query_check_for_id = "SELECT id FROM handles WHERE id = %s"
+      dbCursor.execute(query_check_for_id,(twitter_user.data.id,))
+      do_they_exist = dbCursor.fetchall()
+      print(dir(do_they_exist))
+      print(do_they_exist)
+      if(do_they_exist == []):
+        query_add_user_to_db = "INSERT INTO handles VALUES(%s,%s,%s,%s)"
+        dbCursor.execute(query_add_user_to_db,(twitter_user.data.id,twitter_user.data.username,twitter_user.data.description,twitter_user.data.name))
+        dbCursor.fetchall()
+        dbCursor.commit()
+      else:
+        print("User `" + twitter_user.data.username + "` (" + str(twitter_user.data.id) + ") Exists In Database Already")
+  except mysql.connector.cursor.Error as cursorErr:
+    print(cursorErr)
 
 
 # End of Database Functions
@@ -101,15 +106,7 @@ try:
                                 password=dbPassword,
                                 port=PORT,
                                 database=DATABASE) as dbConnection:
-    try: 
-      with dbConnection.cursor() as dbCursor:
-        # dbCursor.execute("show databases")
-        add_twitter_handle(dbCursor,dataObjectTest)
-        dbConnection.commit()
-        # dbConnection.commit()
-    # Autocommit defaults to false.
-    except mysql.connector.cursor.Error as cursorErr:
-      print(cursorErr)
+      add_twitter_handle(dbConnection,dataObjectTest)
 except mysql.connector.Error as err:
   if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
     print("Something is wrong with your user name or password")

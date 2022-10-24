@@ -66,8 +66,7 @@ def add_twitter_handle(dbConnection: MySQLConnection,twitter_user:dict | request
         `data.id`, `data.username`, `data.description` (can be `None`), and `data.name`.
 
   Returns:
-      `tuple(bool,int)`: A bool representing whether or not the user was added \
-      successfully, and an int that is the ID# of Twitter user
+      `tuple(bool,int)`: A bool representing whether or not the user was added successfully, and an int that is the ID# of Twitter user
   """
   try:
     with dbConnection.cursor() as dbCursor:

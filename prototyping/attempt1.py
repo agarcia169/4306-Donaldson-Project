@@ -94,7 +94,7 @@ def get_twitter_id(dbConnection,twitter_handle):
       return [item[0] for item in result]
   except mysql.connector.cursor.Error as cursorErr:
     print(cursorErr)
-
+ 
 # End of Database Functions
 
 # Define Tweepy Functions Here

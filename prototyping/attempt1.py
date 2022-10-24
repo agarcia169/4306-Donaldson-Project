@@ -1,4 +1,5 @@
 import mysql.connector
+from mysql.connector import MySQLConnection
 import tweepy
 import requests
 from os.path import abspath
@@ -56,7 +57,18 @@ if(dbPassword == None):
 
 # This checks to see if a handle exists in the database, and if it doesn't, adds it to the database.
 # Returns result? Exists, added, error??
-def add_twitter_handle(dbConnection,twitter_user):
+def add_twitter_handle(dbConnection: MySQLConnection,twitter_user:dict | requests.Response) -> tuple[bool,int]:
+  """Adds a Twitter ID, username, description, and name to the database.
+
+  Args:
+      `dbConnection` (`MySQLConnection`): The open connection to the MySQL database.
+      `twitter_user` (`Dict`|`Response`): The output from the `tweepy.get_user()` function. Must contain \
+        `data.id`, `data.username`, `data.description` (can be `None`), and `data.name`.
+
+  Returns:
+      `tuple(bool,int)`: A bool representing whether or not the user was added
+      successfully, and an int that is the ID# of Twitter user
+  """
   try:
     with dbConnection.cursor() as dbCursor:
       query_check_for_id = "SELECT id FROM handles WHERE id = %s"
@@ -69,12 +81,23 @@ def add_twitter_handle(dbConnection,twitter_user):
         dbCursor.execute(query_add_user_to_db,(twitter_user.data.id,twitter_user.data.username,twitter_user.data.description,twitter_user.data.name))
         dbCursor.fetchall()
         dbCursor.commit()
+        return (True,twitter_user.data.id)
       else:
-        print("User `" + twitter_user.data.username + "` (" + str(twitter_user.data.id) + ") Exists In Database Already")
+        print("User `" + twitter_user.data.username + "` (" + str(twitter_user.data.id) + ") Exists In Database Already As: '" + str(do_they_exist[0][0]) + "'")
+        return (False,do_they_exist[0][0])
   except mysql.connector.cursor.Error as cursorErr:
     print(cursorErr)
 
-def get_twitter_handle(dbConnection,twitter_id):
+def get_twitter_handle(dbConnection: MySQLConnection,twitter_id:int|str) -> str:
+  """Gets the handle from the DB of a provided Twitter ID#, `twitter_id`.
+
+  Args:
+      `dbConnection` (`MySQLConnection`): The connection object to the MySQL database
+      `twitter_id` (`int`|`str`): The Twitter ID#
+
+  Returns:
+      `str`: The first username returned by the database.
+  """
   try:
     with dbConnection.cursor() as dbCursor:
       dbCursor.execute("SELECT username FROM handles WHERE id = %s",(str(twitter_id),))
@@ -85,7 +108,16 @@ def get_twitter_handle(dbConnection,twitter_id):
   except mysql.connector.cursor.Error as cursorErr:
     print(cursorErr)
 
-def get_twitter_id(dbConnection,twitter_handle):
+def get_twitter_id(dbConnection: MySQLConnection,twitter_handle:str) -> list[int]:
+  """Get the ID# from the DB of a provided handle, `twitter_handle`.
+
+  Args:
+      `dbConnection` (`MySQLConnection`): An active MySQL database connection.
+      `twitter_handle` (`str`): The username of the Twitter user.
+
+  Returns:
+      `list[int]`: A list of all ID#s matching that username exactly. Ideally 1 element. Rarely more.
+  """
   try:
     with dbConnection.cursor() as dbCursor:
       dbCursor.execute("SELECT id FROM handles WHERE username = %s",(str(twitter_handle),))

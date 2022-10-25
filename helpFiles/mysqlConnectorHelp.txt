@@ -1,0 +1,468 @@
+['__abstractmethods__', '__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__enter__', '__eq__', '__exit__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__slots__', '__str__', '__subclasshook__', '__weakref__', '_abc_impl', '_add_default_conn_attrs', '_allow_local_infile', '_allow_local_infile_in_path', '_auth_plugin', '_autocommit', '_buffered', '_charset_id', '_check_server_version', '_client_flags', '_client_host', '_client_port', '_cmysql', '_columns', '_compress', '_conn_attrs', '_connection_timeout', '_consume_results', '_converter_class', '_converter_str_fallback', '_database', '_do_handshake', '_execute_query', '_fido_callback', '_force_ipv6', '_get_warnings', '_handshake', '_have_next_result', '_host', '_in_transaction', '_krb_service_principal', '_oci_config_file', '_open_connection', '_password', '_password1', '_password2', '_password3', '_plugin_dir', '_pool_config_version', '_port', '_post_connection', '_prepared_statements', '_query_attrs', '_raise_on_warnings', '_raw', '_server_status', '_server_version', '_sql_mode', '_ssl', '_ssl_active', '_ssl_disabled', 
+'_time_zone', '_unix_socket', '_unread_result', '_use_unicode', '_user', '_validate_tls_ciphersuites', '_validate_tls_versions', 'autocommit', 'can_consume_results', 'charset', 'close', 'cmd_change_user', 'cmd_debug', 'cmd_init_db', 'cmd_ping', 'cmd_process_info', 'cmd_process_kill', 'cmd_query', 'cmd_query_iter', 'cmd_quit', 'cmd_refresh', 'cmd_reset_connection', 'cmd_shutdown', 'cmd_statistics', 'cmd_stmt_close', 'cmd_stmt_execute', 'cmd_stmt_prepare', 'cmd_stmt_reset', 'cmd_stmt_send_long_data', 'collation', 'commit', 'config', 'connect', 'connection_id', 'consume_results', 'converter', 'cursor', 'database', 'disconnect', 'fetch_eof_columns', 'fetch_eof_status', 'free_result', 'get_row', 'get_rows', 'get_self', 'get_server_info', 'get_server_version', 'get_warnings', 'handle_unread_result', 'have_next_result', 'in_transaction', 'info_query', 'is_closed', 'is_connected', 'is_secure', 'isset_client_flag', 'more_results', 'next_result', 'num_rows', 'ping', 'pool_config_version', 'prepare_for_mysql', 'python_charset', 'query_attrs', 'query_attrs_append', 
+'query_attrs_clear', 'raise_on_warnings', 'reconnect', 'reset_session', 'result_set_available', 'rollback', 'server_host', 'server_port', 'set_allow_local_infile_in_path', 'set_character_set_name', 'set_charset_collation', 'set_client_flags', 'set_converter_class', 'set_login', 'set_unicode', 'sql_mode', 'start_transaction', 'time_zone', 'unix_socket', 'unread_result', 'user', 'warning_count']
+Help on CMySQLConnection in module mysql.connector.connection_cext object:
+
+class CMySQLConnection(mysql.connector.abstracts.MySQLConnectionAbstract)
+ |  CMySQLConnection(**kwargs)
+ |
+ |  Class initiating a MySQL Connection using Connector/C.
+ |
+ |  Method resolution order:
+ |      CMySQLConnection
+ |      mysql.connector.abstracts.MySQLConnectionAbstract
+ |      abc.ABC
+ |      builtins.object
+ |
+ |  Methods defined here:
+ |
+ |  __init__(self, **kwargs)
+ |      Initialization
+ |
+ |  close(self)
+ |      Disconnect from the MySQL server
+ |
+ |  cmd_change_user(self, username='', password='', database='', charset=45, password1='', password2='', password3='', oci_config_file=None)
+ |      Change the current logged in user
+ |
+ |  cmd_debug(self)
+ |      Send the DEBUG command
+ |
+ |  cmd_init_db(self, database)
+ |      Change the current database
+ |
+ |  cmd_ping(self)
+ |      Send the PING command
+ |
+ |  cmd_process_kill(self, mysql_pid)
+ |      Kill a MySQL process
+ |
+ |  cmd_query(self, query, raw=None, buffered=False, raw_as_string=False)
+ |      Send a query to the MySQL server
+ |
+ |  cmd_query_iter(self, statements)
+ |      Send one or more statements to the MySQL server
+ |
+ |  cmd_quit(self)
+ |      Close the current connection with the server
+ |
+ |  cmd_refresh(self, options)
+ |      Send the Refresh command to the MySQL server
+ |
+ |  cmd_reset_connection(self)
+ |      Resets the session state without re-authenticating
+ |
+ |      Reset command only works on MySQL server 5.7.3 or later.
+ |      The result is True for a successful reset otherwise False.
+ |
+ |      Returns bool
+ |
+ |  cmd_shutdown(self, shutdown_type=None)
+ |      Shut down the MySQL Server
+ |
+ |  cmd_statistics(self)
+ |      Return statistics from the MySQL server
+ |
+ |  cmd_stmt_close(self, statement_id)
+ |      Closes the prepared statement
+ |
+ |  cmd_stmt_execute(self, statement_id, *args)
+ |      Executes the prepared statement
+ |
+ |  cmd_stmt_prepare(self, statement)
+ |      Prepares the SQL statement
+ |
+ |  cmd_stmt_reset(self, statement_id)
+ |      Resets the prepared statement
+ |
+ |  cmd_stmt_send_long_data(self, statement_id, param_id, data)
+ |      Send data for a column
+ |
+ |  commit(self)
+ |      Commit current transaction
+ |
+ |  consume_results(self)
+ |      Consume the current result
+ |
+ |      This method consume the result by reading (consuming) all rows.
+ |
+ |  cursor(self, buffered=None, raw=None, prepared=None, cursor_class=None, dictionary=None, named_tuple=None)
+ |      Instantiates and returns a cursor using C Extension
+ |
+ |      By default, CMySQLCursor is returned. Depending on the options
+ |      while connecting, a buffered and/or raw cursor is instantiated
+ |      instead. Also depending upon the cursor options, rows can be
+ |      returned as dictionary or named tuple.
+ |
+ |      Dictionary and namedtuple based cursors are available with buffered
+ |      output but not raw.
+ |
+ |      It is possible to also give a custom cursor through the
+ |      cursor_class parameter, but it needs to be a subclass of
+ |      mysql.connector.cursor_cext.CMySQLCursor.
+ |
+ |      Raises ProgrammingError when cursor_class is not a subclass of
+ |      CursorBase. Raises ValueError when cursor is not available.
+ |
+ |      Returns instance of CMySQLCursor or subclass.
+ |
+ |      :param buffered: Return a buffering cursor
+ |      :param raw: Return a raw cursor
+ |      :param prepared: Return a cursor which uses prepared statements
+ |      :param cursor_class: Use a custom cursor class
+ |      :param dictionary: Rows are returned as dictionary
+ |      :param named_tuple: Rows are returned as named tuple
+ |      :return: Subclass of CMySQLCursor
+ |      :rtype: CMySQLCursor or subclass
+ |
+ |  disconnect = close(self)
+ |
+ |  fetch_eof_columns(self, prep_stmt=None)
+ |      Fetch EOF and column information
+ |
+ |  fetch_eof_status(self)
+ |      Fetch EOF and status information
+ |
+ |  free_result(self)
+ |      Frees the result
+ |
+ |  get_row(self, binary=False, columns=None, raw=None, prep_stmt=None)
+ |      Get the next rows returned by the MySQL server
+ |
+ |  get_rows(self, count=None, binary=False, columns=None, raw=None, prep_stmt=None)
+ |      Get all or a subset of rows returned by the MySQL server
+ |
+ |  handle_unread_result(self, prepared=False)
+ |      Check whether there is an unread result
+ |
+ |  info_query(self, query)
+ |      Send a query which only returns 1 row
+ |
+ |  is_closed(self)
+ |      Return True if the connection to MySQL Server is closed.
+ |
+ |  is_connected(self)
+ |      Reports whether the connection to MySQL Server is available
+ |
+ |  next_result(self)
+ |      Reads the next result
+ |
+ |  ping(self, reconnect=False, attempts=1, delay=0)
+ |      Check availability of the MySQL server
+ |
+ |      When reconnect is set to True, one or more attempts are made to try
+ |      to reconnect to the MySQL server using the reconnect()-method.
+ |
+ |      delay is the number of seconds to wait between each retry.
+ |
+ |      When the connection is not available, an InterfaceError is raised. Use
+ |      the is_connected()-method if you just want to check the connection
+ |      without raising an error.
+ |
+ |      Raises InterfaceError on errors.
+ |
+ |  prepare_for_mysql(self, params)
+ |      Prepare parameters for statements
+ |
+ |      This method is use by cursors to prepared parameters found in the
+ |      list (or tuple) params.
+ |
+ |      Returns dict.
+ |
+ |  reset_session(self, user_variables=None, session_variables=None)
+ |      Clears the current active session
+ |
+ |      This method resets the session state, if the MySQL server is 5.7.3
+ |      or later active session will be reset without re-authenticating.
+ |      For other server versions session will be reset by re-authenticating.
+ |
+ |      It is possible to provide a sequence of variables and their values to
+ |      be set after clearing the session. This is possible for both user
+ |      defined variables and session variables.
+ |      This method takes two arguments user_variables and session_variables
+ |      which are dictionaries.
+ |
+ |      Raises OperationalError if not connected, InternalError if there are
+ |      unread results and InterfaceError on errors.
+ |
+ |  rollback(self)
+ |      Rollback current transaction
+ |
+ |  set_allow_local_infile_in_path(self, path)
+ |      set local_infile_in_path
+ |
+ |      Set allow_local_infile_in_path.
+ |
+ |  set_character_set_name(self, charset)
+ |      Sets the default character set name for current connection.
+ |
+ |  set_unicode(self, value=True)
+ |      Toggle unicode mode
+ |
+ |      Set whether we return string fields as unicode or not.
+ |      Default is True.
+ |
+ |  ----------------------------------------------------------------------
+ |  Readonly properties defined here:
+ |
+ |  connection_id
+ |      MySQL connection ID
+ |
+ |  in_transaction
+ |      MySQL session has started a transaction
+ |
+ |  more_results
+ |      Check if there are more results
+ |
+ |  num_rows
+ |      Returns number of rows of current result set
+ |
+ |  result_set_available
+ |      Check if a result set is available
+ |
+ |  unread_result
+ |      Check if there are unread results or rows
+ |
+ |  warning_count
+ |      Returns number of warnings
+ |
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |
+ |  autocommit
+ |      Get whether autocommit is on or off
+ |
+ |  database
+ |      Get the current database
+ |
+ |  ----------------------------------------------------------------------
+ |  Data and other attributes defined here:
+ |
+ |  __abstractmethods__ = frozenset()
+ |
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from mysql.connector.abstracts.MySQLConnectionAbstract:
+ |
+ |  __enter__(self)
+ |
+ |  __exit__(self, exc_type, exc_value, traceback)
+ |
+ |  config(self, **kwargs)
+ |      Configure the MySQL Connection
+ |
+ |      This method allows you to configure the MySQLConnection instance.
+ |
+ |      Raises on errors.
+ |
+ |  connect(self, **kwargs)
+ |      Connect to the MySQL server
+ |
+ |      This method sets up the connection to the MySQL server. If no
+ |      arguments are given, it will use the already configured or default
+ |      values.
+ |
+ |  get_self(self)
+ |      Return self for weakref.proxy
+ |
+ |      This method is used when the original object is needed when using
+ |      weakref.proxy.
+ |
+ |  get_server_info(self)
+ |      Get the original MySQL version information
+ |
+ |      This method returns the original MySQL server as text. If not
+ |      previously connected, it will return None.
+ |
+ |      Returns a string or None.
+ |
+ |  get_server_version(self)
+ |      Get the MySQL version
+ |
+ |      This method returns the MySQL server version as a tuple. If not
+ |      previously connected, it will return None.
+ |
+ |      Returns a tuple or None.
+ |
+ |  isset_client_flag(self, flag)
+ |      Check if a client flag is set
+ |
+ |  query_attrs_append(self, value)
+ |      Add element to the query attributes list.
+ |
+ |  query_attrs_clear(self)
+ |      Clear query attributes list.
+ |
+ |  reconnect(self, attempts=1, delay=0)
+ |      Attempt to reconnect to the MySQL server
+ |
+ |      The argument attempts should be the number of times a reconnect
+ |      is tried. The delay argument is the number of seconds to wait between
+ |      each retry.
+ |
+ |      You may want to set the number of attempts higher and use delay when
+ |      you expect the MySQL server to be down for maintenance or when you
+ |      expect the network to be temporary unavailable.
+ |
+ |      Raises InterfaceError on errors.
+ |
+ |  set_charset_collation(self, charset=None, collation=None)
+ |      Sets the character set and collation for the current connection
+ |
+ |      This method sets the character set and collation to be used for
+ |      the current connection. The charset argument can be either the
+ |      name of a character set as a string, or the numerical equivalent
+ |      as defined in constants.CharacterSet.
+ |
+ |      When the collation is not given, the default will be looked up and
+ |      used.
+ |
+ |      For example, the following will set the collation for the latin1
+ |      character set to latin1_general_ci:
+ |
+ |         set_charset('latin1','latin1_general_ci')
+ |
+ |  set_client_flags(self, flags)
+ |      Set the client flags
+ |
+ |      The flags-argument can be either an int or a list (or tuple) of
+ |      ClientFlag-values. If it is an integer, it will set client_flags
+ |      to flags as is.
+ |      If flags is a list (or tuple), each flag will be set or unset
+ |      when it's negative.
+ |
+ |      set_client_flags([ClientFlag.FOUND_ROWS,-ClientFlag.LONG_FLAG])
+ |
+ |      Raises ProgrammingError when the flags argument is not a set or
+ |      an integer bigger than 0.
+ |
+ |      Returns self.client_flags
+ |
+ |  set_converter_class(self, convclass)
+ |      Set the converter class to be used. This should be a class overloading
+ |      methods and members of conversion.MySQLConverter.
+ |
+ |  set_login(self, username=None, password=None)
+ |      Set login information for MySQL
+ |
+ |      Set the username and/or password for the user connecting to
+ |      the MySQL Server.
+ |
+ |  start_transaction(self, consistent_snapshot=False, isolation_level=None, readonly=None)
+ |      Start a transaction
+ |
+ |      This method explicitly starts a transaction sending the
+ |      START TRANSACTION statement to the MySQL server. You can optionally
+ |      set whether there should be a consistent snapshot, which
+ |      isolation level you need or which access mode i.e. READ ONLY or
+ |      READ WRITE.
+ |
+ |      For example, to start a transaction with isolation level SERIALIZABLE,
+ |      you would do the following:
+ |          >>> cnx = mysql.connector.connect(..)
+ |          >>> cnx.start_transaction(isolation_level='SERIALIZABLE')
+ |
+ |      Raises ProgrammingError when a transaction is already in progress
+ |      and when ValueError when isolation_level specifies an Unknown
+ |      level.
+ |
+ |  ----------------------------------------------------------------------
+ |  Static methods inherited from mysql.connector.abstracts.MySQLConnectionAbstract:
+ |
+ |  cmd_process_info()
+ |      Get the process list of the MySQL Server
+ |
+ |      This method is a placeholder to notify that the PROCESS_INFO command
+ |      is not supported by raising the NotSupportedError. The command
+ |      "SHOW PROCESSLIST" should be send using the cmd_query()-method or
+ |      using the INFORMATION_SCHEMA database.
+ |
+ |      Raises NotSupportedError exception
+ |
+ |  ----------------------------------------------------------------------
+ |  Readonly properties inherited from mysql.connector.abstracts.MySQLConnectionAbstract:
+ |
+ |  charset
+ |      Returns the character set for current connection
+ |
+ |      This property returns the character set name of the current connection.
+ |      The server is queried when the connection is active. If not connected,
+ |      the configured character set name is returned.
+ |
+ |      Returns a string.
+ |
+ |  collation
+ |      Returns the collation for current connection
+ |
+ |      This property returns the collation name of the current connection.
+ |      The server is queried when the connection is active. If not connected,
+ |      the configured collation name is returned.
+ |
+ |      Returns a string.
+ |
+ |  have_next_result
+ |      Return if have next result.
+ |
+ |  is_secure
+ |      Return True if is a secure connection.
+ |
+ |  python_charset
+ |      Returns the Python character set for current connection
+ |
+ |      This property returns the character set name of the current connection.
+ |      Note that, unlike property charset, this checks if the previously set
+ |      character set is supported by Python and if not, it returns the
+ |      equivalent character set that Python supports.
+ |
+ |      Returns a string.
+ |
+ |  query_attrs
+ |      Return query attributes list.
+ |
+ |  server_host
+ |      MySQL server IP address or name
+ |
+ |  server_port
+ |      MySQL server TCP/IP port
+ |
+ |  unix_socket
+ |      MySQL Unix socket file location
+ |
+ |  user
+ |      User used while connecting to MySQL
+ |
+ |  ----------------------------------------------------------------------
+ |  Data descriptors inherited from mysql.connector.abstracts.MySQLConnectionAbstract:
+ |
+ |  __dict__
+ |      dictionary for instance variables (if defined)
+ |
+ |  __weakref__
+ |      list of weak references to the object (if defined)
+ |
+ |  can_consume_results
+ |      Returns whether to consume results
+ |
+ |  get_warnings
+ |      Get whether this connection retrieves warnings automatically
+ |
+ |      This method returns whether this connection retrieves warnings
+ |      automatically.
+ |
+ |      Returns True, or False when warnings are not retrieved.
+ |
+ |  pool_config_version
+ |      Return the pool configuration version
+ |
+ |  raise_on_warnings
+ |      Get whether this connection raises an error on warnings
+ |
+ |      This method returns whether this connection will raise errors when
+ |      MySQL reports warnings.
+ |
+ |      Returns True or False.
+ |
+ |  sql_mode
+ |      Get the SQL mode
+ |
+ |  time_zone
+ |      Get the current time zone

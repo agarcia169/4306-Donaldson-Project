@@ -1,39 +1,55 @@
-#This is most of the example code
-#from https://www.nltk.org/howto/sentiment.html
+# #This is most of the example code
+# #from https://www.nltk.org/howto/sentiment.html
 
-from nltk.classify import NaiveBayesClassifier
-from nltk.corpus import subjectivity
-from nltk.sentiment import SentimentAnalyzer
-from nltk.sentiment.util import *
+# #Joel went through and threw in some comments trying to guess what various parts were doing.
 
-n_instances = 100
-subj_docs = [(sent, 'subj') for sent in subjectivity.sents(categories='subj')[:n_instances]]
-obj_docs = [(sent, 'obj') for sent in subjectivity.sents(categories='obj')[:n_instances]]
-len(subj_docs), len(obj_docs)
-subj_docs[0]
-train_subj_docs = subj_docs[:80]
-test_subj_docs = subj_docs[80:100]
-train_obj_docs = obj_docs[:80]
-test_obj_docs = obj_docs[80:100]
-training_docs = train_subj_docs+train_obj_docs
-testing_docs = test_subj_docs+test_obj_docs
+# from nltk.classify import NaiveBayesClassifier
+# from nltk.corpus import subjectivity
+# from nltk.sentiment import SentimentAnalyzer
+# from nltk.sentiment.util import *
 
-sentim_analyzer = SentimentAnalyzer()
-all_words_neg = sentim_analyzer.all_words([mark_negation(doc) for doc in training_docs])
+# n_instances = 100
+# # Subjective phrases
+# subj_docs = [(sent, 'subj') for sent in subjectivity.sents(categories='subj')[:n_instances]]
+# # Objective phrases
+# obj_docs = [(sent, 'obj') for sent in subjectivity.sents(categories='obj')[:n_instances]]
+# #print(len(subj_docs), len(obj_docs))
+# #print(subj_docs[0])
+# # Split 'em up evenly into an 80% training data set, and a 20% testing data set to test how well the
+# # training goes.
+# train_subj_docs = subj_docs[:80]
+# test_subj_docs = subj_docs[80:100]
+# train_obj_docs = obj_docs[:80]
+# test_obj_docs = obj_docs[80:100]
+# training_docs = train_subj_docs+train_obj_docs
+# testing_docs = test_subj_docs+test_obj_docs
+
+# # Prep a SentimentAnalyzer (???)
+# sentim_analyzer = SentimentAnalyzer()
 print(all_words_neg)
-unigram_feats = sentim_analyzer.unigram_word_feats(all_words_neg, min_freq=4)
-# len(unigram_feats)
+# # Go through and mark any words that are negated by a "not" or "don't" etc in a relevant
+# # spot before? it.
+# all_words_neg = sentim_analyzer.all_words([mark_negation(doc) for doc in training_docs])
+# #print("All words neg ", all_words_neg)
+# # Out of that set of all the words (with negated words marked as such), grab the words
+# # that appear 4 or more times.
+# unigram_feats = sentim_analyzer.unigram_word_feats(all_words_neg, min_freq=4)
+# # #print("\n\nUnigram feats ", unigram_feats)
 print(unigram_feats)
 
-sentim_analyzer.add_feat_extractor(extract_unigram_feats, unigrams=unigram_feats)
-training_set = sentim_analyzer.apply_features(training_docs)
-test_set = sentim_analyzer.apply_features(testing_docs)
+# # What I've read suggests I should be using handle_negation=True here, but it reduces accuracy?
+# sentim_analyzer.add_feat_extractor(extract_unigram_feats, unigrams=unigram_feats)
+# training_set = sentim_analyzer.apply_features(training_docs)
+# test_set = sentim_analyzer.apply_features(testing_docs)
+# #print("\nTest set ", test_set)
+# #for key,value in test_set:
+#     #print(key,value,"Woo\n")
 
-trainer = NaiveBayesClassifier.train
-classifier = sentim_analyzer.train(trainer, training_set)
+# trainer = NaiveBayesClassifier.train
+# classifier = sentim_analyzer.train(trainer, training_set)
 
-for key,value in sorted(sentim_analyzer.evaluate(test_set).items()):
-    print('{0}: {1}'.format(key, value))
+# for key,value in sorted(sentim_analyzer.evaluate(test_set).items()):
+#     print('{0}: {1}'.format(key, value))
 
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 sentences = [

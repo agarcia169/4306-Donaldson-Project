@@ -20,9 +20,10 @@ testing_docs = test_subj_docs+test_obj_docs
 
 sentim_analyzer = SentimentAnalyzer()
 all_words_neg = sentim_analyzer.all_words([mark_negation(doc) for doc in training_docs])
-
+print(all_words_neg)
 unigram_feats = sentim_analyzer.unigram_word_feats(all_words_neg, min_freq=4)
-len(unigram_feats)
+# len(unigram_feats)
+print(unigram_feats)
 
 sentim_analyzer.add_feat_extractor(extract_unigram_feats, unigrams=unigram_feats)
 training_set = sentim_analyzer.apply_features(training_docs)

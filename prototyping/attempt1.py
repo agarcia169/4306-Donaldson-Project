@@ -136,27 +136,28 @@ def get_twitter_id(dbConnection: MySQLConnection,twitter_handle:str) -> list[int
 # End of NLTK Functions
 
 # Joel Testing Ground
-# twitClient = tweepy.Client(BEARER_TOKEN)
-# dataObjectTest = twitClient.get_user(username='volvocars')
-# try:
-#   with mysql.connector.connect(user=dbUser,
-#                                 host=HOST,
-#                                 password=dbPassword,
-#                                 port=PORT,
-#                                 database=DATABASE) as dbConnection:
-#       add_twitter_handle(dbConnection,dataObjectTest)
-#       print("Get Handle Example:",get_twitter_handle(dbConnection,342772500))
-#       print(get_twitter_id(dbConnection,'volvocars'))
-# except mysql.connector.Error as err:
-#   if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-#     print("Something is wrong with your user name or password")
-#     print(err)
-#   elif err.errno == errorcode.ER_BAD_DB_ERROR:
-#     print("Database does not exist")
-#   else:
-#     print(err)
-# else:
-#   dbConnection.close()
+if(True): #Run Joel's test code.
+  twitClient = tweepy.Client(BEARER_TOKEN)
+  dataObjectTest = twitClient.get_user(username='volvocars')
+  try:
+    with mysql.connector.connect(user=dbUser,
+                                  host=HOST,
+                                  password=dbPassword,
+                                  port=PORT,
+                                  database=DATABASE) as dbConnection:
+        add_twitter_handle(dbConnection,dataObjectTest)
+        print("Get Handle Example:",get_twitter_handle(dbConnection,342772500))
+        print(get_twitter_id(dbConnection,'volvocars'))
+  except mysql.connector.Error as err:
+    if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+      print("Something is wrong with your user name or password")
+      print(err)
+    elif err.errno == errorcode.ER_BAD_DB_ERROR:
+      print("Database does not exist")
+    else:
+      print(err)
+  else:
+    dbConnection.close()
 
 # End of Joel Testing Ground
 

@@ -26,7 +26,7 @@
 
 # # Prep a SentimentAnalyzer (???)
 # sentim_analyzer = SentimentAnalyzer()
-
+print(all_words_neg)
 # # Go through and mark any words that are negated by a "not" or "don't" etc in a relevant
 # # spot before? it.
 # all_words_neg = sentim_analyzer.all_words([mark_negation(doc) for doc in training_docs])
@@ -34,7 +34,8 @@
 # # Out of that set of all the words (with negated words marked as such), grab the words
 # # that appear 4 or more times.
 # unigram_feats = sentim_analyzer.unigram_word_feats(all_words_neg, min_freq=4)
-# #print("\n\nUnigram feats ", unigram_feats)
+# # #print("\n\nUnigram feats ", unigram_feats)
+print(unigram_feats)
 
 # # What I've read suggests I should be using handle_negation=True here, but it reduces accuracy?
 # sentim_analyzer.add_feat_extractor(extract_unigram_feats, unigrams=unigram_feats)

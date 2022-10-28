@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-10-28T18:41:18.571Z" agent="5.0 (Windows)" etag="NlM4g4jj-H29IIKCLHXG" version="20.5.1" type="github">
+<mxfile host="app.diagrams.net" modified="2022-10-28T18:43:36.058Z" agent="5.0 (Windows)" etag="9x0PBgAQs5p0xOCUwxAb" version="20.5.1" type="github">
   <diagram id="k8Brxw6TymQFo4CQt0UK" name="Page-1">
     <mxGraphModel dx="1422" dy="771" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -70,7 +70,7 @@
         <mxCell id="E2vPnD_BjtDJQIytdMqu-91" value="return_tweet_date(int)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="E2vPnD_BjtDJQIytdMqu-5" vertex="1">
           <mxGeometry y="284" width="390" height="28" as="geometry" />
         </mxCell>
-        <mxCell id="E2vPnD_BjtDJQIytdMqu-121" value="add_tweet_to_database(long)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="E2vPnD_BjtDJQIytdMqu-5" vertex="1">
+        <mxCell id="E2vPnD_BjtDJQIytdMqu-121" value="add_tweet_to_database(int)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="E2vPnD_BjtDJQIytdMqu-5" vertex="1">
           <mxGeometry y="312" width="390" height="28" as="geometry" />
         </mxCell>
         <mxCell id="E2vPnD_BjtDJQIytdMqu-131" value="add_tweets_from_author(str|int,int)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="E2vPnD_BjtDJQIytdMqu-5" vertex="1">

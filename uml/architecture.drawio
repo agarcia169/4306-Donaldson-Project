@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-10-28T19:41:50.228Z" agent="5.0 (Windows)" etag="VExVY-1ePPASq5qEg6Vv" version="20.5.1" type="github" pages="10">
+<mxfile host="app.diagrams.net" modified="2022-10-28T19:43:39.378Z" agent="5.0 (Windows)" etag="eCIaen5LZtA01EemMKGN" version="20.5.1" type="github" pages="10">
   <diagram id="JktZAHXNQAXAAq4mOGnl" name="Page-1">
     <mxGraphModel dx="1422" dy="771" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -1487,7 +1487,7 @@
       </root>
     </mxGraphModel>
   </diagram>
-  <diagram id="1K6OLKq_1Pi99xtkYdJy" name="TweetManipOnly">
+  <diagram id="1K6OLKq_1Pi99xtkYdJy" name="TweetManipClass">
     <mxGraphModel dx="2881" dy="1101" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
@@ -1734,7 +1734,7 @@
       </root>
     </mxGraphModel>
   </diagram>
-  <diagram id="Q0N2UnsVjksfJWqB_DIf" name="HandleManipOnly">
+  <diagram id="Q0N2UnsVjksfJWqB_DIf" name="tdHandleClass">
     <mxGraphModel dx="2272" dy="1871" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
@@ -1928,7 +1928,7 @@
       </root>
     </mxGraphModel>
   </diagram>
-  <diagram id="h08GdVP_aeoTs1xZjUzl" name="PowertrainManipOnly">
+  <diagram id="h08GdVP_aeoTs1xZjUzl" name="tdPowertrainClass">
     <mxGraphModel dx="2523" dy="907" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
@@ -2148,7 +2148,7 @@
       </root>
     </mxGraphModel>
   </diagram>
-  <diagram id="OHN60sBP-jPtyqNsS_k3" name="VADERAnalysisOnly">
+  <diagram id="OHN60sBP-jPtyqNsS_k3" name="VADERAnalysisClass">
     <mxGraphModel dx="1237" dy="-430" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
@@ -2335,8 +2335,8 @@
       </root>
     </mxGraphModel>
   </diagram>
-  <diagram id="2waoY8Ab2B5NRp5VQYYD" name="InterfaceManipOnly">
-    <mxGraphModel dx="2585" dy="1402" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+  <diagram id="2waoY8Ab2B5NRp5VQYYD" name="HypotheticalInterfaceClass">
+    <mxGraphModel dx="1497" dy="812" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />

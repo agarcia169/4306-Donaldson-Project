@@ -4,6 +4,7 @@ from configparser import RawConfigParser
 from HandleManagement import ManageHandles
 from SharedConnectors import twitterConnection
 from SharedConnectors import dbConnection
+from TweetManagement import AddTweetsToDB
 
 # RawConfigParser is used because certain keys from Twitter use % signs,
 # which the regular parser interprets non-literally.
@@ -58,3 +59,4 @@ twitterConnection.get_twitter_connection(bearer_token=BEARER_TOKEN)
 ManageHandles.add_handle_to_database('volvocars')
 print(ManageHandles.get_twitter_handle(342772500))
 print(ManageHandles.get_twitter_id('volvocars'))
+AddTweetsToDB.retrieve_recent_tweets(342772500)

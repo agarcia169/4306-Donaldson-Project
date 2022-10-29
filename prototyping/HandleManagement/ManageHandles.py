@@ -1,4 +1,4 @@
-from tdConnectors import dbConnection
+from SharedConnectors import dbConnection
 from . import HandleDataCollector
 import mysql.connector
 import json

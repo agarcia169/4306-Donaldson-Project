@@ -1,9 +1,9 @@
 from os.path import abspath
 from getpass import getpass
 from configparser import RawConfigParser
-from tdHandles import ManageHandles
-from tdConnectors import twitterConnection
-from tdConnectors import dbConnection
+from HandleManagement import ManageHandles
+from SharedConnectors import twitterConnection
+from SharedConnectors import dbConnection
 
 # RawConfigParser is used because certain keys from Twitter use % signs,
 # which the regular parser interprets non-literally.

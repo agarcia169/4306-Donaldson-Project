@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-10-29T21:44:18.700Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="1ORc7MHrrltycUVsIifc" version="20.5.1" type="github" pages="11">
+<mxfile host="app.diagrams.net" modified="2022-10-30T18:32:33.891Z" agent="5.0 (Windows)" etag="8ZwI-25nAFeFgetvv0i9" version="20.5.1" type="github" pages="11">
   <diagram id="JktZAHXNQAXAAq4mOGnl" name="Page-1">
-    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1422" dy="771" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -525,7 +525,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="_NCpZqJjMFMFnjbBzS5-" name="Expanded">
-    <mxGraphModel dx="4544" dy="2624" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="3122" dy="1871" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1026,21 +1026,21 @@
     </mxGraphModel>
   </diagram>
   <diagram name="Shrunk" id="1sY3zKvCxhGz99ro-Iry">
-    <mxGraphModel dx="2272" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2272" dy="771" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="No75wE9PWcbLSyyN7ibc-0" />
         <mxCell id="No75wE9PWcbLSyyN7ibc-1" parent="No75wE9PWcbLSyyN7ibc-0" />
         <mxCell id="No75wE9PWcbLSyyN7ibc-2" value="TweePy" style="shape=providedRequiredInterface;html=1;verticalLabelPosition=bottom;sketch=0;" parent="No75wE9PWcbLSyyN7ibc-1" vertex="1">
-          <mxGeometry x="-830" y="280" width="20" height="20" as="geometry" />
+          <mxGeometry x="-750" y="280" width="20" height="20" as="geometry" />
         </mxCell>
         <mxCell id="No75wE9PWcbLSyyN7ibc-3" value="MySQL" style="shape=providedRequiredInterface;html=1;verticalLabelPosition=bottom;sketch=0;" parent="No75wE9PWcbLSyyN7ibc-1" vertex="1">
-          <mxGeometry x="-650" y="280" width="20" height="20" as="geometry" />
+          <mxGeometry x="-570" y="280" width="20" height="20" as="geometry" />
         </mxCell>
         <mxCell id="No75wE9PWcbLSyyN7ibc-4" value="NLTK/Vader" style="shape=providedRequiredInterface;html=1;verticalLabelPosition=bottom;sketch=0;" parent="No75wE9PWcbLSyyN7ibc-1" vertex="1">
-          <mxGeometry x="-425" y="900" width="20" height="20" as="geometry" />
+          <mxGeometry x="-475" y="730" width="20" height="20" as="geometry" />
         </mxCell>
         <mxCell id="No75wE9PWcbLSyyN7ibc-5" value="HandleManagement" style="swimlane;startSize=0;verticalAlign=top;whiteSpace=wrap;" parent="No75wE9PWcbLSyyN7ibc-1" vertex="1" collapsed="1">
-          <mxGeometry x="-350" y="230" width="130" height="30" as="geometry">
+          <mxGeometry x="-420" y="250" width="130" height="30" as="geometry">
             <mxRectangle x="-360" y="-360" width="560" height="480" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -1092,7 +1092,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="No75wE9PWcbLSyyN7ibc-21" value="UI/Reporting" style="swimlane;startSize=0;verticalAlign=top;" parent="No75wE9PWcbLSyyN7ibc-1" vertex="1" collapsed="1">
-          <mxGeometry x="-455" y="600" width="80" height="40" as="geometry">
+          <mxGeometry x="-505" y="540" width="80" height="40" as="geometry">
             <mxRectangle x="550" y="760" width="830" height="677" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -1203,7 +1203,7 @@
           <mxGeometry x="580" y="30" width="170" height="190" as="geometry" />
         </mxCell>
         <mxCell id="No75wE9PWcbLSyyN7ibc-50" value="SharedConnectors" style="swimlane;startSize=0;verticalAlign=top;" parent="No75wE9PWcbLSyyN7ibc-1" vertex="1" collapsed="1">
-          <mxGeometry x="-790" y="320" width="120" height="30" as="geometry">
+          <mxGeometry x="-710" y="320" width="120" height="30" as="geometry">
             <mxRectangle x="-790" y="320" width="470" height="150" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -1235,11 +1235,11 @@
         </mxCell>
         <mxCell id="No75wE9PWcbLSyyN7ibc-54" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;" parent="No75wE9PWcbLSyyN7ibc-1" source="No75wE9PWcbLSyyN7ibc-52" target="No75wE9PWcbLSyyN7ibc-3" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="510" y="940" as="targetPoint" />
+            <mxPoint x="590" y="940" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="No75wE9PWcbLSyyN7ibc-55" value="PowertrainManagement" style="swimlane;startSize=0;verticalAlign=top;" parent="No75wE9PWcbLSyyN7ibc-1" vertex="1" collapsed="1">
-          <mxGeometry x="-490" y="400" width="150" height="30" as="geometry">
+          <mxGeometry x="-540" y="400" width="150" height="30" as="geometry">
             <mxRectangle x="-80" y="130" width="550" height="556" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -1328,7 +1328,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="No75wE9PWcbLSyyN7ibc-84" value="TweetManagement" style="swimlane;startSize=0;verticalAlign=top;whiteSpace=wrap;" parent="No75wE9PWcbLSyyN7ibc-1" vertex="1" collapsed="1">
-          <mxGeometry x="-630" y="480" width="110" height="30" as="geometry">
+          <mxGeometry x="-630" y="500" width="110" height="30" as="geometry">
             <mxRectangle x="-250" y="1370" width="730" height="510" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -1421,7 +1421,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="No75wE9PWcbLSyyN7ibc-110" value="NLTK/Vader Analysis" style="swimlane;startSize=0;verticalAlign=top;whiteSpace=wrap;" parent="No75wE9PWcbLSyyN7ibc-1" vertex="1" collapsed="1">
-          <mxGeometry x="-455" y="740" width="80" height="70" as="geometry">
+          <mxGeometry x="-505" y="620" width="80" height="70" as="geometry">
             <mxRectangle x="-490" y="700" width="550" height="380" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -1494,8 +1494,8 @@
         </mxCell>
         <mxCell id="No75wE9PWcbLSyyN7ibc-127" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;" parent="No75wE9PWcbLSyyN7ibc-1" source="No75wE9PWcbLSyyN7ibc-113" target="No75wE9PWcbLSyyN7ibc-4" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="-565" y="259" as="sourcePoint" />
-            <mxPoint x="-970" y="-480" as="targetPoint" />
+            <mxPoint x="-615" y="139" as="sourcePoint" />
+            <mxPoint x="-1020" y="-600" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="No75wE9PWcbLSyyN7ibc-128" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;" parent="No75wE9PWcbLSyyN7ibc-1" source="No75wE9PWcbLSyyN7ibc-118" target="No75wE9PWcbLSyyN7ibc-50" edge="1">
@@ -1520,7 +1520,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="1K6OLKq_1Pi99xtkYdJy" name="TweetManipClass">
-    <mxGraphModel dx="2272" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2272" dy="771" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1767,7 +1767,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="Q0N2UnsVjksfJWqB_DIf" name="HandleManagement">
-    <mxGraphModel dx="2272" dy="1862" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2272" dy="1871" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1823,7 +1823,7 @@
         <mxCell id="UOPMgLJtLFh_1ekqP-Aa-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;" parent="UOPMgLJtLFh_1ekqP-Aa-1" source="UOPMgLJtLFh_1ekqP-Aa-6" target="UOPMgLJtLFh_1ekqP-Aa-12" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="UOPMgLJtLFh_1ekqP-Aa-17" value="Interface" style="swimlane;startSize=0;verticalAlign=top;" parent="1" vertex="1" collapsed="1">
+        <mxCell id="UOPMgLJtLFh_1ekqP-Aa-17" value="UI/Reporting" style="swimlane;startSize=0;verticalAlign=top;" parent="1" vertex="1" collapsed="1">
           <mxGeometry x="250" y="-270" width="80" height="40" as="geometry">
             <mxRectangle x="610" y="40" width="830" height="677" as="alternateBounds" />
           </mxGeometry>
@@ -1934,7 +1934,7 @@
         <mxCell id="UOPMgLJtLFh_1ekqP-Aa-47" value="Hypothetical Interface if one had been asked for. Donaldson has said no interface, but we want to be prepared. &lt;br&gt;&lt;br&gt;Thinking about how the app might be interacted with helps inform other design choices." style="shape=note;size=20;whiteSpace=wrap;html=1;" parent="UOPMgLJtLFh_1ekqP-Aa-17" vertex="1">
           <mxGeometry x="580" y="30" width="170" height="190" as="geometry" />
         </mxCell>
-        <mxCell id="UOPMgLJtLFh_1ekqP-Aa-48" value="tdConnectors" style="swimlane;startSize=0;verticalAlign=top;points=[[0,0,0,0,0],[0,0.25,0,0,0],[0,0.5,0,0,0],[0,0.75,0,0,0],[0,1,0,0,0],[0.17,1,0,0,0],[0.25,0,0,0,0],[0.33,1,0,0,0],[0.5,0,0,0,0],[0.5,1,0,0,0],[0.67,1,0,0,0],[0.75,0,0,0,0],[0.83,1,0,0,0],[1,0,0,0,0],[1,0.25,0,0,0],[1,0.5,0,0,0],[1,0.75,0,0,0],[1,1,0,0,0]];" parent="1" vertex="1" collapsed="1">
+        <mxCell id="UOPMgLJtLFh_1ekqP-Aa-48" value="SharedConnectors" style="swimlane;startSize=0;verticalAlign=top;points=[[0,0,0,0,0],[0,0.25,0,0,0],[0,0.5,0,0,0],[0,0.75,0,0,0],[0,1,0,0,0],[0.17,1,0,0,0],[0.25,0,0,0,0],[0.33,1,0,0,0],[0.5,0,0,0,0],[0.5,1,0,0,0],[0.67,1,0,0,0],[0.75,0,0,0,0],[0.83,1,0,0,0],[1,0,0,0,0],[1,0.25,0,0,0],[1,0.5,0,0,0],[1,0.75,0,0,0],[1,1,0,0,0]];" parent="1" vertex="1" collapsed="1">
           <mxGeometry x="-485" y="-440" width="120" height="30" as="geometry">
             <mxRectangle x="-790" y="-160" width="230" height="150" as="alternateBounds" />
           </mxGeometry>
@@ -1961,11 +1961,11 @@
     </mxGraphModel>
   </diagram>
   <diagram id="h08GdVP_aeoTs1xZjUzl" name="PowertrainManagement">
-    <mxGraphModel dx="2272" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2272" dy="771" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="7NMAa-Qfmf7mNMSWpUOw-1" value="Interface" style="swimlane;startSize=0;verticalAlign=top;" parent="1" vertex="1" collapsed="1">
+        <mxCell id="7NMAa-Qfmf7mNMSWpUOw-1" value="UI/Reporting" style="swimlane;startSize=0;verticalAlign=top;" parent="1" vertex="1" collapsed="1">
           <mxGeometry x="210" y="1050" width="80" height="40" as="geometry">
             <mxRectangle x="610" y="40" width="830" height="677" as="alternateBounds" />
           </mxGeometry>
@@ -2076,7 +2076,7 @@
         <mxCell id="7NMAa-Qfmf7mNMSWpUOw-31" value="Hypothetical Interface if one had been asked for. Donaldson has said no interface, but we want to be prepared. &lt;br&gt;&lt;br&gt;Thinking about how the app might be interacted with helps inform other design choices." style="shape=note;size=20;whiteSpace=wrap;html=1;" parent="7NMAa-Qfmf7mNMSWpUOw-1" vertex="1">
           <mxGeometry x="580" y="30" width="170" height="190" as="geometry" />
         </mxCell>
-        <mxCell id="7NMAa-Qfmf7mNMSWpUOw-32" value="tdConnectors" style="swimlane;startSize=0;verticalAlign=top;points=[[0,0,0,0,0],[0,0.25,0,0,0],[0,0.5,0,0,0],[0,0.75,0,0,0],[0,1,0,0,0],[0.17,1,0,0,0],[0.25,0,0,0,0],[0.33,1,0,0,0],[0.5,0,0,0,0],[0.5,1,0,0,0],[0.67,1,0,0,0],[0.75,0,0,0,0],[0.83,1,0,0,0],[1,0,0,0,0],[1,0.25,0,0,0],[1,0.5,0,0,0],[1,0.75,0,0,0],[1,1,0,0,0]];" parent="1" vertex="1" collapsed="1">
+        <mxCell id="7NMAa-Qfmf7mNMSWpUOw-32" value="SharedConnectors" style="swimlane;startSize=0;verticalAlign=top;points=[[0,0,0,0,0],[0,0.25,0,0,0],[0,0.5,0,0,0],[0,0.75,0,0,0],[0,1,0,0,0],[0.17,1,0,0,0],[0.25,0,0,0,0],[0.33,1,0,0,0],[0.5,0,0,0,0],[0.5,1,0,0,0],[0.67,1,0,0,0],[0.75,0,0,0,0],[0.83,1,0,0,0],[1,0,0,0,0],[1,0.25,0,0,0],[1,0.5,0,0,0],[1,0.75,0,0,0],[1,1,0,0,0]];" parent="1" vertex="1" collapsed="1">
           <mxGeometry x="-610" y="810" width="120" height="30" as="geometry">
             <mxRectangle x="-790" y="-160" width="230" height="150" as="alternateBounds" />
           </mxGeometry>
@@ -2181,11 +2181,11 @@
     </mxGraphModel>
   </diagram>
   <diagram id="OHN60sBP-jPtyqNsS_k3" name="VADERAnalysisClass">
-    <mxGraphModel dx="1422" dy="-338" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1185" dy="-457" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="9ocCDtvzqPabCm-hGHBA-1" value="Interface" style="swimlane;startSize=0;verticalAlign=top;" parent="1" vertex="1" collapsed="1">
+        <mxCell id="9ocCDtvzqPabCm-hGHBA-1" value="UI/Reporting" style="swimlane;startSize=0;verticalAlign=top;" parent="1" vertex="1" collapsed="1">
           <mxGeometry x="320" y="1200" width="80" height="40" as="geometry">
             <mxRectangle x="610" y="40" width="830" height="677" as="alternateBounds" />
           </mxGeometry>
@@ -2296,7 +2296,7 @@
         <mxCell id="9ocCDtvzqPabCm-hGHBA-31" value="Hypothetical Interface if one had been asked for. Donaldson has said no interface, but we want to be prepared. &lt;br&gt;&lt;br&gt;Thinking about how the app might be interacted with helps inform other design choices." style="shape=note;size=20;whiteSpace=wrap;html=1;" parent="9ocCDtvzqPabCm-hGHBA-1" vertex="1">
           <mxGeometry x="580" y="30" width="170" height="190" as="geometry" />
         </mxCell>
-        <mxCell id="9ocCDtvzqPabCm-hGHBA-32" value="tdConnectors" style="swimlane;startSize=0;verticalAlign=top;points=[[0,0,0,0,0],[0,0.25,0,0,0],[0,0.5,0,0,0],[0,0.75,0,0,0],[0,1,0,0,0],[0.17,1,0,0,0],[0.25,0,0,0,0],[0.33,1,0,0,0],[0.5,0,0,0,0],[0.5,1,0,0,0],[0.67,1,0,0,0],[0.75,0,0,0,0],[0.83,1,0,0,0],[1,0,0,0,0],[1,0.25,0,0,0],[1,0.5,0,0,0],[1,0.75,0,0,0],[1,1,0,0,0]];" parent="1" vertex="1" collapsed="1">
+        <mxCell id="9ocCDtvzqPabCm-hGHBA-32" value="SharedConnectors" style="swimlane;startSize=0;verticalAlign=top;points=[[0,0,0,0,0],[0,0.25,0,0,0],[0,0.5,0,0,0],[0,0.75,0,0,0],[0,1,0,0,0],[0.17,1,0,0,0],[0.25,0,0,0,0],[0.33,1,0,0,0],[0.5,0,0,0,0],[0.5,1,0,0,0],[0.67,1,0,0,0],[0.75,0,0,0,0],[0.83,1,0,0,0],[1,0,0,0,0],[1,0.25,0,0,0],[1,0.5,0,0,0],[1,0.75,0,0,0],[1,1,0,0,0]];" parent="1" vertex="1" collapsed="1">
           <mxGeometry x="10" y="1320" width="120" height="30" as="geometry">
             <mxRectangle x="-790" y="-160" width="230" height="150" as="alternateBounds" />
           </mxGeometry>
@@ -2308,7 +2308,7 @@
           <mxGeometry x="30" y="80" width="150" height="50" as="geometry" />
         </mxCell>
         <mxCell id="9ocCDtvzqPabCm-hGHBA-35" value="NLTK/Vader Analysis" style="swimlane;startSize=0;verticalAlign=top;whiteSpace=wrap;" parent="1" vertex="1">
-          <mxGeometry x="160" y="1320" width="550" height="380" as="geometry">
+          <mxGeometry x="160" y="1320" width="460" height="380" as="geometry">
             <mxRectangle x="310" y="1420" width="80" height="70" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -2364,16 +2364,22 @@
         <mxCell id="9ocCDtvzqPabCm-hGHBA-48" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="9ocCDtvzqPabCm-hGHBA-12" target="9ocCDtvzqPabCm-hGHBA-36" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
+        <mxCell id="HHcu0n5h04Yq440pKka6-1" value="NLTK" style="shape=providedRequiredInterface;html=1;verticalLabelPosition=bottom;sketch=0;" vertex="1" parent="1">
+          <mxGeometry x="660" y="1435" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="HHcu0n5h04Yq440pKka6-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="9ocCDtvzqPabCm-hGHBA-38" target="HHcu0n5h04Yq440pKka6-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram id="2waoY8Ab2B5NRp5VQYYD" name="HypotheticalInterfaceClass">
-    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1422" dy="771" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="vCcx-kznhJDgcRorL5Wc-1" value="tdHandles" style="swimlane;startSize=0;verticalAlign=top;whiteSpace=wrap;" parent="1" vertex="1" collapsed="1">
-          <mxGeometry x="60" y="90" width="80" height="70" as="geometry">
+        <mxCell id="vCcx-kznhJDgcRorL5Wc-1" value="HandleManagement" style="swimlane;startSize=0;verticalAlign=top;whiteSpace=wrap;" parent="1" vertex="1" collapsed="1">
+          <mxGeometry x="20" y="130" width="120" height="30" as="geometry">
             <mxRectangle x="-340" y="-560" width="560" height="480" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -2535,8 +2541,8 @@
         <mxCell id="vCcx-kznhJDgcRorL5Wc-47" value="Hypothetical Interface if one had been asked for. Donaldson has said no interface, but we want to be prepared. &lt;br&gt;&lt;br&gt;Thinking about how the app might be interacted with helps inform other design choices." style="shape=note;size=20;whiteSpace=wrap;html=1;" parent="vCcx-kznhJDgcRorL5Wc-17" vertex="1">
           <mxGeometry x="580" y="30" width="170" height="190" as="geometry" />
         </mxCell>
-        <mxCell id="vCcx-kznhJDgcRorL5Wc-48" value="tdPowertrains" style="swimlane;startSize=0;verticalAlign=top;" parent="1" vertex="1" collapsed="1">
-          <mxGeometry x="70" y="670" width="110" height="30" as="geometry">
+        <mxCell id="vCcx-kznhJDgcRorL5Wc-48" value="PowertrainManagement" style="swimlane;startSize=0;verticalAlign=top;" parent="1" vertex="1" collapsed="1">
+          <mxGeometry x="20" y="670" width="160" height="30" as="geometry">
             <mxRectangle x="-450" y="670" width="550" height="556" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -2609,8 +2615,8 @@
         <mxCell id="vCcx-kznhJDgcRorL5Wc-71" value="delete_technology(str)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="vCcx-kznhJDgcRorL5Wc-63" vertex="1">
           <mxGeometry y="190" width="310" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="vCcx-kznhJDgcRorL5Wc-72" value="Tweet Manipulation in DB" style="swimlane;startSize=0;verticalAlign=top;whiteSpace=wrap;" parent="1" vertex="1" collapsed="1">
-          <mxGeometry x="50" y="333.5" width="80" height="70" as="geometry">
+        <mxCell id="vCcx-kznhJDgcRorL5Wc-72" value="TweetManagement" style="swimlane;startSize=0;verticalAlign=top;whiteSpace=wrap;" parent="1" vertex="1" collapsed="1">
+          <mxGeometry x="10" y="350.25" width="120" height="36.5" as="geometry">
             <mxRectangle x="-340" y="20" width="730" height="510" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -2766,7 +2772,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="2U_hpAHQ0dJ12a5P0H1u" name="ConnectorsClass">
-    <mxGraphModel dx="2272" dy="1862" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2272" dy="1871" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -2777,7 +2783,7 @@
           <mxGeometry x="-820" y="-875" width="20" height="20" as="geometry" />
         </mxCell>
         <mxCell id="dvUqLW62wrL6pQDGgwi6-4" value="HandleManagement" style="swimlane;startSize=0;verticalAlign=top;whiteSpace=wrap;" parent="1" vertex="1" collapsed="1">
-          <mxGeometry x="-612.5" y="-1080" width="115" height="30" as="geometry">
+          <mxGeometry x="-630" y="-1080" width="132.5" height="30" as="geometry">
             <mxRectangle x="-340" y="-560" width="560" height="480" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -2865,7 +2871,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="dvUqLW62wrL6pQDGgwi6-56" value="PowertrainManagement" style="swimlane;startSize=0;verticalAlign=top;" parent="1" vertex="1" collapsed="1">
-          <mxGeometry x="-565" y="-710" width="140" height="30" as="geometry">
+          <mxGeometry x="-565" y="-710" width="155" height="30" as="geometry">
             <mxRectangle x="-450" y="670" width="550" height="556" as="alternateBounds" />
           </mxGeometry>
         </mxCell>

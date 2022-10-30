@@ -8,6 +8,7 @@ one_year = datetime.timedelta(days=365)
 one_year_ago = (DateTime.now() - one_year).replace(microsecond=0)
 five_years = one_year * 5
 five_years_ago = (DateTime.now() - five_years).replace(microsecond=0)
+how_long_to_grab = one_year_ago
 
 def add_tweet_to_db(thisTweet:tweepy.Tweet):
     thisDBClient = dbConnection.get_db_connection()
@@ -21,9 +22,8 @@ def add_tweet_to_db(thisTweet:tweepy.Tweet):
     thisDBClient.commit()
 
 def retrieve_recent_tweets(theUserID, *, end_time=None, exclude=['retweets', 'replies'], 
-                            expansions=None, #['author_id', 'in_reply_to_user_id'], 
-                            max_results=None, media_fields=None, pagination_token=None, 
-                            place_fields=None, poll_fields=None, since_id=None, start_time=five_years_ago.isoformat()+'Z', 
+                            expansions=None, max_results=None, media_fields=None, pagination_token=None, 
+                            place_fields=None, poll_fields=None, since_id=None, start_time=how_long_to_grab.isoformat()+'Z', 
                             tweet_fields=['author_id', 'conversation_id', 'created_at', 'in_reply_to_user_id', 'lang', 'text'], 
                             until_id=None, user_fields=None):
     thisDBClient = dbConnection.get_db_connection()
@@ -39,9 +39,8 @@ def retrieve_recent_tweets(theUserID, *, end_time=None, exclude=['retweets', 're
     retrieve_tweets(theUserID, argumentDictionary)
 
 def retrieve_older_tweets(theUserID, *, end_time=None, exclude=['retweets', 'replies'], 
-                            expansions=None, #['author_id', 'in_reply_to_user_id'], 
-                            max_results=None, media_fields=None, pagination_token=None, 
-                            place_fields=None, poll_fields=None, since_id=None, start_time=five_years_ago.isoformat()+'Z', 
+                            expansions=None, max_results=None, media_fields=None, pagination_token=None, 
+                            place_fields=None, poll_fields=None, since_id=None, start_time=how_long_to_grab.isoformat()+'Z', 
                             tweet_fields=['author_id', 'conversation_id', 'created_at', 'in_reply_to_user_id', 'lang', 'text'], 
                             until_id=None, user_fields=None):
     print(start_time)
@@ -57,9 +56,20 @@ def retrieve_older_tweets(theUserID, *, end_time=None, exclude=['retweets', 'rep
                             'tweet_fields':tweet_fields, 'until_id':theMostRecentTweetID, 'user_fields':user_fields}
     retrieve_tweets(theUserID, argumentDictionary)
 
+def retrieve_many_tweets(theUserID, *, end_time=None, exclude=['retweets', 'replies'], 
+                            expansions=None, max_results=None, media_fields=None, pagination_token=None, 
+                            place_fields=None, poll_fields=None, since_id=None, start_time=how_long_to_grab.isoformat()+'Z', 
+                            tweet_fields=['author_id', 'conversation_id', 'created_at', 'in_reply_to_user_id', 'lang', 'text'], 
+                            until_id=None, user_fields=None):
+    argumentDictionary = {'end_time':end_time, 'exclude':exclude, 'expansions':expansions, 
+                            'max_results':max_results, 'media_fields':media_fields, 
+                            'pagination_token':pagination_token, 'place_fields':place_fields, 
+                            'poll_fields':poll_fields, 'since_id':since_id, 'start_time':start_time, 
+                            'tweet_fields':tweet_fields, 'until_id':until_id, 'user_fields':user_fields}    
+    retrieve_tweets(theUserID, argumentDictionary)
+
 def retrieve_tweets(theUserID, argumentDictionary):
     thisTwitterClient = twitterConnection.get_twitter_connection()
-    thisDBClient = dbConnection.get_db_connection()
     # max_results=5 # REMOVE LATER
     thisResponse:tweepy.Response
     # limitBreak = 5

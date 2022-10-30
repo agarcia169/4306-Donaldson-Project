@@ -54,11 +54,19 @@ if(dbPassword == None):
 
 dbConnection.get_db_connection(dbUser=dbUser,dbPassword=dbPassword,hostname=HOST,port_num=PORT,database_name=DATABASE)
 twitterConnection.get_twitter_connection(bearer_token=BEARER_TOKEN)
-print("WHAAGGGH")
+
 # Once you've called these once with these parameters, you can call them from any module
 # anywhere without the parameters at all.
 
-ManageHandles.add_handle_to_database('volvocars')
-print(ManageHandles.get_twitter_handle(342772500))
-print(ManageHandles.get_twitter_id('volvocars'))
-AddTweetsToDB.retrieve_older_tweets(342772500)
+# ManageHandles.add_handle_to_database('volvocars')
+# print(ManageHandles.get_twitter_handle(342772500))
+# print(ManageHandles.get_twitter_id('volvocars'))
+# AddTweetsToDB.retrieve_older_tweets(342772500)
+if(False):
+  theCompany = 'cummins'
+
+  didItWork, theCompanyID = ManageHandles.add_handle_to_database(theCompany)
+  # theCompanyID = ManageHandles.get_twitter_id(theCompany)[0]
+  if(didItWork):
+    AddTweetsToDB.retrieve_many_tweets(theCompanyID)
+

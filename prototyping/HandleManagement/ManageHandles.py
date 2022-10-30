@@ -30,8 +30,8 @@ def add_handle_to_database(twitter_username: str) -> tuple[bool, int]:
                 dbCursor.execute(query_add_user_to_db, (twitter_user.data.id,
                                  twitter_user.data.username, twitter_user.data.description, twitter_user.data.name))
                 dbCursor.fetchall()
-                dbCursor.commit()
-                return (True, twitter_user.content.data.id)
+                theDBConnection.commit()
+                return (True, twitter_user.data.id)
             else:
                 print("User `" + twitter_username + "` Exists In Database Already As: '" + str(do_they_exist[0][0]) + "'")
                 return (False, do_they_exist[0][0])

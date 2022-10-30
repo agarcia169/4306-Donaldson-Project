@@ -4,12 +4,13 @@
 
 
 #think hard about how we want to remove tweets here
+
 def remove_tweets_from_database(int):
     #int param was initially for the deletion of tweet with int id
 
 
 def remove_tweets_from_database(int):
-
+    #INT 
 
 def return_tweets_from_company(int|str):
 
@@ -17,7 +18,7 @@ def return_tweets_from_company(int|str):
 def return_tweets_from_lang(int|str):
 
 
-def return_tweets_from_date_range(datetime,datetime):
+def return_tweets_from_date_range(startDate, finishDate):
 
 
 def return_tweet_contents(int):

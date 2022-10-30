@@ -69,7 +69,7 @@ twitterConnection.get_twitter_connection(bearer_token=BEARER_TOKEN)
 # print(ManageHandles.get_twitter_id('volvocars'))
 # AddTweetsToDB.retrieve_older_tweets(342772500)
 if(False): # Set to true and replace the name for `theCompany` to add that company to the database and grab some of their recent tweets.
-	theCompany = 'cummins'
+	theCompany = 'CheryAutoCo'
 
 	didItWork, theCompanyID = ManageHandles.add_handle_to_database(theCompany)
 	# theCompanyID = ManageHandles.get_twitter_id(theCompany)[0]

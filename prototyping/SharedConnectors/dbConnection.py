@@ -41,7 +41,7 @@ def get_db_connection(**kwargs: str) -> mysql.connector.MySQLConnection:
         print("Database does not exist")
       else:
         print(err)
-    # atexit.register(_connection.close)
+    atexit.register(_connection.close)
   return _connection
 
 

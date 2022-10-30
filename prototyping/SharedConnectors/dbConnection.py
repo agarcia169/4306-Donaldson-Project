@@ -8,6 +8,20 @@ import atexit
 _connection = None
 
 def get_db_connection(**kwargs: str) -> mysql.connector.MySQLConnection:
+  """Establishes an immutable connection to the DB server. Once set (with the relevant fields)
+  it can not be changed.
+
+  Arguments:
+    'dbUser': Username
+    'hostname': Server host name
+    'dbPassword': User password
+    'port_num': Port number for server
+    'database_name': Named database to connect to.
+
+  Returns:
+      mysql.connector.MySQLConnection: Standard mysql.connector.MySQLConnection object. Use it
+      exactly how it's used in their documentation.
+  """
   global _connection
   if not _connection:
     try:

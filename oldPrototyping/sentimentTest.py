@@ -26,7 +26,7 @@
 
 # # Prep a SentimentAnalyzer (???)
 # sentim_analyzer = SentimentAnalyzer()
-print(all_words_neg)
+# print(all_words_neg)
 # # Go through and mark any words that are negated by a "not" or "don't" etc in a relevant
 # # spot before? it.
 # all_words_neg = sentim_analyzer.all_words([mark_negation(doc) for doc in training_docs])
@@ -35,7 +35,7 @@ print(all_words_neg)
 # # that appear 4 or more times.
 # unigram_feats = sentim_analyzer.unigram_word_feats(all_words_neg, min_freq=4)
 # # #print("\n\nUnigram feats ", unigram_feats)
-print(unigram_feats)
+# print(unigram_feats)
 
 # # What I've read suggests I should be using handle_negation=True here, but it reduces accuracy?
 # sentim_analyzer.add_feat_extractor(extract_unigram_feats, unigrams=unigram_feats)
@@ -62,7 +62,8 @@ sentences = [
     "Rediscover the joy of driving with our refreshed road-loving sedan – the S60 Mild-Hybrid designed to go the extra mile. For all of life’s twists and turns. https://t.co/A70mo3auOJ",
     "@meltball Hi Meltem, we are concerned to hear about this. Could you send us a DM with your email address and VIN? We would be happy to look into this further.",
     "This #LaborDay -  and everyday - we honor and thank the men and women who build the cars our customers trust to protect them. Our people make our ambitions possible and they're our greatest strength. https://t.co/iARryYXUKf",
-    "“Volvo Cars engineers its vehicles for safety. They recognize that dogs are frequent passengers in their SUVs like the 2022 XC60.” Click to read why @AutoTrader_com selected the XC60 as one of 10 Best Cars for Dog Lovers. #NationalDogMonth https://t.co/fsacM9nZo4"
+    "“Volvo Cars engineers its vehicles for safety. They recognize that dogs are frequent passengers in their SUVs like the 2022 XC60.” Click to read why @AutoTrader_com selected the XC60 as one of 10 Best Cars for Dog Lovers. #NationalDogMonth https://t.co/fsacM9nZo4",
+    "【第7回バステクin首都圏】本日は埼玉スタジアム2020東駐車場にてバステクが開催されました。大型観光バス「日野セレガ」リフト付を展示し、東京パラリンピックでは選手の移動を支えた車いす用のリフトを多くのご来場者様にご見学・体験いただきました。#日野自動車 #HINO #バステク #セレガ https://t.co/vPK02K8UGV"
 ]
 
 from nltk import tokenize

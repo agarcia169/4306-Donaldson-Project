@@ -29,7 +29,13 @@ def evaluate_new_tweets():
 def updatelabels():
 	thisDBClient = dbConnection.get_db_connection()
 	with thisDBClient.cursor() as dbCursor:	
-		updatebattElec_query = "UPDATE tweets SET powertrain_set = CONCAT(powertrain_set,",'battElec'") WHERE text Like '%battery%' or text Like '%Lithium%' "#marks tweets that have battery in them with battElec ?
+		updatebattElec_query = "UPDATE tweets SET powertrain_set = CONCAT_WS(',',powertrain_set,'battElec') WHERE (text Like '%battery%' or text Like '%Lithium%') "#marks tweets that have battery in them with battElec ?
+		#updatebattElec_query2 = """
+		#	UPDATE tweets #tweet is the table
+		#	SET 
+		#		powertrain_set = CONCAT_WS(',', powertrain_set, 'battElec') #setting powertrain_ set with battelec label the first string is the seperator, powertrain_set is string 1 and battElec 2 
+		#	WHERE
+		#		text LIKE '%battery%';"""
 		#updatebattElec_query = "UPDATE tweets SET powertrain_set = CONCAT(powertrain_set,",'battElec'") WHERE text in('battery','Lithium')"#marks tweets that have battery in them with battElec ?	
 		updatehfuelcell_query = "UPDATE tweets SET powertrain_set = CONCAT(powertrain_set,",'hfuelcell'")"
 		updatenatgas_query = "UPDATE tweets SET powertrain_set = CONCAT(powertrain_set,",'natgas'")"

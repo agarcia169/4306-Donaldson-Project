@@ -1,7 +1,7 @@
 from SharedConnectors import dbConnection
 from . import HandleDataCollector
 import mysql.connector
-import json
+#import json
 
 def add_handle_to_database(twitter_username: str) -> tuple[bool, int]:
     """Adds a Twitter ID, username, description, and name to the database.

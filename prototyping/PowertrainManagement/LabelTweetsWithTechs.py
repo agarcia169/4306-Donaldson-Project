@@ -37,10 +37,10 @@ def updatelabels():
 		#	WHERE
 		#		text LIKE '%battery%';"""
 		#updatebattElec_query = "UPDATE tweets SET powertrain_set = CONCAT(powertrain_set,",'battElec'") WHERE text in('battery','Lithium')"#marks tweets that have battery in them with battElec ?	
-		updatehfuelcell_query = "UPDATE tweets SET powertrain_set = CONCAT(powertrain_set,",'hfuelcell'")"
-		updatenatgas_query = "UPDATE tweets SET powertrain_set = CONCAT(powertrain_set,",'natgas'")"
-		updatehce_query = "UPDATE tweets SET powertrain_set = CONCAT(powertrain_set,",'hce'")"
-		dbCursor.execute(updatebattElec_query)
+		updatehfuelcell_query = "UPDATE tweets SET powertrain_set = CONCAT_WS(',',powertrain_set,'hfuelcell') WHERE (text Like '%hydrogen%fuel%cell%')"
+		updatenatgas_query = "UPDATE tweets SET powertrain_set = CONCAT_WS(',',powertrain_set,'natgas') WHERE (text Like '%natural%gas%')"
+		updatehce_query = "UPDATE tweets SET powertrain_set = CONCAT_WS(',',powertrain_set,'hce') WHERE (text Like '%battery%' or text Like '%Lithium%') "#what exactly is hce ??
+		dbCursor.execute(updatehfuelcell_query)
 		thisDBClient.commit()#hopefully would commit the query showing the powertrain set for those tweets
 		#update labels to show if tweet is tech related or not
 

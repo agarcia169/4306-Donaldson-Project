@@ -11,9 +11,10 @@ def evaluate_new_tweets():
 		#select,word,from name of table
 		revaluate_all_tweets_query = "SELECT id, text FROM tweets WHERE powertrain_set is null"
 		grabbatterytweets_query ="SELECT id, text FROM tweets WHERE text LIKE '%battery%'"
-		cpare = "SELECT word, text FROM tweets WHERE text LIKE '%battery%' = word FROM battElec" #compares the tweets that has battery in them to the contents of battElec
+		cpare_query = "SELECT word, text FROM tweets WHERE text LIKE '%battery%' = word FROM battElec" #compares the tweets that has battery in them to the contents of battElec
 		#dbCursor.execute(revaluate_all_tweets_query)
 		dbCursor.execute(grabbatterytweets_query)
+		#dbCursor.execute(cpare_query)
 		theMostRecentTweetID = dbCursor.fetchall()
 		#loop through tweet looking for tech keywords
 		for x in theMostRecentTweetID:

@@ -77,5 +77,9 @@ if(False): # Set to true and replace the name for `theCompany` to add that compa
 	if(didItWork):
 		AddTweetsToDB.retrieve_many_tweets(theCompanyID)
 
-if (True):
+if (False):
     evaluate_new_tweets()
+
+if (True): #Test the SECRET VADER project
+	from secretVADER import secretVADER
+	secretVADER.test_secret_VADER()

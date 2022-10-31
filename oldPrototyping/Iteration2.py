@@ -107,10 +107,12 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from nltk import tokenize
 #lines_list = tokenize.sent_tokenize(paragraph)
 #sentences.extend(lines_list)
+sid = SentimentIntensityAnalyzer()
 for sentence in sentences:
-    sid = SentimentIntensityAnalyzer()
+    
     print(sentence)
     ss = sid.polarity_scores(sentence)
+    print(ss)
     for k in sorted(ss):
         print('{0}: {1}, '.format(k, ss[k]), end='')
     print()

@@ -1,1 +1,1 @@
-__all__ = ["AddTweetsToDB", "ManageTweetsInDB"]
+__all__ = ['AddTweetsToDB', 'ManageTweetsInDB']

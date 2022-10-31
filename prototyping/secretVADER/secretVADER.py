@@ -23,8 +23,4 @@ def test_secret_VADER():
     with dbLink.cursor() as dbCursor:
         dbCursor.executemany(update_tweet_with_VADER_scores,updateTuple)
         print(dbCursor.fetchall())
-        dbCursor.execute('SELECT id, text, VADERcompound, VADERneg, VADERneu, VADERpos FROM tweets WHERE id = %s',((tweetsPlusID[0][0]),))
-        print(dbCursor.fetchall())
-        print(VADERAnalyzer.polarity_scores(tweetsPlusID[0][1]))
-   
-    
+    #dbLink.commit()

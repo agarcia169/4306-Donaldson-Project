@@ -12,7 +12,7 @@ from HandleManagement import ManageHandles
 from TweetManagement import AddTweetsToDB
 from SharedConnectors import twitterConnection
 from SharedConnectors import dbConnection
-from PowertrainManagement.LabelTweetsWithTechs import evaluate_new_tweets
+from PowertrainManagement import LabelTweetsWithTechs
 
 
 # RawConfigParser is used because certain keys from Twitter use % signs,
@@ -78,4 +78,6 @@ if(False): # Set to true and replace the name for `theCompany` to add that compa
 		AddTweetsToDB.retrieve_many_tweets(theCompanyID)
 
 if (True):
-    evaluate_new_tweets()
+	#LabelTweetsWithTechs.evaluate_new_tweets()
+
+	LabelTweetsWithTechs.updatelabels()

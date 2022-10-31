@@ -3,7 +3,7 @@ from SharedConnectors import dbConnection
 
 def evaluate_new_tweets():
 	thisDBClient = dbConnection.get_db_connection()
-	with thisDBClient.cursor() as dbCursor
+	with thisDBClient.cursor() as dbCursor:
 		keywB ="Select word FROM battElec" #grabs list of words from battElec
 		keywCell ="Select word FROM hfuelcell"
 		keywNat ="Select word FROM natgas"
@@ -27,12 +27,16 @@ def evaluate_new_tweets():
 
 
 def updatelabels():
-	updatebattElec_query = " UPDATE powertrain_set SET battElec WHERE text LIKE '%battery%'" #marks tweets that have battery in them with battElec ?
-	updatehfuelcell_query = " UPDATE powertrain_set SET hfuelcell WHERE text LIKE '%%hydrogen%fuel%cell%%'"
-	updatenatgas_query = " UPDATE powertrain_set SET natgas WHERE text LIKE '%natural%%gas%'"
-	updatehce_query = " UPDATE powertrain_set SET hce WHERE text LIKE '%energy%'"
-	dbCursor.execute(updatelabels_query)
-	#update labels to show if tweet is tech related or not
+	thisDBClient = dbConnection.get_db_connection()
+	with thisDBClient.cursor() as dbCursor:	
+		updatebattElec_query = "UPDATE tweets SET powertrain_set = CONCAT(powertrain_set,",'battElec'") WHERE text Like '%battery%' or text Like '%Lithium%' "#marks tweets that have battery in them with battElec ?
+		#updatebattElec_query = "UPDATE tweets SET powertrain_set = CONCAT(powertrain_set,",'battElec'") WHERE text in('battery','Lithium')"#marks tweets that have battery in them with battElec ?	
+		updatehfuelcell_query = "UPDATE tweets SET powertrain_set = CONCAT(powertrain_set,",'hfuelcell'")"
+		updatenatgas_query = "UPDATE tweets SET powertrain_set = CONCAT(powertrain_set,",'natgas'")"
+		updatehce_query = "UPDATE tweets SET powertrain_set = CONCAT(powertrain_set,",'hce'")"
+		dbCursor.execute(updatebattElec_query)
+		thisDBClient.commit()#hopefully would commit the query showing the powertrain set for those tweets
+		#update labels to show if tweet is tech related or not
 
 
 

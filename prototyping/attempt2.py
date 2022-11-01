@@ -13,7 +13,7 @@ from TweetManagement import AddTweetsToDB
 from SharedConnectors import twitterConnection
 from SharedConnectors import dbConnection
 from PowertrainManagement import LabelTweetsWithTechs
-
+from NLTK.VaderAnalysis import TweetAnalysis
 
 # RawConfigParser is used because certain keys from Twitter use % signs,
 # which the regular parser interprets non-literally.
@@ -77,7 +77,10 @@ if(False): # Set to true and replace the name for `theCompany` to add that compa
 	if(didItWork):
 		AddTweetsToDB.retrieve_many_tweets(theCompanyID)
 
-if (True):
+if (False):
 	#LabelTweetsWithTechs.evaluate_new_tweets()
 
 	LabelTweetsWithTechs.updatelabels()
+if (True):
+	TweetAnalysis.analyze_analyzed_tweets_in_DB()
+

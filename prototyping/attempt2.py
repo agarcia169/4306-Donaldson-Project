@@ -14,6 +14,7 @@ from SharedConnectors import twitterConnection
 from SharedConnectors import dbConnection
 from PowertrainManagement import LabelTweetsWithTechs
 from NLTK.VaderAnalysis import TweetAnalysis
+import time
 
 # RawConfigParser is used because certain keys from Twitter use % signs,
 # which the regular parser interprets non-literally.
@@ -82,5 +83,7 @@ if (False):
 
 	LabelTweetsWithTechs.updatelabels()
 if (True):
+	start2 = time.perf_counter()
 	TweetAnalysis.analyze_analyzed_tweets_in_DB()
+	print(time.perf_counter()-start2)
 

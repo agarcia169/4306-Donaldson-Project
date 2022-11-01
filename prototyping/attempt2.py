@@ -5,6 +5,28 @@
 # Much of this code is based on examples either grabbed from NLTK's website
 # or from MySQL documentation, or StackOverflow, etc.
 
+# Built with (you can probably use higher):
+# Python==3.10.8 
+# mysql-connector-python==8.0.31
+# nltk==3.7
+# numpy==1.23.4
+# tweepy==4.11.0
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+
 from os.path import abspath
 from getpass import getpass
 from configparser import RawConfigParser

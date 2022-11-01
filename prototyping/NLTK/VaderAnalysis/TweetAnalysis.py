@@ -11,10 +11,10 @@ def analyze_analyzed_tweets_in_DB():
     query_TweetList = "SELECT * FROM tweets WHERE id = (%s)"
     with thisDBClient.cursor() as dbCursor: 
         dbCursor.execute(query_TweetList,(928073445941895168,))
-        TweetList = dbCursor.fetchone()[0]
+        TweetList = dbCursor.fetchone()
     sentences = []
-    for tweet in TweetList: 
-        sentences.append(tweet.text)
+    #for tweet in TweetList: 
+    sentences.append(TweetList.text)
     for sentence in sentences:
         sid = SentimentIntensityAnalyzer()
         #figure out how to seperate posnegneu reviews

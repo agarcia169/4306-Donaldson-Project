@@ -14,7 +14,7 @@ def analyze_analyzed_tweets_in_DB():
         TweetList = dbCursor.fetchone()
     sentences = []
     #for tweet in TweetList: 
-    sentences.append(TweetList.text)
+    sentences.append(TweetList[2])
     for sentence in sentences:
         sid = SentimentIntensityAnalyzer()
         #figure out how to seperate posnegneu reviews

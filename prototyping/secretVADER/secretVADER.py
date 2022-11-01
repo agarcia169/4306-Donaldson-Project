@@ -6,7 +6,7 @@ def test_secret_VADER():
     dbLink:dbConnection._connection = dbConnection.get_db_connection()
     VADERAnalyzer = SentimentIntensityAnalyzer()
 
-    grab_unVADERed_tweets_query = 'SELECT id, text FROM tweets WHERE VADERcompound IS NULL LIMIT 1'
+    grab_unVADERed_tweets_query = 'SELECT id, text FROM tweets WHERE VADERcompound IS NULL'
     update_tweet_with_VADER_scores = 'UPDATE tweets SET VADERneg = %s, VADERneu = %s, VADERpos = %s, VADERcompound = %s WHERE id = %s'
     update_temp_table = 'INSERT INTO tempVader VALUES %s'
     # https://stackoverflow.com/questions/1262786/mysql-update-query-based-on-select-query
@@ -35,9 +35,9 @@ def test_secret_VADER():
             # dbCursor.executemany(update_tweet_with_VADER_scores,updateTuple)
             # dbCursor.execute(update_duplicate_trickery,(tupleString,))
             dbCursor.execute(updateString)
-            print(dbCursor.fetchall())
+            # print(dbCursor.fetchall())
             dbCursor.execute(merge_temp_and_tweets)
             dbCursor.execute('SELECT id, VADERcompound, VADERneg, VADERneu, VADERpos FROM tweets WHERE id = %s',((tweetsPlusID[0][0]),))
-            print(dbCursor.fetchall())
-            print(VADERAnalyzer.polarity_scores(tweetsPlusID[0][1]))
+            # print(dbCursor.fetchall())
+            # print(VADERAnalyzer.polarity_scores(tweetsPlusID[0][1]))
         # dbLink.commit()

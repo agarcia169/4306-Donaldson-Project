@@ -19,17 +19,14 @@ def analyze_analyzed_tweets_in_DB(TweetList):
         TweetList[sentence].VADERneu = ss[2]
         TweetList[sentence].VADERpos = ss[3]
 
-        #might need to fix this insert into statement take another look at the parameters here
-        #do i need all the other parameters here or just the 4 VADER ones?
-        query_add_vader_results_to_db = """INSERT INTO tweets(id, author_id, text, 
-        created_at, lang, conversation_id, in_reply_to_user_id, VADERcompound, VADERneg, VADERneu, VADERpos) 
-        VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
-        with thisDBClient.cursor() as dbCursor:
-            dbCursor.execute(query_add_user_to_db,(thisTweet.id, thisTweet.author_id, thisTweet.text, 
-            thisTweet.created_at, thisTweet.lang, thisTweet.conversation_id, thisTweet.in_reply_to_user_id,
-             thisTweet.VADERcompound, thisTweet.VADERneg, thisTweet.VADERneu, thisTweet.VADERpos))
-            dbCursor.fetchall()
-        thisDBClient.commit()
+        
+        for thisTweet in TweetList:
+            query_add_vader_results_to_db = """UPDATE tweets SET VADERcompound, VADERneg, VADERneu, VADERpos WHERE id = (%s)) 
+            VALUES(%s,%s,%s,%s,%s)"""
+            with thisDBClient.cursor() as dbCursor:
+                dbCursor.execute(query_add_vader_results_to_db,(thisTweet.VADERcompound, thisTweet.VADERneg, thisTweet.VADERneu, thisTweet.VADERpos, thisTweet.id))
+                dbCursor.fetchall()
+            thisDBClient.commit()
     #PseudoCode
     #==================
     #1.parse list arg into sentences 

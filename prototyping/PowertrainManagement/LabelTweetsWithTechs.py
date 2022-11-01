@@ -29,7 +29,7 @@ def evaluate_new_tweets():
 def updatelabels():
 	thisDBClient = dbConnection.get_db_connection()
 	with thisDBClient.cursor() as dbCursor:	
-		updatebattElec_query = "UPDATE tweets SET powertrain_set = CONCAT_WS(',',powertrain_set,'battElec') WHERE (text Like '%battery%' or text Like '%Lithium%') "#marks tweets that have battery in them with battElec ?
+		updatebattElec_query = "UPDATE tweets SET powertrain_set = CONCAT_WS(',',powertrain_set,'battElec') WHERE (text Like '%battery%' or text Like '%Lithium%' or text Like '%batteries%') "#marks tweets that have battery in them with battElec ?
 		#updatebattElec_query2 = """
 		#	UPDATE tweets #tweet is the table
 		#	SET 
@@ -40,12 +40,10 @@ def updatelabels():
 		updatehfuelcell_query = "UPDATE tweets SET powertrain_set = CONCAT_WS(',',powertrain_set,'hfuelcell') WHERE (text Like '%hydrogen%fuel%cell%')"
 		updatenatgas_query = "UPDATE tweets SET powertrain_set = CONCAT_WS(',',powertrain_set,'natgas') WHERE (text Like '%natural%gas%')"
 		updatehce_query = "UPDATE tweets SET powertrain_set = CONCAT_WS(',',powertrain_set,'hce') WHERE (text Like '%battery%' or text Like '%Lithium%') "#what exactly is hce ??
-		dbCursor.execute(updatehfuelcell_query)
+		dbCursor.execute(updatebattElec_query)
 		thisDBClient.commit()#hopefully would commit the query showing the powertrain set for those tweets
 		#update labels to show if tweet is tech related or not
 
 
 
-def revaluate_all_tweets():
-	with thisDBClient.cursor() as dbCursor: #grab the ID of the newest tweet currently in the database.
-		dbCursor.execute(the_most_recent_tweet_id_query,)
+#def revaluate_all_tweets()	

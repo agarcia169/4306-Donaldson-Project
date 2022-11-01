@@ -13,7 +13,7 @@ from TweetManagement import AddTweetsToDB
 from SharedConnectors import twitterConnection
 from SharedConnectors import dbConnection
 from PowertrainManagement.LabelTweetsWithTechs import evaluate_new_tweets
-
+import time
 
 # RawConfigParser is used because certain keys from Twitter use % signs,
 # which the regular parser interprets non-literally.
@@ -82,4 +82,9 @@ if (False):
 
 if (True): #Test the SECRET VADER project
 	from secretVADER import secretVADER
+	# start1 = time.perf_counter()
+	# secretVADER.test_secret_VADER_slow_and_bad()
+	# print(time.perf_counter()-start1)
+	start2 = time.perf_counter()
 	secretVADER.test_secret_VADER()
+	print(time.perf_counter()-start2)

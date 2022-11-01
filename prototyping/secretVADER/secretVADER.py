@@ -24,7 +24,7 @@ def test_secret_VADER_slow_and_bad():
     for tweet in tweetsPlusID:
         sentimentScores = VADERAnalyzer.polarity_scores(tweet[1])
         # print(tweet[0], tweet[1], 'Neg: ', sentimentScores['neg'], 'Neutral: ', sentimentScores['neu'], 'Pos: ', sentimentScores['pos'], 'Compound: ', sentimentScores['compound'])
-        updateTuple.append((tweet[0],sentimentScores['neg'],sentimentScores['neu'],sentimentScores['pos'],sentimentScores['compound']))
+        updateTuple.append((sentimentScores['neg'],sentimentScores['neu'],sentimentScores['pos'],sentimentScores['compound'],tweet[0]))
 
     tupleString = ','.join(map(str,updateTuple))
     # updateString = update_temp_table % tupleString
@@ -79,6 +79,8 @@ def test_secret_VADER():
             dbCursor.execute(updateString)
             print(dbCursor.fetchall())
             dbCursor.execute(merge_temp_and_tweets)
+            dbCursor.execute('DELETE FROM tempVader')
+            print(dbCursor.fetchall())
             dbCursor.execute('SELECT id, VADERcompound, VADERneg, VADERneu, VADERpos FROM tweets WHERE id = %s',((tweetsPlusID[0][0]),))
             print(dbCursor.fetchall())
             print(VADERAnalyzer.polarity_scores(tweetsPlusID[0][1]))

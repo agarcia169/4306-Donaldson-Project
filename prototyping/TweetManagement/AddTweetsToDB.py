@@ -13,11 +13,11 @@ how_long_to_grab = one_year_ago
 def add_tweet_to_db(thisTweet:tweepy.Tweet):
     thisDBClient = dbConnection.get_db_connection()
     query_add_user_to_db = """INSERT INTO tweets(id, author_id, text, 
-    created_at, lang, conversation_id, in_reply_to_user_id) 
+    created_at, lang, conversation_id) 
     VALUES(%s,%s,%s,%s,%s,%s,%s)"""
     with thisDBClient.cursor() as dbCursor:
         dbCursor.execute(query_add_user_to_db,(thisTweet.id, thisTweet.author_id, thisTweet.text, 
-        thisTweet.created_at, thisTweet.lang, thisTweet.conversation_id, thisTweet.in_reply_to_user_id))
+        thisTweet.created_at, thisTweet.lang, thisTweet.conversation_id))
         dbCursor.fetchall()
     thisDBClient.commit()
 

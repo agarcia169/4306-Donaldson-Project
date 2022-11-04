@@ -112,10 +112,10 @@ if (False):
 
 
 if (True): #Test the SECRET VADER project
-	from secretVADER import secretVADER
+	from vader_experimental import vader_experimental
 	# start1 = time.perf_counter()
 	# secretVADER.test_secret_VADER_slow_and_bad()
 	# print(time.perf_counter()-start1)
 	start2 = time.perf_counter()
-	secretVADER.test_secret_VADER()
+	vader_experimental.test_secret_VADER()
 	print(time.perf_counter()-start2)

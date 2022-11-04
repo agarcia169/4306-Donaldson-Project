@@ -17,7 +17,7 @@ def add_handle_to_database(twitter_username: str) -> tuple[bool, int]:
     # print(dir(theDBConnection))
     try:
         with theDBConnection.cursor() as dbCursor:
-            query_check_for_id = "SELECT id FROM handles WHERE username = %s"
+            query_check_for_id = dbConnection.query_check_for_id_where_username
             dbCursor.execute(query_check_for_id, (twitter_username,))
             do_they_exist = dbCursor.fetchall()
             # print(dir(do_they_exist))
@@ -26,7 +26,7 @@ def add_handle_to_database(twitter_username: str) -> tuple[bool, int]:
                 twitter_user = HandleDataCollector.get_handle_from_twitter(twitter_username)
                 #the_data = json.loads(twitter_user.json())
                 #print(dir(twitter_user))
-                query_add_user_to_db = "INSERT INTO handles VALUES(%s,%s,%s,%s)"
+                query_add_user_to_db = dbConnection.query_add_user_to_db_IDUsernameDescName
                 dbCursor.execute(query_add_user_to_db, (twitter_user.data.id,
                                  twitter_user.data.username, twitter_user.data.description, twitter_user.data.name))
                 dbCursor.fetchall()
@@ -53,7 +53,7 @@ def get_twitter_handle(twitter_id: int | str) -> str:
     try:
         with theDBConnection.cursor() as dbCursor:
             dbCursor.execute(
-                "SELECT username FROM handles WHERE id = %s", (str(twitter_id),))
+                dbConnection.query_select_username_from_handles_where_ID, (str(twitter_id),))
             result = dbCursor.fetchall()
             if (len(result) > 1):
                 print(
@@ -77,7 +77,7 @@ def get_twitter_id(twitter_handle: str) -> list[int]:
     try:
         with theDBConnection.cursor() as dbCursor:
             dbCursor.execute(
-                "SELECT id FROM handles WHERE username = %s", (str(twitter_handle),))
+                dbConnection.query_select_ID_from_handles_where_username, (str(twitter_handle),))
             result = dbCursor.fetchall()
             return [item[0] for item in result]
     except mysql.connector.cursor.Error as cursorErr:

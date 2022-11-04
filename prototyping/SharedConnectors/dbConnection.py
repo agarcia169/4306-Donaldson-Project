@@ -78,5 +78,10 @@ query_add_user_to_db_IDAuthTextCreateLangConvo = """INSERT INTO tweets(id, autho
     VALUES(%s,%s,%s,%s,%s,%s,%s)"""
 
 query_the_most_recent_tweet_id = "SELECT MAX(id) FROM tweets WHERE author_id = (%s)"
-
 query_the_oldest_tweet_id = "SELECT MIN(id) FROM tweets WHERE author_id = (%s)"
+
+# HandleManagement.ManageHandles
+query_check_for_id_where_username = "SELECT id FROM handles WHERE username = %s"
+query_add_user_to_db_IDUsernameDescName = "INSERT INTO handles VALUES(%s,%s,%s,%s)"
+query_select_username_from_handles_where_ID = "SELECT username FROM handles WHERE id = %s"
+query_select_ID_from_handles_where_username = "SELECT id FROM handles WHERE username = %s"

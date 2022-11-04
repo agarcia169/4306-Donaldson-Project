@@ -36,7 +36,7 @@ from SharedConnectors import twitterConnection
 from SharedConnectors import dbConnection
 from PowertrainManagement import LabelTweetsWithTechs
 from NLTK.VaderAnalysis import TweetAnalysis
-import timeimport time
+import time
 
 # RawConfigParser is used because certain keys from Twitter use % signs,
 # which the regular parser interprets non-literally.

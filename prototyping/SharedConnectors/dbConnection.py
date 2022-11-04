@@ -49,12 +49,12 @@ def get_db_connection(**kwargs: str) -> mysql.connector.MySQLConnection:
 # List of stuff accessible to importers of this module. Just in case
 __all__ = [ 'get_db_connection' ]
 
-# TweetAnalysis
+# VaderAnalysis.TweetAnalysis
 query_TweetsToAnalyze = "SELECT * FROM tweets WHERE VADERcompound is null LIMIT 0,10000"
 query_add_vader_results_to_db_ComNegNeuPosID = """UPDATE tweets SET VADERcompound = %s, VADERneg = %s, VADERneu = %s, VADERpos = %s
     WHERE id = %s"""
 
-# LabelTweetsWithTechs
+# PowertrainManagement.LabelTweetsWithTechs
     # grabs list of words from battElec
 query_keywB ="Select word FROM battElec"
 query_keywCell ="Select word FROM hfuelcell"

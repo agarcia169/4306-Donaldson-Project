@@ -37,7 +37,7 @@ def test_secret_VADER_slow_and_bad():
             # dbCursor.execute(updateString)
             print(dbCursor.fetchall())
             # dbCursor.execute(merge_temp_and_tweets)
-            dbCursor.execute('SELECT id, VADERcompound, VADERneg, VADERneu, VADERpos FROM tweets WHERE id = %s',((tweetsPlusID[0][0]),))
+            dbCursor.execute(dbConnection.query_select_idAndScore_where_ID,((tweetsPlusID[0][0]),))
             print(dbCursor.fetchall())
             print(VADERAnalyzer.polarity_scores(tweetsPlusID[0][1]))
         # dbLink.commit()

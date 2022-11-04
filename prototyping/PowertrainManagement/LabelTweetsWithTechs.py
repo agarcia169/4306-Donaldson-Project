@@ -3,15 +3,15 @@ from SharedConnectors import dbConnection
 
 def evaluate_new_tweets():
 	thisDBClient = dbConnection.get_db_connection()
-	with thisDBClient.cursor() as dbCursor:#grab the ID of the newest tweet currently in the database.
-		keywB ="Select word FROM battElec" #grabs list of words from battElec
-		keywCell ="Select word FROM hfuelcell"
-		keywNat ="Select word FROM natgas"
-		keywH ="Select word FROM hce"
+	with thisDBClient.cursor() as dbCursor:
+		keywB = dbConnection.query_keywB #grabs list of words from battElec
+		keywCell = dbConnection.query_keywCell
+		keywNat = dbConnection.query_keywNat
+		keywH = dbConnection.query_keywH
 		#select,word,from name of table
-		revaluate_all_tweets_query = "SELECT id, text FROM tweets WHERE powertrain_set is null"
-		grabbatterytweets_query ="SELECT id, text FROM tweets WHERE text LIKE '%battery%'"
-		cpare_query = "SELECT word, text FROM tweets WHERE text LIKE '%battery%' = word FROM battElec" #compares the tweets that has battery in them to the contents of battElec
+		revaluate_all_tweets_query = dbConnection.query_revaluate_all_tweets
+		grabbatterytweets_query = dbConnection.query_grabbatterytweets
+		cpare_query = dbConnection.query_cpare
 		#dbCursor.execute(revaluate_all_tweets_query)
 		dbCursor.execute(grabbatterytweets_query)
 		#dbCursor.execute(cpare_query)
@@ -27,12 +27,23 @@ def evaluate_new_tweets():
 
 
 def updatelabels():
-	updatelabels_query = " UPDATE powertrain_set SET battElec WHERE text LIKE '%battery%'" #marks tweets that have battery in them with battElec ?
-	dbCursor.execute(updatelabels_query)
-	#update labels to show if tweet is tech related or not
+	thisDBClient = dbConnection.get_db_connection()
+	with thisDBClient.cursor() as dbCursor:	
+		updatebattElec_query = dbConnection.query_updatebattElec
+		#updatebattElec_query2 = """
+		#	UPDATE tweets #tweet is the table
+		#	SET 
+		#		powertrain_set = CONCAT_WS(',', powertrain_set, 'battElec') #setting powertrain_ set with battelec label the first string is the seperator, powertrain_set is string 1 and battElec 2 
+		#	WHERE
+		#		text LIKE '%battery%';"""
+		#updatebattElec_query = "UPDATE tweets SET powertrain_set = CONCAT(powertrain_set,",'battElec'") WHERE text in('battery','Lithium')"#marks tweets that have battery in them with battElec ?	
+		updatehfuelcell_query = dbConnection.query_updatehfuelcell
+		updatenatgas_query = dbConnection.query_updatenatgas
+		updatehce_query = dbConnection.query_updatehce
+		dbCursor.execute(updatebattElec_query)
+		thisDBClient.commit()#hopefully would commit the query showing the powertrain set for those tweets
+		#update labels to show if tweet is tech related or not
 
 
 
-def revaluate_all_tweets():
-	with thisDBClient.cursor() as dbCursor: #grab the ID of the newest tweet currently in the database.
-		dbCursor.execute(the_most_recent_tweet_id_query,)
+#def revaluate_all_tweets()	

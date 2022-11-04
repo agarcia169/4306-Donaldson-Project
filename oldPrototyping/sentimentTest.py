@@ -63,7 +63,8 @@ sentences = [
     "@meltball Hi Meltem, we are concerned to hear about this. Could you send us a DM with your email address and VIN? We would be happy to look into this further.",
     "This #LaborDay -  and everyday - we honor and thank the men and women who build the cars our customers trust to protect them. Our people make our ambitions possible and they're our greatest strength. https://t.co/iARryYXUKf",
     "“Volvo Cars engineers its vehicles for safety. They recognize that dogs are frequent passengers in their SUVs like the 2022 XC60.” Click to read why @AutoTrader_com selected the XC60 as one of 10 Best Cars for Dog Lovers. #NationalDogMonth https://t.co/fsacM9nZo4",
-    "【第7回バステクin首都圏】本日は埼玉スタジアム2020東駐車場にてバステクが開催されました。大型観光バス「日野セレガ」リフト付を展示し、東京パラリンピックでは選手の移動を支えた車いす用のリフトを多くのご来場者様にご見学・体験いただきました。#日野自動車 #HINO #バステク #セレガ https://t.co/vPK02K8UGV"
+    "【第7回バステクin首都圏】本日は埼玉スタジアム2020東駐車場にてバステクが開催されました。大型観光バス「日野セレガ」リフト付を展示し、東京パラリンピックでは選手の移動を支えた車いす用のリフトを多くのご来場者様にご見学・体験いただきました。#日野自動車 #HINO #バステク #セレガ https://t.co/vPK02K8UGV",
+    'The current leg of their ocean adventure began in Cape Town, South Africa. After two weeks of united effort and determination, the #VolvoOceanRace teams now have the next stopover in their sights: Melbourne, Australia. https://t.co/sW8QbDr56C'
 ]
 
 from nltk import tokenize

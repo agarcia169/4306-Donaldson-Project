@@ -12,12 +12,10 @@ how_long_to_grab = one_year_ago
 
 def add_tweet_to_db(thisTweet:tweepy.Tweet):
     thisDBClient = dbConnection.get_db_connection()
-    query_add_user_to_db = """INSERT INTO tweets(id, author_id, text, 
-    created_at, lang, conversation_id, in_reply_to_user_id) 
-    VALUES(%s,%s,%s,%s,%s,%s,%s)"""
+    query_add_user_to_db = dbConnection.query_add_user_to_db_IDAuthTextCreateLangConvo
     with thisDBClient.cursor() as dbCursor:
         dbCursor.execute(query_add_user_to_db,(thisTweet.id, thisTweet.author_id, thisTweet.text, 
-        thisTweet.created_at, thisTweet.lang, thisTweet.conversation_id, thisTweet.in_reply_to_user_id))
+        thisTweet.created_at, thisTweet.lang, thisTweet.conversation_id))
         dbCursor.fetchall()
     thisDBClient.commit()
 
@@ -27,7 +25,7 @@ def retrieve_recent_tweets(theUserID, *, end_time=None, exclude=['retweets', 're
                             tweet_fields=['author_id', 'conversation_id', 'created_at', 'in_reply_to_user_id', 'lang', 'text'], 
                             until_id=None, user_fields=None):
     thisDBClient = dbConnection.get_db_connection()
-    the_most_recent_tweet_id_query = "SELECT MAX(id) FROM tweets WHERE author_id = (%s)"
+    the_most_recent_tweet_id_query = dbConnection.query_the_most_recent_tweet_id
     with thisDBClient.cursor() as dbCursor: #grab the ID of the newest tweet currently in the database.
         dbCursor.execute(the_most_recent_tweet_id_query,(theUserID,))
         theMostRecentTweetID = dbCursor.fetchone()[0]
@@ -45,7 +43,7 @@ def retrieve_older_tweets(theUserID, *, end_time=None, exclude=['retweets', 'rep
                             until_id=None, user_fields=None):
     print(start_time)
     thisDBClient = dbConnection.get_db_connection()
-    the_oldest_tweet_id_query = "SELECT MIN(id) FROM tweets WHERE author_id = (%s)"
+    the_oldest_tweet_id_query = dbConnection.query_the_oldest_tweet_id
     with thisDBClient.cursor() as dbCursor: #grab the ID of the oldest tweet currently in the database.
         dbCursor.execute(the_oldest_tweet_id_query,(theUserID,))
         theMostRecentTweetID = dbCursor.fetchone()[0]

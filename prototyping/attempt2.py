@@ -5,6 +5,28 @@
 # Much of this code is based on examples either grabbed from NLTK's website
 # or from MySQL documentation, or StackOverflow, etc.
 
+# Built with (you can probably use higher):
+# Python==3.10.8 
+# mysql-connector-python==8.0.31
+# nltk==3.7
+# numpy==1.23.4
+# tweepy==4.11.0
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+
 from os.path import abspath
 from getpass import getpass
 from configparser import RawConfigParser
@@ -12,8 +34,9 @@ from HandleManagement import ManageHandles
 from TweetManagement import AddTweetsToDB
 from SharedConnectors import twitterConnection
 from SharedConnectors import dbConnection
-from PowertrainManagement.LabelTweetsWithTechs import evaluate_new_tweets
-import time
+from PowertrainManagement import LabelTweetsWithTechs
+from NLTK.VaderAnalysis import TweetAnalysis
+import timeimport time
 
 # RawConfigParser is used because certain keys from Twitter use % signs,
 # which the regular parser interprets non-literally.
@@ -78,7 +101,15 @@ if(False): # Set to true and replace the name for `theCompany` to add that compa
 		AddTweetsToDB.retrieve_many_tweets(theCompanyID)
 
 if (False):
-    evaluate_new_tweets()
+	#LabelTweetsWithTechs.evaluate_new_tweets()
+
+	LabelTweetsWithTechs.updatelabels()
+if (False):
+	start2 = time.perf_counter()
+	TweetAnalysis.analyze_analyzed_tweets_in_DB()
+	print(time.perf_counter()-start2)
+
+
 
 if (True): #Test the SECRET VADER project
 	from secretVADER import secretVADER

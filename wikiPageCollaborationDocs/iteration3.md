@@ -62,7 +62,7 @@ The current system that we have employed is one that has an interaction with twe
    - Non functional requirements
      - Usability
      
-       Questions about an interface lead to us being told no interface was necessary. We may implement a rudimentary one for example purposes, but the goal of the project appears to be the data that comes out of it, with the code being their to help explain the results if requested. As such, the code itself may not need to be usable as-is.
+       
 
      - Reliability
 
@@ -81,7 +81,13 @@ The current system that we have employed is one that has an interaction with twe
        No supportability requirements specified, but we will make an attempt to code it in a way that is modular enough that, if desired, someone could replace a small module with a module of their own design (if needed) to switch from, say, MySQL support to MongoDB support.
 
      - Implementation
+       
+       As VADER, the NLTK package VADER analysis is built into, Tweepy (our Twitter API interface), and the MySQL Connector package are all built in Python, our code will be built in Python as well.
+
      - Interface
+       
+       Questions about an interface lead to us being told no interface was necessary. We may implement a rudimentary one for example purposes, but the goal of the project appears to be the data that comes out of it, with the code being their to help explain the results if requested. As such, the code itself may not need to be usable as-is.
+       
      - Packaging
      - Legal
    - System Models

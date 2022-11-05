@@ -44,3 +44,16 @@ vi. Overview
      - Save Tweets to SQL database.
      - Save VADER analysis of Tweets to database.
      - 
+   
+   - Non functional requirements
+     - Usability
+     - Reliability
+     - Performance
+     - Supportability
+     - Implementation
+     - Interface
+     - Packaging
+     - Legal
+   - System Models
+
+4. ### Glossary

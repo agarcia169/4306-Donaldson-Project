@@ -98,6 +98,16 @@ The current system that we have employed is one that has an interaction with twe
        The code itself in a directory structure that Python can interpret, along with a list of necessary requirements to install.
 
      - Legal
+       
+       - Open Source:
+    
+         NLTK: https://github.com/nltk/nltk/wiki/FAQ
+         
+         Source code is Apache 2.0.
+
+         Documentation is Creative Commons Attribution-Noncommercial-No Derivative Works 3.0 United States license
+
+         
    - System Models
 
 4. ### Glossary

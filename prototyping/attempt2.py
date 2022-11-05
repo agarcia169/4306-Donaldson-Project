@@ -11,21 +11,6 @@
 # nltk==3.7
 # numpy==1.23.4
 # tweepy==4.11.0
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
 
 from os.path import abspath
 from getpass import getpass
@@ -110,7 +95,7 @@ def main():
 		# LabelTweetsWithTechs.evaluate_new_tweets()
 
 		LabelTweetsWithTechs.updatelabels()
-	if (True):
+	if (False):
 		start2 = time.perf_counter()
 		TweetAnalysis.analyze_analyzed_tweets_in_DB()
 		print(time.perf_counter()-start2)

@@ -2,6 +2,7 @@ from SharedConnectors import twitterConnection
 import requests
 from requests import Response
 
+
 def get_handle_from_twitter(twitter_username: str) -> dict | requests.Response | Response:
     """Adds a Twitter ID, username, description, and name to the database.
 

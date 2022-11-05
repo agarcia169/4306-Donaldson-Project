@@ -3,6 +3,7 @@ from . import HandleDataCollector
 import mysql.connector
 #import json
 
+
 def add_handle_to_database(twitter_username: str) -> tuple[bool, int]:
     """Adds a Twitter ID, username, description, and name to the database.
 
@@ -23,9 +24,10 @@ def add_handle_to_database(twitter_username: str) -> tuple[bool, int]:
             # print(dir(do_they_exist))
             # print(do_they_exist)
             if (do_they_exist == []):
-                twitter_user = HandleDataCollector.get_handle_from_twitter(twitter_username)
+                twitter_user = HandleDataCollector.get_handle_from_twitter(
+                    twitter_username)
                 #the_data = json.loads(twitter_user.json())
-                #print(dir(twitter_user))
+                # print(dir(twitter_user))
                 query_add_user_to_db = dbConnection.query_add_user_to_db_IDUsernameDescName
                 dbCursor.execute(query_add_user_to_db, (twitter_user.data.id,
                                  twitter_user.data.username, twitter_user.data.description, twitter_user.data.name))
@@ -33,7 +35,8 @@ def add_handle_to_database(twitter_username: str) -> tuple[bool, int]:
                 theDBConnection.commit()
                 return (True, twitter_user.data.id)
             else:
-                print("User `" + twitter_username + "` Exists In Database Already As: '" + str(do_they_exist[0][0]) + "'")
+                print("User `" + twitter_username +
+                      "` Exists In Database Already As: '" + str(do_they_exist[0][0]) + "'")
                 return (False, do_they_exist[0][0])
     except mysql.connector.cursor.Error as cursorErr:
         print(cursorErr)

@@ -6,26 +6,26 @@
 # or from MySQL documentation, or StackOverflow, etc.
 
 # Built with (you can probably use higher):
-# Python==3.10.8 
+# Python==3.10.8
 # mysql-connector-python==8.0.31
 # nltk==3.7
 # numpy==1.23.4
 # tweepy==4.11.0
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
 
 from os.path import abspath
 from getpass import getpass
@@ -51,61 +51,64 @@ server_file_location = '../config/server.cfg'
 # database=example
 # port=example
 api_key_file_location = '../config/api_keys.cfg'
-# An example file for api_keys.cfg. Note the lack of = signs. 
+# An example file for api_keys.cfg. Note the lack of = signs.
 # [twitter]
 # API_KEY=example
 # API_KEY_SECRET=example
 # BEARER_TOKEN=example
 
-if(config.read(server_file_location) == []):
-	raise IOError("Could not open " + abspath(server_file_location))
-if(config.read(api_key_file_location) == []):
-	raise IOError("Could not open " + abspath(api_key_file_location))
+if (config.read(server_file_location) == []):
+    raise IOError("Could not open " + abspath(server_file_location))
+if (config.read(api_key_file_location) == []):
+    raise IOError("Could not open " + abspath(api_key_file_location))
 
 API_CONFIG_SECTION = 'twitter'
 API_BEARER_TOKEN_VARIABLE_NAME = 'bearer_token'
 
-BEARER_TOKEN = config.get(API_CONFIG_SECTION,API_BEARER_TOKEN_VARIABLE_NAME, fallback=None)
-dbUser= config.get('mysql','username',fallback=None)
-DATABASE = config.get('mysql','database')
-HOST = config.get('mysql','host')
-dbPassword = config.get('mysql','password',fallback=None)
-PORT = config.get('mysql','port')
+BEARER_TOKEN = config.get(
+    API_CONFIG_SECTION, API_BEARER_TOKEN_VARIABLE_NAME, fallback=None)
+dbUser = config.get('mysql', 'username', fallback=None)
+DATABASE = config.get('mysql', 'database')
+HOST = config.get('mysql', 'host')
+dbPassword = config.get('mysql', 'password', fallback=None)
+PORT = config.get('mysql', 'port')
 
-if(BEARER_TOKEN == None):
-	print("Error: " + API_BEARER_TOKEN_VARIABLE_NAME + " is missing from [" + API_CONFIG_SECTION +  "] section in " + abspath(api_key_file_location))
-	exit()# Some code below is from this website:
+if (BEARER_TOKEN == None):
+    print("Error: " + API_BEARER_TOKEN_VARIABLE_NAME +
+          " is missing from [" + API_CONFIG_SECTION + "] section in " + abspath(api_key_file_location))
+    exit()  # Some code below is from this website:
 # https://dev.mysql.com/doc/connector-python/en/connector-python-example-connecting.html
 
-if(dbUser == None):
-	dbUser = input("Please enter your database username:")
+if (dbUser == None):
+    dbUser = input("Please enter your database username:")
 
-if(dbPassword == None):
-	dbPassword = getpass("Please enter the database password for your account:")
+if (dbPassword == None):
+    dbPassword = getpass(
+        "Please enter the database password for your account:")
 
 # Once you've called these once with these parameters, you can call them from any module
 # anywhere without the parameters at all.
-dbConnection.get_db_connection(dbUser=dbUser,dbPassword=dbPassword,hostname=HOST,port_num=PORT,database_name=DATABASE)
+dbConnection.get_db_connection(
+    dbUser=dbUser, dbPassword=dbPassword, hostname=HOST, port_num=PORT, database_name=DATABASE)
 twitterConnection.get_twitter_connection(bearer_token=BEARER_TOKEN)
 
 # ManageHandles.add_handle_to_database('volvocars')
 # print(ManageHandles.get_twitter_handle(342772500))
 # print(ManageHandles.get_twitter_id('volvocars'))
 # AddTweetsToDB.retrieve_older_tweets(342772500)
-if(False): # Set to true and replace the name for `theCompany` to add that company to the database and grab some of their recent tweets.
-	theCompany = 'CheryAutoCo'
+if (False):  # Set to true and replace the name for `theCompany` to add that company to the database and grab some of their recent tweets.
+    theCompany = 'CheryAutoCo'
 
-	didItWork, theCompanyID = ManageHandles.add_handle_to_database(theCompany)
-	# theCompanyID = ManageHandles.get_twitter_id(theCompany)[0]
-	if(didItWork):
-		AddTweetsToDB.retrieve_many_tweets(theCompanyID)
+    didItWork, theCompanyID = ManageHandles.add_handle_to_database(theCompany)
+    # theCompanyID = ManageHandles.get_twitter_id(theCompany)[0]
+    if (didItWork):
+        AddTweetsToDB.retrieve_many_tweets(theCompanyID)
 
 if (False):
-	#LabelTweetsWithTechs.evaluate_new_tweets()
+    # LabelTweetsWithTechs.evaluate_new_tweets()
 
-	LabelTweetsWithTechs.updatelabels()
+    LabelTweetsWithTechs.updatelabels()
 if (True):
-	start2 = time.perf_counter()
-	TweetAnalysis.analyze_analyzed_tweets_in_DB()
-	print(time.perf_counter()-start2)
-
+    start2 = time.perf_counter()
+    TweetAnalysis.analyze_analyzed_tweets_in_DB()
+    print(time.perf_counter()-start2)

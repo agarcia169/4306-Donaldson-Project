@@ -11,7 +11,10 @@ def evaluate_new_tweets():
 		#select,word,from name of table
 		revaluate_all_tweets_query = dbConnection.query_revaluate_all_tweets
 		grabbatterytweets_query = dbConnection.query_grabbatterytweets
-		cpare_query = dbConnection.query_cpare
+
+		# malformed query, commented out rather than moved to dbConnection
+		#cpare_query = """SELECT word, text FROM tweets WHERE text LIKE '%battery%' = word FROM battElec""" 
+
 		#dbCursor.execute(revaluate_all_tweets_query)
 		dbCursor.execute(grabbatterytweets_query)
 		#dbCursor.execute(cpare_query)

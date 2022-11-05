@@ -10,7 +10,7 @@ This Project is for The company Donaldson Filtration which is a global company t
 
 ii. Scope of the system
 
-The system will grab tweets from twitter and store them in our database we have created. Once there are tweets in the database the user will be able to either grab more tweets or use built-in natural language processing methods to analyze tweets already in the database. The user will also be able enter in new companies and powertrain alternatives into the database to facilitate easier data processing. The user will also be able to use a custom interface to read the results of the NLP and glean data from what we have collected.
+The system will grab tweets from twitter and store them in our database we have created. Once there are tweets in the database the user will be able to either grab more tweets or use built-in natural language processing methods to analyze tweets already in the database. The user will also be able enter in new companies and powertrain alternatives into the database to enable more customized data processing.
 
 iii. Objectives and success criteria of the project
 S
@@ -22,10 +22,6 @@ this project has several objectives:
 
 - Vader Analysis of tweets so that the user can identify market sentiment of these alternative powertrains
 
-- An interface that allows the user to grab tweet information from the database, tweets from twitter, and add new companies and powertrain alternatives to the database, and all while providing an easy way for the user to use any of the functions that we make.
-
-- output of csv?
-
 iv. Definitions, acronyms, and abbreviations
 
 NLTK - Natural Language Tool Kit
@@ -33,8 +29,6 @@ NLTK - Natural Language Tool Kit
 Vader -  Valence Aware Dictionary for Sentiment Reasoning
 
 NLP - Natural Language Processing
-
-
 
 
 v. References
@@ -47,6 +41,10 @@ v. References
  https://ojs.aaai.org/index.php/ICWSM/article/view/14550
 
 vi. Overview
+
+The system allows the user to grab tweets, analyze them and store the results so that donaldson can see what kind of market trends their clients are leaning towards.
+
+
 
 ***
 ### 2. Current System

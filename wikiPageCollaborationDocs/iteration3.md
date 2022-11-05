@@ -92,8 +92,11 @@ The current system that we have employed is one that has an interaction with twe
      - Interface
        
        Questions about an interface lead to us being told no interface was necessary. We may implement a rudimentary one for example purposes, but the goal of the project appears to be the data that comes out of it, with the code being their to help explain the results if requested. As such, the code itself may not need to be usable as-is.
-       
+
      - Packaging
+
+       The code itself in a directory structure that Python can interpret, along with a list of necessary requirements to install.
+
      - Legal
    - System Models
 

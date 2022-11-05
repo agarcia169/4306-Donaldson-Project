@@ -129,6 +129,8 @@ The current system that we have employed is one that has an interaction with twe
 
    - System Models
 
+    ![alt text](https://github.com/agarcia169/4306-Donaldson-Project/blob/main/images/useCaseModel3.drawio.svg, Use Case)
+
 4. ### Glossary
 NLTK - The Natural Language Toolkit is a platform used for building python programs to work with the Human Language it conatains text processing libraries for tokenization, parsing , classificaton and semantic reasoning it was orginally developed by Steven Bird, Edward Loper, and Ewan Klein for the purposes of program development and education purposes
 

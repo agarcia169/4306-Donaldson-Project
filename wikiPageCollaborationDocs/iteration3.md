@@ -124,14 +124,23 @@ The current system that we have employed is one that has an interaction with twe
 
            License is MIT.
 
-           
-
+          
 
    - System Models
    
    Use Case: 
 
-    ![alt text](https://github.com/agarcia169/4306-Donaldson-Project/blob/main/images/useCaseModel3.drawio.svg, Use Case)
+   scenarios? wtf even are these?
+
+   object model:
+
+   dynamic model: 
+
+    Use Case:
+
+    ![alt text][Use Case]
+    
+    [Use Case]: https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/useCaseModel3.drawio.png "Use Case"
 
 4. ### Glossary
 NLTK - The Natural Language Toolkit is a platform used for building python programs to work with the Human Language it conatains text processing libraries for tokenization, parsing , classificaton and semantic reasoning it was orginally developed by Steven Bird, Edward Loper, and Ewan Klein for the purposes of program development and education purposes

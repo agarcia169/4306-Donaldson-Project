@@ -13,18 +13,29 @@ ii. Scope of the system
 The system will grab tweets from twitter and store them in our database we have created. Once there are tweets in the database the user will be able to either grab more tweets or use built-in natural language processing methods to analyze tweets already in the database. The user will also be able enter in new companies and powertrain alternatives into the database to facilitate easier data processing. The user will also be able to use a custom interface to read the results of the NLP and glean data from what we have collected.
 
 iii. Objectives and success criteria of the project
-
+S
 this project has several objectives:
 
 - to allow easy tweet retrieval so that the user can seamlessly populate a database with relevant information
 
 - A slim database that is easily navigated so that there is a limited amount of wasted space
 
-- An interface that allows the user to grab tweet information from the database, tweets from twitter, and add new companies and powertrain alternatives to the database.
+- Vader Analysis of tweets so that the user can identify market sentiment of these alternative powertrains
 
-- 
+- An interface that allows the user to grab tweet information from the database, tweets from twitter, and add new companies and powertrain alternatives to the database, and all while providing an easy way for the user to use any of the functions that we make.
+
+- output of csv?
 
 iv. Definitions, acronyms, and abbreviations
+
+NLTK -
+
+Vader - 
+
+NLP - 
+
+
+
 
 v. References
 

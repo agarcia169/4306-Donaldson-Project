@@ -42,7 +42,7 @@ def updatelabels():
 		#updatebattElec_query = "UPDATE tweets SET powertrain_set = CONCAT(powertrain_set,",'battElec'") WHERE text in('battery','Lithium')"#marks tweets that have battery in them with battElec ?	
 		updatehfuelcell_query = dbConnection.query_updatehfuelcell
 		updatenatgas_query = dbConnection.query_updatenatgas
-		updatehce_query = dbConnection.query_updatehce
+		updatehce_query = dbConnection.query_updatehce  # what exactly is hce ??
 		dbCursor.execute(updatebattElec_query)
 		thisDBClient.commit()#hopefully would commit the query showing the powertrain set for those tweets
 		#update labels to show if tweet is tech related or not

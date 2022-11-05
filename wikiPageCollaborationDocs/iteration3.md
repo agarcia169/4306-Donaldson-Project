@@ -67,3 +67,10 @@ The current system that we have employed is one that has an interaction with twe
    - System Models
 
 4. ### Glossary
+NLTK - The Natural Language Toolkit is a platform used for building python programs to work with the Human Language it conatains text processing libraries for tokenization, parsing , classificaton and semantic reasoning it was orginally developed by Steven Bird, Edward Loper, and Ewan Klein for the purposes of program development and education purposes
+
+Sentiment Analysis - the process of computationally identifying and categorizing opinions expressed in a piece of text, mostly used to determine whether the writer's attitude towards a specific topic is positive, negative, or neutral
+
+
+Vader - Valence Aware Dictionary for Sentiment Reasoning is a module that is based within the intial package of NLTK and can be applied directly to unlabled text data. Vader analysis relies on a dictionary that can map lexical (relating words) to emotion intesities known as sentiment scores. which the score can be found just by adding together intensities of the sentence.
+***

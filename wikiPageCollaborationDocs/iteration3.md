@@ -1,8 +1,11 @@
 # Requirements Analysis Document (RAD)
 
 ### 1. Introduction
+----
 
-i. Purpose of the System
+###  i. Purpose of the System
+
+The system that we have currently will allow a user to select, grab and analyze tweets from either twitter or our own database that we have created to facilitate easier access to tweets and the various components of them. The database will allow users to retrieve tweets based on how they were analyzed, language, powertrain, author and many more options. The System will be able to grab large amounts of tweets directly from twitter, and then store them directly to our own database for future analysis later on. The System uses NLTK Vader analysis to analyze tweet contents and then stores the results in our database. There are functions in place that also allow for specification of tweet contents by powertrain.
 
 ii. Scope of the system
 
@@ -11,6 +14,13 @@ iii. Objectives and success criteria of the project
 iv. Definitions, acronyms, and abbreviations
 
 v. References
+
+ https://dev.mysql.com/doc/connector-python/en/connector-python-example-connecting.html
+ https://www.nltk.org/howto/sentiment.html
+ https://stackoverflow.com/questions/6829675/the-proper-method-for-making-a-db-connection-available-across-many-python-module
+ https://dev.mysql.com/doc/connector-python/en/connector-python-example-connecting.html
+ https://www.donaldson.com/en-us/
+ https://ojs.aaai.org/index.php/ICWSM/article/view/14550
 
 vi. Overview
 
@@ -28,4 +38,16 @@ vi. Overview
 
      In addition to this, we will attempt to build methods of extracting potentially useful information from the Tweets gathered, such as frequency mentioning various powertrains, how frequently those mentions occur in the context of how frequently the company tweets overall, whether the frequency is changing, etc.
 
-   - Functional requirements
+   - Functional requirements 
+
+
+
+   
+ https://dev.mysql.com/doc/connector-python/en/connector-python-example-connecting.html
+ https://www.nltk.org/howto/sentiment.html
+ https://stackoverflow.com/questions/6829675/the-proper-method-for-making-a-db-connection-available-across-many-python-module
+ https://dev.mysql.com/doc/connector-python/en/connector-python-example-connecting.html
+ https://www.donaldson.com/en-us/
+ https://ojs.aaai.org/index.php/ICWSM/article/view/14550
+
+vi. Overview

@@ -5,7 +5,15 @@
 
 ###  i. Purpose of the System
 
+which one should i use? 
+
+this:
+
 The system that we have currently will allow a user to select, grab and analyze tweets from either twitter or our own database that we have created to facilitate easier access to tweets and the various components of them. The database will allow users to retrieve tweets based on how they were analyzed, language, powertrain, author and many more options. The System will be able to grab large amounts of tweets directly from twitter, and then store them directly to our own database for future analysis later on. The System uses NLTK Vader analysis to analyze tweet contents and then stores the results in our database. There are functions in place that also allow for specification of tweet contents by powertrain.
+
+or this:
+
+This Project is for The company Donaldson Filtration which is a global company that creates filters for hundreds and thousands of different products. Donaldson is looking to the future with this project and would like us to create a system to analyze tweets that their competitors are creating for mentions of different powertrain alternatives to combustion engines. In doing this donaldson is looking to the future and seeking to be well prepared for any new emerging technologies so that they can effectively corner the market.
 
 ii. Scope of the system
 
@@ -40,7 +48,4 @@ vi. Overview
 
    - Functional requirements
 
-     - Retrieve Tweets from Twitter.
-     - Save Tweets to SQL database.
-     - Save VADER analysis of Tweets to database.
-     - 
+

@@ -5,19 +5,24 @@
 
 ###  i. Purpose of the System
 
-which one should i use? 
 
-this:
-
-The system that we have currently will allow a user to select, grab and analyze tweets from either twitter or our own database that we have created to facilitate easier access to tweets and the various components of them. The database will allow users to retrieve tweets based on how they were analyzed, language, powertrain, author and many more options. The System will be able to grab large amounts of tweets directly from twitter, and then store them directly to our own database for future analysis later on. The System uses NLTK Vader analysis to analyze tweet contents and then stores the results in our database. There are functions in place that also allow for specification of tweet contents by powertrain.
-
-or this:
-
-This Project is for The company Donaldson Filtration which is a global company that creates filters for hundreds and thousands of different products. Donaldson is looking to the future with this project and would like us to create a system to analyze tweets that their competitors are creating for mentions of different powertrain alternatives to combustion engines. In doing this donaldson is looking to the future and seeking to be well prepared for any new emerging technologies so that they can effectively corner the market.
+This Project is for The company Donaldson Filtration which is a global company that creates filters for hundreds and thousands of different products. Donaldson is looking to the future with this project and would like us to create a system to analyze tweets that their clients are creating for mentions of different powertrain alternatives to combustion engines. In doing this donaldson is looking to the future and seeking to be well prepared for any new emerging technologies so that they can effectively corner the market.
 
 ii. Scope of the system
 
+The system will grab tweets from twitter and store them in our database we have created. Once there are tweets in the database the user will be able to either grab more tweets or use built-in natural language processing methods to analyze tweets already in the database. The user will also be able enter in new companies and powertrain alternatives into the database to facilitate easier data processing. The user will also be able to use a custom interface to read the results of the NLP and glean data from what we have collected.
+
 iii. Objectives and success criteria of the project
+
+this project has several objectives:
+
+- to allow easy tweet retrieval so that the user can seamlessly populate a database with relevant information
+
+- A slim database that is easily navigated so that there is a limited amount of wasted space
+
+- An interface that allows the user to grab tweet information from the database, tweets from twitter, and add new companies and powertrain alternatives to the database.
+
+- 
 
 iv. Definitions, acronyms, and abbreviations
 

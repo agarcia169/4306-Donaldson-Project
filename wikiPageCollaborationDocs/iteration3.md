@@ -28,11 +28,11 @@ this project has several objectives:
 
 iv. Definitions, acronyms, and abbreviations
 
-NLTK -
+NLTK - Natural Language Tool Kit
 
-Vader - 
+Vader -  Valence Aware Dictionary for Sentiment Reasoning
 
-NLP - 
+NLP - Natural Language Processing
 
 
 

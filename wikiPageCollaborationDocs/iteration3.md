@@ -38,16 +38,9 @@ vi. Overview
 
      In addition to this, we will attempt to build methods of extracting potentially useful information from the Tweets gathered, such as frequency mentioning various powertrains, how frequently those mentions occur in the context of how frequently the company tweets overall, whether the frequency is changing, etc.
 
-   - Functional requirements 
+   - Functional requirements
 
-
-
-   
- https://dev.mysql.com/doc/connector-python/en/connector-python-example-connecting.html
- https://www.nltk.org/howto/sentiment.html
- https://stackoverflow.com/questions/6829675/the-proper-method-for-making-a-db-connection-available-across-many-python-module
- https://dev.mysql.com/doc/connector-python/en/connector-python-example-connecting.html
- https://www.donaldson.com/en-us/
- https://ojs.aaai.org/index.php/ICWSM/article/view/14550
-
-vi. Overview
+     - Retrieve Tweets from Twitter.
+     - Save Tweets to SQL database.
+     - Save VADER analysis of Tweets to database.
+     - 

@@ -61,9 +61,25 @@ The current system that we have employed is one that has an interaction with twe
    
    - Non functional requirements
      - Usability
+     
+       Questions about an interface lead to us being told no interface was necessary. We may implement a rudimentary one for example purposes, but the goal of the project appears to be the data that comes out of it, with the code being their to help explain the results if requested. As such, the code itself may not need to be usable as-is.
+
      - Reliability
+
+       Don't mark Tweets with incorrect data.
+
      - Performance
+       
+       No specifics have been mentioned, and all focus has been on the data and contents of the data, rather than code. Donaldson may not expect to ever use the actual code, nor integrate it with their systems.
+
+       However, it should be comfortably performant. Don't take 40 minutes to update values if it can be done in 20 seconds, for example.
+
      - Supportability
+       
+       No specifics have been mentioned, other than a brief mention by one member of Donaldson that they use MongoDB in response to us mentioning we were learning MySQL. 
+
+       No supportability requirements specified, but we will make an attempt to code it in a way that is modular enough that, if desired, someone could replace a small module with a module of their own design (if needed) to switch from, say, MySQL support to MongoDB support.
+
      - Implementation
      - Interface
      - Packaging

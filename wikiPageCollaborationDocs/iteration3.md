@@ -128,6 +128,8 @@ The current system that we have employed is one that has an interaction with twe
 
 
    - System Models
+   
+   Use Case: 
 
     ![alt text](https://github.com/agarcia169/4306-Donaldson-Project/blob/main/images/useCaseModel3.drawio.svg, Use Case)
 

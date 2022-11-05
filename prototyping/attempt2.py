@@ -38,77 +38,82 @@ from PowertrainManagement import LabelTweetsWithTechs
 from NLTK.VaderAnalysis import TweetAnalysis
 import time
 
-# RawConfigParser is used because certain keys from Twitter use % signs,
-# which the regular parser interprets non-literally.
-config = RawConfigParser()
+def main():
 
-server_file_location = '../config/server.cfg'
-# An example file for server.cfg. Note the lack of spaces between = signs.
-# [mysql]
-# username=example
-# password=example
-# host=example
-# database=example
-# port=example
-api_key_file_location = '../config/api_keys.cfg'
-# An example file for api_keys.cfg. Note the lack of = signs.
-# [twitter]
-# API_KEY=example
-# API_KEY_SECRET=example
-# BEARER_TOKEN=example
+	# RawConfigParser is used because certain keys from Twitter use % signs,
+	# which the regular parser interprets non-literally.
+	config = RawConfigParser()
 
-if (config.read(server_file_location) == []):
-    raise IOError("Could not open " + abspath(server_file_location))
-if (config.read(api_key_file_location) == []):
-    raise IOError("Could not open " + abspath(api_key_file_location))
+	server_file_location = '../config/server.cfg'
+	# An example file for server.cfg. Note the lack of spaces between = signs.
+	# [mysql]
+	# username=example
+	# password=example
+	# host=example
+	# database=example
+	# port=example
+	api_key_file_location = '../config/api_keys.cfg'
+	# An example file for api_keys.cfg. Note the lack of = signs.
+	# [twitter]
+	# API_KEY=example
+	# API_KEY_SECRET=example
+	# BEARER_TOKEN=example
 
-API_CONFIG_SECTION = 'twitter'
-API_BEARER_TOKEN_VARIABLE_NAME = 'bearer_token'
+	if (config.read(server_file_location) == []):
+		raise IOError("Could not open " + abspath(server_file_location))
+	if (config.read(api_key_file_location) == []):
+		raise IOError("Could not open " + abspath(api_key_file_location))
 
-BEARER_TOKEN = config.get(
-    API_CONFIG_SECTION, API_BEARER_TOKEN_VARIABLE_NAME, fallback=None)
-dbUser = config.get('mysql', 'username', fallback=None)
-DATABASE = config.get('mysql', 'database')
-HOST = config.get('mysql', 'host')
-dbPassword = config.get('mysql', 'password', fallback=None)
-PORT = config.get('mysql', 'port')
+	API_CONFIG_SECTION = 'twitter'
+	API_BEARER_TOKEN_VARIABLE_NAME = 'bearer_token'
 
-if (BEARER_TOKEN == None):
-    print("Error: " + API_BEARER_TOKEN_VARIABLE_NAME +
-          " is missing from [" + API_CONFIG_SECTION + "] section in " + abspath(api_key_file_location))
-    exit()  # Some code below is from this website:
-# https://dev.mysql.com/doc/connector-python/en/connector-python-example-connecting.html
+	BEARER_TOKEN = config.get(
+		API_CONFIG_SECTION, API_BEARER_TOKEN_VARIABLE_NAME, fallback=None)
+	dbUser = config.get('mysql', 'username', fallback=None)
+	DATABASE = config.get('mysql', 'database')
+	HOST = config.get('mysql', 'host')
+	dbPassword = config.get('mysql', 'password', fallback=None)
+	PORT = config.get('mysql', 'port')
 
-if (dbUser == None):
-    dbUser = input("Please enter your database username:")
+	if (BEARER_TOKEN == None):
+		print("Error: " + API_BEARER_TOKEN_VARIABLE_NAME +
+			" is missing from [" + API_CONFIG_SECTION + "] section in " + abspath(api_key_file_location))
+		exit()  # Some code below is from this website:
+	# https://dev.mysql.com/doc/connector-python/en/connector-python-example-connecting.html
 
-if (dbPassword == None):
-    dbPassword = getpass(
-        "Please enter the database password for your account:")
+	if (dbUser == None):
+		dbUser = input("Please enter your database username:")
 
-# Once you've called these once with these parameters, you can call them from any module
-# anywhere without the parameters at all.
-dbConnection.get_db_connection(
-    dbUser=dbUser, dbPassword=dbPassword, hostname=HOST, port_num=PORT, database_name=DATABASE)
-twitterConnection.get_twitter_connection(bearer_token=BEARER_TOKEN)
+	if (dbPassword == None):
+		dbPassword = getpass(
+			"Please enter the database password for your account:")
 
-# ManageHandles.add_handle_to_database('volvocars')
-# print(ManageHandles.get_twitter_handle(342772500))
-# print(ManageHandles.get_twitter_id('volvocars'))
-# AddTweetsToDB.retrieve_older_tweets(342772500)
-if (False):  # Set to true and replace the name for `theCompany` to add that company to the database and grab some of their recent tweets.
-    theCompany = 'CheryAutoCo'
+	# Once you've called these once with these parameters, you can call them from any module
+	# anywhere without the parameters at all.
+	dbConnection.get_db_connection(
+		dbUser=dbUser, dbPassword=dbPassword, hostname=HOST, port_num=PORT, database_name=DATABASE)
+	twitterConnection.get_twitter_connection(bearer_token=BEARER_TOKEN)
 
-    didItWork, theCompanyID = ManageHandles.add_handle_to_database(theCompany)
-    # theCompanyID = ManageHandles.get_twitter_id(theCompany)[0]
-    if (didItWork):
-        AddTweetsToDB.retrieve_many_tweets(theCompanyID)
+	# ManageHandles.add_handle_to_database('volvocars')
+	# print(ManageHandles.get_twitter_handle(342772500))
+	# print(ManageHandles.get_twitter_id('volvocars'))
+	# AddTweetsToDB.retrieve_older_tweets(342772500)
+	if (False):  # Set to true and replace the name for `theCompany` to add that company to the database and grab some of their recent tweets.
+		theCompany = 'CheryAutoCo'
 
-if (False):
-    # LabelTweetsWithTechs.evaluate_new_tweets()
+		didItWork, theCompanyID = ManageHandles.add_handle_to_database(theCompany)
+		# theCompanyID = ManageHandles.get_twitter_id(theCompany)[0]
+		if (didItWork):
+			AddTweetsToDB.retrieve_many_tweets(theCompanyID)
 
-    LabelTweetsWithTechs.updatelabels()
-if (True):
-    start2 = time.perf_counter()
-    TweetAnalysis.analyze_analyzed_tweets_in_DB()
-    print(time.perf_counter()-start2)
+	if (False):
+		# LabelTweetsWithTechs.evaluate_new_tweets()
+
+		LabelTweetsWithTechs.updatelabels()
+	if (True):
+		start2 = time.perf_counter()
+		TweetAnalysis.analyze_analyzed_tweets_in_DB()
+		print(time.perf_counter()-start2)
+
+if __name__ == "__main__":
+	main()

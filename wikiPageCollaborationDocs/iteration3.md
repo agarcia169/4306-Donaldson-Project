@@ -101,13 +101,23 @@ The current system that we have employed is one that has an interaction with twe
        
        - Open Source:
     
-         NLTK: https://github.com/nltk/nltk/wiki/FAQ
+         - NLTK: https://github.com/nltk/nltk/wiki/FAQ
          
-         Source code is Apache 2.0.
+           Source code is Apache 2.0.
 
-         Documentation is Creative Commons Attribution-Noncommercial-No Derivative Works 3.0 United States license
+           Documentation (that we are not distributing) is Creative Commons   Attribution-Noncommercial-No Derivative Works 3.0 United States   license
 
-         
+           - VADER (integrated into NLTK): https://github.com/cjhutto/vaderSentiment
+           
+             License is MIT.
+        
+         - TweePy: https://github.com/tweepy/tweepy
+
+           License is MIT.
+
+           
+
+
    - System Models
 
 4. ### Glossary

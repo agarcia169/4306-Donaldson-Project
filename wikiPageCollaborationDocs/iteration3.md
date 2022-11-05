@@ -53,7 +53,11 @@ The current system that we have employed is one that has an interaction with twe
      - Retrieve Tweets from Twitter.
      - Save Tweets to SQL database.
      - Save VADER analysis of Tweets to database.
-     - 
+     - Identify mentions of alternative powertrains in Tweets and mark Tweets as such in database
+     - (New) Also grab Retweets by the company and see if there is anything to be analyzed about them.
+     - (New) Also grab Replies by company, see if there is anything to be analyzed about them.
+     - Output CSV of requested data
+     - Output graphs showing some of the above analyses where possible
    
    - Non functional requirements
      - Usability

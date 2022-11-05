@@ -4,12 +4,12 @@
 from SharedConnectors import dbConnection
 
 
-def find_all techs_by_company():
-    thisDBClient = dbConnection.get_db_connection()
-    with thisDBClient.cursor() as dbCursor
+# def find_all techs_by_company():
+#     thisDBClient = dbConnection.get_db_connection()
+#     with thisDBClient.cursor() as dbCursor
 
 
-def find_all_companys_with_tech():
+# def find_all_companys_with_tech():
 
 
-def get_all_companies_techs():
+# def get_all_companies_techs():

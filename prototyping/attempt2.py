@@ -108,7 +108,7 @@ def main():
 		print(time.perf_counter()-start2)
 	if (True):
 		start2 = time.perf_counter()
-		dumpy()
+		CSVOutput.dumpy()
 
 if __name__ == "__main__":
 	main()

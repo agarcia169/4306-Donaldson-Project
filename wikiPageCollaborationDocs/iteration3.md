@@ -152,7 +152,9 @@
 
    ~~scenarios? wtf even are these?~~ "User Stories" go here. See slides from Ch 3.
 
-   object model:
+   Object model:
+
+   ![Database Object Model](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/iteration3/database-Page-2.drawio.png)
 
     Dynamic model:  
 

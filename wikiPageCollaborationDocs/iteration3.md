@@ -169,3 +169,8 @@ Sentiment Analysis - the process of computationally identifying and categorizing
 
 Vader - Valence Aware Dictionary for Sentiment Reasoning is a module that is based within the intial package of NLTK and can be applied directly to unlabled text data. Vader analysis relies on a dictionary that can map lexical (relating words) to emotion intesities known as sentiment scores. which the score can be found just by adding together intensities of the sentence.
 ***
+
+# First Implementation 
+
+
+    Give a summary of code developed for the first implementation. List the developed code structure (with subsystems), the names of the programs, and their functionality briefly explained (with links to the related program code on GitHub).

@@ -84,17 +84,21 @@
    - Non functional requirements
      - Usability
      
-       
+       The only usability requirements that have been mentioned by Donaldson is that they would like the data, and have mentioned CSV format once, briefly, as well as a mention of MongoDB, which another Donaldson contact then shot down due to a lack of familiarity on our part with databases. 
+
+       They seem utterly uninterested in using the code we provide, instead being more interested in the data it produces. The code may end up being nothing more than a reference point for them to identify how we obtained a specific result in the data we provide them. 
+
+       In our own opinion, we would likely prefer to have a system that is at a minimum useable enough that you can get data out through a text-based menu, but please refer to the Interface section below.
 
      - Reliability
 
-       Don't mark Tweets with incorrect data.
+       All systems involved either rely on local desktop hardware, remote databases, and Twitter. So long as their desktop functions, Twitter still exists, and the user can host a database of some kind, that's all that is required.
 
      - Performance
        
        No specifics have been mentioned, and all focus has been on the data and contents of the data, rather than code. Donaldson may not expect to ever use the actual code, nor integrate it with their systems.
 
-       However, it should be comfortably performant. Don't take 40 minutes to update values if it can be done in 20 seconds, for example.
+       However, we will need it to be comfortably performant, so that we can actually obtain and produce data before the deadline. Don't take 40 minutes to update values if it can be done in 20 seconds, for example.
 
      - Supportability
        
@@ -104,11 +108,11 @@
 
      - Implementation
        
-       As VADER, the NLTK package VADER analysis is built into, Tweepy (our Twitter API interface), and the MySQL Connector package are all built in Python, our code will be built in Python as well.
+       As VADER (the NLTK package VADER analysis is built into), Tweepy (our Twitter API interface), and the MySQL Connector package are all built in Python, our code will need to be built in Python as well.
 
      - Interface
        
-       Questions about an interface lead to us being told no interface was necessary. We may implement a rudimentary one for example purposes, but the goal of the project appears to be the data that comes out of it, with the code being their to help explain the results if requested. As such, the code itself may not need to be usable as-is.
+       Questions about an interface lead to us being told no interface was necessary. We may implement a rudimentary one for example purposes, but the goal of the project appears to be the data that comes out of it, with the code being there to help explain the results if requested. As such, the code itself may not need to be usable by someone via a user-friendly interface.
 
      - Packaging
 
@@ -138,7 +142,7 @@
    
    Use Case: 
 
-   scenarios? wtf even are these?
+   ~~scenarios? wtf even are these?~~ "User Stories" go here. See slides from Ch 3.
 
    object model:
 

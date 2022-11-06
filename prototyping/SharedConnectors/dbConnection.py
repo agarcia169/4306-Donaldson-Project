@@ -50,6 +50,23 @@ def get_db_connection(**kwargs: str) -> mysql.connector.MySQLConnection:
 # List of stuff accessible to importers of this module. Just in case
 __all__ = ["get_db_connection"]
 
+
+#generates a timestamped copy of the tweets table with headers
+query_csv_creation = """SET @TS = DATE_FORMAT(NOW(),'_%Y_%m_%d_%H_%i_%s');
+
+SET @FOLDER = 'c:/tmp/';
+SET @PREFIX = 'TweetsTableAt';
+SET @EXT    = '.csv';
+
+SET @CMD = CONCAT("(SELECT 'id','author_id','text','created_at','lang','conversation_id','powertrain_set','VADERcompound','VADERneg','VADERneu','VADERpos') UNION SELECT * FROM tweets WHERE VADERcompound IS NOT NULL INTO OUTFILE '",@FOLDER,@PREFIX,@TS,@EXT,
+				   "' FIELDS ENCLOSED BY '\"' TERMINATED BY ';' ESCAPED BY '\"'",
+				   "  LINES TERMINATED BY '\r\n';");
+
+PREPARE statement FROM @CMD;
+
+EXECUTE statement;"""
+
+
 # VaderAnalysis.TweetAnalysis
 query_TweetsToAnalyze = """SELECT 
     *

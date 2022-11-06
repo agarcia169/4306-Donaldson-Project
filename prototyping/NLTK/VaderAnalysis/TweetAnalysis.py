@@ -10,8 +10,6 @@ from nltk import tokenize
 def analyze_analyzed_tweets_in_DB():
     TweetsToAnalyze = dbConnection.query_TweetsToAnalyze
     thisDBClient = dbConnection.get_db_connection()
-    # UNUSED var
-    #query_TweetList = "SELECT * FROM tweets WHERE id = (%s)"
     with thisDBClient.cursor() as dbCursor:
         dbCursor.execute(TweetsToAnalyze)
         TweetList = dbCursor.fetchall()

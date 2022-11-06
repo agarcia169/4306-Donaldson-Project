@@ -25,8 +25,10 @@ from TweetManagement import AddTweetsToDB
 from SharedConnectors import twitterConnection
 from SharedConnectors import dbConnection
 from PowertrainManagement import LabelTweetsWithTechs
+from ReportingUI import CSVOutput
 from NLTK.VaderAnalysis import TweetAnalysis
 import time
+
 
 def main():
 
@@ -104,6 +106,9 @@ def main():
 		start2 = time.perf_counter()
 		TweetAnalysis.analyze_analyzed_tweets_in_DB()
 		print(time.perf_counter()-start2)
+	if (True):
+		start2 = time.perf_counter()
+		dumpy()
 
 if __name__ == "__main__":
 	main()

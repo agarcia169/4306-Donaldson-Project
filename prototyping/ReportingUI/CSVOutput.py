@@ -1,6 +1,6 @@
 from SharedConnectors import dbConnection
   
-def dumpy ():
+def dumpy():
     thisDBClient = dbConnection.get_db_connection()
     query_create_csv = dbConnection.query_csv_creation
     with thisDBClient.cursor() as dbCursor:

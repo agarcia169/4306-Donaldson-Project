@@ -121,6 +121,9 @@
 
        If those license terms are unacceptable, they have enough of our code to be able to write their own modules to replace the ones our code depends on.
 
+       We must cite anywhere anything VADER-related appears: 
+       > Hutto, C.J. & Gilbert, E.E. (2014). VADER: A Parsimonious Rule-based Model for Sentiment Analysis of Social Media Text. Eighth International Conference on Weblogs and Social Media (ICWSM-14). Ann Arbor, MI, June 2014.
+
        For the sake of thoroughness, however:
 
        - Open Source:

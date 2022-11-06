@@ -3,11 +3,11 @@
 1. ### Introduction
    - Purpose of the System
 
-     This Project is for The company Donaldson Filtration which is a global company that creates filters for hundreds and thousands of different products. Donaldson is looking to the future with this project and would like us to create a system to analyze tweets that their clients are creating for mentions of different power-train alternatives to combustion engines. In doing this Donaldson is looking to the future and seeking to be well prepared for any new emerging technologies so that they can effectively corner the market.
+     This Project is for The company Donaldson Filtration which is a global company that creates filters for hundreds and thousands of different products. Donaldson is looking to the future with this project and would like us to create a system to analyze Tweets that their clients are creating for mentions of different power-train alternatives to combustion engines. In doing this Donaldson is looking to the future and seeking to be well prepared for any new emerging technologies so that they can effectively corner the market.
 
    - Scope of the system
 
-     The system will grab tweets from twitter and store them in our database we have created. Once there are tweets in the database the user will be able to either grab more tweets or use built-in natural language processing methods to analyze tweets already in the database. The user will also be able enter in new companies and power-train alternatives into the database to enable more customized data processing.
+     The system will grab Tweets from twitter and store them in our database we have created. Once there are Tweets in the database the user will be able to either grab more Tweets or use built-in natural language processing methods to analyze Tweets already in the database. The user will also be able enter in new companies and power-train alternatives into the database to enable more customized data processing.
 
    - Objectives and success criteria of the project
 
@@ -17,7 +17,7 @@
 
      - A slim database that is easily navigated so that there is a limited amount of wasted space
 
-     - Vader Analysis of tweets so that the user can identify market sentiment of these alternative power-trains
+     - Vader Analysis of Tweets so that the user can identify market sentiment of these alternative power-trains
 
    - Definitions, acronyms, and abbreviations:
 
@@ -43,16 +43,16 @@
 
    - Overview
 
-     The system allows the user to grab tweets, analyze them and store the results so that Donaldson can see what kind of market trends their clients are leaning towards.
+     The system allows the user to grab Tweets, analyze them and store the results so that Donaldson can see what kind of market trends their clients are leaning towards.
 
 ***
 2. ### Current System
 
-   ~~The current system that we have employed is one that has an interaction with Tweepy in order to pull Tweets from Twitter. It then puts those Tweets that it has pulled into a database. This database contains different labels for different types of tweets and the typical information of those tweets (date,tweetID,authorID,etc).~~
+   ~~The current system that we have employed is one that has an interaction with Tweepy in order to pull Tweets from Twitter. It then puts those Tweets that it has pulled into a database. This database contains different labels for different types of Tweets and the typical information of those Tweets (date,tweetID,authorID,etc).~~
    
    ~~After these Tweets have been entered into the database another function will run through the current Tweets and perform a type of sentiment analysis on the individual Tweets. The function then gives scores to determine whether the Tweet was an overall positive one or a negative one.~~
    
-   ~~There is a function that goes through the text of the tweets within the database. If it is to recognize a keyword it then puts a label of what power-train set that user could possibly be tweeting about which would make it much easier for the Donaldson to see what their companies that they like are talking about and maybe even working on.~~
+   ~~There is a function that goes through the text of the Tweets within the database. If it is to recognize a keyword it then puts a label of what power-train set that user could possibly be tweeting about which would make it much easier for the Donaldson to see what their companies that they like are talking about and maybe even working on.~~
 
    ### Existing examples in Dr. Doğdu's examples include systems that exist prior to the proposed system being developed. For example, no contact tracing existing for COVID prior to contact tracing being developed. 
 
@@ -65,7 +65,7 @@
 
      In addition to this tone analysis, we will also attempt to flag any tweet that may potentially be about a particular alternative power-train, for any analysis that might be done on it.
 
-     In addition to this, we will attempt to build methods of extracting potentially useful information from the Tweets gathered, such as frequency mentioning various power-trains, how frequently those mentions occur in the context of how frequently the company tweets overall, whether the frequency is changing, etc.
+     In addition to this, we will attempt to build methods of extracting potentially useful information from the Tweets gathered, such as frequency mentioning various power-trains, how frequently those mentions occur in the context of how frequently the company Tweets overall, whether the frequency is changing, etc.
 
    - Functional requirements
 
@@ -205,7 +205,7 @@ Give a summary of code developed for the first implementation. List the develope
 
   1. LabelTweetsWithTechs:
 
-                          evaluate_new_tweets(): checks whether new tweets in the database have had VADER analysis
+                          evaluate_new_tweets(): checks whether new Tweets in the database have had VADER analysis
 
                           updatelabels(): updates database entries to reflect what power-train mentions if any are present
 
@@ -214,7 +214,7 @@ Give a summary of code developed for the first implementation. List the develope
 
   1. AddTweetsToDB:
 
-                          add_tweet_to_db(): checks whether new tweets in the database have had VADER 
+                          add_tweet_to_db(): checks whether new Tweets in the database have had VADER 
 
                           retrieve_recent_tweets():
 
@@ -228,7 +228,7 @@ Give a summary of code developed for the first implementation. List the develope
 
   1. TweetAnalysis: 
 
-                          analyze_analyzed_tweets_in_DB(): analyzes all tweets in database and then for any 
+                          analyze_analyzed_tweets_in_DB(): analyzes all Tweets in database and then for any 
                           that don't analyze them and store the results in the database
 
 

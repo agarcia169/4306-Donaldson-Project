@@ -192,11 +192,14 @@
 
   1. dbConnection: 
   
-                          get_db_connection(): Establishes an immutable connection to the DB server. Once set (with the relevant fields) it can not be changed.
+                          get_db_connection(): Establishes an immutable connection to the DB server. 
+                          Once set (with the relevant fields) it can not be changed.
 
   2. twitterConnection: 
 
-                          get_twitter_connection(): Called with a Twitter Bearer Token ONE TIME ONLY to initialize a connection to twitter. Thereafter, called with no arguments to get a tweepy.Client object with that connection in it.
+                          get_twitter_connection(): Called with a Twitter Bearer Token ONE TIME ONLY 
+                          to initialize a connection to twitter. Thereafter, called with no arguments 
+                          to get a tweepy.Client object with that connection in it.
 
 ## PowertrainManagement - https://github.com/agarcia169/4306-Donaldson-Project/tree/main/prototyping/PowertrainManagement
 
@@ -225,6 +228,7 @@
 
   1. TweetAnalysis: 
 
-                          analyze_analyzed_tweets_in_DB(): analyzes all tweets in database and then for any that don't analyze them and store the results in the database
+                          analyze_analyzed_tweets_in_DB(): analyzes all tweets in database and then for any 
+                          that don't analyze them and store the results in the database
 
 

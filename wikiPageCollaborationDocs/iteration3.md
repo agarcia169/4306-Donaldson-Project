@@ -3,11 +3,11 @@
 1. ### Introduction
    - Purpose of the System
 
-     This Project is for The company Donaldson Filtration which is a global company that creates filters for hundreds and thousands of different products. Donaldson is looking to the future with this project and would like us to create a system to analyze tweets that their clients are creating for mentions of different powertrain alternatives to combustion engines. In doing this donaldson is looking to the future and seeking to be well prepared for any new emerging technologies so that they can effectively corner the market.
+     This Project is for The company Donaldson Filtration which is a global company that creates filters for hundreds and thousands of different products. Donaldson is looking to the future with this project and would like us to create a system to analyze tweets that their clients are creating for mentions of different power-train alternatives to combustion engines. In doing this Donaldson is looking to the future and seeking to be well prepared for any new emerging technologies so that they can effectively corner the market.
 
    - Scope of the system
 
-     The system will grab tweets from twitter and store them in our database we have created. Once there are tweets in the database the user will be able to either grab more tweets or use built-in natural language processing methods to analyze tweets already in the database. The user will also be able enter in new companies and powertrain alternatives into the database to enable more customized data processing.
+     The system will grab tweets from twitter and store them in our database we have created. Once there are tweets in the database the user will be able to either grab more tweets or use built-in natural language processing methods to analyze tweets already in the database. The user will also be able enter in new companies and power-train alternatives into the database to enable more customized data processing.
 
    - Objectives and success criteria of the project
 
@@ -17,7 +17,7 @@
 
      - A slim database that is easily navigated so that there is a limited amount of wasted space
 
-     - Vader Analysis of tweets so that the user can identify market sentiment of these alternative powertrains
+     - Vader Analysis of tweets so that the user can identify market sentiment of these alternative power-trains
 
    - Definitions, acronyms, and abbreviations:
 
@@ -37,24 +37,24 @@
 
       https://dev.mysql.com/doc/connector-python/en/connector-python-example-connecting.html
       
-      https://www.donaldson.com/en-us/
+      https://www.Donaldson.com/en-us/
       
       https://ojs.aaai.org/index.php/ICWSM/article/view/14550
 
    - Overview
 
-     The system allows the user to grab tweets, analyze them and store the results so that donaldson can see what kind of market trends their clients are leaning towards.
+     The system allows the user to grab tweets, analyze them and store the results so that Donaldson can see what kind of market trends their clients are leaning towards.
 
 ***
 2. ### Current System
 
-   ~~The current system that we have employed is one that has an interaction with tweepy in order to pull Tweets from Twitter. It then puts those Tweets that it has pulled into a database. This database contains different labels for different types of tweets and the typical information of those tweets (date,tweetID,authorID,etc).~~
+   ~~The current system that we have employed is one that has an interaction with Tweepy in order to pull Tweets from Twitter. It then puts those Tweets that it has pulled into a database. This database contains different labels for different types of tweets and the typical information of those tweets (date,tweetID,authorID,etc).~~
    
-   ~~After these Tweets have been entered into the database another function will run through the current Tweets and perfom a type of sentiment analysis on the individual Tweets. The function then gives scores to determine whether the Tweet was an overall positive one or a negative one.~~
+   ~~After these Tweets have been entered into the database another function will run through the current Tweets and perform a type of sentiment analysis on the individual Tweets. The function then gives scores to determine whether the Tweet was an overall positive one or a negative one.~~
    
-   ~~There is a function that goes through the text of the tweets within the database. If it is to recognize a keyword it then puts a label of what powertrain set that user could possibly be tweeting about which would make it much easier for the Donaldson to see what their companies that they like are talking about and maybe even working on.~~
+   ~~There is a function that goes through the text of the tweets within the database. If it is to recognize a keyword it then puts a label of what power-train set that user could possibly be tweeting about which would make it much easier for the Donaldson to see what their companies that they like are talking about and maybe even working on.~~
 
-   ### Existing examples in Dodgu's examples include systems that exist prior to the propsed system being developed. For example, no contact tracing existing for COVID prior to contact tracing being developed. 
+   ### Existing examples in Dr. Doğdu's examples include systems that exist prior to the proposed system being developed. For example, no contact tracing existing for COVID prior to contact tracing being developed. 
 
 ***
 3. ### Proposed System
@@ -63,16 +63,16 @@
 
      We will pull down Tweets from the specified companies, store them in a database. We will then use VADER analysis to rate the Tweets according to the scores previously requested by Donaldson Company (Positive/Neutral/Negative/Compound) and store those values alongside the Tweets in question.
 
-     In addition to this tone analysis, we will also attempt to flag any tweet that may potentially be about a particular alternative powertrain, for any analysis that might be done on it.
+     In addition to this tone analysis, we will also attempt to flag any tweet that may potentially be about a particular alternative power-train, for any analysis that might be done on it.
 
-     In addition to this, we will attempt to build methods of extracting potentially useful information from the Tweets gathered, such as frequency mentioning various powertrains, how frequently those mentions occur in the context of how frequently the company tweets overall, whether the frequency is changing, etc.
+     In addition to this, we will attempt to build methods of extracting potentially useful information from the Tweets gathered, such as frequency mentioning various power-trains, how frequently those mentions occur in the context of how frequently the company tweets overall, whether the frequency is changing, etc.
 
    - Functional requirements
 
      - Retrieve Tweets from Twitter.
      - Save Tweets to SQL database.
      - Save VADER analysis of Tweets to database.
-     - Identify mentions of alternative powertrains in Tweets and mark Tweets as such in database
+     - Identify mentions of alternative power-trains in Tweets and mark Tweets as such in database
      - (New) Also grab Retweets by the company and see if there is anything to be analyzed about them.
      - (New) Also grab Replies by company, see if there is anything to be analyzed about them.
      - Output CSV of requested data
@@ -85,7 +85,7 @@
 
        They seem utterly uninterested in using the code we provide, instead being more interested in the data we produce with it. The code may end up being nothing more than a reference point for them to identify how we obtained a specific result in the data we provide them. 
 
-       In our own opinion, we would likely prefer to have a system that is at a minimum useable enough that you can get data out through a text-based menu, but please refer to the Interface section below.
+       In our own opinion, we would likely prefer to have a system that is at a minimum usable enough that you can get data out through a text-based menu, but please refer to the Interface section below.
 
      - Reliability
 
@@ -117,7 +117,7 @@
 
      - Legal
        
-       We hope that providing package installation instructions for any dependencies our code requires avoids any concerns of "sublicensing" or whatever it might be called, where we may not have permission from NLTK/Tweepy/MySQL to distribute their software directly to Donaldson. If Donaldson then chooses to install those packages, they then choose to agree to those license terms. 
+       We hope that providing package installation instructions for any dependencies our code requires avoids any concerns of "sub-licensing" or whatever it might be called, where we may not have permission from NLTK/Tweepy/MySQL to distribute their software directly to Donaldson. If Donaldson then chooses to install those packages, they then choose to agree to those license terms. 
 
        If those license terms are unacceptable, they have enough of our code to be able to write their own modules to replace the ones our code depends on.
 
@@ -164,11 +164,11 @@
     [Use Case]: https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/useCaseModel3.drawio.png "Move this mouse or so help me god, I will unleash the fury of a thousand suns onto your entire bloodline you imbecile"
 
 4. ### Glossary
-   NLTK - The Natural Language Toolkit is a platform used for building python programs to work with the Human Language it conatains text processing libraries for tokenization, parsing , classificaton and semantic reasoning it was orginally developed by Steven Bird, Edward Loper, and Ewan Klein for the purposes of program development and education purposes
+   NLTK - The Natural Language Toolkit is a platform used for building python programs to work with the Human Language it contains text processing libraries for tokenization, parsing , classification and semantic reasoning it was originally developed by Steven Bird, Edward Loper, and Ewan Klein for the purposes of program development and education purposes
 
    Sentiment Analysis - the process of computationally identifying and categorizing opinions expressed in a piece of text, mostly used to determine whether the writer's attitude towards a specific topic is positive, negative, or neutral
 
-   Vader - Valence Aware Dictionary for Sentiment Reasoning is a module that is based within the intial package of NLTK and can be applied directly to unlabled text data. Vader analysis relies on a dictionary that can map lexical (relating words) to emotion intesities known as sentiment scores. which the score can be found just by adding together intensities of the sentence.
+   Vader - Valence Aware Dictionary for Sentiment Reasoning is a module that is based within the initial package of NLTK and can be applied directly to unlabeled text data. Vader analysis relies on a dictionary that can map lexical (relating words) to emotion intensities known as sentiment scores. which the score can be found just by adding together intensities of the sentence.
 
 # First Implementation 
 
@@ -205,16 +205,16 @@ Give a summary of code developed for the first implementation. List the develope
 
   1. LabelTweetsWithTechs:
 
-                          evaluate_new_tweets(): checks whether new tweets in the database have had vader analysis
+                          evaluate_new_tweets(): checks whether new tweets in the database have had VADER analysis
 
-                          updatelabels(): updates database entries to reflect what powertrain mentions if any are present
+                          updatelabels(): updates database entries to reflect what power-train mentions if any are present
 
 
 ## TweetManagement - https://github.com/agarcia169/4306-Donaldson-Project/tree/main/prototyping/TweetManagement
 
   1. AddTweetsToDB:
 
-                          add_tweet_to_db(): checks whether new tweets in the database have had vader 
+                          add_tweet_to_db(): checks whether new tweets in the database have had VADER 
 
                           retrieve_recent_tweets():
 

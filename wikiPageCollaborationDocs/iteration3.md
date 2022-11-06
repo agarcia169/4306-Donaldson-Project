@@ -83,7 +83,7 @@
      
        The only usability requirements that have been mentioned by Donaldson is that they would like the data, and have mentioned CSV format once, briefly, as well as a mention of MongoDB, which another Donaldson contact then shot down due to a lack of familiarity on our part with databases. 
 
-       They seem utterly uninterested in using the code we provide, instead being more interested in the data it produces. The code may end up being nothing more than a reference point for them to identify how we obtained a specific result in the data we provide them. 
+       They seem utterly uninterested in using the code we provide, instead being more interested in the data we produce with it. The code may end up being nothing more than a reference point for them to identify how we obtained a specific result in the data we provide them. 
 
        In our own opinion, we would likely prefer to have a system that is at a minimum useable enough that you can get data out through a text-based menu, but please refer to the Interface section below.
 
@@ -117,6 +117,12 @@
 
      - Legal
        
+       We hope that providing package installation instructions for any dependencies our code requires avoids any concerns of "sublicensing" or whatever it might be called, where we may not have permission from NLTK/Tweepy/MySQL to distribute their software directly to Donaldson. If Donaldson then chooses to install those packages, they then choose to agree to those license terms. 
+
+       If those license terms are unacceptable, they have enough of our code to be able to write their own modules to replace the ones our code depends on.
+
+       For the sake of thoroughness, however:
+
        - Open Source:
     
          - NLTK: https://github.com/nltk/nltk/wiki/FAQ
@@ -133,7 +139,9 @@
 
            License is MIT.
 
-          
+         - MySQL Python Connector: 
+
+           License is GNU General Public License (GPLv2) 
 
    - System Models
    
@@ -149,9 +157,6 @@
     
     [Dynamic Model]:
 
-
-
-
     Use Case:
 
     ![alt text][Use Case]
@@ -159,11 +164,11 @@
     [Use Case]: https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/useCaseModel3.drawio.png "Move this mouse or so help me god, I will unleash the fury of a thousand suns onto your entire bloodline you imbecile"
 
 4. ### Glossary
-NLTK - The Natural Language Toolkit is a platform used for building python programs to work with the Human Language it conatains text processing libraries for tokenization, parsing , classificaton and semantic reasoning it was orginally developed by Steven Bird, Edward Loper, and Ewan Klein for the purposes of program development and education purposes
+   NLTK - The Natural Language Toolkit is a platform used for building python programs to work with the Human Language it conatains text processing libraries for tokenization, parsing , classificaton and semantic reasoning it was orginally developed by Steven Bird, Edward Loper, and Ewan Klein for the purposes of program development and education purposes
 
-Sentiment Analysis - the process of computationally identifying and categorizing opinions expressed in a piece of text, mostly used to determine whether the writer's attitude towards a specific topic is positive, negative, or neutral
+   Sentiment Analysis - the process of computationally identifying and categorizing opinions expressed in a piece of text, mostly used to determine whether the writer's attitude towards a specific topic is positive, negative, or neutral
 
-Vader - Valence Aware Dictionary for Sentiment Reasoning is a module that is based within the intial package of NLTK and can be applied directly to unlabled text data. Vader analysis relies on a dictionary that can map lexical (relating words) to emotion intesities known as sentiment scores. which the score can be found just by adding together intensities of the sentence.
+   Vader - Valence Aware Dictionary for Sentiment Reasoning is a module that is based within the intial package of NLTK and can be applied directly to unlabled text data. Vader analysis relies on a dictionary that can map lexical (relating words) to emotion intesities known as sentiment scores. which the score can be found just by adding together intensities of the sentence.
 
 # First Implementation 
 

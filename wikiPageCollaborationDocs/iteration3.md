@@ -172,7 +172,7 @@
 
 # First Implementation 
 
-    Give a summary of code developed for the first implementation. List the developed code structure (with subsystems), the names of the programs, and their functionality briefly explained (with links to the related program code on GitHub).
+Give a summary of code developed for the first implementation. List the developed code structure (with subsystems), the names of the programs, and their functionality briefly explained (with links to the related program code on GitHub).
 
 ## HandleManagement - https://github.com/agarcia169/4306-Donaldson-Project/blob/main/prototyping/HandleManagement/HandleDataCollector.py
 

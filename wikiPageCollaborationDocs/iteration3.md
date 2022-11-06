@@ -48,11 +48,7 @@
 ***
 2. ### Current System
 
-   ~~The current system that we have employed is one that has an interaction with Tweepy in order to pull Tweets from Twitter. It then puts those Tweets that it has pulled into a database. This database contains different labels for different types of Tweets and the typical information of those Tweets (date,tweetID,authorID,etc).~~
-   
-   ~~After these Tweets have been entered into the database another function will run through the current Tweets and perform a type of sentiment analysis on the individual Tweets. The function then gives scores to determine whether the Tweet was an overall positive one or a negative one.~~
-   
-   ~~There is a function that goes through the text of the Tweets within the database. If it is to recognize a keyword it then puts a label of what power-train set that user could possibly be tweeting about which would make it much easier for the Donaldson to see what their companies that they like are talking about and maybe even working on.~~
+   The current system that Donaldson uses is not known to us except that the system was slow and unreliable meaning Donaldson could not get the correct data or atleast the information that they want from it which could stem from the system not having a way to seperate different types of tweets or from the system not being able to detect the tone of a message so that Donaldson could know the public consensus about how they feel on a certain topic and that is something we would like to change.
 
    ### Existing examples in Dr. Doğdu's examples include systems that exist prior to the proposed system being developed. For example, no contact tracing existing for COVID prior to contact tracing being developed. 
 

@@ -142,29 +142,39 @@
 
            License is GNU General Public License (GPLv2) 
 
+     ----
+
    - System Models
    
-   Use Case: 
+     Use Case: 
 
-   ~~scenarios? wtf even are these?~~ "User Stories" go here. See slides from Ch 3.
+     ~~scenarios? wtf even are these?~~ "User Stories" go here. See slides from Ch 3.
 
-   Object models:
+     Object models:
 
      - Database:
 
        ![Database Object Model](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/iteration3/database-Page-2.drawio.png)
 
+     ----
+
      - Code:
 
        ![Code Object Model](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/iteration2/architecture-Shrunk.drawio.png)
 
-    - Dynamic model (state):  
+     ----
+
+    - Dynamic model (state):
 
       ![Dynamic Model](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/iteration3/dynamic.drawio.png)
+
+     ----
 
     - Use Case:
 
       ![Use Case](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/useCaseModel3.drawio.png)
+
+     ----
 
 4. ### Glossary
    NLTK - The Natural Language Toolkit is a platform used for building python programs to work with the Human Language it contains text processing libraries for tokenization, parsing , classification and semantic reasoning it was originally developed by Steven Bird, Edward Loper, and Ewan Klein for the purposes of program development and education purposes

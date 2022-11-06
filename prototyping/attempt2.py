@@ -12,6 +12,11 @@
 # numpy==1.23.4
 # tweepy==4.11.0
 
+# Hutto, C.J. & Gilbert, E.E. (2014). VADER: A Parsimonious 
+# Rule-based Model for Sentiment Analysis of Social Media Text.
+# Eighth International Conference on Weblogs and Social Media 
+# (ICWSM-14). Ann Arbor, MI, June 2014.
+
 from os.path import abspath
 from getpass import getpass
 from configparser import RawConfigParser

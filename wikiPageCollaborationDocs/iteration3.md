@@ -27,7 +27,6 @@
 
      NLP - Natural Language Processing
 
-
    - References
 
       https://dev.mysql.com/doc/connector-python/en/connector-python-example-connecting.html
@@ -45,8 +44,6 @@
    - Overview
 
      The system allows the user to grab tweets, analyze them and store the results so that donaldson can see what kind of market trends their clients are leaning towards.
-
-
 
 ***
 2. ### Current System
@@ -146,7 +143,7 @@
 
    object model:
 
-    Dynamic model: 
+    Dynamic model:  
 
     ![alt text][Dynamic Model]
     
@@ -166,11 +163,8 @@ NLTK - The Natural Language Toolkit is a platform used for building python progr
 
 Sentiment Analysis - the process of computationally identifying and categorizing opinions expressed in a piece of text, mostly used to determine whether the writer's attitude towards a specific topic is positive, negative, or neutral
 
-
 Vader - Valence Aware Dictionary for Sentiment Reasoning is a module that is based within the intial package of NLTK and can be applied directly to unlabled text data. Vader analysis relies on a dictionary that can map lexical (relating words) to emotion intesities known as sentiment scores. which the score can be found just by adding together intensities of the sentence.
-***
 
 # First Implementation 
-
 
     Give a summary of code developed for the first implementation. List the developed code structure (with subsystems), the names of the programs, and their functionality briefly explained (with links to the related program code on GitHub).

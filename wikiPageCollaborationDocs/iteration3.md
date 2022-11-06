@@ -1,55 +1,63 @@
 # Requirements Analysis Document (RAD)
 
-### 1. Introduction
-----
+1. ### Introduction
+   - Purpose of the System
 
-###  i. Purpose of the System
+     This Project is for The company Donaldson Filtration which is a global company that creates filters for hundreds and thousands of different products. Donaldson is looking to the future with this project and would like us to create a system to analyze tweets that their clients are creating for mentions of different powertrain alternatives to combustion engines. In doing this donaldson is looking to the future and seeking to be well prepared for any new emerging technologies so that they can effectively corner the market.
 
+   - Scope of the system
 
-This Project is for The company Donaldson Filtration which is a global company that creates filters for hundreds and thousands of different products. Donaldson is looking to the future with this project and would like us to create a system to analyze tweets that their clients are creating for mentions of different powertrain alternatives to combustion engines. In doing this donaldson is looking to the future and seeking to be well prepared for any new emerging technologies so that they can effectively corner the market.
+     The system will grab tweets from twitter and store them in our database we have created. Once there are tweets in the database the user will be able to either grab more tweets or use built-in natural language processing methods to analyze tweets already in the database. The user will also be able enter in new companies and powertrain alternatives into the database to enable more customized data processing.
 
-ii. Scope of the system
+   - Objectives and success criteria of the project
 
-The system will grab tweets from twitter and store them in our database we have created. Once there are tweets in the database the user will be able to either grab more tweets or use built-in natural language processing methods to analyze tweets already in the database. The user will also be able enter in new companies and powertrain alternatives into the database to enable more customized data processing.
+     This project has several objectives:
 
-iii. Objectives and success criteria of the project
-S
-this project has several objectives:
+     - to allow easy tweet retrieval so that the user can seamlessly populate a database with relevant information
 
-- to allow easy tweet retrieval so that the user can seamlessly populate a database with relevant information
+     - A slim database that is easily navigated so that there is a limited amount of wasted space
 
-- A slim database that is easily navigated so that there is a limited amount of wasted space
+     - Vader Analysis of tweets so that the user can identify market sentiment of these alternative powertrains
 
-- Vader Analysis of tweets so that the user can identify market sentiment of these alternative powertrains
+   - Definitions, acronyms, and abbreviations:
 
-iv. Definitions, acronyms, and abbreviations
+     NLTK - Natural Language Tool Kit
 
-NLTK - Natural Language Tool Kit
+     Vader -  Valence Aware Dictionary for Sentiment Reasoning
 
-Vader -  Valence Aware Dictionary for Sentiment Reasoning
-
-NLP - Natural Language Processing
+     NLP - Natural Language Processing
 
 
-v. References
+   - References
 
- https://dev.mysql.com/doc/connector-python/en/connector-python-example-connecting.html
- https://www.nltk.org/howto/sentiment.html
- https://stackoverflow.com/questions/6829675/the-proper-method-for-making-a-db-connection-available-across-many-python-module
- https://dev.mysql.com/doc/connector-python/en/connector-python-example-connecting.html
- https://www.donaldson.com/en-us/
- https://ojs.aaai.org/index.php/ICWSM/article/view/14550
+      https://dev.mysql.com/doc/connector-python/en/connector-python-example-connecting.html
 
-vi. Overview
+      https://www.nltk.org/howto/sentiment.html
 
-The system allows the user to grab tweets, analyze them and store the results so that donaldson can see what kind of market trends their clients are leaning towards.
+      https://stackoverflow.com/questions/6829675/the-proper-method-for-making-a-db-connection-available-across-many-python-module
+
+      https://dev.mysql.com/doc/connector-python/en/connector-python-example-connecting.html
+      
+      https://www.donaldson.com/en-us/
+      
+      https://ojs.aaai.org/index.php/ICWSM/article/view/14550
+
+   - Overview
+
+     The system allows the user to grab tweets, analyze them and store the results so that donaldson can see what kind of market trends their clients are leaning towards.
 
 
 
 ***
-### 2. Current System
-The current system that we have employed is one that has an interaction with tweepy in order to pull tweets from twitter. It then puts those tweets that it has pulled into a database. This database contains different labels for different types of tweets and the typical information of those tweets (date,tweetID,authorID,etc). After these tweets have been entered into the database another function will run through the current tweets and perfom a type of sentiment analysis on the individual tweets. The function then gives scores to determine whether the tweet was an overall positive one or a negative one. Now in one of our final systems to be currently implemented. There is a function that goes through the text of the tweets within the database. If it is to recognize a keyword it then puts a label of what powertrain set that user could possibly be tweeting about which would make it much easier for the Donaldson to see what their companies that they like are talking about and maybe even working on.
+2. ### Current System
 
+   ~~The current system that we have employed is one that has an interaction with tweepy in order to pull Tweets from Twitter. It then puts those Tweets that it has pulled into a database. This database contains different labels for different types of tweets and the typical information of those tweets (date,tweetID,authorID,etc).~~
+   
+   ~~After these Tweets have been entered into the database another function will run through the current Tweets and perfom a type of sentiment analysis on the individual Tweets. The function then gives scores to determine whether the Tweet was an overall positive one or a negative one.~~
+   
+   ~~There is a function that goes through the text of the tweets within the database. If it is to recognize a keyword it then puts a label of what powertrain set that user could possibly be tweeting about which would make it much easier for the Donaldson to see what their companies that they like are talking about and maybe even working on.~~
+
+   ### Existing examples in Dodgu's examples include systems that exist prior to the propsed system being developed. For example, no contact tracing existing for COVID prior to contact tracing being developed. 
 
 ***
 3. ### Proposed System

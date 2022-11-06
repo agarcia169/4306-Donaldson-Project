@@ -152,15 +152,11 @@
 
     Dynamic model:  
 
-    ![alt text][Dynamic Model]
-    
-    [Dynamic Model]:
+![Dynamic Model](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/iteration3/dynamic.drawio.png)
 
-    Use Case:
+Use Case:
 
-    ![alt text][Use Case]
-    
-    [Use Case]: https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/useCaseModel3.drawio.png "Move this mouse or so help me god, I will unleash the fury of a thousand suns onto your entire bloodline you imbecile"
+![Use Case](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/useCaseModel3.drawio.png) "Move this mouse or so help me god, I will unleash the fury of a thousand suns onto your entire bloodline you imbecile"
 
 4. ### Glossary
    NLTK - The Natural Language Toolkit is a platform used for building python programs to work with the Human Language it contains text processing libraries for tokenization, parsing , classification and semantic reasoning it was originally developed by Steven Bird, Edward Loper, and Ewan Klein for the purposes of program development and education purposes

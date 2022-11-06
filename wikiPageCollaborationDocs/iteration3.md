@@ -27,7 +27,6 @@
 
      NLP - Natural Language Processing
 
-
    - References
 
       https://dev.mysql.com/doc/connector-python/en/connector-python-example-connecting.html
@@ -45,8 +44,6 @@
    - Overview
 
      The system allows the user to grab tweets, analyze them and store the results so that donaldson can see what kind of market trends their clients are leaning towards.
-
-
 
 ***
 2. ### Current System
@@ -84,17 +81,21 @@
    - Non functional requirements
      - Usability
      
-       
+       The only usability requirements that have been mentioned by Donaldson is that they would like the data, and have mentioned CSV format once, briefly, as well as a mention of MongoDB, which another Donaldson contact then shot down due to a lack of familiarity on our part with databases. 
+
+       They seem utterly uninterested in using the code we provide, instead being more interested in the data we produce with it. The code may end up being nothing more than a reference point for them to identify how we obtained a specific result in the data we provide them. 
+
+       In our own opinion, we would likely prefer to have a system that is at a minimum useable enough that you can get data out through a text-based menu, but please refer to the Interface section below.
 
      - Reliability
 
-       Don't mark Tweets with incorrect data.
+       All systems involved either rely on local desktop hardware, remote databases, and Twitter. So long as their desktop functions, Twitter still exists, and the user can host a database of some kind, that's all that is required.
 
      - Performance
        
        No specifics have been mentioned, and all focus has been on the data and contents of the data, rather than code. Donaldson may not expect to ever use the actual code, nor integrate it with their systems.
 
-       However, it should be comfortably performant. Don't take 40 minutes to update values if it can be done in 20 seconds, for example.
+       However, we will need it to be comfortably performant, so that we can actually obtain and produce data before the deadline. Don't take 40 minutes to update values if it can be done in 20 seconds, for example.
 
      - Supportability
        
@@ -104,11 +105,11 @@
 
      - Implementation
        
-       As VADER, the NLTK package VADER analysis is built into, Tweepy (our Twitter API interface), and the MySQL Connector package are all built in Python, our code will be built in Python as well.
+       As VADER (the NLTK package VADER analysis is built into), Tweepy (our Twitter API interface), and the MySQL Connector package are all built in Python, our code will need to be built in Python as well.
 
      - Interface
        
-       Questions about an interface lead to us being told no interface was necessary. We may implement a rudimentary one for example purposes, but the goal of the project appears to be the data that comes out of it, with the code being their to help explain the results if requested. As such, the code itself may not need to be usable as-is.
+       Questions about an interface lead to us being told no interface was necessary. We may implement a rudimentary one for example purposes, but the goal of the project appears to be the data that comes out of it, with the code being there to help explain the results if requested. As such, the code itself may not need to be usable by someone via a user-friendly interface.
 
      - Packaging
 
@@ -116,6 +117,12 @@
 
      - Legal
        
+       We hope that providing package installation instructions for any dependencies our code requires avoids any concerns of "sublicensing" or whatever it might be called, where we may not have permission from NLTK/Tweepy/MySQL to distribute their software directly to Donaldson. If Donaldson then chooses to install those packages, they then choose to agree to those license terms. 
+
+       If those license terms are unacceptable, they have enough of our code to be able to write their own modules to replace the ones our code depends on.
+
+       For the sake of thoroughness, however:
+
        - Open Source:
     
          - NLTK: https://github.com/nltk/nltk/wiki/FAQ
@@ -132,24 +139,23 @@
 
            License is MIT.
 
-          
+         - MySQL Python Connector: 
+
+           License is GNU General Public License (GPLv2) 
 
    - System Models
    
    Use Case: 
 
-   scenarios? wtf even are these?
+   ~~scenarios? wtf even are these?~~ "User Stories" go here. See slides from Ch 3.
 
    object model:
 
-    Dynamic model: 
+    Dynamic model:  
 
     ![alt text][Dynamic Model]
     
     [Dynamic Model]:
-
-
-
 
     Use Case:
 
@@ -158,16 +164,13 @@
     [Use Case]: https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/useCaseModel3.drawio.png "Move this mouse or so help me god, I will unleash the fury of a thousand suns onto your entire bloodline you imbecile"
 
 4. ### Glossary
-NLTK - The Natural Language Toolkit is a platform used for building python programs to work with the Human Language it conatains text processing libraries for tokenization, parsing , classificaton and semantic reasoning it was orginally developed by Steven Bird, Edward Loper, and Ewan Klein for the purposes of program development and education purposes
+   NLTK - The Natural Language Toolkit is a platform used for building python programs to work with the Human Language it conatains text processing libraries for tokenization, parsing , classificaton and semantic reasoning it was orginally developed by Steven Bird, Edward Loper, and Ewan Klein for the purposes of program development and education purposes
 
-Sentiment Analysis - the process of computationally identifying and categorizing opinions expressed in a piece of text, mostly used to determine whether the writer's attitude towards a specific topic is positive, negative, or neutral
+   Sentiment Analysis - the process of computationally identifying and categorizing opinions expressed in a piece of text, mostly used to determine whether the writer's attitude towards a specific topic is positive, negative, or neutral
 
-
-Vader - Valence Aware Dictionary for Sentiment Reasoning is a module that is based within the intial package of NLTK and can be applied directly to unlabled text data. Vader analysis relies on a dictionary that can map lexical (relating words) to emotion intesities known as sentiment scores. which the score can be found just by adding together intensities of the sentence.
-***
+   Vader - Valence Aware Dictionary for Sentiment Reasoning is a module that is based within the intial package of NLTK and can be applied directly to unlabled text data. Vader analysis relies on a dictionary that can map lexical (relating words) to emotion intesities known as sentiment scores. which the score can be found just by adding together intensities of the sentence.
 
 # First Implementation 
-
 
     Give a summary of code developed for the first implementation. List the developed code structure (with subsystems), the names of the programs, and their functionality briefly explained (with links to the related program code on GitHub).
 
@@ -175,7 +178,7 @@ Vader - Valence Aware Dictionary for Sentiment Reasoning is a module that is bas
 
   1. HandleDataCollector: 
 
-                          get_handle_from_twitter(): Retrieves a Twitter Users handle
+                        get_handle_from_twitter(): Retrieves a Twitter Users handle
 
   2. ManageHandles : 
 

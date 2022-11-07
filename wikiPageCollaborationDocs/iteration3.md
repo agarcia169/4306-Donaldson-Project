@@ -15,13 +15,13 @@ The system will grab Tweets from twitter and store them in our database we have 
 
 - A slim database that is easily navigated so that there is a limited amount of wasted space
 
-- Vader Analysis of Tweets so that the user can identify market sentiment of these alternative power-trains
+- VADER Analysis of Tweets so that the user can identify market sentiment of these alternative power-trains
 
 ### Definitions, acronyms, and abbreviations:
 
 NLTK - Natural Language Tool Kit
 
-Vader -  Valence Aware Dictionary for Sentiment Reasoning
+VADER -  Valence Aware Dictionary for Sentiment Reasoning
 
 NLP - Natural Language Processing
 
@@ -187,7 +187,7 @@ NLTK - The Natural Language Toolkit is a platform used for building python progr
 
 Sentiment Analysis - the process of computationally identifying and categorizing opinions expressed in a piece of text, mostly used to determine whether the writer's attitude towards a specific topic is positive, negative, or neutral
 
-Vader - Valence Aware Dictionary for Sentiment Reasoning is a module that is based within the initial package of NLTK and can be applied directly to unlabeled text data. Vader analysis relies on a dictionary that can map lexical (relating words) to emotion intensities known as sentiment scores. which the score can be found just by adding together intensities of the sentence.
+VADER - Valence Aware Dictionary for Sentiment Reasoning is a module that is based within the initial package of NLTK and can be applied directly to unlabeled text data. VADER analysis relies on a dictionary that can map lexical (relating words) to emotion intensities known as sentiment scores. which the score can be found just by adding together intensities of the sentence.
 
 # First Implementation 
 
@@ -254,7 +254,7 @@ retrieve_many_tweets(): retrieves multiple tweets from DB
 
 retrieve_tweets(): retrieves a tweet from the DB with a specific tweet ID
 ```
-## NLTK/Vader Analysis
+## NLTK/VADER Analysis
 https://github.com/agarcia169/4306-Donaldson-Project/tree/main/prototyping/NLTK/VaderAnalysis
 
 ### TweetAnalysis: 

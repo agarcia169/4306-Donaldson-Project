@@ -216,7 +216,7 @@ get_db_connection(): Establishes an immutable connection to the DB server.
 Once set (with the relevant fields) it can not be changed.
 ```
 
-### twitterConnection: 
+  2. twitterConnection: 
 
 ```
 get_twitter_connection(): Called with a Twitter Bearer Token ONE TIME ONLY 

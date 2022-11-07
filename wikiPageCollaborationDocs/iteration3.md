@@ -237,13 +237,13 @@ Give a summary of code developed for the first implementation. List the develope
 
                           add_tweet_to_db(): checks whether new Tweets in the database have had VADER 
 
-                          retrieve_recent_tweets():
+                          retrieve_recent_tweets(): retrieves tweet that was most recently put into DB
 
-                          retrieve_older_tweets(): 
+                          retrieve_older_tweets(): retrieves oldest tweet that was put into DB
 
-                          retrieve_many_tweets(): 
+                          retrieve_many_tweets(): retrieves multiple tweets from DB
 
-                          retrieve_tweets(): 
+                          retrieve_tweets(): retrieves a tweet from the DB with a specific tweet ID
 
 ## NLTK/Vader Analysis - https://github.com/agarcia169/4306-Donaldson-Project/tree/main/prototyping/NLTK/VaderAnalysis
 
@@ -252,4 +252,10 @@ Give a summary of code developed for the first implementation. List the develope
                           analyze_analyzed_tweets_in_DB(): analyzes all Tweets in database and then for any 
                           that don't analyze them and store the results in the database
 
+## ReportingUI - https://github.com/agarcia169/4306-Donaldson-Project/tree/main/prototyping/ReportingUI
+
+  1. CSVOutput: 
+
+                          dumpy(): goes through the MySQL database and outputs all tweets with analysis
+                          into a .csv file
 

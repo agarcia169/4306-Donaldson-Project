@@ -41,10 +41,6 @@
       
       https://ojs.aaai.org/index.php/ICWSM/article/view/14550
 
-   - Overview
-
-     The system allows the user to grab Tweets, analyze them and store the results so that Donaldson can see what kind of market trends their clients are leaning towards.
-
 ***
 2. ### Current System
 
@@ -144,7 +140,9 @@
 
    - System Models
    
-     Use Case: 
+     - Use Case:
+
+      ![Use Case](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/useCaseModel3.drawio.png)
 
      ~~scenarios? wtf even are these?~~ "User Stories" go here. See slides from Ch 3.
 
@@ -165,12 +163,6 @@
     - Dynamic model (state):
 
       ![Dynamic Model](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/iteration3/dynamic.drawio.png)
-
-     ----
-
-    - Use Case:
-
-      ![Use Case](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/useCaseModel3.drawio.png)
 
      ----
 

@@ -195,7 +195,7 @@ Vader - Valence Aware Dictionary for Sentiment Reasoning is a module that is bas
 
 1. HandleDataCollector: 
 
-                  get_handle_from_twitter(): Retrieves a Twitter Users handle
+                          get_handle_from_twitter(): Retrieves a Twitter Users handle
 
 2. ManageHandles : 
 
@@ -207,14 +207,14 @@ Vader - Valence Aware Dictionary for Sentiment Reasoning is a module that is bas
 
 ## SharedConnectors - https://github.com/agarcia169/4306-Donaldson-Project/tree/main/prototyping/SharedConnectors
 
-### dbConnection: 
+  1. dbConnection: 
   
-  get_db_connection(): Establishes an immutable connection to the DB server. 
+                          get_db_connection(): Establishes an immutable connection to the DB server. 
                           Once set (with the relevant fields) it can not be changed.
 
-### twitterConnection: 
+  2. twitterConnection: 
 
-  get_twitter_connection(): Called with a Twitter Bearer Token ONE TIME ONLY 
+                          get_twitter_connection(): Called with a Twitter Bearer Token ONE TIME ONLY 
                           to initialize a connection to twitter. Thereafter, called with no arguments 
                           to get a tweepy.Client object with that connection in it.
 

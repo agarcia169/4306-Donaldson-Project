@@ -50,8 +50,6 @@
 
    The current system that Donaldson uses is not known to us except that the system was slow and unreliable meaning Donaldson could not get the correct data or atleast the information that they want from it which could stem from the system not having a way to seperate different types of tweets or from the system not being able to detect the tone of a message so that Donaldson could know the public consensus about how they feel on a certain topic and that is something we would like to change.
 
-   ### Existing examples in Dr. Doğdu's examples include systems that exist prior to the proposed system being developed. For example, no contact tracing existing for COVID prior to contact tracing being developed. 
-
 ***
 3. ### Proposed System
 

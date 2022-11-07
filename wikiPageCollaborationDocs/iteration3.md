@@ -191,6 +191,11 @@ Vader - Valence Aware Dictionary for Sentiment Reasoning is a module that is bas
 
 # First Implementation 
 
+## Sample Data:
+https://github.com/agarcia169/4306-Donaldson-Project/blob/main/prototyping/csvfile.csv
+
+As the data seems to be the focus of Donaldson's interest, a sample copy of an initial run of a small attempt at collecting data is above, as produced by the code below. It's approximately 1.85MB, is tab-delimited, and contains approximately 6380 Tweets from several companies Donaldson is interested in. Each line also contains the relevant VADER analysis and a rudimentary attempt at marking Tweets relating to alternative power-trains.
+
 ## HandleManagement
 https://github.com/agarcia169/4306-Donaldson-Project/blob/main/prototyping/HandleManagement/HandleDataCollector.py
 

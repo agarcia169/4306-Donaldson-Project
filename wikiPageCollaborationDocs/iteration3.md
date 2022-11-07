@@ -140,21 +140,39 @@
 
    - System Models
    
-     - Use Case:
+    - Use Case:
 
       ![Use Case](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/useCaseModel3.drawio.png)
 
-     ~~scenarios? wtf even are these?~~ "User Stories" go here. See slides from Ch 3.
+    - User Stories:
+
+      #### Adding a company:
+
+      User requests the ability to add a company to the database. Program requests both company name (required/not-null) and Twitter handle (required/not-null) to be input via keyboard, or via a file it reads in, permitting multiple companies to be added at once. The program verifies that each handle is valid and not already in the database under the retrieved ID and presents information from that account (bio/description, perhaps) and asks to confirm this is the correct account. If confirmed, company is added to database for later use. No further analysis occurs at this time.
+
+      ***
+
+      #### Pulling down a company's tweets for analysis:
+
+      A menu listing valid companies exists. User selects company from that menu, or perhaps selects multiple companies, either through the keyboard or via a file read in to the program. User asks program to query for new Tweets, possibly by count, possibly by date range, or other alternatives. Program asks for confirmation, with warnings on how this request will impact the Tweet caps. Both quarter-hourly and monthly caps are involved in this. If the user confirms the action, [this API interface](https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-tweets#tab2) is queried.
+
+      Note: this pulls down all relevant data for analysis and storage in the database. No further requests that impact the monthly cap should be required?
+
+      ***
+
+      #### Display data
+
+      Dumps CSV containing powertrain mentions, labeled by time or other methods of categorization. May be as a simple CSV for use in whatever program Donaldson deems fit? This avoids locking them into whatever poor UI we would likely settle on.
 
      Object models:
 
-     - Database:
+    - Database:
 
-       ![Database Object Model](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/iteration3/database-Page-2v2.drawio.png)
+       ![Database Object Model](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/iteration3/database-Page-2.drawio.png)
 
      ----
 
-     - Code:
+    - Code:
 
        ![Code Object Model](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/iteration2/architecture-Shrunk.drawio.png)
 

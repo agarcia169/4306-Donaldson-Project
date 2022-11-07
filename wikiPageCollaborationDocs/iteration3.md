@@ -191,67 +191,77 @@ Vader - Valence Aware Dictionary for Sentiment Reasoning is a module that is bas
 
 # First Implementation 
 
-## HandleManagement - https://github.com/agarcia169/4306-Donaldson-Project/blob/main/prototyping/HandleManagement/HandleDataCollector.py
+## HandleManagement
+https://github.com/agarcia169/4306-Donaldson-Project/blob/main/prototyping/HandleManagement/HandleDataCollector.py
 
-1. HandleDataCollector: 
+### HandleDataCollector: 
+```
+get_handle_from_twitter(): Retrieves a Twitter Users handle
+```
+### ManageHandles : 
+```
+add_handle_to_database(): Adds a Twitter Handle to the database.
 
-                  get_handle_from_twitter(): Retrieves a Twitter Users handle
+get_twitter_handle (): Gets the handle from the DB of a provided Twitter ID#
 
-2. ManageHandles : 
-
-                    add_handle_to_database(): Adds a Twitter Handle to the database.
-
-                    get_twitter_handle (): Gets the handle from the DB of a provided Twitter ID#
-
-                    get_twitter_id (): Get the ID# from the DB of a provided handle
-
-## SharedConnectors - https://github.com/agarcia169/4306-Donaldson-Project/tree/main/prototyping/SharedConnectors
+get_twitter_id (): Get the ID# from the DB of a provided handle
+```
+## SharedConnectors
+https://github.com/agarcia169/4306-Donaldson-Project/tree/main/prototyping/SharedConnectors
 
 ### dbConnection: 
   
-  get_db_connection(): Establishes an immutable connection to the DB server. 
-                          Once set (with the relevant fields) it can not be changed.
+```
+get_db_connection(): Establishes an immutable connection to the DB server. 
+Once set (with the relevant fields) it can not be changed.
+```
 
 ### twitterConnection: 
 
-  get_twitter_connection(): Called with a Twitter Bearer Token ONE TIME ONLY 
-                          to initialize a connection to twitter. Thereafter, called with no arguments 
-                          to get a tweepy.Client object with that connection in it.
+```
+get_twitter_connection(): Called with a Twitter Bearer Token ONE TIME ONLY 
+to initialize a connection to twitter. Thereafter, called with no arguments 
+to get a tweepy.Client object with that connection in it.
+```
 
-## PowertrainManagement - https://github.com/agarcia169/4306-Donaldson-Project/tree/main/prototyping/PowertrainManagement
+## PowertrainManagement
+https://github.com/agarcia169/4306-Donaldson-Project/tree/main/prototyping/PowertrainManagement
 
-1. LabelTweetsWithTechs:
+### LabelTweetsWithTechs:
+```
+evaluate_new_tweets(): checks whether new Tweets in the database have had VADER analysis
 
-                    evaluate_new_tweets(): checks whether new Tweets in the database have had VADER analysis
+updatelabels(): updates database entries to reflect what power-train mentions if any are present
+```
 
-                    updatelabels(): updates database entries to reflect what power-train mentions if any are present
+## TweetManagement
+https://github.com/agarcia169/4306-Donaldson-Project/tree/main/prototyping/TweetManagement
 
+### AddTweetsToDB:
+```
+add_tweet_to_db(): checks whether new Tweets in the database have had VADER 
 
-## TweetManagement - https://github.com/agarcia169/4306-Donaldson-Project/tree/main/prototyping/TweetManagement
+retrieve_recent_tweets(): retrieves tweet that was most recently put into DB
 
-1. AddTweetsToDB:
+retrieve_older_tweets(): retrieves oldest tweet that was put into DB
 
-                    add_tweet_to_db(): checks whether new Tweets in the database have had VADER 
+retrieve_many_tweets(): retrieves multiple tweets from DB
 
-                          retrieve_recent_tweets(): retrieves tweet that was most recently put into DB
+retrieve_tweets(): retrieves a tweet from the DB with a specific tweet ID
+```
+## NLTK/Vader Analysis
+https://github.com/agarcia169/4306-Donaldson-Project/tree/main/prototyping/NLTK/VaderAnalysis
 
-                          retrieve_older_tweets(): retrieves oldest tweet that was put into DB
+### TweetAnalysis: 
+```
+analyze_analyzed_tweets_in_DB(): analyzes all Tweets in database and then for any 
+that don't analyze them and store the results in the database
+```
+## ReportingUI
+https://github.com/agarcia169/4306-Donaldson-Project/tree/main/prototyping/ReportingUI
 
-                          retrieve_many_tweets(): retrieves multiple tweets from DB
-
-                          retrieve_tweets(): retrieves a tweet from the DB with a specific tweet ID
-
-## NLTK/Vader Analysis - https://github.com/agarcia169/4306-Donaldson-Project/tree/main/prototyping/NLTK/VaderAnalysis
-
-1. TweetAnalysis: 
-
-                    analyze_analyzed_tweets_in_DB(): analyzes all Tweets in database and then for any 
-                    that don't analyze them and store the results in the database
-
-## ReportingUI - https://github.com/agarcia169/4306-Donaldson-Project/tree/main/prototyping/ReportingUI
-
-  1. CSVOutput: 
-
-                          dumpy(): goes through the MySQL database and outputs all tweets with analysis
-                          into a .csv file
-
+### CSVOutput: 
+```
+dumpy(): goes through the MySQL database and outputs all tweets with analysis
+into a .csv file
+```

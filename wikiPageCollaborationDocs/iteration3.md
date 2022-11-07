@@ -193,8 +193,6 @@
 
 # First Implementation 
 
-Give a summary of code developed for the first implementation. List the developed code structure (with subsystems), the names of the programs, and their functionality briefly explained (with links to the related program code on GitHub).
-
 ## HandleManagement - https://github.com/agarcia169/4306-Donaldson-Project/blob/main/prototyping/HandleManagement/HandleDataCollector.py
 
   1. HandleDataCollector: 
@@ -211,14 +209,14 @@ Give a summary of code developed for the first implementation. List the develope
 
 ## SharedConnectors - https://github.com/agarcia169/4306-Donaldson-Project/tree/main/prototyping/SharedConnectors
 
-  1. dbConnection: 
+### dbConnection: 
   
-                          get_db_connection(): Establishes an immutable connection to the DB server. 
+  get_db_connection(): Establishes an immutable connection to the DB server. 
                           Once set (with the relevant fields) it can not be changed.
 
-  2. twitterConnection: 
+### twitterConnection: 
 
-                          get_twitter_connection(): Called with a Twitter Bearer Token ONE TIME ONLY 
+  get_twitter_connection(): Called with a Twitter Bearer Token ONE TIME ONLY 
                           to initialize a connection to twitter. Thereafter, called with no arguments 
                           to get a tweepy.Client object with that connection in it.
 

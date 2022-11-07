@@ -166,15 +166,15 @@ Note: this pulls down all relevant data for analysis and storage in the database
 
 Dumps CSV containing powertrain mentions, labeled by time or other methods of categorization. May be as a simple CSV for use in whatever program Donaldson deems fit? This avoids locking them into whatever poor UI we would likely settle on.
 
-Object models:
+### Object models
 
-### Database
+#### Database
 
   ![Database Object Model](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/iteration3/database-Page-2.drawio.png)
 
 ***
 
-### Code
+#### Code
 
   ![Architecture](https://github.com/agarcia169/4306-Donaldson-Project/blob/main/images/iteration2/architecture-Shrunk.drawio.png)
 
@@ -192,13 +192,13 @@ Object models:
 
 ***
 
-### Dynamic model (state)
+#### Dynamic model (state)
 
 ![Dynamic Model](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/iteration3/dynamic.drawio.png)
 
 ***
 
-### Sequence Diagrams
+#### Sequence Diagrams
 
 ![Adding A Company](https://github.com/agarcia169/4306-Donaldson-Project/blob/main/images/AddCompanySequence%20v1.drawio.svg)
 

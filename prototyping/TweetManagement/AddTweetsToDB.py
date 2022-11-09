@@ -40,6 +40,7 @@ def retrieve_recent_tweets(theUserID, **kwargs):
     # grab the ID of the newest tweet currently in the database.
     with thisDBClient.cursor() as dbCursor:
         dbCursor.execute(the_most_recent_tweet_id_query, (theUserID,))
+        print("Executing:\n",dbCursor.statement)
         theMostRecentTweetID = dbCursor.fetchone()[0]
     defaultKwargs.update(kwargs)
     kwargs = defaultKwargs
@@ -64,6 +65,7 @@ def retrieve_older_tweets(theUserID, **kwargs):
     # grab the ID of the oldest tweet currently in the database.
     with thisDBClient.cursor() as dbCursor:
         dbCursor.execute(the_oldest_tweet_id_query, (theUserID,))
+        print("Executing:\n",dbCursor.statement)
         theOldestTweetIDWeHave = dbCursor.fetchone()[0]
     defaultKwargs.update(kwargs)
     kwargs = defaultKwargs
@@ -71,17 +73,28 @@ def retrieve_older_tweets(theUserID, **kwargs):
     retrieve_tweets(theUserID, kwargs)
 
 
-def retrieve_many_tweets(theUserID, **kwargs):
+def refresh_tweets(theUserID, **kwargs):
+    thisDBClient = dbConnection.get_db_connection()
     defaultKwargs = {'exclude':['retweets', 'replies'], 
                         'tweet_fields':['author_id', 'conversation_id',
                          'created_at', 'in_reply_to_user_id', 'lang', 'text'],
                          'start_time':(how_long_to_grab.isoformat()+'Z')}
     defaultKwargs.update(kwargs)
     kwargs = defaultKwargs
-    retrieve_tweets(theUserID, kwargs)
+    copyOfKwargs = dict(kwargs)
+    howManyTweetsDoTheyHave:int
+    with thisDBClient.cursor() as dbCursor:
+        dbCursor.execute(dbConnection.query_count_of_tweets_from_company,(theUserID,))
+        print("Executing:\n",dbCursor.statement)
+        howManyTweetsDoTheyHave = dbCursor.fetchall()[0][0]
+    if(howManyTweetsDoTheyHave):
+        retrieve_recent_tweets(theUserID, **kwargs)
+        retrieve_older_tweets(theUserID, **copyOfKwargs)
+    else:
+        retrieve_tweets(theUserID, **kwargs)
 
 
-def retrieve_tweets(theUserID, argumentDictionary):
+def retrieve_tweets(theUserID, **argumentDictionary):
     thisTwitterClient = twitterConnection.get_twitter_connection()
     listOfTweets = []
     # max_results=5 # REMOVE LATER
@@ -125,12 +138,15 @@ def mass_add_tweets_to_db(listOfTweets):
     theStringToAppend = ','.join(map(str,listOfTweets))
     with thisDBClient.cursor() as dbCursor:
         dbCursor.execute(dbConnection.query_count_of_tweets_from_company,(listOfTweets[0][1],))
+        print("Executing:\n",dbCursor.statement)
         howManyTweetsWeHave = dbCursor.fetchone()[0]
         # dbCursor.execute(dbConnection.query_bulk_add_tweets_to_db,(theStringToAppend,))
         # .executemany() might as well be .insertmany(). It's optimized for insert, but ONLY insert.
         dbCursor.executemany(dbConnection.query_add_tweet_to_db_IDAuthTextCreateLangConvo,listOfTweets)
+        print("Executing:\n",dbCursor.statement)
         dbCursor.fetchall()
         dbCursor.execute(dbConnection.query_count_of_tweets_from_company,(listOfTweets[0][1],))
+        print("Executing:\n",dbCursor.statement)
         howManyTweetsWeEndUpWith = dbCursor.fetchone()[0]
     if(howManyTweetsToAdd + howManyTweetsWeHave == howManyTweetsWeEndUpWith):
         thisDBClient.commit()

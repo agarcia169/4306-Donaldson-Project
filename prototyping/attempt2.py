@@ -96,7 +96,7 @@ def main():
 		didItWork, theCompanyID = ManageHandles.add_handle_to_database(theCompany)
 		# theCompanyID = ManageHandles.get_twitter_id(theCompany)[0]
 		if (didItWork):
-			AddTweetsToDB.retrieve_many_tweets(theCompanyID)
+			AddTweetsToDB.refresh_tweets(theCompanyID)
 
 	if (False):
 		# LabelTweetsWithTechs.evaluate_new_tweets()
@@ -111,7 +111,7 @@ def main():
 		CSVOutput.dumpy()
 	
 	if(True):
-		AddTweetsToDB.retrieve_recent_tweets(342772500)
+		AddTweetsToDB.refresh_tweets(3088687297)
 
 
 if __name__ == "__main__":

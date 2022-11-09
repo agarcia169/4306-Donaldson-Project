@@ -21,59 +21,64 @@ def add_tweet_to_db(thisTweet: tweepy.Tweet):
     thisDBClient.commit()
 
 
-def retrieve_recent_tweets(theUserID, *, end_time=None, exclude=['retweets', 'replies'],
-                           expansions=None, max_results=None, media_fields=None, pagination_token=None,
-                           place_fields=None, poll_fields=None, since_id=None, start_time=how_long_to_grab.isoformat()+'Z',
-                           tweet_fields=['author_id', 'conversation_id',
+# def retrieve_recent_tweets(theUserID, *, end_time=None, exclude=['retweets', 'replies'],
+#                            expansions=None, max_results=None, media_fields=None, pagination_token=None,
+#                            place_fields=None, poll_fields=None, since_id=None, start_time=how_long_to_grab.isoformat()+'Z',
+#                            tweet_fields=['author_id', 'conversation_id',
+#                                          'created_at', 'in_reply_to_user_id', 'lang', 'text'],
+#                            until_id=None, user_fields=None):
+
+def retrieve_recent_tweets(theUserID, **kwargs):
+    defaultKwargs = {'exclude':['retweets', 'replies'], 
+                        'tweet_fields':['author_id', 'conversation_id',
                                          'created_at', 'in_reply_to_user_id', 'lang', 'text'],
-                           until_id=None, user_fields=None):
+                         'start_time':(how_long_to_grab.isoformat()+'Z')}
+    
+    # print(kwargs)
     thisDBClient = dbConnection.get_db_connection()
     the_most_recent_tweet_id_query = dbConnection.query_the_most_recent_tweet_id
     # grab the ID of the newest tweet currently in the database.
     with thisDBClient.cursor() as dbCursor:
         dbCursor.execute(the_most_recent_tweet_id_query, (theUserID,))
         theMostRecentTweetID = dbCursor.fetchone()[0]
-    argumentDictionary = {'end_time': end_time, 'exclude': exclude, 'expansions': expansions,
-                          'max_results': max_results, 'media_fields': media_fields,
-                          'pagination_token': pagination_token, 'place_fields': place_fields,
-                          'poll_fields': poll_fields, 'since_id': theMostRecentTweetID, 'start_time': start_time,
-                          'tweet_fields': tweet_fields, 'until_id': until_id, 'user_fields': user_fields}
-    retrieve_tweets(theUserID, argumentDictionary)
+    defaultKwargs.update(kwargs)
+    kwargs = defaultKwargs
+    kwargs.update({'since_id':theMostRecentTweetID})
+    # print(kwargs)
+    retrieve_tweets(theUserID, kwargs)
 
 
-def retrieve_older_tweets(theUserID, *, end_time=None, exclude=['retweets', 'replies'],
-                          expansions=None, max_results=None, media_fields=None, pagination_token=None,
-                          place_fields=None, poll_fields=None, since_id=None, start_time=how_long_to_grab.isoformat()+'Z',
-                          tweet_fields=['author_id', 'conversation_id',
+# def retrieve_older_tweets(theUserID, *, end_time=None, exclude=['retweets', 'replies'],
+#                           expansions=None, max_results=None, media_fields=None, pagination_token=None,
+#                           place_fields=None, poll_fields=None, since_id=None, start_time=how_long_to_grab.isoformat()+'Z',
+#                           tweet_fields=['author_id', 'conversation_id',
+#                                         'created_at', 'in_reply_to_user_id', 'lang', 'text'],
+#                           until_id=None, user_fields=None):
+def retrieve_older_tweets(theUserID, **kwargs):
+    defaultKwargs = {'exclude':['retweets', 'replies'], 
+                        'tweet_fields':['author_id', 'conversation_id',
                                         'created_at', 'in_reply_to_user_id', 'lang', 'text'],
-                          until_id=None, user_fields=None):
-    print(start_time)
+                         'start_time':(how_long_to_grab.isoformat()+'Z')}
     thisDBClient = dbConnection.get_db_connection()
     the_oldest_tweet_id_query = dbConnection.query_the_oldest_tweet_id
     # grab the ID of the oldest tweet currently in the database.
     with thisDBClient.cursor() as dbCursor:
         dbCursor.execute(the_oldest_tweet_id_query, (theUserID,))
-        theMostRecentTweetID = dbCursor.fetchone()[0]
-    argumentDictionary = {'end_time': end_time, 'exclude': exclude, 'expansions': expansions,
-                          'max_results': max_results, 'media_fields': media_fields,
-                          'pagination_token': pagination_token, 'place_fields': place_fields,
-                          'poll_fields': poll_fields, 'since_id': since_id, 'start_time': start_time,
-                          'tweet_fields': tweet_fields, 'until_id': theMostRecentTweetID, 'user_fields': user_fields}
-    retrieve_tweets(theUserID, argumentDictionary)
+        theOldestTweetIDWeHave = dbCursor.fetchone()[0]
+    defaultKwargs.update(kwargs)
+    kwargs = defaultKwargs
+    kwargs.update({'until_id': theOldestTweetIDWeHave})
+    retrieve_tweets(theUserID, kwargs)
 
 
-def retrieve_many_tweets(theUserID, *, end_time=None, exclude=['retweets', 'replies'],
-                         expansions=None, max_results=None, media_fields=None, pagination_token=None,
-                         place_fields=None, poll_fields=None, since_id=None, start_time=how_long_to_grab.isoformat()+'Z',
-                         tweet_fields=['author_id', 'conversation_id',
+def retrieve_many_tweets(theUserID, **kwargs):
+    defaultKwargs = {'exclude':['retweets', 'replies'], 
+                        'tweet_fields':['author_id', 'conversation_id',
                                        'created_at', 'in_reply_to_user_id', 'lang', 'text'],
-                         until_id=None, user_fields=None):
-    argumentDictionary = {'end_time': end_time, 'exclude': exclude, 'expansions': expansions,
-                          'max_results': max_results, 'media_fields': media_fields,
-                          'pagination_token': pagination_token, 'place_fields': place_fields,
-                          'poll_fields': poll_fields, 'since_id': since_id, 'start_time': start_time,
-                          'tweet_fields': tweet_fields, 'until_id': until_id, 'user_fields': user_fields}
-    retrieve_tweets(theUserID, argumentDictionary)
+                         'start_time':(how_long_to_grab.isoformat()+'Z')}
+    defaultKwargs.update(kwargs)
+    kwargs = defaultKwargs
+    retrieve_tweets(theUserID, kwargs)
 
 
 def retrieve_tweets(theUserID, argumentDictionary):

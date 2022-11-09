@@ -46,7 +46,7 @@ def retrieve_recent_tweets(theUserID, **kwargs):
     kwargs = defaultKwargs
     kwargs.update({'since_id':theMostRecentTweetID})
     # print(kwargs)
-    retrieve_tweets(theUserID, kwargs)
+    retrieve_tweets(theUserID, **kwargs)
 
 
 # def retrieve_older_tweets(theUserID, *, end_time=None, exclude=['retweets', 'replies'],
@@ -70,7 +70,7 @@ def retrieve_older_tweets(theUserID, **kwargs):
     defaultKwargs.update(kwargs)
     kwargs = defaultKwargs
     kwargs.update({'until_id': theOldestTweetIDWeHave})
-    retrieve_tweets(theUserID, kwargs)
+    retrieve_tweets(theUserID, **kwargs)
 
 
 def refresh_tweets(theUserID, **kwargs):
@@ -143,7 +143,7 @@ def mass_add_tweets_to_db(listOfTweets):
         # dbCursor.execute(dbConnection.query_bulk_add_tweets_to_db,(theStringToAppend,))
         # .executemany() might as well be .insertmany(). It's optimized for insert, but ONLY insert.
         dbCursor.executemany(dbConnection.query_add_tweet_to_db_IDAuthTextCreateLangConvo,listOfTweets)
-        print("Executing:\n",dbCursor.statement)
+        print("Executing the equivalent of:\n",dbConnection.query_bulk_add_tweets_to_db % theStringToAppend)
         dbCursor.fetchall()
         dbCursor.execute(dbConnection.query_count_of_tweets_from_company,(listOfTweets[0][1],))
         print("Executing:\n",dbCursor.statement)

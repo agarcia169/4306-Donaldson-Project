@@ -21,6 +21,7 @@ from os.path import abspath
 from getpass import getpass
 from configparser import RawConfigParser
 from HandleManagement import ManageHandles
+from HandleManagement import HandleDataCollector
 from TweetManagement import AddTweetsToDB
 from SharedConnectors import twitterConnection
 from SharedConnectors import dbConnection
@@ -114,6 +115,20 @@ def main():
 		# AddTweetsToDB.refresh_tweets(3003844230,maxDaysInPast=365*2)
 		print(TweetAnalysis.one_VADER_analysis("Trusted and reliable for everyday use."))
 
+	if(False):
+		theUser = HandleDataCollector.get_handle_from_twitter(str(input("Handle?: ")))
+		print(theUser.data.description)
+
+	if(False):
+		thisDB = dbConnection.get_db_connection()
+		with thisDB.cursor() as dbCursor:
+			dbCursor.execute("SELECT username FROM handles WHERE description is null")
+			theResults = dbCursor.fetchall()
+			for thisUsername in theResults:
+				theDescription:str = HandleDataCollector.get_handle_from_twitter(thisUsername[0]).data.description
+				dbCursor.execute("UPDATE handles SET description = %s WHERE username = %s",(theDescription.replace('\n','').replace('\t',''),thisUsername[0]))
+				print(dbCursor.fetchall(), thisUsername[0],theDescription.replace('\n','').replace('\t',''))
+			thisDB.commit()
 
 if __name__ == "__main__":
 	main()

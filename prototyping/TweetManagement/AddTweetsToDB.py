@@ -111,7 +111,8 @@ def retrieve_tweets(theUserID, argumentDictionary):
                 # print("Index:", dir(thisTweet.index))
                 # print("count:", dir(thisTweet.count))
                 # print("Errors:", thisTweet.errors)
-    mass_add_tweets_to_db(listOfTweets)
+    if(listOfTweets):
+        mass_add_tweets_to_db(listOfTweets)
         # if(tracker >= limitBreak):
         #     raise Exception
         # print("ID:", thisTweet.data.id)

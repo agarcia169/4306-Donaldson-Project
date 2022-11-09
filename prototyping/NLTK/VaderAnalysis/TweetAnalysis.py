@@ -25,3 +25,6 @@ def analyze_analyzed_tweets_in_DB():
             dbCursor.fetchall()
         thisDBClient.commit()
         print(tweet)
+
+def one_VADER_analysis(theTextToAnalyze:str):
+    return SentimentIntensityAnalyzer().polarity_scores(theTextToAnalyze)

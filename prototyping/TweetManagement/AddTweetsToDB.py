@@ -31,7 +31,7 @@ def add_tweet_to_db(thisTweet: tweepy.Tweet):
 def retrieve_recent_tweets(theUserID, **kwargs):
     defaultKwargs = {'exclude':['retweets', 'replies'], 
                         'tweet_fields':['author_id', 'conversation_id',
-                                         'created_at', 'in_reply_to_user_id', 'lang', 'text'],
+                         'created_at', 'in_reply_to_user_id', 'lang', 'text'],
                          'start_time':(how_long_to_grab.isoformat()+'Z')}
     
     # print(kwargs)
@@ -57,7 +57,7 @@ def retrieve_recent_tweets(theUserID, **kwargs):
 def retrieve_older_tweets(theUserID, **kwargs):
     defaultKwargs = {'exclude':['retweets', 'replies'], 
                         'tweet_fields':['author_id', 'conversation_id',
-                                        'created_at', 'in_reply_to_user_id', 'lang', 'text'],
+                         'created_at', 'in_reply_to_user_id', 'lang', 'text'],
                          'start_time':(how_long_to_grab.isoformat()+'Z')}
     thisDBClient = dbConnection.get_db_connection()
     the_oldest_tweet_id_query = dbConnection.query_the_oldest_tweet_id
@@ -74,7 +74,7 @@ def retrieve_older_tweets(theUserID, **kwargs):
 def retrieve_many_tweets(theUserID, **kwargs):
     defaultKwargs = {'exclude':['retweets', 'replies'], 
                         'tweet_fields':['author_id', 'conversation_id',
-                                       'created_at', 'in_reply_to_user_id', 'lang', 'text'],
+                         'created_at', 'in_reply_to_user_id', 'lang', 'text'],
                          'start_time':(how_long_to_grab.isoformat()+'Z')}
     defaultKwargs.update(kwargs)
     kwargs = defaultKwargs

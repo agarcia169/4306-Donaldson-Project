@@ -111,7 +111,7 @@ def main():
 		CSVOutput.dumpy()
 	
 	if(True):
-		AddTweetsToDB.refresh_tweets(829947820354383872)
+		AddTweetsToDB.refresh_tweets(1706159101)#,maxDaysInPast=365*2)
 
 
 if __name__ == "__main__":

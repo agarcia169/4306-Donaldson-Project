@@ -4,21 +4,21 @@ import tweepy
 from datetime import datetime as DateTime
 import datetime
 
-one_year = datetime.timedelta(days=365)
-one_year_ago = (DateTime.now() - one_year).replace(microsecond=0)
-five_years = one_year * 5
-five_years_ago = (DateTime.now() - five_years).replace(microsecond=0)
-how_long_to_grab = five_years_ago
+# one_year = datetime.timedelta(days=365)
+# one_year_ago = (DateTime.now() - one_year).replace(microsecond=0)
+# five_years = one_year * 5
+# five_years_ago = (DateTime.now() - five_years).replace(microsecond=0)
+# how_long_to_grab = five_years_ago
 
 
-def add_tweet_to_db(thisTweet: tweepy.Tweet):
-    thisDBClient = dbConnection.get_db_connection()
-    query_add_tweet_to_db = dbConnection.query_add_tweet_to_db_IDAuthTextCreateLangConvo
-    with thisDBClient.cursor() as dbCursor:
-        dbCursor.execute(query_add_tweet_to_db, (thisTweet.id, thisTweet.author_id, thisTweet.text,
-                                                thisTweet.created_at, thisTweet.lang, thisTweet.conversation_id))
-        dbCursor.fetchall()
-    thisDBClient.commit()
+# def add_tweet_to_db(thisTweet: tweepy.Tweet):
+#     thisDBClient = dbConnection.get_db_connection()
+#     query_add_tweet_to_db = dbConnection.query_add_tweet_to_db_IDAuthTextCreateLangConvo
+#     with thisDBClient.cursor() as dbCursor:
+#         dbCursor.execute(query_add_tweet_to_db, (thisTweet.id, thisTweet.author_id, thisTweet.text,
+#                                                 thisTweet.created_at, thisTweet.lang, thisTweet.conversation_id))
+#         dbCursor.fetchall()
+#     thisDBClient.commit()
 
 
 # def retrieve_recent_tweets(theUserID, *, end_time=None, exclude=['retweets', 'replies'],
@@ -28,7 +28,9 @@ def add_tweet_to_db(thisTweet: tweepy.Tweet):
 #                                          'created_at', 'in_reply_to_user_id', 'lang', 'text'],
 #                            until_id=None, user_fields=None):
 
-def retrieve_recent_tweets(theUserID, **kwargs):
+def retrieve_recent_tweets(theUserID,* , maxDaysInPast:int=365*5, **kwargs):
+    timeToGrab = datetime.timedelta(days=maxDaysInPast)
+    how_long_to_grab = (DateTime.now() - timeToGrab).replace(microsecond=0)
     defaultKwargs = {'exclude':['retweets', 'replies'], 
                         'tweet_fields':['author_id', 'conversation_id',
                          'created_at', 'in_reply_to_user_id', 'lang', 'text'],
@@ -46,7 +48,7 @@ def retrieve_recent_tweets(theUserID, **kwargs):
     kwargs = defaultKwargs
     kwargs.update({'since_id':theMostRecentTweetID})
     # print(kwargs)
-    retrieve_tweets(theUserID, **kwargs)
+    _retrieve_tweets(theUserID, **kwargs)
 
 
 # def retrieve_older_tweets(theUserID, *, end_time=None, exclude=['retweets', 'replies'],
@@ -55,7 +57,9 @@ def retrieve_recent_tweets(theUserID, **kwargs):
 #                           tweet_fields=['author_id', 'conversation_id',
 #                                         'created_at', 'in_reply_to_user_id', 'lang', 'text'],
 #                           until_id=None, user_fields=None):
-def retrieve_older_tweets(theUserID, **kwargs):
+def retrieve_older_tweets(theUserID, *, maxDaysInPast:int=365*5, **kwargs):
+    timeToGrab = datetime.timedelta(days=maxDaysInPast)
+    how_long_to_grab = (DateTime.now() - timeToGrab).replace(microsecond=0)
     defaultKwargs = {'exclude':['retweets', 'replies'], 
                         'tweet_fields':['author_id', 'conversation_id',
                          'created_at', 'in_reply_to_user_id', 'lang', 'text'],
@@ -70,10 +74,12 @@ def retrieve_older_tweets(theUserID, **kwargs):
     defaultKwargs.update(kwargs)
     kwargs = defaultKwargs
     kwargs.update({'until_id': theOldestTweetIDWeHave})
-    retrieve_tweets(theUserID, **kwargs)
+    _retrieve_tweets(theUserID, **kwargs)
 
 
-def refresh_tweets(theUserID, **kwargs):
+def refresh_tweets(theUserID, *, maxDaysInPast:int=365*5, **kwargs):
+    timeToGrab = datetime.timedelta(days=maxDaysInPast)
+    how_long_to_grab = (DateTime.now() - timeToGrab).replace(microsecond=0)
     thisDBClient = dbConnection.get_db_connection()
     defaultKwargs = {'exclude':['retweets', 'replies'], 
                         'tweet_fields':['author_id', 'conversation_id',
@@ -91,10 +97,10 @@ def refresh_tweets(theUserID, **kwargs):
         retrieve_recent_tweets(theUserID, **kwargs)
         retrieve_older_tweets(theUserID, **copyOfKwargs)
     else:
-        retrieve_tweets(theUserID, **kwargs)
+        _retrieve_tweets(theUserID, **kwargs)
 
 
-def retrieve_tweets(theUserID, **argumentDictionary):
+def _retrieve_tweets(theUserID, **argumentDictionary):
     thisTwitterClient = twitterConnection.get_twitter_connection()
     listOfTweets = []
     # max_results=5 # REMOVE LATER

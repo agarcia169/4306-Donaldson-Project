@@ -110,8 +110,9 @@ def main():
 		start2 = time.perf_counter()
 		CSVOutput.dumpy()
 	
-	if(True):
-		AddTweetsToDB.refresh_tweets(1706159101)#,maxDaysInPast=365*2)
+	if(False):
+		# AddTweetsToDB.refresh_tweets(3003844230,maxDaysInPast=365*2)
+		print(TweetAnalysis.one_VADER_analysis("Trusted and reliable for everyday use."))
 
 
 if __name__ == "__main__":

@@ -106,9 +106,13 @@ def main():
 		start2 = time.perf_counter()
 		TweetAnalysis.analyze_analyzed_tweets_in_DB()
 		print(time.perf_counter()-start2)
-	if (True):
+	if (False):
 		start2 = time.perf_counter()
 		CSVOutput.dumpy()
+	
+	if(True):
+		AddTweetsToDB.retrieve_recent_tweets(342772500)
+
 
 if __name__ == "__main__":
 	main()

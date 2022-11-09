@@ -131,7 +131,7 @@ WHERE
 query_add_tweet_to_db_IDAuthTextCreateLangConvo = """
 INSERT INTO tweets(id, author_id, text, 
     created_at, lang, conversation_id) 
-    VALUES(%s,%s,%s,%s,%s,%s,%s)"""
+    VALUES(%s,%s,%s,%s,%s,%s)"""
 
 query_the_most_recent_tweet_id = """
 SELECT 

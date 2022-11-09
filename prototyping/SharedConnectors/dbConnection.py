@@ -133,6 +133,11 @@ INSERT INTO tweets(id, author_id, text,
     created_at, lang, conversation_id) 
     VALUES(%s,%s,%s,%s,%s,%s)"""
 
+query_bulk_add_tweets_to_db = """
+INSERT INTO tweets(id, author_id, text, 
+    created_at, lang, conversation_id) 
+    VALUES %s"""
+
 query_the_most_recent_tweet_id = """
 SELECT 
     MAX(id)

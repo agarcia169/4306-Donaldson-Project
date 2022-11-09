@@ -8,7 +8,7 @@ one_year = datetime.timedelta(days=365)
 one_year_ago = (DateTime.now() - one_year).replace(microsecond=0)
 five_years = one_year * 5
 five_years_ago = (DateTime.now() - five_years).replace(microsecond=0)
-how_long_to_grab = one_year_ago
+how_long_to_grab = five_years_ago
 
 
 def add_tweet_to_db(thisTweet: tweepy.Tweet):

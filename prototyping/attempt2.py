@@ -113,9 +113,11 @@ if (False):
 
 if (True): #Test the SECRET VADER project
 	from vader_experimental import vader_experimental
-	# start1 = time.perf_counter()
-	# secretVADER.test_secret_VADER_slow_and_bad()
-	# print(time.perf_counter()-start1)
+	print("Running VADER analysis and saving data one Tweet at a time...")
+	start1 = time.perf_counter()
+	vader_experimental.test_secret_VADER_slow_and_bad()
+	print(f"That took {(time.perf_counter()-start1):.2f} seconds.")
+	print("Running VADER analysis compiling data, then saving data to DB in one large update...")
 	start2 = time.perf_counter()
 	vader_experimental.test_secret_VADER()
-	print(time.perf_counter()-start2)
+	print(f"That took {(time.perf_counter()-start2):.2f} seconds.")

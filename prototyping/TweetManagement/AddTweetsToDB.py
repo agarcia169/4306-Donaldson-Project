@@ -13,9 +13,9 @@ how_long_to_grab = one_year_ago
 
 def add_tweet_to_db(thisTweet: tweepy.Tweet):
     thisDBClient = dbConnection.get_db_connection()
-    query_add_user_to_db = dbConnection.query_add_user_to_db_IDAuthTextCreateLangConvo
+    query_add_tweet_to_db = dbConnection.query_add_tweet_to_db_IDAuthTextCreateLangConvo
     with thisDBClient.cursor() as dbCursor:
-        dbCursor.execute(query_add_user_to_db, (thisTweet.id, thisTweet.author_id, thisTweet.text,
+        dbCursor.execute(query_add_tweet_to_db, (thisTweet.id, thisTweet.author_id, thisTweet.text,
                                                 thisTweet.created_at, thisTweet.lang, thisTweet.conversation_id))
         dbCursor.fetchall()
     thisDBClient.commit()

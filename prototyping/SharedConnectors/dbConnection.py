@@ -128,7 +128,7 @@ WHERE
         OR text LIKE '%Lithium%')"""
 
 # TweetManagement.AddTweetsToDB
-query_add_user_to_db_IDAuthTextCreateLangConvo = """
+query_add_tweet_to_db_IDAuthTextCreateLangConvo = """
 INSERT INTO tweets(id, author_id, text, 
     created_at, lang, conversation_id) 
     VALUES(%s,%s,%s,%s,%s,%s,%s)"""

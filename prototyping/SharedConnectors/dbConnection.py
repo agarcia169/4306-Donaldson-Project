@@ -147,6 +147,13 @@ FROM
     tweets
 WHERE
     author_id = (%s)"""
+query_count_of_tweets_from_company = """
+SELECT
+    COUNT(id)
+FROM
+    tweets
+WHERE
+    author_id = (%s)"""
 
 # HandleManagement.ManageHandles
 query_check_for_id_where_username = """

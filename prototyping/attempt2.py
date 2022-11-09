@@ -130,5 +130,17 @@ def main():
 				print(dbCursor.fetchall(), thisUsername[0],theDescription.replace('\n','').replace('\t',''))
 			thisDB.commit()
 
+	if(True):
+		"""This is where you come if you want to just add handles to the DB one name at a time."""
+		theHandleToAdd:str = str(input("What handle?: "))
+		if(str == "" or str == None):
+			return
+		didWeAddThem, theirID = ManageHandles.add_handle_to_database(theHandleToAdd)
+		if(didWeAddThem):
+			print(f'Added {theHandleToAdd} under the ID {theirID}')
+		else:
+			print(f"Couldn't add {theHandleToAdd}, maybe they're in the database already?")
+
+
 if __name__ == "__main__":
 	main()

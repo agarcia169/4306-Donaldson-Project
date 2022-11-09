@@ -139,14 +139,14 @@ SELECT
 FROM
     tweets
 WHERE
-    author_id = (%s);"""
+    author_id = (%s)"""
 query_the_oldest_tweet_id = """
 SELECT 
     MIN(id)
 FROM
     tweets
 WHERE
-    author_id = (%s);"""
+    author_id = (%s)"""
 
 # HandleManagement.ManageHandles
 query_check_for_id_where_username = """

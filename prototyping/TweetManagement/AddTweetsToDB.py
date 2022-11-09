@@ -83,6 +83,7 @@ def retrieve_many_tweets(theUserID, **kwargs):
 
 def retrieve_tweets(theUserID, argumentDictionary):
     thisTwitterClient = twitterConnection.get_twitter_connection()
+    listOfTweets = []
     # max_results=5 # REMOVE LATER
     thisResponse: tweepy.Response
     # limitBreak = 5
@@ -96,8 +97,12 @@ def retrieve_tweets(theUserID, argumentDictionary):
                 # print("Type:", type(thisTweet))
                 # print("DIR:", dir(thisTweet))
                 # print("Data:", thisTweet.data)
+                listOfTweets.append((thisTweet.id,
+                    thisTweet.author_id,thisTweet.text,
+                    thisTweet.created_at,thisTweet.lang,
+                    thisTweet.conversation_id))
                 # print("Author_id:", thisTweet.author_id)
-                add_tweet_to_db(thisTweet=thisTweet)
+                # add_tweet_to_db(thisTweet=thisTweet)
                 # print(hasattr(thisTweet,'author_id'))
                 # print("Data DIR:", dir(thisTweet.data))
                 # print("Includes:", thisTweet.includes)
@@ -106,7 +111,32 @@ def retrieve_tweets(theUserID, argumentDictionary):
                 # print("Index:", dir(thisTweet.index))
                 # print("count:", dir(thisTweet.count))
                 # print("Errors:", thisTweet.errors)
-
+    mass_add_tweets_to_db(listOfTweets)
         # if(tracker >= limitBreak):
         #     raise Exception
         # print("ID:", thisTweet.data.id)
+
+def mass_add_tweets_to_db(listOfTweets):
+    thisDBClient = dbConnection.get_db_connection()
+    howManyTweetsToAdd = len(listOfTweets)
+    howManyTweetsWeHave: int
+    howManyTweetsWeEndUpWith: int
+    theStringToAppend = ','.join(map(str,listOfTweets))
+    with thisDBClient.cursor() as dbCursor:
+        dbCursor.execute(dbConnection.query_count_of_tweets_from_company,(listOfTweets[0][1],))
+        howManyTweetsWeHave = dbCursor.fetchone()[0]
+        # dbCursor.execute(dbConnection.query_bulk_add_tweets_to_db,(theStringToAppend,))
+        # .executemany() might as well be .insertmany(). It's optimized for insert, but ONLY insert.
+        dbCursor.executemany(dbConnection.query_add_tweet_to_db_IDAuthTextCreateLangConvo,listOfTweets)
+        dbCursor.fetchall()
+        dbCursor.execute(dbConnection.query_count_of_tweets_from_company,(listOfTweets[0][1],))
+        howManyTweetsWeEndUpWith = dbCursor.fetchone()[0]
+    if(howManyTweetsToAdd + howManyTweetsWeHave == howManyTweetsWeEndUpWith):
+        thisDBClient.commit()
+    else:
+        thisDBClient.rollback()
+        raise ValueError(f'''For company {listOfTweets[0][1]} - 
+            Tweets in database before add: {howManyTweetsWeHave}
+            How many Tweets we\'re adding: {howManyTweetsToAdd}
+            Tweets in database after add: {howManyTweetsWeEndUpWith}
+            Mismatch: {howManyTweetsToAdd + howManyTweetsWeHave} != {howManyTweetsWeEndUpWith}''')

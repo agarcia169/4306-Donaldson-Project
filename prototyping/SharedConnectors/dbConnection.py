@@ -126,6 +126,8 @@ SET
 WHERE
     (text LIKE '%battery%'
         OR text LIKE '%Lithium%')"""
+# PowertrainManagement.ManageKeywords
+query_get_powertrain_words = "SELECT word FROM %s"
 
 # TweetManagement.AddTweetsToDB
 query_add_tweet_to_db_IDAuthTextCreateLangConvo = """

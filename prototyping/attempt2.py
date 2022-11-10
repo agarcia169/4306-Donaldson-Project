@@ -26,6 +26,7 @@ from TweetManagement import AddTweetsToDB
 from SharedConnectors import twitterConnection
 from SharedConnectors import dbConnection
 from PowertrainManagement import LabelTweetsWithTechs
+from PowertrainManagement import ManageKeywords
 from ReportingUI import CSVOutput
 from NLTK.VaderAnalysis import TweetAnalysis
 import time
@@ -130,7 +131,7 @@ def main():
 				print(dbCursor.fetchall(), thisUsername[0],theDescription.replace('\n','').replace('\t',''))
 			thisDB.commit()
 
-	if(True):
+	if(False):
 		"""This is where you come if you want to just add handles to the DB one name at a time."""
 		theHandleToAdd:str = str(input("What handle?: "))
 		if(str == "" or str == None):
@@ -141,6 +142,9 @@ def main():
 		else:
 			print(f"Couldn't add {theHandleToAdd}, maybe they're in the database already?")
 
+	if(True):
+		ManageKeywords.get_list_of_keywords_for_technology('battelec')
+		print ('hce' in ManageKeywords.get_list_of_technologies())
 
 if __name__ == "__main__":
 	main()

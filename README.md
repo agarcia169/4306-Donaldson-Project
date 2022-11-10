@@ -4,11 +4,11 @@
 
 ### Purpose of the System
 
-This Project is for The company Donaldson Filtration which is a global company that creates filters for hundreds and thousands of different products. Donaldson is looking to the future with this project and would like us to create a system to analyze Tweets that their clients are creating for mentions of different power-train alternatives to combustion engines. In doing this Donaldson is looking to the future and seeking to be well prepared for any new emerging technologies so that they can effectively corner the market.
+This project is for the company Donaldson Filtration which is a global company that creates filters for hundreds and thousands of different products. Donaldson is looking to the future with this project and would like us to create a system to analyze Tweets that their clients are creating for mentions of different power-train alternatives to combustion engines. In doing this Donaldson is looking to the future and seeking to be well prepared for any new emerging technologies so that they can effectively corner the market.
 
 ### Scope of the system
 
-The system will grab Tweets from twitter and store them in our database we have created. Once there are Tweets in the database the user will be able to either grab more Tweets or use built-in natural language processing methods to analyze Tweets already in the database. The user will also be able enter in new companies and power-train alternatives into the database to enable more customized data processing.
+The system will grab Tweets from Twitter and store them in our database we have created. Once there are Tweets in the database the user will be able to either grab more Tweets or use built-in natural language processing methods to analyze Tweets already in the database. The user will also be able enter in new companies and power-train alternatives into the database to enable more customized data processing.
 
 ### Objectives and success criteria of the project
 

@@ -79,6 +79,8 @@ Also, we will attempt to build methods of extracting potentially useful informat
 
   In our own opinion, we would likely prefer to have a system that is at a minimum usable enough that you can get data out through a text-based menu, but please refer to the Interface section below.
 
+  Installation should be as clear as we can make it. We should make clear what packages need to be installed, what tokens from Twitter APIs need to be obtained, and how to construct any necessary configuration files.
+
 ### Reliability
 
   All systems involved either rely on local desktop hardware, remote databases, and Twitter. So long as their desktop functions, Twitter still exists, and the user can host a database of some kind, that's all that is required.

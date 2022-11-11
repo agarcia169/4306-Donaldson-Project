@@ -131,7 +131,7 @@ def main():
 				print(dbCursor.fetchall(), thisUsername[0],theDescription.replace('\n','').replace('\t',''))
 			thisDB.commit()
 
-	if(False):
+	if(True):
 		"""This is where you come if you want to just add handles to the DB one name at a time."""
 		theHandleToAdd:str = str(input("What handle?: "))
 		if(str == "" or str == None):
@@ -142,7 +142,7 @@ def main():
 		else:
 			print(f"Couldn't add {theHandleToAdd}, maybe they're in the database already?")
 
-	if(True):
+	if(False):
 		ManageKeywords.get_list_of_keywords_for_technology('battelec')
 		print ('hce' in ManageKeywords.get_list_of_technologies())
 

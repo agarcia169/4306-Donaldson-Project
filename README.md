@@ -4,7 +4,7 @@
 
 ### Purpose of the System
 
-This project is for the company Donaldson Filtration which is a global company that creates filters for hundreds and thousands of different products. Donaldson is looking to the future with this project and would like us to create a system to analyze Tweets that their clients are creating for mentions of different power-train alternatives to combustion engines. In doing this Donaldson is looking to the future and seeking to be well prepared for any new emerging technologies so that they can effectively corner the market.
+This project is for Donaldson Company, which is a global company that creates filters for hundreds and thousands of different products. Donaldson is looking to the future with this project and would like us to create a system to analyze Tweets that their clients are creating for mentions of different power-train alternatives to combustion engines. In doing this Donaldson is looking to the future and seeking to be well prepared for any new emerging technologies so that they can effectively corner the market.
 
 ### Scope of the system
 
@@ -73,7 +73,7 @@ Also, we will attempt to build methods of extracting potentially useful informat
 
 ### Usability
 
-  The only usability requirements that have been mentioned by Donaldson is that they would like the data, and have mentioned CSV format once, briefly, as well as a mention of MongoDB, which another Donaldson contact then shot down due to a lack of familiarity on our part with databases.
+  The only usability requirements that have been mentioned by Donaldson is that they would like the data, and have mentioned CSV format once, briefly, and more recently have mentioned that they would like to see graphs. They also once mentioned MongoDB, which another Donaldson contact then shot down due to a lack of familiarity on our part with databases.
 
   They seem utterly uninterested in using the code we provide, instead being more interested in the data we produce with it. The code may end up being nothing more than a reference point for them to identify how we obtained a specific result in the data we provide them.
 
@@ -114,6 +114,8 @@ Also, we will attempt to build methods of extracting potentially useful informat
   We hope that providing package installation instructions for any dependencies our code requires avoids any concerns of "sub-licensing" or whatever it might be called, where we may not have permission from NLTK/Tweepy/MySQL to distribute their software directly to Donaldson. If Donaldson then chooses to install those packages, they then choose to agree to those license terms.
 
   If those license terms are unacceptable, they have enough of our code to be able to write their own modules to replace the ones our code depends on.
+
+  Frankly, however, none of us are lawyers, and as such we really don't know how licensing on this might work.
 
   We must cite anywhere anything VADER-related appears:
   > Hutto, C.J. & Gilbert, E.E. (2014). VADER: A Parsimonious Rule-based Model for Sentiment Analysis of Social Media Text. Eighth International Conference on Weblogs and Social Media (ICWSM-14). Ann Arbor, MI, June 2014.
@@ -167,6 +169,8 @@ Note: this pulls down all relevant data for analysis and storage in the database
 #### Display data
 
 Dumps CSV containing powertrain mentions, labeled by time or other methods of categorization. May be as a simple CSV for use in whatever program Donaldson deems fit? This avoids locking them into whatever poor UI we would likely settle on.
+
+Donaldson has also requested graphs. I don't believe any of us have any serious experience with statistical analysis, but we can certainly try to make some graphs?
 
 ### Object Models
 
@@ -226,12 +230,12 @@ As the data seems to be the focus of Donaldson's interest, a sample copy of an i
 
 ### HandleManagement
 
-<https://github.com/agarcia169/4306-Donaldson-Project/blob/main/prototyping/HandleManagement/HandleDataCollector.py>
+<https://github.com/agarcia169/4306-Donaldson-Project/blob/main/prototyping/HandleManagement>
 
 #### HandleDataCollector
 
 ```python
-get_handle_from_twitter(): # Retrieves a Twitter Users handle
+get_handle_from_twitter(): # Returns a Twitter ID, username, description, and name.
 ```
 
 #### ManageHandles
@@ -252,7 +256,7 @@ get_twitter_id (): # Get the ID# from the DB of a provided handle
   
 ```python
 get_db_connection(): # Establishes an immutable connection to the DB server. 
-# Once set (with the relevant fields) it can not be changed.
+# Once set (with the relevant fields) it can not be changed. (Singleton)
 ```
 
 #### twitterConnection
@@ -260,7 +264,7 @@ get_db_connection(): # Establishes an immutable connection to the DB server.
 ```python
 get_twitter_connection(): # Called with a Twitter Bearer Token ONE TIME ONLY 
 # to initialize a connection to twitter. Thereafter, called with no arguments 
-# to get a tweepy.Client object with that connection in it.
+# to get a tweepy.Client object with that connection in it. (Singleton)
 ```
 
 ### PowertrainManagement

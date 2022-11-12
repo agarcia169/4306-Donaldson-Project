@@ -85,3 +85,8 @@ def get_twitter_id(twitter_handle: str) -> list[int]:
             return [item[0] for item in result]
     except mysql.connector.cursor.Error as cursorErr:
         print(cursorErr)
+
+def add_handles_by_comma_delimited_string(the_CS_string:str):
+    theSplitList = the_CS_string.split(',')
+    theSplitList = list(map(str.strip,theSplitList))
+    [add_handle_to_database(x) for x in theSplitList]

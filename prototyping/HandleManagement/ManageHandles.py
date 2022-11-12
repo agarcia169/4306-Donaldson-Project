@@ -1,6 +1,7 @@
 from SharedConnectors import dbConnection
 from . import HandleDataCollector
 import mysql.connector
+import csv
 #import json
 
 
@@ -28,18 +29,26 @@ def add_handle_to_database(twitter_username: str) -> tuple[bool, int]:
                     twitter_username)
                 #the_data = json.loads(twitter_user.json())
                 # print(dir(twitter_user))
-                query_add_user_to_db = dbConnection.query_add_user_to_db_IDUsernameDescName
-                dbCursor.execute(query_add_user_to_db, (twitter_user.data.id,
-                                 twitter_user.data.username, twitter_user.data.description, twitter_user.data.name))
-                dbCursor.fetchall()
-                theDBConnection.commit()
-                return (True, twitter_user.data.id)
+                # query_add_user_to_db = dbConnection.query_add_user_to_db_IDUsernameDescName
+                if hasattr(twitter_user.data,'id'):
+                    dbCursor.execute(dbConnection.query_add_user_to_db_IDUsernameDescName, (twitter_user.data.id,
+                                    twitter_user.data.username, twitter_user.data.description, twitter_user.data.name))
+                    dbCursor.fetchall()
+                    theDBConnection.commit()
+                    print(str(twitter_user.data.username) + " added as " + str(twitter_user.data.id))
+                    return (True, twitter_user.data.id)
+                else:
+                    print("Twitter didn't know who " + twitter_username + " was.")
+                    return(False,0)
             else:
                 print("User `" + twitter_username +
                       "` Exists In Database Already As: '" + str(do_they_exist[0][0]) + "'")
                 return (False, do_they_exist[0][0])
     except mysql.connector.cursor.Error as cursorErr:
         print(cursorErr)
+    except Exception as exc:
+        print(exc)
+        raise
 
 
 def get_twitter_handle(twitter_id: int | str) -> str:
@@ -89,4 +98,21 @@ def get_twitter_id(twitter_handle: str) -> list[int]:
 def add_handles_by_comma_delimited_string(the_CS_string:str):
     theSplitList = the_CS_string.split(',')
     theSplitList = list(map(str.strip,theSplitList))
-    [add_handle_to_database(x) for x in theSplitList]
+    try:
+        add_handles_by_list(theSplitList)
+    except Exception as exc:
+        print(exc)
+        raise
+
+def add_handles_by_list(theListOfHandles:str):
+    [add_handle_to_database(x) for x in theListOfHandles]
+
+def load_handle_CSV_file(filename:str, *, dialect:str=None):
+    # https://docs.python.org/3/library/csv.html
+    with open(filename, newline='') as theCSVfile:
+        if dialect is None:
+            dialect = csv.Sniffer().sniff(theCSVfile.read(1024))
+        theCSVfile.seek(0)
+        reader = csv.reader(theCSVfile,dialect)
+        for row in reader:
+            add_handles_by_list(row)

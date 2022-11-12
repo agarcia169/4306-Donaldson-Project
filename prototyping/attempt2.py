@@ -147,7 +147,11 @@ def main():
 		print ('hce' in ManageKeywords.get_list_of_technologies())
 
 	if(False):
-		ManageHandles.add_handles_by_comma_delimited_string(" Gac_Motor  ,  GreavesCottonIN  ")
+		ManageHandles.add_handles_by_comma_delimited_string("AGCO_Power,agralesa,ABCengine,jacmotorsglobal,arcticcat_snow,ArcticCatORV,AROpumps,ALIndiaOfficial,AudiOfficial,allnewlada,basaktraktortr,vidhatagroup,vidhataindia,FusoOfficial,WstrnStarTrucks,BharatBenz1,ThomasBuiltBus,freightliner,DaimlerTruck,cmdbeml,bmcotomotivtr,BMWGroup,briggsstratton,BRP_Rotax,ridecannondale,CaseCE,caterpillarinc,CheryAutoCo,GMcanada,cnhindustrial,kohlerpower,crownequipment,cummins,CushmanVehicles,kiotitractor,daftrucksnv,DemandDetroit,deutz_ag,doosanportable,Progress_Rail,escortsgroup,fawde2017,stellantis,fiatusa,stellantis,FPTIndustrial,ForceMotorsFML,ford,fordotosan,FPTIndustrial,generaldynamics,generalelectric,chevroletbrasil,GWMGlobal,GreavesCottonIN,Gac_Motor,HatzAmerica,HINOJapan,Honda,Hyundai_Global,IndofarmTractor,NavistarNews")
+
+	if(False):
+		filename = "" # Location of file goes here
+		ManageHandles.load_handle_CSV_file(filename)
 
 if __name__ == "__main__":
 	main()

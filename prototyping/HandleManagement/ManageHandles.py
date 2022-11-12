@@ -97,7 +97,6 @@ def get_twitter_id(twitter_handle: str) -> list[int]:
 
 def add_handles_by_comma_delimited_string(the_CS_string:str):
     theSplitList = the_CS_string.split(',')
-    theSplitList = list(map(str.strip,theSplitList))
     try:
         add_handles_by_list(theSplitList)
     except Exception as exc:
@@ -105,6 +104,7 @@ def add_handles_by_comma_delimited_string(the_CS_string:str):
         raise
 
 def add_handles_by_list(theListOfHandles:str):
+    theListOfHandles = list(map(str.strip,theListOfHandles))
     [add_handle_to_database(x) for x in theListOfHandles]
 
 def load_handle_CSV_file(filename:str, *, dialect:str=None):

@@ -128,7 +128,7 @@ def add_handles_by_list(theListOfHandles:list[str]):
     theListOfHandles = list(map(str.strip,theListOfHandles))
     [add_handle_to_database(x) for x in theListOfHandles]
 
-def load_handle_CSV_file(filename:str, *, dialect:str=None):
+def load_handle_CSV_file(filename:str, *, dialect:str | None=None):
     """Loads a CSV file containing Twitter handles and adds any that aren't already in the company DB to the DB.
 
     Args:

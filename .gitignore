@@ -365,3 +365,8 @@ prototyping/helpFiles.py
 
 # PyCharm
 .idea/
+
+# Virtual Environment
+env/
+
+*.egg-info/

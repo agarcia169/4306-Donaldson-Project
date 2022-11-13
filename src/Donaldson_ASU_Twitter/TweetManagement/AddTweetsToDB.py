@@ -1,8 +1,10 @@
-from SharedConnectors import twitterConnection
-from SharedConnectors import dbConnection
-import tweepy
 from datetime import datetime as DateTime
 import datetime
+import tweepy
+from ..SharedConnectors import twitterConnection
+from ..SharedConnectors import dbConnection
+
+
 
 # one_year = datetime.timedelta(days=365)
 # one_year_ago = (DateTime.now() - one_year).replace(microsecond=0)

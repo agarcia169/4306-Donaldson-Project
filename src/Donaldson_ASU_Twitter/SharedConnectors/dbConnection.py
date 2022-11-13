@@ -1,7 +1,8 @@
+import atexit
 import mysql.connector
 from mysql.connector import MySQLConnection
 from mysql.connector import errorcode
-import atexit
+
 
 # https://stackoverflow.com/questions/6829675/the-proper-method-for-making-a-db-connection-available-across-many-python-module
 

@@ -1,4 +1,4 @@
-from SharedConnectors import twitterConnection
+from ..SharedConnectors import twitterConnection
 import requests
 from requests import Response
 

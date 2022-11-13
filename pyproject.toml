@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+addopts = "--cov=DonaldsonASUTwitter"
+testpaths = ["tests",]
+
+[tool.pylint.format]
+# Number of spaces of indent required inside a hanging or continued line.
+indent-after-paren = 4
+
+# String used as indentation unit. This is usually "    " (4 spaces) or "\t" (1
+# tab).
+indent-string = "\t"
+
+# [project]
+# name = "Donaldson-ASU Twitter Analysis Tool"
+# description = "Tool built by students at ASU for Donaldson Company to pull down Twitter data from various companies for analysis (including VADER analysis)."
+# authors = [
+#     {name="Joel King", email="jking33@angelo.edu"},
+#     {name="Alex Garcia", email=""},
+#     {name="Adebolanle Balogun", email=""}
+# ]
+# # platforms = unix, linux, osx, cygwin, win32
+# # Needs classifiers?
+# classifiers = [
+#     "Programming Language :: Python :: 3 :: Only",
+#     "Development Status :: 3 - Alpha",
+#     "Environment :: Console",
+#     "Intended Audience :: Manufacturing",
+#     "Intended Audience :: Science/Research",
+#     "Intended Audience :: Education",
+#     "Natural Language :: English",
+#     "Programming Language :: Python :: 3.9",
+#     "Programming Language :: Python :: 3.10",
+#     "Programming Language :: Python :: 3.11",
+#     "Topic :: Database :: Front-Ends"
+# ]
+# # Needs license? Maybe? license and license_file?
+
+# [options]
+# packages = [
+#     "DonaldsonASUTwitter"
+# ]
+# install_requires = [
+#     "mysql-connector-python>=8.0.31",
+#     "nltk>=3.7",
+#     "numpy>=1.23.4",
+#     "tweepy>=4.11.0"
+# ]
+# python_requires = ">=3.9"
+# package_dir = "=src"
+# # zip_safe?

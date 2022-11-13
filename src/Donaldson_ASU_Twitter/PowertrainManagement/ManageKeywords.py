@@ -1,4 +1,4 @@
-from SharedConnectors import dbConnection
+from ..SharedConnectors import dbConnection
 
 def get_list_of_technologies() -> dict[str,tuple[str,str]]:
     """Technologies matched with the query to return the keywords for that tech.

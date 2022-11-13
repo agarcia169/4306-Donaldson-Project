@@ -12,24 +12,22 @@
 # numpy==1.23.4
 # tweepy==4.11.0
 
-# Hutto, C.J. & Gilbert, E.E. (2014). VADER: A Parsimonious 
+# Hutto, C.J. & Gilbert, E.E. (2014). VADER: A Parsimonious
 # Rule-based Model for Sentiment Analysis of Social Media Text.
-# Eighth International Conference on Weblogs and Social Media 
+# Eighth International Conference on Weblogs and Social Media
 # (ICWSM-14). Ann Arbor, MI, June 2014.
 
-from os.path import abspath
-from getpass import getpass
-from configparser import RawConfigParser
-from HandleManagement import ManageHandles
-from HandleManagement import HandleDataCollector
-from TweetManagement import AddTweetsToDB
-from SharedConnectors import twitterConnection
-from SharedConnectors import dbConnection
-from PowertrainManagement import LabelTweetsWithTechs
-from PowertrainManagement import ManageKeywords
-from ReportingUI import CSVOutput
-from NLTK.VaderAnalysis import TweetAnalysis
 import time
+from configparser import RawConfigParser
+from getpass import getpass
+from os.path import abspath
+
+from .HandleManagement import HandleDataCollector, ManageHandles
+from .PowertrainManagement import LabelTweetsWithTechs, ManageKeywords
+from .ReportingUI import CSVOutput
+from .SharedConnectors import dbConnection, twitterConnection
+from .TweetManagement import AddTweetsToDB
+from .VaderAnalysis import TweetAnalysis
 
 
 def main():
@@ -112,7 +110,7 @@ def main():
 		start2 = time.perf_counter()
 		CSVOutput.dumpy()
 	
-	if(False):
+	if(True):
 		# AddTweetsToDB.refresh_tweets(3003844230,maxDaysInPast=365*2)
 		print(TweetAnalysis.one_VADER_analysis("Trusted and reliable for everyday use."))
 
@@ -132,7 +130,7 @@ def main():
 			thisDB.commit()
 
 	if(False):
-		"""This is where you come if you want to just add handles to the DB one name at a time."""
+		# """This is where you come if you want to just add handles to the DB one name at a time."""
 		theHandleToAdd:str = str(input("What handle?: "))
 		if(str == "" or str == None):
 			return

@@ -26,5 +26,13 @@ def analyze_analyzed_tweets_in_DB():
         thisDBClient.commit()
         print(tweet)
 
-def one_VADER_analysis(theTextToAnalyze:str):
+def one_VADER_analysis(theTextToAnalyze:str) -> dict[str, float]:
+    """Provide this one string of text, get one VADER analysis for that string back.
+
+    Args:
+        theTextToAnalyze (str): The text to run through VADER analysis.
+
+    Returns:
+        dict[str, float]: The VADER analysis. Keys are 'neg', 'neu', 'pos', and 'compound'.
+    """
     return SentimentIntensityAnalyzer().polarity_scores(theTextToAnalyze)

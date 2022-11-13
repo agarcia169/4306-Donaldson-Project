@@ -373,3 +373,4 @@ env/
 .mypy_cache/
 .pytest_cache/
 .vscode/
+htmlcov/

@@ -117,5 +117,5 @@ if (True): #Test the SECRET VADER project
 	# secretVADER.test_secret_VADER_slow_and_bad()
 	# print(time.perf_counter()-start1)
 	start2 = time.perf_counter()
-	vader_experimental.test_secret_VADER()
+	vader_experimental.test_experimental_VADER()
 	print(time.perf_counter()-start2)

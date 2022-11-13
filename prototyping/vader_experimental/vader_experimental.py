@@ -2,7 +2,7 @@ from SharedConnectors import dbConnection
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 
-def test_secret_VADER_slow_and_bad():
+def test_experimental_VADER_slow_and_bad():
     dbLink:dbConnection._connection = dbConnection.get_db_connection()
     VADERAnalyzer = SentimentIntensityAnalyzer()
 
@@ -44,7 +44,7 @@ def test_secret_VADER_slow_and_bad():
         dbLink.rollback()
 
 
-def test_secret_VADER():
+def test_experimental_VADER():
     dbLink:dbConnection._connection = dbConnection.get_db_connection()
     VADERAnalyzer = SentimentIntensityAnalyzer()
 

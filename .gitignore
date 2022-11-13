@@ -365,3 +365,12 @@ prototyping/helpFiles.py
 
 # PyCharm
 .idea/
+
+# Virtual Environment
+env/
+
+*.egg-info/
+.mypy_cache/
+.pytest_cache/
+.vscode/
+htmlcov/

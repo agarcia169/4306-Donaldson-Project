@@ -1,7 +1,10 @@
 import csv
+
 import mysql.connector
+
 from ..SharedConnectors import dbConnection
 from . import HandleDataCollector
+
 #import json
 
 
@@ -44,8 +47,8 @@ def add_handle_to_database(twitter_username: str) -> tuple[bool, int]:
                 print("User `" + twitter_username +
                       "` Exists In Database Already As: '" + str(do_they_exist[0][0]) + "'")
                 return (False, do_they_exist[0][0])
-    except mysql.connector.cursor.Error as cursorErr:
-        print(cursorErr)
+    except mysql.connector.cursor.Error as cursor_err:
+        print(cursor_err)
     except Exception as exc:
         print(exc)
         raise

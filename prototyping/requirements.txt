@@ -1,4 +1,0 @@
-mysql-connector-python==8.0.30
-nltk==3.7
-requests==2.28.1
-tweepy==4.10.1

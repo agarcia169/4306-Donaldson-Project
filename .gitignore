@@ -370,3 +370,6 @@ prototyping/helpFiles.py
 env/
 
 *.egg-info/
+.mypy_cache/
+.pytest_cache/
+.vscode/

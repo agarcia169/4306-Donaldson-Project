@@ -50,7 +50,12 @@ def add_handle_to_database(twitter_username: str) -> tuple[bool, int]:
         print(exc)
         raise
 
-def get_all_ids_in_db():
+def get_all_ids_in_db() -> list[int]:
+    """Returns the IDs of all companies in the database.
+
+    Returns:
+        list[int]: A list of the numeric integer ID#s of each company's Twitter handle.
+    """
     theDBConnection = dbConnection.get_db_connection()
     with theDBConnection.cursor() as dbCursor:
         dbCursor.execute("SELECT id FROM handles")
@@ -102,6 +107,11 @@ def get_twitter_id(twitter_handle: str) -> list[int]:
         print(cursorErr)
 
 def add_handles_by_comma_delimited_string(the_CS_string:str):
+    """Adds handles, given in a comma-delimited string, to the company DB.
+
+    Args:
+        the_CS_string (str): A list of company Twitter handles, separated by commas. Excess spaces before/after commas are ignored.
+    """
     theSplitList = the_CS_string.split(',')
     try:
         add_handles_by_list(theSplitList)
@@ -109,11 +119,22 @@ def add_handles_by_comma_delimited_string(the_CS_string:str):
         print(exc)
         raise
 
-def add_handles_by_list(theListOfHandles:str):
+def add_handles_by_list(theListOfHandles:list[str]):
+    """Takes a list of company Twitter handles (as strings) and adds them to the database. Excess spaces before/after the handle are ignored.
+
+    Args:
+        theListOfHandles (list[str]): The list of company Twitter handles.
+    """
     theListOfHandles = list(map(str.strip,theListOfHandles))
     [add_handle_to_database(x) for x in theListOfHandles]
 
 def load_handle_CSV_file(filename:str, *, dialect:str=None):
+    """Loads a CSV file containing Twitter handles and adds any that aren't already in the company DB to the DB.
+
+    Args:
+        filename (str): The location of the file, directory and file name.
+        dialect (str, optional): A Python csv.dialect. If not provided, the code will attempt to figure out the dialect on its own.
+    """
     # https://docs.python.org/3/library/csv.html
     with open(filename, newline='') as theCSVfile:
         if dialect is None:

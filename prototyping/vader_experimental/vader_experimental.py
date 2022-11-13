@@ -69,7 +69,7 @@ def test_experimental_VADER():
         updateTuple.append((tweet[0],sentimentScores['neg'],sentimentScores['neu'],sentimentScores['pos'],sentimentScores['compound']))
 
     tupleString = ','.join(map(str,updateTuple))
-    updateString = update_temp_table % tupleString
+    updateString = update_temp_table % tupleString # INSECURE, do it differently! Append (%s,%s,%s,%s,...) to the query, then build the appropriate tuple!
     # print(tupleString[0:200])
     # print(VADERAnalyzer.polarity_scores(tweetsPlusID[0][1]),VADERAnalyzer.polarity_scores(tweetsPlusID[1][1]))
     if(True):

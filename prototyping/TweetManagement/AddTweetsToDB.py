@@ -28,7 +28,14 @@ import datetime
 #                                          'created_at', 'in_reply_to_user_id', 'lang', 'text'],
 #                            until_id=None, user_fields=None):
 
-def retrieve_recent_tweets(theUserID,* , maxDaysInPast:int=365*5, **kwargs):
+def retrieve_recent_tweets(theUserID:int,* , maxDaysInPast:int=365*5, **kwargs):
+    """Grab any tweets since the most recently grabbed Tweet for a specified user.
+
+    Args:
+        theUserID (int): The Twitter User ID#
+        maxDaysInPast (int, optional): The maximum number of days in the past you want to look for Tweets. Defaults to 365*5.
+        **kwargs: Any tweepy.Paginator() arguments. Probably best left default.
+    """
     timeToGrab = datetime.timedelta(days=maxDaysInPast)
     how_long_to_grab = (DateTime.now() - timeToGrab).replace(microsecond=0)
     defaultKwargs = {'exclude':['retweets', 'replies'], 
@@ -57,7 +64,13 @@ def retrieve_recent_tweets(theUserID,* , maxDaysInPast:int=365*5, **kwargs):
 #                           tweet_fields=['author_id', 'conversation_id',
 #                                         'created_at', 'in_reply_to_user_id', 'lang', 'text'],
 #                           until_id=None, user_fields=None):
-def retrieve_older_tweets(theUserID, *, maxDaysInPast:int=365*5, **kwargs):
+def retrieve_older_tweets(theUserID:int, *, maxDaysInPast:int=365*5, **kwargs):
+    """Grab Tweets older than the oldest Tweets grabbed so far.
+
+    Args:
+        theUserID (int): The Twitter User ID#.
+        maxDaysInPast (int, optional): Look no further than this many days into the past. Defaults to 365*5.
+    """
     timeToGrab = datetime.timedelta(days=maxDaysInPast)
     how_long_to_grab = (DateTime.now() - timeToGrab).replace(microsecond=0)
     defaultKwargs = {'exclude':['retweets', 'replies'], 
@@ -77,7 +90,13 @@ def retrieve_older_tweets(theUserID, *, maxDaysInPast:int=365*5, **kwargs):
     _retrieve_tweets(theUserID, **kwargs)
 
 
-def refresh_tweets(theUserID, *, maxDaysInPast:int=365*5, **kwargs):
+def refresh_tweets(theUserID:int, *, maxDaysInPast:int=365*5, **kwargs):
+    """Grab any Tweets we don't have yet.
+
+    Args:
+        theUserID (int): The Twitter User ID#.
+        maxDaysInPast (int, optional): The maximum number of days into the past to look. Defaults to 365*5.
+    """
     timeToGrab = datetime.timedelta(days=maxDaysInPast)
     how_long_to_grab = (DateTime.now() - timeToGrab).replace(microsecond=0)
     thisDBClient = dbConnection.get_db_connection()

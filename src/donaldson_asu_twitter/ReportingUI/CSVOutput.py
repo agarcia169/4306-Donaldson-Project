@@ -1,6 +1,7 @@
-from SharedConnectors import dbConnection
-from itertools import chain
 import csv
+from ..SharedConnectors import dbConnection
+
+
 
 def dumpy():
     thisDBClient = dbConnection.get_db_connection()

@@ -1,7 +1,7 @@
 # find all companies that make a certain tech
 # find all comapnies that use certain tech
 # get all the companies with all the tech they use or maybe just print the list of labeled companies
-from SharedConnectors import dbConnection
+from ..SharedConnectors import dbConnection
 
 
 # def find_all techs_by_company():

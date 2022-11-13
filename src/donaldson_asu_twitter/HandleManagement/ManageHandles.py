@@ -1,7 +1,7 @@
-from SharedConnectors import dbConnection
-from . import HandleDataCollector
-import mysql.connector
 import csv
+import mysql.connector
+from ..SharedConnectors import dbConnection
+from . import HandleDataCollector
 #import json
 
 

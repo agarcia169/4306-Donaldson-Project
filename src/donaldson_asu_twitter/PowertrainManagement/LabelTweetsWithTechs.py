@@ -1,4 +1,4 @@
-from SharedConnectors import dbConnection
+from ..SharedConnectors import dbConnection
 
 
 def evaluate_new_tweets():

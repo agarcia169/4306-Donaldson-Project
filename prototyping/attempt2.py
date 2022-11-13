@@ -153,5 +153,10 @@ def main():
 		filename = "" # Location of file goes here
 		ManageHandles.load_handle_CSV_file(filename)
 
+	if(False):
+		allTheIDs = ManageHandles.get_all_ids_in_db()
+		for id in allTheIDs:
+			AddTweetsToDB.refresh_tweets(id)
+
 if __name__ == "__main__":
 	main()

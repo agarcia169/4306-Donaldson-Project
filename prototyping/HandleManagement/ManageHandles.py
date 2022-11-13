@@ -50,6 +50,12 @@ def add_handle_to_database(twitter_username: str) -> tuple[bool, int]:
         print(exc)
         raise
 
+def get_all_ids_in_db():
+    theDBConnection = dbConnection.get_db_connection()
+    with theDBConnection.cursor() as dbCursor:
+        dbCursor.execute("SELECT id FROM handles")
+        theResponse = dbCursor.fetchall()
+        return [row[0] for row in theResponse]
 
 def get_twitter_handle(twitter_id: int | str) -> str:
     """Gets the handle from the DB of a provided Twitter ID#, `twitter_id`.

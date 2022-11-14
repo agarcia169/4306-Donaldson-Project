@@ -109,18 +109,18 @@ def get_twitter_id(twitter_handle: str) -> list[int]:
     except mysql.connector.cursor.Error as cursorErr:
         print(cursorErr)
 
-def add_handles_by_comma_delimited_string(the_CS_string:str):
-    """Adds handles, given in a comma-delimited string, to the company DB.
+# def add_handles_by_comma_delimited_string(the_CS_string:str):
+#     """Adds handles, given in a comma-delimited string, to the company DB.
 
-    Args:
-        the_CS_string (str): A list of company Twitter handles, separated by commas. Excess spaces before/after commas are ignored.
-    """
-    theSplitList = the_CS_string.split(',')
-    try:
-        add_handles_by_list(theSplitList)
-    except Exception as exc:
-        print(exc)
-        raise
+#     Args:
+#         the_CS_string (str): A list of company Twitter handles, separated by commas. Excess spaces before/after commas are ignored.
+#     """
+#     theSplitList = the_CS_string.split(',')
+#     try:
+#         add_handles_by_list(theSplitList)
+#     except Exception as exc:
+#         print(exc)
+#         raise
 
 def add_handles_by_list(theListOfHandles:list[str]):
     """Takes a list of company Twitter handles (as strings) and adds them to the database. Excess spaces before/after the handle are ignored.
@@ -129,7 +129,8 @@ def add_handles_by_list(theListOfHandles:list[str]):
         theListOfHandles (list[str]): The list of company Twitter handles.
     """
     theListOfHandles = list(map(str.strip,theListOfHandles))
-    [add_handle_to_database(x) for x in theListOfHandles]
+    for thisHandle in theListOfHandles:
+        add_handle_to_database(thisHandle)
 
 def load_handle_CSV_file(filename:str, *, dialect:str | None=None):
     """Loads a CSV file containing Twitter handles and adds any that aren't already in the company DB to the DB.

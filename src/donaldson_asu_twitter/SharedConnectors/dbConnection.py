@@ -129,6 +129,37 @@ WHERE
         OR text LIKE '%Lithium%')"""
 # PowertrainManagement.ManageKeywords
 query_get_powertrain_words = "SELECT word FROM %s"
+#PowertrainManagement.CompanyPowertrains
+#gets the companies that are labeled with select powertrains
+gethfuelcell_query = """
+SELECT 
+    *
+FROM
+    tweets
+WHERE
+    FIND_IN_SET('hfuelcell', powertrain_set) """
+getnatgas_query = """
+SELECT 
+    *
+FROM
+    tweets
+WHERE
+    FIND_IN_SET('natgas', powertrain_set) """
+gethce_query = """
+SELECT 
+    *
+FROM
+    tweets
+WHERE
+    FIND_IN_SET('hce', powertrain_set) """
+
+getbattelec_query ="""
+SELECT 
+    *
+FROM
+    tweets
+WHERE
+    FIND_IN_SET('battelec', powertrain_set) """
 
 # TweetManagement.AddTweetsToDB
 query_add_tweet_to_db_IDAuthTextCreateLangConvo = """
@@ -186,3 +217,6 @@ FROM
     handles
 WHERE
     username = %s"""
+
+
+

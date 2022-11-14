@@ -4,16 +4,18 @@
 from ..SharedConnectors import dbConnection
 
 
-# def find_all techs_by_company():
+def find_all_techs_by_company():
 #     thisDBClient = dbConnection.get_db_connection()
 #     with thisDBClient.cursor() as dbCursor
-thisDBClient = dbConnection.get_db_connection()
+    thisDBClient = dbConnection.get_db_connection()
+#dbconnection.gethfuelcell_query
+    gethfuelcell_query = 'select * from tweets where find_in_set(''hfuelcell'', powertrain_set) ; ' #where tweets.authorid
+    getnatgas_query = 'select * from tweets where find_in_set(''natgas'', powertrain_set) ; ' #queries should grab all tweets from companies that are labeled as such
+    gethce_query = 'select * from tweets where find_in_set(''hce'', powertrain_set) ; '
+    getbattelec_query ='select * from tweets where find_in_set(''battelec'', powertrain_set) ;   '
     with thisDBClient.cursor() as dbCursor:
-    gethfuelcell_query = 'Select handles.name Fom handles = CONCAT(handles,'',''hfuelcell") WHERE label in(''hfuelcell')' ' 
-   getnatgas_query = 'Select handles.name Fom handles = CONCAT(handles,'',''natgas") WHERE label in(''natgas')'' #queries should grab all tweets from companies that are labeled as such
-    gethce_query = 'Select handles.name Fom handles = CONCAT(handles,'',''hce") WHERE label in(''hce')''
-    getbattelec_query ='Select handles.name Fom handles = CONCAT(handles,'',''battElec") WHERE label in(''batElec)''
-    dbCursor.execute(updatebattElec_query)      
+   
+        dbCursor.execute(gethfuelcell_query)      
 
 
 # def find_all_companys_with_tech():

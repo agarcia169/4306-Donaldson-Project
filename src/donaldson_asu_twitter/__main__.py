@@ -143,7 +143,10 @@ def main():
 			print(f"Couldn't add {theHandleToAdd}, maybe they're in the database already?")
 
 	if False:
-		ManageKeywords.get_list_of_keywords_for_technology('battelec')
+		print(ManageKeywords.get_list_of_keywords_for_technology('battelec'))
+		print(ManageKeywords.get_list_of_keywords_for_technology('hce'))
+		print(ManageKeywords.get_list_of_keywords_for_technology('hfuelcell'))
+		print(ManageKeywords.get_list_of_keywords_for_technology('natgas'))
 		print ('hce' in ManageKeywords.get_list_of_technologies())
 
 	if False:

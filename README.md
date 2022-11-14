@@ -224,13 +224,13 @@ VADER - Valence Aware Dictionary for Sentiment Reasoning is a module that is bas
 
 ### Sample Data
 
-<https://github.com/agarcia169/4306-Donaldson-Project/blob/main/prototyping/csvfile.csv>
+<https://github.com/agarcia169/4306-Donaldson-Project/blob/main/csvfile.csv>
 
 As the data seems to be the focus of Donaldson's interest, a sample copy of an initial run of a small attempt at collecting data is above, as produced by the code below. It's approximately 1.85MB, is tab-delimited, and contains approximately 6380 Tweets from several companies Donaldson is interested in. Each line also contains the relevant VADER analysis and a rudimentary attempt at marking Tweets relating to alternative power-trains.
 
 ### HandleManagement
 
-<https://github.com/agarcia169/4306-Donaldson-Project/blob/main/prototyping/HandleManagement>
+<https://github.com/agarcia169/4306-Donaldson-Project/blob/main/src/donaldson_asu_twitter/HandleManagement>
 
 #### HandleDataCollector
 
@@ -250,7 +250,7 @@ get_twitter_id (): # Get the ID# from the DB of a provided handle
 
 ### SharedConnectors
 
-<https://github.com/agarcia169/4306-Donaldson-Project/tree/main/prototyping/SharedConnectors>
+<https://github.com/agarcia169/4306-Donaldson-Project/tree/main/src/donaldson_asu_twitter/SharedConnectors>
 
 #### dbConnection
   
@@ -269,7 +269,7 @@ get_twitter_connection(): # Called with a Twitter Bearer Token ONE TIME ONLY
 
 ### PowertrainManagement
 
-<https://github.com/agarcia169/4306-Donaldson-Project/tree/main/prototyping/PowertrainManagement>
+<https://github.com/agarcia169/4306-Donaldson-Project/tree/main/src/donaldson_asu_twitter/PowertrainManagement>
 
 #### LabelTweetsWithTechs
 
@@ -281,7 +281,7 @@ updatelabels(): # updates database entries to reflect what power-train mentions 
 
 ### TweetManagement
 
-<https://github.com/agarcia169/4306-Donaldson-Project/tree/main/prototyping/TweetManagement>
+<https://github.com/agarcia169/4306-Donaldson-Project/tree/main/src/donaldson_asu_twitter/TweetManagement>
 
 #### AddTweetsToDB
 
@@ -299,7 +299,7 @@ retrieve_tweets(): # retrieves a tweet from the DB with a specific tweet ID
 
 ### NLTK/VADER Analysis
 
-<https://github.com/agarcia169/4306-Donaldson-Project/tree/main/prototyping/NLTK/VaderAnalysis>
+<https://github.com/agarcia169/4306-Donaldson-Project/tree/main/src/donaldson_asu_twitter/VaderAnalysis>
 
 #### TweetAnalysis
 
@@ -310,7 +310,7 @@ analyze_analyzed_tweets_in_DB(): # analyzes all Tweets in database and then for 
 
 ### ReportingUI
 
-<https://github.com/agarcia169/4306-Donaldson-Project/tree/main/prototyping/ReportingUI>
+<https://github.com/agarcia169/4306-Donaldson-Project/tree/main/src/donaldson_asu_twitter/ReportingUI>
 
 #### CSVOutput
 

@@ -51,9 +51,9 @@ def main():
 	# API_KEY_SECRET=example
 	# BEARER_TOKEN=example
 
-	if (not config.read(server_file_location)):
+	if not config.read(server_file_location):
 		raise IOError(f"Could not open {abspath(server_file_location)}")
-	if (not config.read(api_key_file_location)):
+	if not config.read(api_key_file_location):
 		raise IOError(f"Could not open {abspath(api_key_file_location)}")
 
 	API_CONFIG_SECTION = 'twitter'
@@ -67,16 +67,16 @@ def main():
 	dbPassword = config.get('mysql', 'password', fallback=None)
 	PORT = config.get('mysql', 'port')
 
-	if (BEARER_TOKEN == None):
+	if BEARER_TOKEN is None:
 		print("Error: " + API_BEARER_TOKEN_VARIABLE_NAME +
 			" is missing from [" + API_CONFIG_SECTION + "] section in " + abspath(api_key_file_location))
 		exit()  # Some code below is from this website:
 	# https://dev.mysql.com/doc/connector-python/en/connector-python-example-connecting.html
 
-	if (dbUser == None):
+	if dbUser is None:
 		dbUser = input("Please enter your database username:")
 
-	if (dbPassword == None):
+	if dbPassword is None:
 		dbPassword = getpass(
 			"Please enter the database password for your account:")
 
@@ -90,35 +90,37 @@ def main():
 	# print(ManageHandles.get_twitter_handle(342772500))
 	# print(ManageHandles.get_twitter_id('volvocars'))
 	# AddTweetsToDB.retrieve_older_tweets(342772500)
-	if (False):  # Set to true and replace the name for `theCompany` to add that company to the database and grab some of their recent tweets.
+	if False:
+		# Set to true and replace the name for `theCompany` to add
+		# that company to the database and grab some of their recent tweets.
 		theCompany = 'CheryAutoCo'
 
 		didItWork, theCompanyID = ManageHandles.add_handle_to_database(theCompany)
 		# theCompanyID = ManageHandles.get_twitter_id(theCompany)[0]
-		if (didItWork):
+		if didItWork:
 			AddTweetsToDB.refresh_tweets(theCompanyID)
 
-	if (False):
+	if False:
 		# LabelTweetsWithTechs.evaluate_new_tweets()
 
 		LabelTweetsWithTechs.updatelabels()
-	if (False):
+	if False:
 		start2 = time.perf_counter()
 		TweetAnalysis.analyze_analyzed_tweets_in_DB()
 		print(time.perf_counter()-start2)
-	if (False):
+	if False:
 		start2 = time.perf_counter()
 		CSVOutput.dumpy()
-	
-	if(True):
+
+	if True:
 		# AddTweetsToDB.refresh_tweets(3003844230,maxDaysInPast=365*2)
 		print(TweetAnalysis.one_VADER_analysis("Trusted and reliable for everyday use."))
 
-	if(False):
+	if False:
 		theUser = HandleDataCollector.get_handle_from_twitter(str(input("Handle?: ")))
 		print(theUser.data.description)
 
-	if(False):
+	if False:
 		thisDB = dbConnection.get_db_connection()
 		with thisDB.cursor() as dbCursor:
 			dbCursor.execute("SELECT username FROM handles WHERE description is null")
@@ -129,29 +131,39 @@ def main():
 				print(dbCursor.fetchall(), thisUsername[0],theDescription.replace('\n','').replace('\t',''))
 			thisDB.commit()
 
-	if(False):
+	if False:
 		# """This is where you come if you want to just add handles to the DB one name at a time."""
 		theHandleToAdd:str = str(input("What handle?: "))
 		if(str == "" or str == None):
 			return
 		didWeAddThem, theirID = ManageHandles.add_handle_to_database(theHandleToAdd)
-		if(didWeAddThem):
+		if didWeAddThem:
 			print(f'Added {theHandleToAdd} under the ID {theirID}')
 		else:
 			print(f"Couldn't add {theHandleToAdd}, maybe they're in the database already?")
 
-	if(False):
+	if False:
 		ManageKeywords.get_list_of_keywords_for_technology('battelec')
 		print ('hce' in ManageKeywords.get_list_of_technologies())
 
-	if(False):
-		ManageHandles.add_handles_by_comma_delimited_string("AGCO_Power,agralesa,ABCengine,jacmotorsglobal,arcticcat_snow,ArcticCatORV,AROpumps,ALIndiaOfficial,AudiOfficial,allnewlada,basaktraktortr,vidhatagroup,vidhataindia,FusoOfficial,WstrnStarTrucks,BharatBenz1,ThomasBuiltBus,freightliner,DaimlerTruck,cmdbeml,bmcotomotivtr,BMWGroup,briggsstratton,BRP_Rotax,ridecannondale,CaseCE,caterpillarinc,CheryAutoCo,GMcanada,cnhindustrial,kohlerpower,crownequipment,cummins,CushmanVehicles,kiotitractor,daftrucksnv,DemandDetroit,deutz_ag,doosanportable,Progress_Rail,escortsgroup,fawde2017,stellantis,fiatusa,stellantis,FPTIndustrial,ForceMotorsFML,ford,fordotosan,FPTIndustrial,generaldynamics,generalelectric,chevroletbrasil,GWMGlobal,GreavesCottonIN,Gac_Motor,HatzAmerica,HINOJapan,Honda,Hyundai_Global,IndofarmTractor,NavistarNews")
+	if True:
+		ManageHandles.add_handles_by_comma_delimited_string("""AGCO_Power,agralesa,
+			ABCengine,jacmotorsglobal,arcticcat_snow,ArcticCatORV,AROpumps,ALIndiaOfficial,
+			AudiOfficial,allnewlada,basaktraktortr,vidhatagroup,vidhataindia,FusoOfficial,
+			WstrnStarTrucks,BharatBenz1,ThomasBuiltBus,freightliner,DaimlerTruck,cmdbeml,
+			bmcotomotivtr,BMWGroup,briggsstratton,BRP_Rotax,ridecannondale,CaseCE,caterpillarinc,
+			CheryAutoCo,GMcanada,cnhindustrial,kohlerpower,crownequipment,cummins,CushmanVehicles,
+			kiotitractor,daftrucksnv,DemandDetroit,deutz_ag,doosanportable,Progress_Rail,
+			escortsgroup,fawde2017,stellantis,fiatusa,stellantis,FPTIndustrial,ForceMotorsFML,
+			ford,fordotosan,FPTIndustrial,generaldynamics,generalelectric,chevroletbrasil,
+			GWMGlobal,GreavesCottonIN,Gac_Motor,HatzAmerica,HINOJapan,Honda,Hyundai_Global,
+			IndofarmTractor,NavistarNews""")
 
-	if(False):
+	if False:
 		filename = "" # Location of file goes here
 		ManageHandles.load_handle_CSV_file(filename)
 
-	if(False):
+	if False:
 		allTheIDs = ManageHandles.get_all_ids_in_db()
 		for id in allTheIDs:
 			AddTweetsToDB.refresh_tweets(id)

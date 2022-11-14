@@ -50,6 +50,16 @@ dependencies = [
 
 [project.urls]
 "Homepage" = "https://github.com/agarcia169/4306-Donaldson-Project"
+
+[tool.autopep8]
+max_line_length = 120
+ignore = "E11"  # or ["E501", "W6"]
+in-place = true
+recursive = true
+aggressive = 3
+
+[tool.yapf]
+USE_TABS = true
 # Needs license? Maybe? license and license_file?
 
 # [options]

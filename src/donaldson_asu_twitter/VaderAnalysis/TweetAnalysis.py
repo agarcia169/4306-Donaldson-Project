@@ -1,4 +1,4 @@
-from nltk.sentiment.vader import SentimentIntensityAnalyzer
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 # from nltk import tokenize
 from ..SharedConnectors import dbConnection
 

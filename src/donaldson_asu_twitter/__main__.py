@@ -22,12 +22,12 @@ from configparser import RawConfigParser
 from getpass import getpass
 from os.path import abspath
 
-from .HandleManagement import HandleDataCollector, ManageHandles
-from .PowertrainManagement import LabelTweetsWithTechs, ManageKeywords
-from .ReportingUI import CSVOutput
-from .SharedConnectors import dbConnection, twitterConnection
-from .TweetManagement import AddTweetsToDB
-from .VaderAnalysis import TweetAnalysis
+from donaldson_asu_twitter.HandleManagement import HandleDataCollector, ManageHandles
+from donaldson_asu_twitter.PowertrainManagement import LabelTweetsWithTechs, ManageKeywords
+from donaldson_asu_twitter.ReportingUI import CSVOutput
+from donaldson_asu_twitter.SharedConnectors import dbConnection, twitterConnection
+from donaldson_asu_twitter.TweetManagement import AddTweetsToDB
+from donaldson_asu_twitter.VaderAnalysis import TweetAnalysis
 
 
 def main():

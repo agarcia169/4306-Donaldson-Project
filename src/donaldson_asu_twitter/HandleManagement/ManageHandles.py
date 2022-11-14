@@ -89,7 +89,7 @@ def get_twitter_handle(twitter_id: int | str) -> str:
         print(cursorErr)
 
 
-def get_twitter_id(twitter_handle: str) -> list[int]:
+def get_twitter_id_by_handle(twitter_handle: str) -> list[int]:
     """Get the ID# from the DB of a provided handle, `twitter_handle`.
 
     Args:

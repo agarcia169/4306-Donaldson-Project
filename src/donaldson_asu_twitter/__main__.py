@@ -146,7 +146,7 @@ def main():
 		ManageKeywords.get_list_of_keywords_for_technology('battelec')
 		print ('hce' in ManageKeywords.get_list_of_technologies())
 
-	if True:
+	if False:
 		ManageHandles.add_handles_by_comma_delimited_string("""AGCO_Power,agralesa,
 			ABCengine,jacmotorsglobal,arcticcat_snow,ArcticCatORV,AROpumps,ALIndiaOfficial,
 			AudiOfficial,allnewlada,basaktraktortr,vidhatagroup,vidhataindia,FusoOfficial,

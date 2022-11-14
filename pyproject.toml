@@ -41,6 +41,13 @@ classifiers = [
     "Topic :: Database :: Front-Ends"
 ]
 
+dependencies = [
+    "mysql-connector-python~=8.0.30",
+    "nltk~=3.7",
+    "tweepy~=4.10.1",
+    "vaderSentiment"
+]
+
 [project.urls]
 "Homepage" = "https://github.com/agarcia169/4306-Donaldson-Project"
 # Needs license? Maybe? license and license_file?

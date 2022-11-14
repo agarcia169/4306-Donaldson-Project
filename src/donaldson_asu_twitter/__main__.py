@@ -51,10 +51,10 @@ def main():
 	# API_KEY_SECRET=example
 	# BEARER_TOKEN=example
 
-	if (config.read(server_file_location) == []):
-		raise IOError("Could not open " + abspath(server_file_location))
-	if (config.read(api_key_file_location) == []):
-		raise IOError("Could not open " + abspath(api_key_file_location))
+	if (not config.read(server_file_location)):
+		raise IOError(f"Could not open {abspath(server_file_location)}")
+	if (not config.read(api_key_file_location)):
+		raise IOError(f"Could not open {abspath(api_key_file_location)}")
 
 	API_CONFIG_SECTION = 'twitter'
 	API_BEARER_TOKEN_VARIABLE_NAME = 'bearer_token'

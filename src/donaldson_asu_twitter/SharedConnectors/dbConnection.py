@@ -125,8 +125,8 @@ UPDATE tweets
 SET 
     powertrain_set = CONCAT_WS(',', powertrain_set, 'hce')
 WHERE
-    (text LIKE '%battery%'
-        OR text LIKE '%Lithium%')"""
+    (text LIKE '%hydrogen%combustion%engine%'
+        OR text LIKE '%hydrogen%engine%')"""
 # PowertrainManagement.ManageKeywords
 query_get_powertrain_words = "SELECT word FROM %s"
 #PowertrainManagement.CompanyPowertrains

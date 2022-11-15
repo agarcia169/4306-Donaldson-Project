@@ -114,7 +114,7 @@ def main():
 
 	if True:
 		# AddTweetsToDB.refresh_tweets(3003844230,maxDaysInPast=365*2)
-		print(TweetAnalysis.one_VADER_analysis("Trusted and reliable for everyday use."))
+		print(TweetAnalysis.one_VADER_analysis("Volvo Insight: The cost of running an electric car can be lower than traditional cars."))
 
 	if False:
 		theUser = HandleDataCollector.get_handle_from_twitter(str(input("Handle?: ")))
@@ -171,7 +171,7 @@ def main():
 		for id in allTheIDs:
 			AddTweetsToDB.refresh_tweets(id)
 
-	if True:
+	if False:
 		ManageKeywords.add_keyword_for_technology('hce')
 
 if __name__ == "__main__":

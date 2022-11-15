@@ -9,10 +9,10 @@ def get_list_of_technologies() -> dict[str,tuple[str,str]]:
 			the technolgy, and the second value is the DB query for the words for\
 				that technology.
 	"""
-	return {'hce':('Hydrogen Combustion Engine',dbConnection.query_keywH), 
-				'battelec':('Electric Battery',dbConnection.query_keywB), 
-				'natgas':('Natural Gas Engine',dbConnection.query_keywNat), 
-				'hfuelcell':('Hydrogen Fuel Cell',dbConnection.query_keywCell)}
+	return {'hce':('Hydrogen Combustion Engine',dbConnection.query_keywH,dbConnection.query_add_to_hce_words), 
+				'battelec':('Electric Battery',dbConnection.query_keywB,dbConnection.query_add_to_battElec_words), 
+				'natgas':('Natural Gas Engine',dbConnection.query_keywNat,dbConnection.query_add_to_natgas_words), 
+				'hfuelcell':('Hydrogen Fuel Cell',dbConnection.query_keywCell,dbConnection.query_add_to_hfuelcell_words)}
 
 def get_list_of_keywords_for_technology(technology:str) -> tuple:
 	"""When provided one of the four technologies, 'hce', 'battelec', 'natgas', or 'hfuelcell\
@@ -36,3 +36,18 @@ def get_list_of_keywords_for_technology(technology:str) -> tuple:
 		results = dbCursor.fetchall()
 		results = tuple([theWord[0] for theWord in results])
 	return results
+
+def add_keyword_for_technology(technology:str):
+	technology = technology.lower()
+	if technology not in get_list_of_technologies():
+		print("Nope!")
+		return
+	else:
+		thisTechIsCalled = get_list_of_technologies().get(technology)[0]
+		theQueryToAdd = get_list_of_technologies().get(technology)[2]
+	theInputString = str(input(f'What pattern would you like to match when marking Tweets relating to {thisTechIsCalled} technology?\n'))
+	thisDB = dbConnection.get_db_connection()
+	with thisDB.cursor() as dbCursor:
+		dbCursor.execute(theQueryToAdd,(theInputString,))
+		dbCursor.fetchall()
+	thisDB.commit()

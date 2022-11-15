@@ -171,5 +171,8 @@ def main():
 		for id in allTheIDs:
 			AddTweetsToDB.refresh_tweets(id)
 
+	if True:
+		ManageKeywords.add_keyword_for_technology('hce')
+
 if __name__ == "__main__":
 	main()

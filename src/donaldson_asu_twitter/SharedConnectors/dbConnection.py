@@ -81,6 +81,11 @@ query_keywB = "Select word FROM battElec"
 query_keywCell = "Select word FROM hfuelcell"
 query_keywNat = "Select word FROM natgas"
 query_keywH = "Select word FROM hce"
+
+query_add_to_battElec_words = "INSERT into battElec values(%s)"
+query_add_to_hce_words = "INSERT into hce values(%s)"
+query_add_to_natgas_words = "INSERT into natgas values(%s)"
+query_add_to_hfuelcell_words = "INSERT into hfuelcell values(%s)"
 # checking for tweets that haven't been evaluated
 query_revaluate_all_tweets = """
 SELECT 

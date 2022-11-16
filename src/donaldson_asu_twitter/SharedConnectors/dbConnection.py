@@ -52,8 +52,7 @@ def get_db_connection(**kwargs: str) -> mysql.connector.MySQLConnection:
 __all__ = ["get_db_connection"]
 
 #grabs all tweets with a specific mention of the powertrain that was passed to it
-#FIXME
-query_specific_powertrain_mention_count = """ SELECT COUNT* FROM tweets WHERE powertrain_set LIKE %s """
+query_specific_powertrain_mention_count = """ SELECT COUNT * FROM tweets WHERE FIND_IN_SET("%s", powertrain_set) """
 
 
 #grabs all unique powertrain tags

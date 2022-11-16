@@ -9,13 +9,13 @@ def tester():
     with thisDBClient.cursor() as dbCursor:
         dbCursor.execute(distinct_powertrains)
         uniquePowertrains = dbCursor.fetchall()
-        
-    print(uniquePowertrains)
+
     #I dont think i need to commit() here
     #thisDBClient.commit()
     x_axis = []
     for powertrains in uniquePowertrains:
         x_axis.append(powertrains[0])
+        print(type(powertrains[0]))
     print(x_axis)
 
 
@@ -23,13 +23,16 @@ def tester():
     #grabs shit for the "y-axis" of the pie
     #grabs all tweets with the powertrain value that was passed to it,then finds the count for it
     for item in x_axis:
+        print(item)
         specific_powertrain_mention_count =  dbConnection.query_specific_powertrain_mention_count
         thisDBClient = dbConnection.get_db_connection()
         with thisDBClient.cursor() as dbCursor:
             #might need to [0] that shit
             dbCursor.execute(specific_powertrain_mention_count,(item))
             powertrainMentions = dbCursor.fetchall()
+            print(powertrainMentions)
         y_axis.append(powertrainMentions)
+        print(item)
     print(y_axis)
 
 

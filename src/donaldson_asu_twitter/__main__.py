@@ -191,19 +191,19 @@ def main():
 	if False:
 		ManageKeywords.add_keyword_for_technology('hce')
   
-	if True:
+	if False:
 		matPlotThickens.tester()
 
-	if False: #Test the SECRET VADER project
+	if True:
 		from donaldson_asu_twitter.VaderAnalysis import vader_experimental
 		print("Running VADER analysis and saving data one Tweet at a time...")
 		start1 = time.perf_counter()
 		vader_experimental.test_experimental_VADER_slow_and_bad()
-		print(f"That took {(time.perf_counter()-start1):.2f} seconds.")
+		print(f"That took {(time.perf_counter()-start1):.2f} seconds.\n")
 		print("Running VADER analysis compiling data, then saving data to DB in one large update...")
 		start2 = time.perf_counter()
-		vader_experimental.test_experimental_VADER()
-		print(f"That took {(time.perf_counter()-start2):.2f} seconds.")
+		vader_experimental.test_experimental_VADER(loop=True)
+		print(f"That took {(time.perf_counter()-start2):.2f} seconds.\n")
 
 if __name__ == "__main__":
 	main()

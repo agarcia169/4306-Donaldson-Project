@@ -138,7 +138,7 @@ def tester():
         
     #scatter plot with date as the x axis, neg and pos as the yaxis and powertrains as individually colored dots 
     #https://matplotlib.org/stable/gallery/shapes_and_collections/scatter.html#sphx-glr-gallery-shapes-and-collections-scatter-py
-    
+    #make it so that there are 5 scatters including noTech
     # Fixing random state for reproducibility
     np.random.seed(19680801)
 

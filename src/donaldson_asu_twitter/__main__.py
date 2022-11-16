@@ -28,6 +28,8 @@ from donaldson_asu_twitter.ReportingUI import CSVOutput
 from donaldson_asu_twitter.SharedConnectors import dbConnection, twitterConnection
 from donaldson_asu_twitter.TweetManagement import AddTweetsToDB
 from donaldson_asu_twitter.VaderAnalysis import TweetAnalysis
+from donaldson_asu_twitter.ReportingUI import matPlotThickens
+
 
 
 def main():
@@ -112,7 +114,7 @@ def main():
 		start2 = time.perf_counter()
 		CSVOutput.dumpy()
 
-	if True:
+	if False:
 		# AddTweetsToDB.refresh_tweets(3003844230,maxDaysInPast=365*2)
 		#print(TweetAnalysis.one_VADER_analysis("Volvo Insight: The cost of running an electric car can be lower than traditional cars."))
 		# testString = 'Not all heroes wear capes. Prepare for performance with (super) power, this is the fully electric Audi e-tron S. Discover more at https://t.co/WoOrQWM6Vp. #Audi #eMobility #etronS #FutureIsAnAttitude https://t.co/mBVOYF3cqi'
@@ -186,6 +188,9 @@ def main():
 
 	if False:
 		ManageKeywords.add_keyword_for_technology('hce')
+  
+	if True:
+		matPlotThickens.tester()
 
 if __name__ == "__main__":
 	main()

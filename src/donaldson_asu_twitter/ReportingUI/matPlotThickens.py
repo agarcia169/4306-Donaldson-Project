@@ -2,6 +2,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 from ..SharedConnectors import dbConnection
 
+
+#For neg and pos only take whichever one is larger i.e if a tweet is .4 pos and .1 neg dont even take into account the neg
 def tester():
     # #grabs shit for the "x-axis" of the pie
     # distinct_powertrains =  dbConnection.query_distinct_powertrains
@@ -115,25 +117,37 @@ def tester():
            label='Pos')
 
     ax.set_ylabel('Scores')
-    ax.set_title('SSentiment Scores by Powertrain')
+    ax.set_title('Sentiment Scores by Powertrain')
     ax.legend()
 
     plt.show()
 
 
-
-    # #scatter plot with date as the x axis, neg and pos as the yaxis and powertrains as individually colored dots 
-    # #https://matplotlib.org/stable/gallery/shapes_and_collections/scatter.html#sphx-glr-gallery-shapes-and-collections-scatter-py
+    datesScatter = []
+    compoundScatter = []
+    scatter_plotter_mk1 =  dbConnection.query_scatter_plotter_mk1
+    thisDBClient = dbConnection.get_db_connection()
+    with thisDBClient.cursor() as dbCursor:
+        dbCursor.execute(scatter_plotter_mk1)
+        powertrainMentions = dbCursor.fetchall()
+        for items in powertrainMentions:
+            datesScatter.append(items[3])
+            compoundScatter.append(float(items[7]))
+        print(datesScatter)
+        print(compoundScatter)
+        
+    #scatter plot with date as the x axis, neg and pos as the yaxis and powertrains as individually colored dots 
+    #https://matplotlib.org/stable/gallery/shapes_and_collections/scatter.html#sphx-glr-gallery-shapes-and-collections-scatter-py
     
-    # # Fixing random state for reproducibility
-    # np.random.seed(19680801)
+    # Fixing random state for reproducibility
+    np.random.seed(19680801)
 
+    N = 50
+    x = datesScatter
+    y = compoundScatter
+    #colors = np.random.rand(N)
+    area = (50)  # 0 to 15 point radii
 
-    # N = 50
-    # x = np.random.rand(N)
-    # y = np.random.rand(N)
-    # colors = np.random.rand(N)
-    # area = (30 * np.random.rand(N))**2  # 0 to 15 point radii
-
-    # plt.scatter(x, y, s=area, c=colors, alpha=0.5)
-    # plt.show()
+    #plt.scatter(x, y, s=area, c=colors, alpha=0.5)
+    plt.scatter(x, y, s=area, alpha=0.5)
+    plt.show()

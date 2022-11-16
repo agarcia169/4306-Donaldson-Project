@@ -52,7 +52,22 @@ def get_db_connection(**kwargs: str) -> mysql.connector.MySQLConnection:
 __all__ = ["get_db_connection"]
 
 #grabs all tweets with a specific mention of the powertrain that was passed to it
-query_specific_powertrain_mention_count = """ SELECT COUNT * FROM tweets WHERE FIND_IN_SET("%s", powertrain_set) """
+query_battElec_powertrain_mention_count = """ SELECT COUNT(id) FROM tweets WHERE FIND_IN_SET('battElec', powertrain_set) """
+query_hCE_powertrain_mention_count = """ SELECT COUNT(id) FROM tweets WHERE FIND_IN_SET("hCE", powertrain_set) """
+query_hFuelCell_powertrain_mention_count = """ SELECT COUNT(id) FROM tweets WHERE FIND_IN_SET("hFuelCell", powertrain_set) """
+query_natGas_powertrain_mention_count = """ SELECT COUNT(id) FROM tweets WHERE FIND_IN_SET("natGas", powertrain_set) """
+
+query_battElecneg_powertrain_mention_count = """ SELECT AVG(VADERneg) FROM tweets WHERE FIND_IN_SET('battElec', powertrain_set)  """
+query_hCEneg_powertrain_mention_count = """ SELECT AVG(VADERneg) FROM tweets WHERE FIND_IN_SET('hCE', powertrain_set) """
+query_hFuelCellneg_powertrain_mention_count = """ SELECT AVG(VADERneg) FROM tweets WHERE FIND_IN_SET("hFuelCell", powertrain_set) """
+query_natGasneg_powertrain_mention_count = """ SELECT AVG(VADERneg) FROM tweets WHERE FIND_IN_SET("natGas", powertrain_set) """
+
+query_battElecpos_powertrain_mention_count = """ SELECT AVG(VADERpos) FROM tweets WHERE FIND_IN_SET('battElec', powertrain_set) """
+query_hCEpos_powertrain_mention_count = """ SELECT AVG(VADERpos) FROM tweets WHERE FIND_IN_SET("hCE", powertrain_set) """
+query_hFuelCellpos_powertrain_mention_count = """ SELECT AVG(VADERpos) FROM tweets WHERE FIND_IN_SET("hFuelCell", powertrain_set) """
+query_natGaspos_powertrain_mention_count = """ SELECT AVG(VADERpos) FROM tweets WHERE FIND_IN_SET("natGas", powertrain_set) """
+
+query_scatter_plotter_mk1 = """ SELECT * FROM tweets WHERE powertrain_set IS NOT NULL and VADERcompound IS NOT NULL """
 
 
 #grabs all unique powertrain tags

@@ -2,92 +2,152 @@ import matplotlib.pyplot as plt
 import numpy as np
 from ..SharedConnectors import dbConnection
 
+
+#For neg and pos only take whichever one is larger i.e if a tweet is .4 pos and .1 neg dont even take into account the neg
 def tester():
-    #grabs shit for the "x-axis" of the pie
-    distinct_powertrains =  dbConnection.query_distinct_powertrains
-    thisDBClient = dbConnection.get_db_connection()
-    with thisDBClient.cursor() as dbCursor:
-        dbCursor.execute(distinct_powertrains)
-        uniquePowertrains = dbCursor.fetchall()
+    # #grabs shit for the "x-axis" of the pie
+    # distinct_powertrains =  dbConnection.query_distinct_powertrains
+    # thisDBClient = dbConnection.get_db_connection()
+    # with thisDBClient.cursor() as dbCursor:
+    #     dbCursor.execute(distinct_powertrains)
+    #     uniquePowertrains = dbCursor.fetchall()
 
     #I dont think i need to commit() here
     #thisDBClient.commit()
-    x_axis = []
-    for powertrains in uniquePowertrains:
-        x_axis.append(powertrains[0])
-        print(type(powertrains[0]))
-    print(x_axis)
-
-
+    x_axis = ["battElec", "hCE", "hFuelCell", "natGas"]     
     y_axis = []
     #grabs shit for the "y-axis" of the pie
     #grabs all tweets with the powertrain value that was passed to it,then finds the count for it
-    for item in x_axis:
-        print(item)
-        specific_powertrain_mention_count =  dbConnection.query_specific_powertrain_mention_count
-        thisDBClient = dbConnection.get_db_connection()
-        with thisDBClient.cursor() as dbCursor:
-            #might need to [0] that shit
-            dbCursor.execute(specific_powertrain_mention_count,(item))
-            powertrainMentions = dbCursor.fetchall()
-            print(powertrainMentions)
-        y_axis.append(powertrainMentions)
-        print(item)
+    
+    battElec_powertrain_mention_count =  dbConnection.query_battElec_powertrain_mention_count
+    hCE_powertrain_mention_count =  dbConnection.query_hCE_powertrain_mention_count
+    hFuelCell_powertrain_mention_count =  dbConnection.query_hFuelCell_powertrain_mention_count
+    natGas_powertrain_mention_count =  dbConnection.query_natGas_powertrain_mention_count
+    thisDBClient = dbConnection.get_db_connection()
+    with thisDBClient.cursor() as dbCursor:
+        dbCursor.execute(battElec_powertrain_mention_count)
+        powertrainMentions = dbCursor.fetchall()
+        y_axis.append(powertrainMentions[0][0])
+    with thisDBClient.cursor() as dbCursor:
+        dbCursor.execute(hCE_powertrain_mention_count)
+        powertrainMentions = dbCursor.fetchall()
+        y_axis.append(powertrainMentions[0][0])
+    with thisDBClient.cursor() as dbCursor:
+        dbCursor.execute(hFuelCell_powertrain_mention_count)
+        powertrainMentions = dbCursor.fetchall()
+        y_axis.append(powertrainMentions[0][0])
+    with thisDBClient.cursor() as dbCursor:
+        dbCursor.execute(natGas_powertrain_mention_count)
+        powertrainMentions = dbCursor.fetchall()
+        y_axis.append(powertrainMentions[0][0])
     print(y_axis)
 
+    second_y_axis = []
+    battElecneg_powertrain_mention_count =  dbConnection.query_battElecneg_powertrain_mention_count
+    hCEneg_powertrain_mention_count =  dbConnection.query_hCEneg_powertrain_mention_count
+    hFuelCellneg_powertrain_mention_count =  dbConnection.query_hFuelCellneg_powertrain_mention_count
+    natGasneg_powertrain_mention_count =  dbConnection.query_natGasneg_powertrain_mention_count
+    thisDBClient = dbConnection.get_db_connection()
+    with thisDBClient.cursor() as dbCursor:
+        dbCursor.execute(battElecneg_powertrain_mention_count)
+        powertrainMentions = dbCursor.fetchall()
+        second_y_axis.append(float(powertrainMentions[0][0]))
+    with thisDBClient.cursor() as dbCursor:
+        dbCursor.execute(hCEneg_powertrain_mention_count)
+        powertrainMentions = dbCursor.fetchall()
+        second_y_axis.append(float(powertrainMentions[0][0]))
+    with thisDBClient.cursor() as dbCursor:
+        dbCursor.execute(hFuelCellneg_powertrain_mention_count)
+        powertrainMentions = dbCursor.fetchall()
+        second_y_axis.append(float(powertrainMentions[0][0]))
+    with thisDBClient.cursor() as dbCursor:
+        dbCursor.execute(natGasneg_powertrain_mention_count)
+        powertrainMentions = dbCursor.fetchall()
+        second_y_axis.append(float(powertrainMentions[0][0]))
+    print(second_y_axis)
+    
+    
+    third_y_axis = []
+    battElecpos_powertrain_mention_count =  dbConnection.query_battElecpos_powertrain_mention_count
+    hCEpos_powertrain_mention_count =  dbConnection.query_hCEpos_powertrain_mention_count
+    hFuelCellpos_powertrain_mention_count =  dbConnection.query_hFuelCellpos_powertrain_mention_count
+    natGaspos_powertrain_mention_count =  dbConnection.query_natGaspos_powertrain_mention_count
+    thisDBClient = dbConnection.get_db_connection()
+    with thisDBClient.cursor() as dbCursor:
+        dbCursor.execute(battElecpos_powertrain_mention_count)
+        powertrainMentions = dbCursor.fetchall()
+        third_y_axis.append(float(powertrainMentions[0][0]))
+    with thisDBClient.cursor() as dbCursor:
+        dbCursor.execute(hCEpos_powertrain_mention_count)
+        powertrainMentions = dbCursor.fetchall()
+        third_y_axis.append(float(powertrainMentions[0][0]))
+    with thisDBClient.cursor() as dbCursor:
+        dbCursor.execute(hFuelCellpos_powertrain_mention_count)
+        powertrainMentions = dbCursor.fetchall()
+        third_y_axis.append(float(powertrainMentions[0][0]))
+    with thisDBClient.cursor() as dbCursor:
+        dbCursor.execute(natGaspos_powertrain_mention_count)
+        powertrainMentions = dbCursor.fetchall()
+        third_y_axis.append(float(powertrainMentions[0][0]))
+    print(third_y_axis)
+
+    #pie chart with slices as the unique powertrain and slice thickness as the amount of powertrain mentions per powertrain
+    labels = x_axis
+    sizes = y_axis
+
+    fig1, ax1 = plt.subplots()
+    ax1.pie(sizes, labels=labels, autopct='%1.1f%%',
+            shadow=True, startangle=90)
+    ax1.axis('equal')
+
+    plt.show()
 
 
-# #pie chart with slices as the unique powertrain and slice thickness as the amount of powertrain mentions per powertrain
-# fig, ax = plt.subplots()
+    #stacked bar chart with powertrains as the x axis and powertrain neg vs pos as the bars on the y axis
+    labels = x_axis
+    men_means = second_y_axis
+    women_means = third_y_axis
 
-# fruits = ['apple', 'blueberry', 'cherry', 'orange']
-# counts = [40, 100, 30, 55]
-# bar_labels = ['red', 'blue', '_red', 'orange']
-# bar_colors = ['tab:red', 'tab:blue', 'tab:red', 'tab:orange']
+    width = 0.35       # the width of the bars: can also be len(x) sequence
 
-# ax.bar(fruits, counts, label=bar_labels, color=bar_colors)
+    fig, ax = plt.subplots()
 
-# ax.set_ylabel('fruit supply')
-# ax.set_title('Fruit supply by kind and color')
-# ax.legend(title='Fruit color')
+    ax.bar(labels, men_means, width, label='Neg')
+    ax.bar(labels, women_means, width,  bottom=men_means,
+           label='Pos')
 
-# plt.show()
+    ax.set_ylabel('Scores')
+    ax.set_title('Sentiment Scores by Powertrain')
+    ax.legend()
 
-
-# #stacked bar chart with powertrains as the x axis and powertrain neg vs pos as the bars on the y axis
-# labels = ['G1', 'G2', 'G3', 'G4', 'G5']
-# men_means = [20, 35, 30, 35, 27]
-# women_means = [25, 32, 34, 20, 25]
-# men_std = [2, 3, 4, 1, 2]
-# women_std = [3, 5, 2, 3, 3]
-# width = 0.35       # the width of the bars: can also be len(x) sequence
-
-# fig, ax = plt.subplots()
-
-# ax.bar(labels, men_means, width, yerr=men_std, label='Men')
-# ax.bar(labels, women_means, width, yerr=women_std, bottom=men_means,
-#        label='Women')
-
-# ax.set_ylabel('Scores')
-# ax.set_title('Scores by group and gender')
-# ax.legend()
-
-# plt.show()
+    plt.show()
 
 
+    datesScatter = []
+    compoundScatter = []
+    scatter_plotter_mk1 =  dbConnection.query_scatter_plotter_mk1
+    thisDBClient = dbConnection.get_db_connection()
+    with thisDBClient.cursor() as dbCursor:
+        dbCursor.execute(scatter_plotter_mk1)
+        powertrainMentions = dbCursor.fetchall()
+        for items in powertrainMentions:
+            datesScatter.append(items[3])
+            compoundScatter.append(float(items[7]))
+        print(datesScatter)
+        print(compoundScatter)
+        
+    #scatter plot with date as the x axis, neg and pos as the yaxis and powertrains as individually colored dots 
+    #https://matplotlib.org/stable/gallery/shapes_and_collections/scatter.html#sphx-glr-gallery-shapes-and-collections-scatter-py
+    #make it so that there are 5 scatters including noTech
+    # Fixing random state for reproducibility
+    np.random.seed(19680801)
 
-# #scatter plot with date as the x axis, neg and pos as the yaxis and powertrains as individually colored dots 
-# #https://matplotlib.org/stable/gallery/shapes_and_collections/scatter.html#sphx-glr-gallery-shapes-and-collections-scatter-py
- 
-# # Fixing random state for reproducibility
-# np.random.seed(19680801)
+    N = 50
+    x = datesScatter
+    y = compoundScatter
+    #colors = np.random.rand(N)
+    area = (50)  # 0 to 15 point radii
 
-
-# N = 50
-# x = np.random.rand(N)
-# y = np.random.rand(N)
-# colors = np.random.rand(N)
-# area = (30 * np.random.rand(N))**2  # 0 to 15 point radii
-
-# plt.scatter(x, y, s=area, c=colors, alpha=0.5)
-# plt.show()
+    #plt.scatter(x, y, s=area, c=colors, alpha=0.5)
+    plt.scatter(x, y, s=area, alpha=0.5)
+    plt.show()

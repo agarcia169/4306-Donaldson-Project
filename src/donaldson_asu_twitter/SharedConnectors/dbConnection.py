@@ -51,6 +51,10 @@ def get_db_connection(**kwargs: str) -> mysql.connector.MySQLConnection:
 # List of stuff accessible to importers of this module. Just in case
 __all__ = ["get_db_connection"]
 
+#grabs all tweets with a specific mention of the powertrain that was passed to it
+#FIXME
+query_specific_powertrain_mention_count = """ SELECT COUNT* FROM tweets WHERE powertrain_set LIKE %s """
+
 
 #grabs all unique powertrain tags
 query_distinct_powertrains = """ SELECT DISTINCT powertrain_set FROM donaldsontwitter.tweets  """

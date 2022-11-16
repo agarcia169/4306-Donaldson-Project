@@ -52,6 +52,9 @@ def get_db_connection(**kwargs: str) -> mysql.connector.MySQLConnection:
 __all__ = ["get_db_connection"]
 
 
+#grabs all unique powertrain tags
+query_distinct_powertrains = """ SELECT DISTINCT powertrain_set FROM donaldsontwitter.tweets  """
+
 #generates a timestamped copy of the tweets table with headers
 query_csv_creation = """ (SELECT 'id','author_id','text','created_at','lang','conversation_id','powertrain_set','VADERcompound','VADERneg','VADERneu','VADERpos') UNION 
                     SELECT * FROM tweets WHERE VADERcompound IS NOT NULL """

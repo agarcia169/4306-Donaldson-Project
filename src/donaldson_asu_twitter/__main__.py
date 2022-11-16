@@ -115,15 +115,17 @@ def main():
 	if True:
 		# AddTweetsToDB.refresh_tweets(3003844230,maxDaysInPast=365*2)
 		#print(TweetAnalysis.one_VADER_analysis("Volvo Insight: The cost of running an electric car can be lower than traditional cars."))
-		testString = 'Not all heroes wear capes. Prepare for performance with (super) power, this is the fully electric Audi e-tron S. Discover more at https://t.co/WoOrQWM6Vp. #Audi #eMobility #etronS #FutureIsAnAttitude https://t.co/mBVOYF3cqi'
-		print(testString, TweetAnalysis.one_VADER_analysis(testString))
-		testString = 'Not all heroes wear capes.'
-		print(testString, TweetAnalysis.one_VADER_analysis(testString))
-		testString = ' Prepare for performance with (super) power, this is the fully electric Audi e-tron S. Discover more at https://t.co/WoOrQWM6Vp. #Audi #eMobility #etronS #FutureIsAnAttitude https://t.co/mBVOYF3cqi'
-		print(testString, TweetAnalysis.one_VADER_analysis(testString))
-		testString = 'Discover more at https://t.co/WoOrQWM6Vp. #Audi #eMobility #etronS #FutureIsAnAttitude https://t.co/mBVOYF3cqi'
-		print(testString, TweetAnalysis.one_VADER_analysis(testString))
-		testString = 'Not all heroes wear capes. Prepare for performance with (super) power, this is the fully electric Audi e-tron S.'
+		# testString = 'Not all heroes wear capes. Prepare for performance with (super) power, this is the fully electric Audi e-tron S. Discover more at https://t.co/WoOrQWM6Vp. #Audi #eMobility #etronS #FutureIsAnAttitude https://t.co/mBVOYF3cqi'
+		# print(testString, TweetAnalysis.one_VADER_analysis(testString))
+		# testString = 'Not all heroes wear capes.'
+		# print(testString, TweetAnalysis.one_VADER_analysis(testString))
+		# testString = ' Prepare for performance with (super) power, this is the fully electric Audi e-tron S. Discover more at https://t.co/WoOrQWM6Vp. #Audi #eMobility #etronS #FutureIsAnAttitude https://t.co/mBVOYF3cqi'
+		# print(testString, TweetAnalysis.one_VADER_analysis(testString))
+		# testString = 'Discover more at https://t.co/WoOrQWM6Vp. #Audi #eMobility #etronS #FutureIsAnAttitude https://t.co/mBVOYF3cqi'
+		# print(testString, TweetAnalysis.one_VADER_analysis(testString))
+		# testString = 'Not all heroes wear capes. Prepare for performance with (super) power, this is the fully electric Audi e-tron S.'
+		# print(testString, TweetAnalysis.one_VADER_analysis(testString))
+		testString = 'The movement towards a #CarbonNeutral world is gaining momentum. Any realistic carbon neutrality solution requires the use of #Hydrogen.'
 		print(testString, TweetAnalysis.one_VADER_analysis(testString))
 		# print(TweetAnalysis.one_VADER_analysis('Strings with hashtag #stupid #useless #BAD'))
 

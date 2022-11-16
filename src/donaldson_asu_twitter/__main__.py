@@ -28,6 +28,8 @@ from donaldson_asu_twitter.ReportingUI import CSVOutput
 from donaldson_asu_twitter.SharedConnectors import dbConnection, twitterConnection
 from donaldson_asu_twitter.TweetManagement import AddTweetsToDB
 from donaldson_asu_twitter.VaderAnalysis import TweetAnalysis
+from donaldson_asu_twitter.ReportingUI import matPlotThickens
+
 
 
 def main():
@@ -184,6 +186,9 @@ def main():
 
 	if False:
 		ManageKeywords.add_keyword_for_technology('hce')
+  
+	if True:
+		matPlotThickens.tester()
 
 if __name__ == "__main__":
 	main()

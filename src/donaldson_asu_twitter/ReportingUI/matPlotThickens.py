@@ -140,7 +140,7 @@ def tester():
     #https://matplotlib.org/stable/gallery/shapes_and_collections/scatter.html#sphx-glr-gallery-shapes-and-collections-scatter-py
     #make it so that there are 5 scatters including noTech
     # Fixing random state for reproducibility
-    np.random.seed(19680801)
+    # np.random.seed(19680801)
 
     N = 50
     x = datesScatter
@@ -149,5 +149,9 @@ def tester():
     area = (50)  # 0 to 15 point radii
 
     #plt.scatter(x, y, s=area, c=colors, alpha=0.5)
+    plt.axes(ylim=(-1,1))
     plt.scatter(x, y, s=area, alpha=0.5)
+    plt.xlabel('Time')
+    plt.ylabel('Compound Sentiment')
+    plt.grid()
     plt.show()

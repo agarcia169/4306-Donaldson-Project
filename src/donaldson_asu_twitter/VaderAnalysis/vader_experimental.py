@@ -1,6 +1,7 @@
 from ..SharedConnectors import dbConnection
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from multiprocessing import (Process, Queue)
+from itertools import chain
 
 
 def test_experimental_VADER_slow_and_bad():
@@ -56,7 +57,7 @@ def test_experimental_VADER():
 
     grab_unVADERed_tweets_query = dbConnection.query_select_unVADERed_tweets
     # update_tweet_with_VADER_scores = 'UPDATE tweets SET VADERneg = %s, VADERneu = %s, VADERpos = %s, VADERcompound = %s WHERE id = %s'
-    update_temp_table = dbConnection.query_insert_into_temp_table_TupleList_IDNegNeuPosComp
+    update_temp_table = dbConnection.query_insert_into_temp_table_TupleList_Insecure
     # https://stackoverflow.com/questions/1262786/mysql-update-query-based-on-select-query
 
     merge_temp_and_tweets = dbConnection.query_merge_temp_and_tweets
@@ -69,13 +70,20 @@ def test_experimental_VADER():
 
     updateTuple = []
 
+    saferFastInsert = [dbConnection.query_insert_into_temp_table_TupleList_IDNegNeutPosComp]
+
     for tweet in tweetsPlusID:
         sentimentScores = VADERAnalyzer.polarity_scores(tweet[1])
         # print(tweet[0], tweet[1], 'Neg: ', sentimentScores['neg'], 'Neutral: ', sentimentScores['neu'], 'Pos: ', sentimentScores['pos'], 'Compound: ', sentimentScores['compound'])
         updateTuple.append((tweet[0],sentimentScores['neg'],sentimentScores['neu'],sentimentScores['pos'],sentimentScores['compound']))
-
+        saferFastInsert.append(', (%s, %s, %s, %s, %s)')
+    print(len(saferFastInsert[:-1]))
+    saferFastInsertString = "".join(saferFastInsert[:-1])
     tupleString = ','.join(map(str,updateTuple))
     updateString = update_temp_table % tupleString # INSECURE, do it differently! Append (%s,%s,%s,%s,...) to the query, then build the appropriate tuple!
+    # print(saferFastInsertString)
+    updateTupleTuple = tuple(chain.from_iterable(updateTuple))
+    print(len(updateTupleTuple))
     # print(tupleString[0:200])
     # print(VADERAnalyzer.polarity_scores(tweetsPlusID[0][1]),VADERAnalyzer.polarity_scores(tweetsPlusID[1][1]))
     if(True):
@@ -83,7 +91,8 @@ def test_experimental_VADER():
             # dbCursor.executemany(update_tweet_with_VADER_scores,updateTuple)
             # dbCursor.execute(update_duplicate_trickery,(tupleString,))
             # dbCursor.execute(updateString) # Worse?
-            dbCursor.executemany(update_temp_table,updateTuple) # Better?
+            # dbCursor.executemany(dbConnection.query_insert_into_temp_table_TupleList_IDNegNeutPosComp,updateTuple) # Better?
+            dbCursor.execute(saferFastInsertString,updateTupleTuple)
             print(dbCursor.fetchall())
             dbCursor.execute(merge_temp_and_tweets)
             dbCursor.execute(dbConnection.query_delete_rows_in_temporary_table)
@@ -91,4 +100,4 @@ def test_experimental_VADER():
             dbCursor.execute(dbConnection.query_select_idAndScore_where_ID,((tweetsPlusID[0][0]),))
             print(dbCursor.fetchall())
             print(VADERAnalyzer.polarity_scores(tweetsPlusID[0][1]))
-        dbLink.rollback()
+        dbLink.commit()

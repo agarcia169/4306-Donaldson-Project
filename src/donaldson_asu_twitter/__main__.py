@@ -114,7 +114,7 @@ def main():
 		start2 = time.perf_counter()
 		CSVOutput.dumpy()
 
-	if False:
+	if True:
 		# AddTweetsToDB.refresh_tweets(3003844230,maxDaysInPast=365*2)
 		#print(TweetAnalysis.one_VADER_analysis("Volvo Insight: The cost of running an electric car can be lower than traditional cars."))
 		# testString = 'Not all heroes wear capes. Prepare for performance with (super) power, this is the fully electric Audi e-tron S. Discover more at https://t.co/WoOrQWM6Vp. #Audi #eMobility #etronS #FutureIsAnAttitude https://t.co/mBVOYF3cqi'
@@ -128,6 +128,8 @@ def main():
 		# testString = 'Not all heroes wear capes. Prepare for performance with (super) power, this is the fully electric Audi e-tron S.'
 		# print(testString, TweetAnalysis.one_VADER_analysis(testString))
 		testString = 'The movement towards a #CarbonNeutral world is gaining momentum. Any realistic carbon neutrality solution requires the use of #Hydrogen.'
+		print(testString, TweetAnalysis.one_VADER_analysis(testString))
+		testString = 'Catching the last rays of the day with your friends... Can you imagine a better end of the day? #JACMotors https://t.co/LBUBjdpIlv'
 		print(testString, TweetAnalysis.one_VADER_analysis(testString))
 		# print(TweetAnalysis.one_VADER_analysis('Strings with hashtag #stupid #useless #BAD'))
 
@@ -189,8 +191,19 @@ def main():
 	if False:
 		ManageKeywords.add_keyword_for_technology('hce')
   
-	if True:
+	if False:
 		matPlotThickens.tester()
+
+	if False: #Test the SECRET VADER project
+		from donaldson_asu_twitter.VaderAnalysis import vader_experimental
+		print("Running VADER analysis and saving data one Tweet at a time...")
+		start1 = time.perf_counter()
+		vader_experimental.test_experimental_VADER_slow_and_bad()
+		print(f"That took {(time.perf_counter()-start1):.2f} seconds.")
+		print("Running VADER analysis compiling data, then saving data to DB in one large update...")
+		start2 = time.perf_counter()
+		vader_experimental.test_experimental_VADER()
+		print(f"That took {(time.perf_counter()-start2):.2f} seconds.")
 
 if __name__ == "__main__":
 	main()

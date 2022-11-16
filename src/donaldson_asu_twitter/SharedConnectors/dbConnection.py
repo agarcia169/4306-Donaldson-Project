@@ -81,6 +81,14 @@ SET
 WHERE
     id = %s"""
 
+# VaderAnalysis.vader_experimental
+query_select_unVADERed_tweets = 'SELECT id, text FROM tweets WHERE VADERcompound IS NULL LIMIT 0, 1000'
+query_update_tweet_with_VADER_scores_NegNeuPosCompID = 'UPDATE tweets SET VADERneg = %s, VADERneu = %s, VADERpos = %s, VADERcompound = %s WHERE id = %s'
+query_insert_into_temp_table_TupleList_IDNegNeuPosComp = 'INSERT INTO tempVader VALUES %s'
+query_merge_temp_and_tweets = 'UPDATE tweets AS destinationTable INNER JOIN tempVADER AS sourceTable ON destinationTable.id = sourceTable.id SET destinationTable.VADERcompound = sourceTable.compound, destinationTable.VADERneg = sourceTable.nega, destinationTable.VADERneu = sourceTable.neu, destinationTable.VADERpos = sourceTable.pos'
+query_delete_rows_in_temporary_table = 'DELETE FROM tempVader'
+query_select_idAndScore_where_ID = 'SELECT id, VADERcompound, VADERneg, VADERneu, VADERpos FROM tweets WHERE id = %s'
+
 # PowertrainManagement.LabelTweetsWithTechs
 # grabs list of words from battElec
 query_keywB = "Select word FROM battElec"

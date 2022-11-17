@@ -97,8 +97,8 @@ WHERE
     id = %s"""
 
 # VaderAnalysis.vader_experimental
-query_select_unVADERed_tweets = "SELECT id, text FROM tweets WHERE VADERcompound IS NULL LIMIT 0, 4000;"
-query_select_unVADERed_tweets = "SELECT id, text FROM tweets WHERE VADERcompound IS NULL AND lang = 'en' LIMIT 0, 4000;"
+query_select_unVADERed_tweets = "SELECT id, text FROM tweets WHERE VADERcompound IS NULL"
+# query_select_unVADERed_tweets = "SELECT id, text FROM tweets WHERE VADERcompound IS NULL AND lang = 'en' LIMIT 0, 4000;"
 query_update_tweet_with_VADER_scores_NegNeuPosCompID = 'UPDATE tweets SET VADERneg = %s, VADERneu = %s, VADERpos = %s, VADERcompound = %s WHERE id = %s'
 query_insert_into_temp_table_TupleList_Insecure = 'INSERT INTO tempVader VALUES %s'
 query_insert_into_temp_table_TupleList_IDNegNeutPosComp = 'INSERT INTO tempVader VALUES(%s, %s, %s, %s, %s)'

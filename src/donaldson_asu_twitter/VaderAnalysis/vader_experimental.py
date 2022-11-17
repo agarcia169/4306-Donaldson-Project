@@ -71,6 +71,8 @@ def test_experimental_VADER(*, loop=False):
         dbCursor.execute(grab_unVADERed_tweets_query)
         tweetsPlusID = dbCursor.fetchall()
     
+    if not tweetsPlusID:
+        return
     print(f'Updating {len(tweetsPlusID)} tweets...')
     updateTuple = []
 

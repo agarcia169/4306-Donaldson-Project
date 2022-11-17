@@ -1,6 +1,6 @@
 from ..SharedConnectors import dbConnection
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
-from multiprocessing import (Process, Queue)
+# from multiprocessing import (Process, Queue)
 from itertools import chain
 
 

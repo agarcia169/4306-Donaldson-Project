@@ -4,6 +4,8 @@
 
 ### Purpose of the System
 
+Donaldson Company would like to try and anticipate what technologies future industries are going to push towards to replace traditional internal combustion engines, as some of their business currently involves making filters for gasoline and diesel. One possible means of predicting future technologies is possibly through analysis of content published via social media. In our case, we're syphoning information from Twitter to attempt to analyze what technologies companies might be leaning towards in the future.
+
 ### Design goals
 
 ---
@@ -19,11 +21,28 @@ Our current design goals are to have a functioning system that can
 
 ### Definitions, acronyms, and abbreviations
 
+NLTK - Natural Language Tool Kit
+
+VADER - Valence Aware Dictionary for Sentiment Reasoning
+
+NLP - Natural Language Processing
+
+Tweepy - 3rd party Twitter API access tool
+
 ### References
 
-## Current software architecture
+<https://dev.mysql.com/doc/connector-python/en/connector-python-example-connecting.html>
 
-Explain the existing system (if you do not have, skip).
+<https://www.nltk.org/howto/sentiment.html>
+
+<https://stackoverflow.com/questions/6829675/the-proper-method-for-making-a-db-connection-available-across-many-python-module>
+
+<https://dev.mysql.com/doc/connector-python/en/connector-python-example-connecting.html>
+
+<https://www.Donaldson.com/en-us/>
+
+<https://ojs.aaai.org/index.php/ICWSM/article/view/14550>
+
 
 ## Proposed software architecture
 

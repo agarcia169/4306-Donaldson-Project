@@ -5,6 +5,14 @@
 ### Purpose of the System
 
 ### Design goals
+---
+Our current design goals are to have a functioning system that can
+- Can search through a database looking for a company.
+* will return the data if the company is present.
+* return an error message if company already exist.
+* be able to differenciate between different types of powertrain character.
+* be able to pull tweets from any company within the database.
+---
 
 ### Definitions, acronyms, and abbreviations
 

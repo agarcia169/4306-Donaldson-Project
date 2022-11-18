@@ -1,6 +1,4 @@
-# Requirements
-
-## Donaldson Twitter Analysis
+# Donaldson Twitter Analysis - System Design Document
 
 ## 1. Team Info
 
@@ -32,7 +30,7 @@ A program that grabs Tweets from the official Twitter accounts of companies that
 
 ## 4. UML Use Case Diagram: Improved use case model from the previous iterations
 
-![Use Case Model](https://github.com/agarcia169/4306-Donaldson-Project/blob/main/images/useCaseModel3.drawio.svg)
+![Use Case Model](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/useCaseModel3.drawio.png)
 
 ## 5. Key use-cases: Improved list of key use cases from the previous iteration
 
@@ -64,19 +62,19 @@ Dumps CSV containing powertrain mentions, labeled by time or other methods of ca
 
 ## 6. Sequence Diagrams: Key use-cases explained as sequence diagrams (a few of them) to identify key components of the system
 
-![Add Company Sequence Diagram](https://github.com/agarcia169/4306-Donaldson-Project/blob/main/images/AddCompanySequence%20v1.drawio.svg)
+![Add Company Sequence Diagram](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/AddCompanySequence%20v1.drawio.svg)
 
-![Select Company In Database Sequence Diagram](https://github.com/agarcia169/4306-Donaldson-Project/blob/main/images/Selecting%20Companies%20in%20DataBase.drawio.svg)
+![Select Company In Database Sequence Diagram](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/Selecting%20Companies%20in%20DataBase.drawio.svg)
 
-![Move Tweets Into DB Diagram](https://github.com/agarcia169/4306-Donaldson-Project/blob/main/images/MovingTweetsIntoDB.drawio.svg)
+![Move Tweets Into DB Diagram](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/MovingTweetsIntoDB.drawio.svg)
 
 ## 7. Architecture
 
 Process architecture (repository-esque):
 
-![Architecture](https://github.com/agarcia169/4306-Donaldson-Project/blob/main/images/iteration2/architecture-Shrunk.drawio.png)
+![Architecture](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/iteration2/architecture-Shrunk.drawio.png)
 
-![Expanded architecture](https://github.com/agarcia169/4306-Donaldson-Project/blob/main/images/iteration2/architecture-Expanded.drawio.png)
+![Expanded architecture](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/iteration2/architecture-Expanded.drawio.png)
 
 Using NLTK framework. Particularly VADER. Maybe others.
 Using TweePy to access Twitter.
@@ -86,23 +84,23 @@ Likely using MySQL.
 
 (this first picture is showing a database that is currently not in use)
 
-![Database Layout Diagram](https://github.com/agarcia169/4306-Donaldson-Project/blob/main/images/database.drawio.svg)
+![Database Layout Diagram](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/database.drawio.svg)
 
 Database structure relationships
 
-![Database Relationship Diagram](https://github.com/agarcia169/4306-Donaldson-Project/blob/main/images/relationships.drawio.png)
+![Database Relationship Diagram](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/relationships.drawio.png)
 
 (current)
 
-![SharedConnectors](https://github.com/agarcia169/4306-Donaldson-Project/blob/main/images/iteration2/classes/architecture-ConnectorsClass.drawio.png)
+![SharedConnectors](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/iteration2/classes/architecture-ConnectorsClass.drawio.png)
 
-![HandleManagement](https://github.com/agarcia169/4306-Donaldson-Project/blob/main/images/iteration2/classes/architecture-HandleManagement.drawio.png)
+![HandleManagement](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/iteration2/classes/architecture-HandleManagement.drawio.png)
 
-![PowertrainManagement](https://github.com/agarcia169/4306-Donaldson-Project/blob/main/images/iteration2/classes/architecture-PowertrainManagement.drawio.png)
+![PowertrainManagement](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/iteration2/classes/architecture-PowertrainManagement.drawio.png)
 
-![TweetManagement](https://github.com/agarcia169/4306-Donaldson-Project/blob/main/images/iteration2/classes/architecture-TweetManipClass.drawio.png)
+![TweetManagement](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/iteration2/classes/architecture-TweetManipClass.drawio.png)
 
-![VADERAnalysisManagement](https://github.com/agarcia169/4306-Donaldson-Project/blob/main/images/iteration2/classes/architecture-VADERAnalysisClass.drawio.png)
+![VADERAnalysisManagement](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/iteration2/classes/architecture-VADERAnalysisClass.drawio.png)
 
 ## 9. Initial code
 
@@ -121,7 +119,7 @@ Supplemental for second turn-in: ~~<https://github.com/agarcia169/4306-Donaldson
 Gannt Chart:
 (<https://docs.google.com/spreadsheets/d/1jEJSRBGxjxI4JhSFftpiE_FTMSXZFAIm43WYuJ2ljNY/edit#gid=0>)
 
-![Gantt Chart](https://github.com/agarcia169/4306-Donaldson-Project/blob/main/images/chart.png)
+![Gantt Chart](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/chart.png)
 
 GitHub Projects:
 <https://github.com/users/agarcia169/projects/2>

@@ -48,10 +48,10 @@ UML Class Diagram for each subsystem in 3.ii
 
 ## Glossary
 
-# Appendix. Project Plan
+## Appendix: Project Plan
 
 Project tasks (product backlog) and time needed to implement with a deadline.
 
-# Reference.
+## Reference
 
 SDD explanations.

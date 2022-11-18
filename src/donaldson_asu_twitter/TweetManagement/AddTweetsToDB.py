@@ -31,33 +31,33 @@ from ..SharedConnectors import dbConnection
 #                            until_id=None, user_fields=None):
 
 def retrieve_recent_tweets(theUserID:int,* , maxDaysInPast:int=365*5, **kwargs):
-    """Grab any tweets since the most recently grabbed Tweet for a specified user.
+	"""Grab any tweets since the most recently grabbed Tweet for a specified user.
 
-    Args:
-        theUserID (int): The Twitter User ID#
-        maxDaysInPast (int, optional): The maximum number of days in the past you want to look for Tweets. Defaults to 365*5.
-        **kwargs: Any tweepy.Paginator() arguments. Probably best left default.
-    """
-    timeToGrab = datetime.timedelta(days=maxDaysInPast)
-    how_long_to_grab = (DateTime.now() - timeToGrab).replace(microsecond=0)
-    defaultKwargs = {'exclude':['retweets', 'replies'], 
-                        'tweet_fields':['author_id', 'conversation_id',
-                         'created_at', 'in_reply_to_user_id', 'lang', 'text'],
-                         'start_time':(how_long_to_grab.isoformat()+'Z')}
-    
-    # print(kwargs)
-    thisDBClient = dbConnection.get_db_connection()
-    the_most_recent_tweet_id_query = dbConnection.query_the_most_recent_tweet_id
-    # grab the ID of the newest tweet currently in the database.
-    with thisDBClient.cursor() as dbCursor:
-        dbCursor.execute(the_most_recent_tweet_id_query, (theUserID,))
-        print("Executing:\n",dbCursor.statement)
-        theMostRecentTweetID = dbCursor.fetchone()[0]
-    defaultKwargs.update(kwargs)
-    kwargs = defaultKwargs
-    kwargs.update({'since_id':theMostRecentTweetID})
-    # print(kwargs)
-    _retrieve_tweets(theUserID, **kwargs)
+	Args:
+		theUserID (int): The Twitter User ID#
+		maxDaysInPast (int, optional): The maximum number of days in the past you want to look for Tweets. Defaults to 365*5.
+		**kwargs: Any tweepy.Paginator() arguments. Probably best left default.
+	"""
+	timeToGrab = datetime.timedelta(days=maxDaysInPast)
+	how_long_to_grab = (DateTime.now() - timeToGrab).replace(microsecond=0)
+	thisDBClient = dbConnection.get_db_connection()
+	defaultKwargs = {'exclude':['retweets', 'replies'], 
+						'tweet_fields':['author_id', 'conversation_id',
+						 'created_at', 'in_reply_to_user_id', 'lang', 'text'],
+						 'start_time':(how_long_to_grab.isoformat()+'Z')}
+	
+	# print(kwargs)
+	the_most_recent_tweet_id_query = dbConnection.query_the_most_recent_tweet_id
+	# grab the ID of the newest tweet currently in the database.
+	with thisDBClient.cursor() as dbCursor:
+		dbCursor.execute(the_most_recent_tweet_id_query, (theUserID,))
+		print("Executing:\n",dbCursor.statement)
+		theMostRecentTweetID = dbCursor.fetchone()[0]
+	defaultKwargs.update(kwargs)
+	kwargs = defaultKwargs
+	kwargs.update({'since_id':theMostRecentTweetID})
+	# print(kwargs)
+	_retrieve_tweets(theUserID, **kwargs)
 
 
 # def retrieve_older_tweets(theUserID, *, end_time=None, exclude=['retweets', 'replies'],
@@ -67,120 +67,121 @@ def retrieve_recent_tweets(theUserID:int,* , maxDaysInPast:int=365*5, **kwargs):
 #                                         'created_at', 'in_reply_to_user_id', 'lang', 'text'],
 #                           until_id=None, user_fields=None):
 def retrieve_older_tweets(theUserID:int, *, maxDaysInPast:int=365*5, **kwargs):
-    """Grab Tweets older than the oldest Tweets grabbed so far.
+	"""Grab Tweets older than the oldest Tweets grabbed so far.
 
-    Args:
-        theUserID (int): The Twitter User ID#.
-        maxDaysInPast (int, optional): Look no further than this many days into the past. Defaults to 365*5.
-    """
-    timeToGrab = datetime.timedelta(days=maxDaysInPast)
-    how_long_to_grab = (DateTime.now() - timeToGrab).replace(microsecond=0)
-    defaultKwargs = {'exclude':['retweets', 'replies'], 
-                        'tweet_fields':['author_id', 'conversation_id',
-                         'created_at', 'in_reply_to_user_id', 'lang', 'text'],
-                         'start_time':(how_long_to_grab.isoformat()+'Z')}
-    thisDBClient = dbConnection.get_db_connection()
-    the_oldest_tweet_id_query = dbConnection.query_the_oldest_tweet_id
-    # grab the ID of the oldest tweet currently in the database.
-    with thisDBClient.cursor() as dbCursor:
-        dbCursor.execute(the_oldest_tweet_id_query, (theUserID,))
-        print("Executing:\n",dbCursor.statement)
-        theOldestTweetIDWeHave = dbCursor.fetchone()[0]
-    defaultKwargs.update(kwargs)
-    kwargs = defaultKwargs
-    kwargs.update({'until_id': theOldestTweetIDWeHave})
-    _retrieve_tweets(theUserID, **kwargs)
+	Args:
+		theUserID (int): The Twitter User ID#.
+		maxDaysInPast (int, optional): Look no further than this many days into the past. Defaults to 365*5.
+	"""
+	timeToGrab = datetime.timedelta(days=maxDaysInPast)
+	how_long_to_grab = (DateTime.now() - timeToGrab).replace(microsecond=0)
+	thisDBClient = dbConnection.get_db_connection()
+	defaultKwargs = {'exclude':['retweets', 'replies'], 
+						'tweet_fields':['author_id', 'conversation_id',
+						 'created_at', 'in_reply_to_user_id', 'lang', 'text'],
+						 'start_time':(how_long_to_grab.isoformat()+'Z')}
+	the_oldest_tweet_id_query = dbConnection.query_the_oldest_tweet_id
+	# grab the ID of the oldest tweet currently in the database.
+	with thisDBClient.cursor() as dbCursor:
+		dbCursor.execute(the_oldest_tweet_id_query, (theUserID,))
+		print("Executing:\n",dbCursor.statement)
+		theOldestTweetIDWeHave = dbCursor.fetchone()[0]
+	defaultKwargs.update(kwargs)
+	kwargs = defaultKwargs
+	kwargs.update({'until_id': theOldestTweetIDWeHave})
+	_retrieve_tweets(theUserID, **kwargs)
 
 
-def refresh_tweets(theUserID:int, *, maxDaysInPast:int=365*5, **kwargs):
-    """Grab any Tweets we don't have yet.
+def refresh_tweets(theUserID:int, *, maxDaysInPast:int=365*5, older_tweets:bool=False, newer_tweets:bool=True, exclude_responses:bool=True, **kwargs):
+	"""Grab any Tweets we don't have yet.
 
-    Args:
-        theUserID (int): The Twitter User ID#.
-        maxDaysInPast (int, optional): The maximum number of days into the past to look. Defaults to 365*5.
-    """
-    timeToGrab = datetime.timedelta(days=maxDaysInPast)
-    how_long_to_grab = (DateTime.now() - timeToGrab).replace(microsecond=0)
-    thisDBClient = dbConnection.get_db_connection()
-    defaultKwargs = {'exclude':['retweets', 'replies'], 
-                        'tweet_fields':['author_id', 'conversation_id',
-                         'created_at', 'in_reply_to_user_id', 'lang', 'text'],
-                         'start_time':(how_long_to_grab.isoformat()+'Z')}
-    defaultKwargs.update(kwargs)
-    kwargs = defaultKwargs
-    copyOfKwargs = dict(kwargs)
-    howManyTweetsDoTheyHave:int
-    with thisDBClient.cursor() as dbCursor:
-        dbCursor.execute(dbConnection.query_count_of_tweets_from_company,(theUserID,))
-        print("Executing:\n",dbCursor.statement)
-        howManyTweetsDoTheyHave = dbCursor.fetchall()[0][0]
-    if(howManyTweetsDoTheyHave):
-        retrieve_recent_tweets(theUserID, **kwargs)
-        retrieve_older_tweets(theUserID, **copyOfKwargs)
-    else:
-        _retrieve_tweets(theUserID, **kwargs)
+	Args:
+		theUserID (int): The Twitter User ID#.
+		maxDaysInPast (int, optional): The maximum number of days into the past to look. Defaults to 365*5.
+	"""
+	timeToGrab = datetime.timedelta(days=maxDaysInPast)
+	how_long_to_grab = (DateTime.now() - timeToGrab).replace(microsecond=0)
+	thisDBClient = dbConnection.get_db_connection()
+	defaultKwargs = {'tweet_fields':['author_id', 'conversation_id',
+						 'created_at', 'in_reply_to_user_id', 'lang', 'text'],
+						 'start_time':(how_long_to_grab.isoformat()+'Z')}
+	if exclude_responses:
+		defaultKwargs['exclude'] = ['retweets', 'replies']
+	defaultKwargs.update(kwargs)
+	kwargs = defaultKwargs
+	copyOfKwargs = dict(kwargs)
+	howManyTweetsDoTheyHave:int
+	with thisDBClient.cursor() as dbCursor:
+		dbCursor.execute(dbConnection.query_count_of_tweets_from_company,(theUserID,))
+		print("Executing:\n",dbCursor.statement)
+		howManyTweetsDoTheyHave = dbCursor.fetchall()[0][0]
+	if(howManyTweetsDoTheyHave):
+		retrieve_recent_tweets(theUserID, **kwargs)
+		retrieve_older_tweets(theUserID, **copyOfKwargs)
+	else:
+		_retrieve_tweets(theUserID, **kwargs)
 
 
 def _retrieve_tweets(theUserID, **argumentDictionary):
-    thisTwitterClient = twitterConnection.get_twitter_connection()
-    listOfTweets = []
-    # max_results=5 # REMOVE LATER
-    thisResponse: tweepy.Response
-    # limitBreak = 5
-    # tracker = 0
-    for thisResponse in tweepy.Paginator(thisTwitterClient.get_users_tweets, theUserID, **argumentDictionary):
-        # tracker+=1
-        # print(thisResponse)
-        if (thisResponse.data != None):
-            thisTweet: tweepy.Tweet
-            for thisTweet in thisResponse.data:
-                # print("Type:", type(thisTweet))
-                # print("DIR:", dir(thisTweet))
-                # print("Data:", thisTweet.data)
-                listOfTweets.append((thisTweet.id,
-                    thisTweet.author_id,thisTweet.text,
-                    thisTweet.created_at,thisTweet.lang,
-                    thisTweet.conversation_id))
-                # print("Author_id:", thisTweet.author_id)
-                # add_tweet_to_db(thisTweet=thisTweet)
-                # print(hasattr(thisTweet,'author_id'))
-                # print("Data DIR:", dir(thisTweet.data))
-                # print("Includes:", thisTweet.includes)
-                # print("Includes DIR:", dir(thisTweet.includes))
-                # print("Meta:", thisTweet.meta)
-                # print("Index:", dir(thisTweet.index))
-                # print("count:", dir(thisTweet.count))
-                # print("Errors:", thisTweet.errors)
-    if(listOfTweets):
-        mass_add_tweets_to_db(listOfTweets)
-        # if(tracker >= limitBreak):
-        #     raise Exception
-        # print("ID:", thisTweet.data.id)
+	thisTwitterClient = twitterConnection.get_twitter_connection()
+	listOfTweets = []
+	# max_results=5 # REMOVE LATER
+	thisResponse: tweepy.Response
+	# limitBreak = 5
+	# tracker = 0
+	for thisResponse in tweepy.Paginator(thisTwitterClient.get_users_tweets, theUserID, **argumentDictionary):
+		# tracker+=1
+		# print(thisResponse)
+		if (thisResponse.data != None):
+			thisTweet: tweepy.Tweet
+			for thisTweet in thisResponse.data:
+				# print("Type:", type(thisTweet))
+				# print("DIR:", dir(thisTweet))
+				# print("Data:", thisTweet.data)
+				listOfTweets.append((thisTweet.id,
+					thisTweet.author_id,thisTweet.text,
+					thisTweet.created_at,thisTweet.lang,
+					thisTweet.conversation_id))
+				# print("Author_id:", thisTweet.author_id)
+				# add_tweet_to_db(thisTweet=thisTweet)
+				# print(hasattr(thisTweet,'author_id'))
+				# print("Data DIR:", dir(thisTweet.data))
+				# print("Includes:", thisTweet.includes)
+				# print("Includes DIR:", dir(thisTweet.includes))
+				# print("Meta:", thisTweet.meta)
+				# print("Index:", dir(thisTweet.index))
+				# print("count:", dir(thisTweet.count))
+				# print("Errors:", thisTweet.errors)
+	if(listOfTweets):
+		mass_add_tweets_to_db(listOfTweets)
+		# if(tracker >= limitBreak):
+		#     raise Exception
+		# print("ID:", thisTweet.data.id)
 
 def mass_add_tweets_to_db(listOfTweets):
-    thisDBClient = dbConnection.get_db_connection()
-    howManyTweetsToAdd = len(listOfTweets)
-    howManyTweetsWeHave: int
-    howManyTweetsWeEndUpWith: int
-    theStringToAppend = ','.join(map(str,listOfTweets))
-    with thisDBClient.cursor() as dbCursor:
-        dbCursor.execute(dbConnection.query_count_of_tweets_from_company,(listOfTweets[0][1],))
-        print("Executing:\n",dbCursor.statement)
-        howManyTweetsWeHave = dbCursor.fetchone()[0]
-        # dbCursor.execute(dbConnection.query_bulk_add_tweets_to_db,(theStringToAppend,))
-        # .executemany() might as well be .insertmany(). It's optimized for insert, but ONLY insert.
-        dbCursor.executemany(dbConnection.query_add_tweet_to_db_IDAuthTextCreateLangConvo,listOfTweets)
-        print("Executing the equivalent of:\n",dbConnection.query_bulk_add_tweets_to_db % theStringToAppend)
-        dbCursor.fetchall()
-        dbCursor.execute(dbConnection.query_count_of_tweets_from_company,(listOfTweets[0][1],))
-        print("Executing:\n",dbCursor.statement)
-        howManyTweetsWeEndUpWith = dbCursor.fetchone()[0]
-    if(howManyTweetsToAdd + howManyTweetsWeHave == howManyTweetsWeEndUpWith):
-        thisDBClient.commit()
-    else:
-        thisDBClient.rollback()
-        raise ValueError(f'''For company {listOfTweets[0][1]} - 
-            Tweets in database before add: {howManyTweetsWeHave}
-            How many Tweets we\'re adding: {howManyTweetsToAdd}
-            Tweets in database after add: {howManyTweetsWeEndUpWith}
-            Mismatch: {howManyTweetsToAdd + howManyTweetsWeHave} != {howManyTweetsWeEndUpWith}''')
+	thisDBClient = dbConnection.get_db_connection()
+	howManyTweetsToAdd = len(listOfTweets)
+	howManyTweetsWeHave: int
+	howManyTweetsWeEndUpWith: int
+	theStringToAppend = ','.join(map(str,listOfTweets))
+	with thisDBClient.cursor() as dbCursor:
+		dbCursor.execute(dbConnection.query_count_of_tweets_from_company,(listOfTweets[0][1],))
+		print("Executing:\n",dbCursor.statement)
+		howManyTweetsWeHave = dbCursor.fetchone()[0]
+		# dbCursor.execute(dbConnection.query_bulk_add_tweets_to_db,(theStringToAppend,))
+		# .executemany() might as well be .insertmany(). It's optimized for insert, but ONLY insert.
+		dbCursor.executemany(dbConnection.query_add_tweet_to_db_IDAuthTextCreateLangConvo,listOfTweets)
+		print("Executing the equivalent of:\n",dbConnection.query_bulk_add_tweets_to_db % theStringToAppend)
+		dbCursor.fetchall()
+		dbCursor.execute(dbConnection.query_count_of_tweets_from_company,(listOfTweets[0][1],))
+		print("Executing:\n",dbCursor.statement)
+		howManyTweetsWeEndUpWith = dbCursor.fetchone()[0]
+	if(howManyTweetsToAdd + howManyTweetsWeHave == howManyTweetsWeEndUpWith):
+		thisDBClient.commit()
+	else:
+		thisDBClient.rollback()
+		raise ValueError(f'''For company {listOfTweets[0][1]} - 
+			Tweets in database before add: {howManyTweetsWeHave}
+			How many Tweets we\'re adding: {howManyTweetsToAdd}
+			Tweets in database after add: {howManyTweetsWeEndUpWith}
+			Mismatch: {howManyTweetsToAdd + howManyTweetsWeHave} != {howManyTweetsWeEndUpWith}''')

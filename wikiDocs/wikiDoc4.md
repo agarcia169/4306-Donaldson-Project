@@ -44,7 +44,7 @@ List and describe the boundary conditions: startup, shutdown, and error behavior
 
 ## Subsystem services
 
-UML Class Diagram for each subsystem in 3.ii
+UML Class Diagram for each subsystem in Subsystem Decomposition section
 
 ## Glossary
 

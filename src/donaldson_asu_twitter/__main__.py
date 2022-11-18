@@ -196,10 +196,10 @@ def main():
 
 	if True:
 		from donaldson_asu_twitter.VaderAnalysis import vader_experimental
-		print("Running VADER analysis and saving data one Tweet at a time...")
-		start1 = time.perf_counter()
-		vader_experimental.test_experimental_VADER_slow_and_bad()
-		print(f"That took {(time.perf_counter()-start1):.2f} seconds.\n")
+		# print("Running VADER analysis and saving data one Tweet at a time...")
+		# start1 = time.perf_counter()
+		# vader_experimental.test_experimental_VADER_slow_and_bad()
+		# print(f"That took {(time.perf_counter()-start1):.2f} seconds.\n")
 		print("Running VADER analysis compiling data, then saving data to DB in one large update...")
 		start2 = time.perf_counter()
 		vader_experimental.test_experimental_VADER(loop=True)

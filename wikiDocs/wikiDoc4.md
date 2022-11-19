@@ -78,6 +78,7 @@ List and describe the boundary conditions: startup, shutdown, and error behavior
 UML Class Diagram for each subsystem in Subsystem Decomposition section
 
 ## Glossary
+
 ---
 NLTK - The Natural Language Toolkit is a platform used for building python programs to work with the Human Language it contains text processing libraries for tokenization, parsing , classification and semantic reasoning it was originally developed by Steven Bird, Edward Loper, and Ewan Klein for the purposes of program development and education purposes
 

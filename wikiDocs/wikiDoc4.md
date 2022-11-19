@@ -14,7 +14,7 @@ Our current design goals are to have a functioning system that can
 - Can search through a database looking for a company.
 - will return the data if the company is present.
 - return an error message if company already exist.
-- be able to differenciate between different types of powertrain character.
+- be able to differentiate between different types of powertrain character.
 - be able to pull tweets from any company within the database.
 
 ---
@@ -55,11 +55,13 @@ A UML Package Diagram to depict the packages or subsystems in your system.
 
 ### Hardware/software mapping
 
-A UML Deployment Diagram to depict what software components are deployed on what kind of hardware components.
+![Hardware and Software Mapping](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/iteration4/Hardware%20Mapping.drawio.png)
 
 ### Persistent data management
 
-A database model such as Entity-Relationship Diagram (video) or a NoSQL data model.
+MySQL database, structured like so:
+
+![Database Structure](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/iteration3/database-Page-2.drawio.png)
 
 ### Access control and security
 
@@ -99,6 +101,8 @@ VADER - Valence Aware Dictionary for Sentiment Reasoning is a module that is bas
 
 ## Appendix: Project Plan
 
-We  might need more her idfk tho
+Project tasks (product backlog) and time needed to implement with a deadline.
 
-![Gantt Chart](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/I4%20Gantt%20Chart.PNG)
+## Reference
+
+SDD explanations.

@@ -72,13 +72,8 @@ Describe how the global software control is implemented. In particular, this sec
 ### Boundary conditions
 
 ---
-(probably needs more)
-Startup: running the program
 
-Shutdown: Typing exit
-
-Error conditions: Searching for a company that already exists
-- Searching up a powertrain set that doesn't exist within the database
+This program will be used when Donaldson would like to search their databases for a company and it can also add a company if needed and it can easily be shutdown with a simple exit command. Also errors that will be seen will be coming from if the user tries to add a company already in the database or they try to search for a powertrain set that is not in the database.
 
 ---
 

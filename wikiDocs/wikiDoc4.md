@@ -72,12 +72,13 @@ Describe how the global software control is implemented. In particular, this sec
 ### Boundary conditions
 
 ---
-
+(probably needs more)
 Startup: running the program
 
 Shutdown: Typing exit
 
-Error conditions:
+Error conditions: Searching for a company that already exists
+- Searching up a powertrain set that doesn't exist within the database
 
 ---
 

@@ -94,4 +94,4 @@ Project tasks (product backlog) and time needed to implement with a deadline.
 
 ## Reference
 
-![Gantt Chart](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/I4%20Gantt%20Chart.PNG)
+![Gantt Chart](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/iteration4/chart4.svg)

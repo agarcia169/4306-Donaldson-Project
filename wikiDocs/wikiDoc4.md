@@ -8,7 +8,7 @@ Donaldson Company would like to try and anticipate what technologies future indu
 
 ### Design goals
 
-Our current design goals are to have a functioning system that can
+Our current design goals are to have a functioning system that
 
 - Can search through a database looking for a company.
 - will return the data if the company is present.

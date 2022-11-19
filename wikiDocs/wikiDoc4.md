@@ -71,7 +71,15 @@ Describe how the global software control is implemented. In particular, this sec
 
 ### Boundary conditions
 
-List and describe the boundary conditions: startup, shutdown, and error behavior of the system.
+---
+
+Startup: running the program
+
+Shutdown: Typing exit
+
+Error conditions:
+
+---
 
 ## Subsystem services
 

@@ -91,7 +91,3 @@ VADER - Valence Aware Dictionary for Sentiment Reasoning is a module that is bas
 ## Appendix: Project Plan
 
 Project tasks (product backlog) and time needed to implement with a deadline.
-
-## Reference
-
-SDD explanations.

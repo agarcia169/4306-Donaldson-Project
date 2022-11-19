@@ -43,12 +43,11 @@ Tweepy - 3rd party Twitter API access tool
 
 <https://ojs.aaai.org/index.php/ICWSM/article/view/14550>
 
-
 ## Proposed software architecture
 
 ### Overview
 
-The software will, for ease of development, work in a manner similar to that of a repository. Grabbing Tweets will involve accessing Twitter through Tweepy. Then these Tweets will be saved to a database. Then the Tweets in the database will be analyzed for tone, and that analysis will be saved to the database. Tweets will also be checked to see if they mention a particular powertrain, and that information will be saved to the database. This modular approach means that (so long as the database is running), no piece of the software is beholden to another piece of the software operating. While it might make more sense from an efficiency perspective to grab the Tweet from Twitter, analyze it for powertrain and tone, then save all of that data to the database, if we design things with that structure in mind and then any one of those three parts stops working, no part can be tested until it's working again. This will mean easier development. At the end we can consider trying to make the process more efficient by doing all the analysis at once (assuming Twitter still exists at that point).
+The software will, for ease of development and maintenance, work in a manner similar to that of a repository. Grabbing Tweets will involve accessing Twitter through Tweepy. Then these Tweets will be saved to a database. Then the Tweets in the database will be analyzed for tone, and that analysis will be saved to the database. Tweets will also be checked to see if they mention a particular powertrain, and that information will be saved to the database. This modular approach means that (so long as the database is running), no piece of the software is beholden to another piece of the software operating. While it might make more sense from an efficiency perspective to grab the Tweet from Twitter, analyze it for powertrain and tone, then save all of that data to the database, if we design things with that structure in mind and then any one of those three parts stops working, no part can be tested until it's working again. This will mean easier development. At the end we can consider trying to make the process more efficient by doing all the analysis at once (assuming Twitter still exists at that point).
 
 ### Subsystem decomposition
 
@@ -79,6 +78,14 @@ List and describe the boundary conditions: startup, shutdown, and error behavior
 UML Class Diagram for each subsystem in Subsystem Decomposition section
 
 ## Glossary
+---
+NLTK - The Natural Language Toolkit is a platform used for building python programs to work with the Human Language it contains text processing libraries for tokenization, parsing , classification and semantic reasoning it was originally developed by Steven Bird, Edward Loper, and Ewan Klein for the purposes of program development and education purposes
+
+Sentiment Analysis - the process of computationally identifying and categorizing opinions expressed in a piece of text, mostly used to determine whether the writer's attitude towards a specific topic is positive, negative, or neutral
+
+VADER - Valence Aware Dictionary for Sentiment Reasoning is a module that is based within the initial package of NLTK and can be applied directly to unlabeled text data. VADER analysis relies on a dictionary that can map lexical (relating words) to emotion intensities known as sentiment scores. which the score can be found just by adding together intensities of the sentence.
+
+---
 
 ## Appendix: Project Plan
 

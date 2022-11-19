@@ -8,7 +8,6 @@ Donaldson Company would like to try and anticipate what technologies future indu
 
 ### Design goals
 
----
 Our current design goals are to have a functioning system that can
 
 - Can search through a database looking for a company.
@@ -16,8 +15,6 @@ Our current design goals are to have a functioning system that can
 - return an error message if company already exist.
 - be able to differentiate between different types of powertrain character.
 - be able to pull tweets from any company within the database.
-
----
 
 ### Definitions, acronyms, and abbreviations
 
@@ -72,18 +69,12 @@ MySQL database, structured like so:
 ![This software makes data](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/iteration4/Access%20Matrix.drawio.png)
 
 ### Global software control
----
-There should be no synchronization problems since any user using the software will automatically be updating the data base with any new command that adds a company. Also with donaldson being the client they will be the only one to edit this code so that they can make any adjustments they see fit.
 
----
+There should be no synchronization problems since any user using the software will automatically be updating the data base with any new command that adds a company. Also with donaldson being the client they will be the only one to edit this code so that they can make any adjustments they see fit.
 
 ### Boundary conditions
 
----
-
 This program will be used when Donaldson would like to search their databases for a company and it can also add a company if needed and it can easily be shutdown with a simple exit command. Also errors that will be seen will be coming from if the user tries to add a company already in the database or they try to search for a powertrain set that is not in the database.
-
----
 
 ## Subsystem services
 
@@ -91,14 +82,11 @@ UML Class Diagram for each subsystem in Subsystem Decomposition section
 
 ## Glossary
 
----
 NLTK - The Natural Language Toolkit is a platform used for building python programs to work with the Human Language it contains text processing libraries for tokenization, parsing , classification and semantic reasoning it was originally developed by Steven Bird, Edward Loper, and Ewan Klein for the purposes of program development and education purposes
 
 Sentiment Analysis - the process of computationally identifying and categorizing opinions expressed in a piece of text, mostly used to determine whether the writer's attitude towards a specific topic is positive, negative, or neutral
 
 VADER - Valence Aware Dictionary for Sentiment Reasoning is a module that is based within the initial package of NLTK and can be applied directly to unlabeled text data. VADER analysis relies on a dictionary that can map lexical (relating words) to emotion intensities known as sentiment scores. which the score can be found just by adding together intensities of the sentence.
-
----
 
 ## Appendix: Project Plan
 

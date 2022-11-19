@@ -62,7 +62,7 @@ This modular or repository-style approach will mean easier development, and will
 
 MySQL database, structured like so:
 
-![Database Structure](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/iteration3/database-Page-2.drawio.png)
+![Database Structure](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/iteration4/database-Page-2.drawio.png)
 
 ### Access control and security
 

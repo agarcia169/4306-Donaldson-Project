@@ -51,7 +51,7 @@ The software will, for ease of development and maintenance, work in a manner sim
 
 ### Subsystem decomposition
 
-A UML Package Diagram to depict the packages or subsystems in your system.
+![Alt](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/6a44dbe6cb5572ae8f6c1262b708a5a67910303a/images/iteration4/PackageDiagram.drawio.svg)
 
 ### Hardware/software mapping
 
@@ -100,4 +100,4 @@ Project tasks (product backlog) and time needed to implement with a deadline.
 
 ## Reference
 
-SDD explanations.
+![Gantt Chart](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/I4%20Gantt%20Chart.PNG)

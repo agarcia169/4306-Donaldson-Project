@@ -72,8 +72,10 @@ MySQL database, structured like so:
 ![This software makes data](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/iteration4/Access%20Matrix.drawio.png)
 
 ### Global software control
+---
+There should be no synchronization problems since any user using the software will automatically be updating the data base with any new command that adds a company. Also with donaldson being the client they will be the only one to edit this code so that they can make any adjustments they see fit.
 
-Describe how the global software control is implemented. In particular, this section should describe how requests are initiated and how subsystems synchronize. This section should list and address synchronization and concurrency issues.
+---
 
 ### Boundary conditions
 

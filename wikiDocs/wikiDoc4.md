@@ -52,7 +52,7 @@ This modular or repository-style approach will mean easier development, and will
 
 ### Subsystem decomposition
 
-![Alt](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/6a44dbe6cb5572ae8f6c1262b708a5a67910303a/images/iteration4/PackageDiagram.drawio.svg)
+![Alt](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/iteration4/PackageDiagram.drawio.svg)
 
 ### Hardware/software mapping
 

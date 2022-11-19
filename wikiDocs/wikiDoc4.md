@@ -48,6 +48,8 @@ Tweepy - 3rd party Twitter API access tool
 
 ### Overview
 
+The software will, for ease of development, work in a manner similar to that of a repository. Grabbing Tweets will involve accessing Twitter through Tweepy. Then these Tweets will be saved to a database. Then the Tweets in the database will be analyzed for tone, and that analysis will be saved to the database. Tweets will also be checked to see if they mention a particular powertrain, and that information will be saved to the database. This modular approach means that (so long as the database is running), no piece of the software is beholden to another piece of the software operating. While it might make more sense from an efficiency perspective to grab the Tweet from Twitter, analyze it for powertrain and tone, then save all of that data to the database, if we design things with that structure in mind and then any one of those three parts stops working, no part can be tested until it's working again. This will mean easier development. At the end we can consider trying to make the process more efficient by doing all the analysis at once (assuming Twitter still exists at that point).
+
 ### Subsystem decomposition
 
 A UML Package Diagram to depict the packages or subsystems in your system.

@@ -65,7 +65,7 @@ MySQL database, structured like so:
 
 ### Access control and security
 
-Access matrix, which users access which parts of the software.
+![This software makes data](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/iteration4/Access%20Matrix.drawio.png)
 
 ### Global software control
 

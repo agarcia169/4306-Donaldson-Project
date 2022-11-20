@@ -222,6 +222,13 @@ FROM
     tweets
 WHERE
     author_id = (%s)"""
+query_the_date_of_oldest_tweet_id = """
+SELECT
+    created_at
+FROM
+    tweets
+WHERE
+    id = (%s)"""
 query_count_of_tweets_from_company = """
 SELECT
     COUNT(id)

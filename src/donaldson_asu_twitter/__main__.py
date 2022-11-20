@@ -167,17 +167,27 @@ def main():
 		print ('hce' in ManageKeywords.get_list_of_technologies())
 
 	if False:
-		ManageHandles.add_handles_by_comma_delimited_string("""AGCO_Power,agralesa,
-			ABCengine,jacmotorsglobal,arcticcat_snow,ArcticCatORV,AROpumps,ALIndiaOfficial,
-			AudiOfficial,allnewlada,basaktraktortr,vidhatagroup,vidhataindia,FusoOfficial,
-			WstrnStarTrucks,BharatBenz1,ThomasBuiltBus,freightliner,DaimlerTruck,cmdbeml,
-			bmcotomotivtr,BMWGroup,briggsstratton,BRP_Rotax,ridecannondale,CaseCE,caterpillarinc,
-			CheryAutoCo,GMcanada,cnhindustrial,kohlerpower,crownequipment,cummins,CushmanVehicles,
-			kiotitractor,daftrucksnv,DemandDetroit,deutz_ag,doosanportable,Progress_Rail,
-			escortsgroup,fawde2017,stellantis,fiatusa,stellantis,FPTIndustrial,ForceMotorsFML,
-			ford,fordotosan,FPTIndustrial,generaldynamics,generalelectric,chevroletbrasil,
-			GWMGlobal,GreavesCottonIN,Gac_Motor,HatzAmerica,HINOJapan,Honda,Hyundai_Global,
-			IndofarmTractor,NavistarNews""")
+		ManageHandles.add_handles_by_list("""Handle,AGCO_Power,agralesa,
+		ABCengine,jacmotorsglobal,arcticcat_snow,ArcticCatORV,AROpumps,
+		ALIndiaOfficial,AudiOfficial,allnewlada,basaktraktortr,vidhatagroup,
+		vidhataindia,FusoOfficial,WstrnStarTrucks,BharatBenz1,ThomasBuiltBus,
+		freightliner,DaimlerTruck,cmdbeml,bmcotomotivtr,BMWGroup,
+		briggsstratton,BRP_Rotax,ridecannondale,CaseCE,caterpillarinc,
+		CheryAutoCo,GMcanada,cnhindustrial,kohlerpower,crownequipment,cummins,
+		CushmanVehicles,kiotitractor,daftrucksnv,DemandDetroit,deutz_ag,
+		doosanportable,Progress_Rail,escortsgroup,fawde2017,stellantis,
+		fiatusa,stellantis,FPTIndustrial,ForceMotorsFML,ford,fordotosan,
+		FPTIndustrial,generaldynamics,generalelectric,chevroletbrasil,GWMGlobal,
+		GreavesCottonIN,Gac_Motor,HatzAmerica,HINOJapan,Honda,Hyundai_Global,
+		IndofarmTractor,NavistarNews,RUMOAUTOPECAS,SAICinc,DS_siliconmetal,
+		ScaniaGroup,motor_simpson,ssangyongcol,StandardMotors,steyr_motors,
+		subaru_usa,suzukicycles,bee_taiwan,Cummins,TataMotorsNews,TatraTrucks,
+		ToyotaMotorCorp,Tumosan,UDTrucks,UralMotors,UzelTraktor,vauxhall,
+		ETBIndia,VM_PRIDE,VW,volvocars,VolvoGroup,VolvoPentaNA,WeichaiPowerCo,
+		YamahaMotorUSA,zetortractors,zongshen1992,HitachiGlobal,XCMGGroup,
+		dongfeng_trucks,HINOTRUCKSUSA,IVECO,MANtruckandbus,mitsucars,ScaniaGroup,
+		TATAMotorTrucks,volvocars,VolvoGroup,VolvoPentaNA,VW,freightliner,
+		KenworthTruckCo,PeterbiltMotors,MackTrucks,WstrnStarTrucks,navistar""".split(','))
 
 	if False:
 		filename = "" # Location of file goes here
@@ -187,6 +197,9 @@ def main():
 		allTheIDs = ManageHandles.get_all_ids_in_db()
 		for id in allTheIDs:
 			AddTweetsToDB.refresh_tweets(id)
+
+	if False:
+		AddTweetsToDB.refresh_tweets(45550539)
 
 	if False:
 		ManageKeywords.add_keyword_for_technology('hce')

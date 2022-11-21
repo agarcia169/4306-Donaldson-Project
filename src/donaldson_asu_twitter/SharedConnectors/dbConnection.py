@@ -203,10 +203,26 @@ INSERT INTO tweets(id, author_id, text,
     created_at, lang, conversation_id) 
     VALUES(%s,%s,%s,%s,%s,%s)"""
 
+query_add_retweet_to_db_IDAuthTextCreateLangConvo = """
+INSERT INTO retweets(id, author_id, text, 
+    created_at, lang, conversation_id) 
+    VALUES(%s,%s,%s,%s,%s,%s)"""
+
+query_add_referenced_tweet_to_db_IDAuthTextCreateLangConvo = """
+INSERT INTO referenced_tweets(id, author_id, text, 
+    created_at, lang, conversation_id) 
+    VALUES(%s,%s,%s,%s,%s,%s)"""
+
 query_bulk_add_tweets_to_db = """
 INSERT INTO tweets(id, author_id, text, 
     created_at, lang, conversation_id) 
     VALUES %s"""
+
+query_bulk_add_retweets_to_db = """
+INSERT INTO retweets(id, author_id, text, 
+    created_at, lang, conversation_id) 
+    VALUES %s"""
+
 
 query_the_most_recent_tweet_id = """
 SELECT 
@@ -236,6 +252,26 @@ FROM
     tweets
 WHERE
     author_id = (%s)"""
+
+query_count_of_retweets_from_company = """
+SELECT
+    COUNT(id)
+FROM
+    retweets
+WHERE
+    author_id = (%s)"""
+
+query_count_of_referenced_tweets_from_company = """
+SELECT
+    COUNT(id)
+FROM
+    referenced_tweets"""
+
+query_number_of_tweet_relationships = """
+SELECT
+    count(*)
+FROM
+    tweet_relationships"""
 
 # HandleManagement.ManageHandles
 query_check_for_id_where_username = """

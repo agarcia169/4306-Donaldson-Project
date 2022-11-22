@@ -1,4 +1,5 @@
 from datetime import datetime as DateTime
+from itertools import chain
 import datetime
 import tweepy
 from ..SharedConnectors import twitterConnection
@@ -274,7 +275,8 @@ def _retrieve_tweets(theUserID, **argumentDictionary):
 
 def mass_add_tweets_to_db(listOfTweets:list[tuple], database:str) -> int:
 	thisDBClient = dbConnection.get_db_connection()
-	print(f'Adding {len(listOfTweets)} Tweets to {database}')
+	theNumberOfTweets = len(listOfTweets)
+	print(f'Adding {theNumberOfTweets} Tweets to {database}')
 	# howManyTweetsWeHave: int
 	# howManyTweetsWeEndUpWith: int
 	theStringToAppend = ','.join(map(str,listOfTweets))
@@ -283,16 +285,28 @@ def mass_add_tweets_to_db(listOfTweets:list[tuple], database:str) -> int:
 	duplicate_count_query:str = ""
 	duplicate_tweet_count:int = 0
 	if database == 'tweets':
-		table_to_insert_query = dbConnection.query_add_tweet_to_db_IDAuthTextCreateLangConvo
+		table_to_insert_query_list = [dbConnection.query_add_tweet_to_db_IDAuthTextCreateLangConvo]
+		for x in range(len(listOfTweets)):
+			table_to_insert_query_list.append(', (%s, %s, %s, %s, %s, %s)')
+		table_to_insert_query = ''.join(table_to_insert_query_list[:-1])
+		listOfTweetsTuple = tuple(chain.from_iterable(listOfTweets))
 	elif database == 'retweets':
 		preparation_queries.append(dbConnection.query_create_temporary_retweets_table)
-		insert_to_temp_table = dbConnection.query_insert_into_temporary_retweets
+		insert_to_temp_table_list = [dbConnection.query_insert_into_temporary_retweets]
+		for x in range(len(listOfTweets)):
+			insert_to_temp_table_list.append(', (%s, %s, %s, %s, %s, %s, %s)')
+		insert_to_temp_table = ''.join(insert_to_temp_table_list[:-1])
+		listOfTweetsTuple = tuple(chain.from_iterable(listOfTweets))
 		table_to_insert_query = dbConnection.query_insert_unique_from_temporary_retweets
 		duplicate_count_query = dbConnection.query_duplicate_count_from_temporary_retweets
 		cleanup_queries.append(dbConnection.query_drop_temporary_retweets)
 	elif database == 'referenced_tweets':
 		preparation_queries.append(dbConnection.query_create_temporary_referenced_tweets_table)
-		insert_to_temp_table = dbConnection.query_insert_into_temporary_referenced_tweets
+		insert_to_temp_table_list = [dbConnection.query_insert_into_temporary_referenced_tweets]
+		for x in range(len(listOfTweets)):
+			insert_to_temp_table_list.append(', (%s, %s, %s, %s, %s, %s, %s)')
+		insert_to_temp_table = ''.join(insert_to_temp_table_list[:-1])
+		listOfTweetsTuple = tuple(chain.from_iterable(listOfTweets))
 		table_to_insert_query = dbConnection.query_insert_unique_from_temporary_referenced_tweets
 		duplicate_count_query = dbConnection.query_duplicate_count_from_temporary_referenced_tweets
 		cleanup_queries.append(dbConnection.query_drop_temporary_referenced_tweets)
@@ -309,9 +323,9 @@ def mass_add_tweets_to_db(listOfTweets:list[tuple], database:str) -> int:
 				dbCursor.execute(this_statement)
 				print(dbCursor.statement)
 				dbCursor.fetchall()
-			if (database == 'retweets' or database == 'referenced_tweets') and duplicate_tweet_count != len(listOfTweets):
+			if (database == 'retweets' or database == 'referenced_tweets') and duplicate_tweet_count != theNumberOfTweets:
 				print('Inserting...')
-				dbCursor.executemany(insert_to_temp_table,listOfTweets)
+				dbCursor.execute(insert_to_temp_table,listOfTweetsTuple)
 				dbCursor.fetchall()
 				if duplicate_count_query:
 					dbCursor.execute(duplicate_count_query)
@@ -323,7 +337,7 @@ def mass_add_tweets_to_db(listOfTweets:list[tuple], database:str) -> int:
 				dbCursor.fetchall()
 			elif database == 'tweets':
 				print('Inserting...')
-				dbCursor.executemany(table_to_insert_query,listOfTweets)
+				dbCursor.execute(table_to_insert_query,listOfTweetsTuple)
 				dbCursor.fetchall()
 				print(dbCursor.statement)
 			for this_statement in cleanup_queries:
@@ -332,7 +346,7 @@ def mass_add_tweets_to_db(listOfTweets:list[tuple], database:str) -> int:
 				dbCursor.fetchall()
 		except:
 			print(f'The problematic SQL query: {dbCursor.statement}')
-			print(f'In {database}, with {table_to_insert_query} as the query being used, {duplicate_tweet_count} duplicates in the temporary table (if it exists) and len(listOfTweets) == {len(listOfTweets)}')
+			print(f'In {database}, with {table_to_insert_query} as the query being used, {duplicate_tweet_count} duplicates in the temporary table (if it exists) and len(listOfTweets) == {theNumberOfTweets}')
 			print(f'The Tweets: {listOfTweets}')
 			raise
 	return duplicate_tweet_count

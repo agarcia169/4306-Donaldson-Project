@@ -153,14 +153,14 @@ def _retrieve_tweets(theUserID, **argumentDictionary):
 	list_of_referenced_tweets = []
 	list_of_tweet_relationships = []
 	should_we_try_without_pagination:bool = True
+	how_many_duplicate_retweets:int = 0
+	how_many_duplicate_referenced_tweets:int = 0
 	# max_results=5 # REMOVE LATER
 	thisResponse: tweepy.Response
 	# print(f'For {argumentDictionary} we have:')
 	# limitBreak = 5
 	# tracker = 0
 	for thisResponse in tweepy.Paginator(thisTwitterClient.get_users_tweets, theUserID, max_results=100, **argumentDictionary):
-		how_many_duplicate_retweets:int = 0
-		how_many_duplicate_referenced_tweets:int = 0
 		# tracker+=1
 		# print(thisResponse)
 		if (thisResponse.data != None):
@@ -231,7 +231,7 @@ def _retrieve_tweets(theUserID, **argumentDictionary):
 	if listOfTweets:
 		print('one')
 		mass_add_tweets_to_db(listOfTweets, database='tweets')
-	if list_of_referenced_tweets:
+	if list_of_referenced_tweets or list_of_referencing_tweets:
 		print('two')
 		how_many_duplicate_referenced_tweets = mass_add_tweets_to_db(list_of_referenced_tweets, database='referenced_tweets')
 		how_many_duplicate_retweets = mass_add_tweets_to_db(list_of_referencing_tweets, database='retweets')

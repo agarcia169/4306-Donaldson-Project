@@ -133,7 +133,11 @@ def refresh_tweets(theUserID:int, *, maxDaysInPast:int=365*5, older_tweets:bool=
 				dbCursor.execute(the_oldest_tweet_id_query, (theUserID,))
 				theOldestTweetIDWeHave = dbCursor.fetchone()[0]
 				dbCursor.execute(dbConnection.query_the_date_of_oldest_tweet_id, (theOldestTweetIDWeHave,))
-				the_date_of_the_oldest_tweet_id = dbCursor.fetchone()[0].isoformat() + 'Z'
+				the_date_of_the_oldest_tweet_id = dbCursor.fetchone()[0].isoformat()
+				if the_date_of_the_oldest_tweet_id < how_long_to_grab.isoformat():
+					print(f'For user ID# {theUserID}, {maxDaysInPast} days were requested, which limits us to only looking back as far as {how_long_to_grab.isoformat()}Z, and the oldest tweet we have is from {the_date_of_the_oldest_tweet_id}Z. Giving up.')
+					return
+				the_date_of_the_oldest_tweet_id = the_date_of_the_oldest_tweet_id + 'Z'
 				# the_date_of_the_oldest_tweet_id = the_date_of_the_oldest_tweet_id.isoformat() + 'Z'
 			olderTweetsKwargs.update({'until_id': theOldestTweetIDWeHave, 'end_time': the_date_of_the_oldest_tweet_id})
 			_retrieve_tweets(theUserID, **olderTweetsKwargs)
@@ -306,6 +310,7 @@ def mass_add_tweets_to_db(listOfTweets:list[tuple], database:str) -> int:
 				print(dbCursor.statement)
 				dbCursor.fetchall()
 			if (database == 'retweets' or database == 'referenced_tweets') and duplicate_tweet_count != len(listOfTweets):
+				print('Inserting...')
 				dbCursor.executemany(insert_to_temp_table,listOfTweets)
 				dbCursor.fetchall()
 				if duplicate_count_query:
@@ -317,6 +322,7 @@ def mass_add_tweets_to_db(listOfTweets:list[tuple], database:str) -> int:
 				print(dbCursor.statement)
 				dbCursor.fetchall()
 			elif database == 'tweets':
+				print('Inserting...')
 				dbCursor.executemany(table_to_insert_query,listOfTweets)
 				dbCursor.fetchall()
 				print(dbCursor.statement)

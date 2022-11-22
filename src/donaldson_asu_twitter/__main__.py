@@ -116,10 +116,6 @@ def main():
 		if didItWork:
 			AddTweetsToDB.refresh_tweets(theCompanyID)
 
-	if True:
-		# LabelTweetsWithTechs.evaluate_new_tweets()
-		LabelTweetsWithTechs.updatelabels()
-
 	if False:
 		start2 = time.perf_counter()
 		TweetAnalysis.analyze_analyzed_tweets_in_DB()

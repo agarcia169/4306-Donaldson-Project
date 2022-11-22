@@ -207,7 +207,7 @@ def main():
 		filename = "" # Location of file goes here
 		ManageHandles.load_handle_CSV_file(filename)
 
-	if False: #DO NOT RUN YET
+	if True:
 		allTheIDs = ManageHandles.get_all_ids_in_db()
 		for id in allTheIDs:
 			AddTweetsToDB.refresh_tweets(id, exclude_responses=False)

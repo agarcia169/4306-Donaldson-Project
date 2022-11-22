@@ -116,10 +116,10 @@ def main():
 		if didItWork:
 			AddTweetsToDB.refresh_tweets(theCompanyID)
 
-	if False:
+	if True:
 		# LabelTweetsWithTechs.evaluate_new_tweets()
-
 		LabelTweetsWithTechs.updatelabels()
+
 	if False:
 		start2 = time.perf_counter()
 		TweetAnalysis.analyze_analyzed_tweets_in_DB()
@@ -219,6 +219,9 @@ def main():
 		test_function2()
 		test_function()
 
+	if True:
+		# LabelTweetsWithTechs.evaluate_new_tweets()
+		LabelTweetsWithTechs.updatelabels()
 
 	if False:
 		thisTwitConnection = twitterConnection.get_twitter_connection()
@@ -263,7 +266,7 @@ def main():
 	if False:
 		matPlotThickens.tester()
 
-	if False:
+	if True:
 		from donaldson_asu_twitter.VaderAnalysis import vader_experimental
 		# print("Running VADER analysis and saving data one Tweet at a time...")
 		# start1 = time.perf_counter()

@@ -203,15 +203,17 @@ INSERT INTO tweets(id, author_id, text,
     created_at, lang, conversation_id) 
     VALUES(%s,%s,%s,%s,%s,%s)"""
 
-query_add_retweet_to_db_IDAuthTextCreateLangConvo = """
-INSERT INTO retweets(id, author_id, text, 
-    created_at, lang, conversation_id) 
-    VALUES(%s,%s,%s,%s,%s,%s)"""
+# query_add_retweet_to_db_IDAuthTextCreateLangConvo = """
+# INSERT INTO retweets(id, author_id, text, 
+#     created_at, lang, conversation_id) 
+#     VALUES(%s,%s,%s,%s,%s,%s)
+#     ON DUPLICATE KEY UPDATE id=id"""
 
-query_add_referenced_tweet_to_db_IDAuthTextCreateLangConvo = """
-INSERT INTO referenced_tweets(id, author_id, text, 
-    created_at, lang, conversation_id) 
-    VALUES(%s,%s,%s,%s,%s,%s)"""
+# query_add_referenced_tweet_to_db_IDAuthTextCreateLangConvo = """
+# INSERT INTO referenced_tweets(id, author_id, text, 
+#     created_at, lang, conversation_id) 
+#     VALUES(%s,%s,%s,%s,%s,%s)
+#     ON DUPLICATE KEY UPDATE id=id"""
 
 query_bulk_add_tweets_to_db = """
 INSERT INTO tweets(id, author_id, text, 
@@ -223,6 +225,54 @@ INSERT INTO retweets(id, author_id, text,
     created_at, lang, conversation_id) 
     VALUES %s"""
 
+#https://dev.mysql.com/doc/refman/8.0/en/create-temporary-table.html
+query_create_temporary_retweets_table = """
+CREATE TEMPORARY TABLE temp_retweets SELECT * FROM retweets LIMIT 0
+"""
+
+query_insert_into_temporary_retweets = """
+INSERT INTO temp_retweets(id, author_id, text, 
+    created_at, lang, conversation_id, in_reply_to_user_id) 
+    VALUES(%s,%s,%s,%s,%s,%s,%s)
+"""
+
+query_duplicate_count_from_temporary_retweets = """
+SELECT count(id) FROM temp_retweets WHERE EXISTS (SELECT id FROM retweets WHERE retweets.id = temp_retweets.id)
+"""
+
+# https://dev.mysql.com/doc/refman/8.0/en/insert-select.html
+# https://dev.mysql.com/doc/refman/8.0/en/exists-and-not-exists-subqueries.html
+query_insert_unique_from_temporary_retweets = """
+INSERT INTO retweets (SELECT * FROM temp_retweets WHERE NOT EXISTS (SELECT * from retweets WHERE retweets.id = temp_retweets.id))
+"""
+
+query_drop_temporary_retweets = """
+DROP TEMPORARY TABLE temp_retweets
+"""
+
+query_create_temporary_referenced_tweets_table = """
+CREATE TEMPORARY TABLE temp_referenced_tweets SELECT * FROM referenced_tweets LIMIT 0
+"""
+
+query_insert_into_temporary_referenced_tweets = """
+INSERT INTO temp_referenced_tweets(id, author_id, text, 
+    created_at, lang, conversation_id, in_reply_to_user_id) 
+    VALUES(%s,%s,%s,%s,%s,%s,%s)
+"""
+
+query_duplicate_count_from_temporary_referenced_tweets = """
+SELECT count(id) FROM temp_referenced_tweets WHERE EXISTS (SELECT id FROM referenced_tweets WHERE referenced_tweets.id = temp_referenced_tweets.id)
+"""
+
+# https://dev.mysql.com/doc/refman/8.0/en/insert-select.html
+# https://dev.mysql.com/doc/refman/8.0/en/exists-and-not-exists-subqueries.html
+query_insert_unique_from_temporary_referenced_tweets = """
+INSERT INTO referenced_tweets (SELECT * FROM temp_referenced_tweets WHERE NOT EXISTS (SELECT * from referenced_tweets WHERE referenced_tweets.id = temp_referenced_tweets.id))
+"""
+
+query_drop_temporary_referenced_tweets = """
+DROP TEMPORARY TABLE temp_referenced_tweets
+"""
 
 query_the_most_recent_tweet_id = """
 SELECT 

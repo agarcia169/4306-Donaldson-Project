@@ -155,6 +155,8 @@ def _retrieve_tweets(theUserID, **argumentDictionary):
 	# limitBreak = 5
 	# tracker = 0
 	for thisResponse in tweepy.Paginator(thisTwitterClient.get_users_tweets, theUserID, max_results=100, **argumentDictionary):
+		how_many_duplicate_retweets:int = 0
+		how_many_duplicate_referenced_tweets:int = 0
 		# tracker+=1
 		# print(thisResponse)
 		if (thisResponse.data != None):
@@ -175,7 +177,7 @@ def _retrieve_tweets(theUserID, **argumentDictionary):
 					list_of_referencing_tweets.append((thisTweet.id,
 						thisTweet.author_id,thisTweet.text,
 						thisTweet.created_at,thisTweet.lang,
-						thisTweet.conversation_id))
+						thisTweet.conversation_id, thisTweet.in_reply_to_user_id))
 					for aReference in thisTweet.referenced_tweets:
 						list_of_tweet_relationships.append((thisTweet.id, aReference.id, aReference.type))
 				# print("Author_id:", thisTweet.author_id)
@@ -193,7 +195,7 @@ def _retrieve_tweets(theUserID, **argumentDictionary):
 				list_of_referenced_tweets.append((this_included_tweet.id,
 						this_included_tweet.author_id,this_included_tweet.text,
 						this_included_tweet.created_at,this_included_tweet.lang,
-						this_included_tweet.conversation_id))
+						this_included_tweet.conversation_id, this_included_tweet.in_reply_to_user_id))
 	# if should_we_try_without_pagination:
 	# 	print('We didn\'t get pagination results.')
 	# 	print(f'{argumentDictionary}')
@@ -202,6 +204,12 @@ def _retrieve_tweets(theUserID, **argumentDictionary):
 	# 		print(f'{thisResponse.data}')
 	# 	else:
 	# 		print('Hmm, error.')
+	
+	# Remove duplicates within this one data grab: https://www.geeksforgeeks.org/python-ways-to-remove-duplicates-from-list/
+	listOfTweets = [*set(listOfTweets)]
+	list_of_referenced_tweets = [*set(list_of_referenced_tweets)]
+	list_of_referencing_tweets = [*set(list_of_referencing_tweets)]
+	list_of_tweet_relationships = [*set(list_of_tweet_relationships)]
 	print(f'ListOfTweets: {listOfTweets}')
 	print(f'list_of_referenced_tweets: {list_of_referenced_tweets}')
 	print(f'list_of_referencing_tweets: {list_of_referencing_tweets}')
@@ -221,8 +229,8 @@ def _retrieve_tweets(theUserID, **argumentDictionary):
 		mass_add_tweets_to_db(listOfTweets, database='tweets')
 	if list_of_referenced_tweets:
 		print('two')
-		mass_add_tweets_to_db(list_of_referenced_tweets, database='referenced_tweets')
-		mass_add_tweets_to_db(list_of_referencing_tweets, database='retweets')
+		how_many_duplicate_referenced_tweets = mass_add_tweets_to_db(list_of_referenced_tweets, database='referenced_tweets')
+		how_many_duplicate_retweets = mass_add_tweets_to_db(list_of_referencing_tweets, database='retweets')
 		add_relationships(list_of_tweet_relationships)
 	with thisDBClient.cursor() as dbCursor:
 		dbCursor.execute(dbConnection.query_count_of_tweets_from_company,(theUserID,))
@@ -238,15 +246,17 @@ def _retrieve_tweets(theUserID, **argumentDictionary):
 			Started with: {number_of_tweets_in_db_at_start}\n\
 			Added: {len(listOfTweets)}\n\
 			Ended With: {number_of_tweets_in_db_at_end}")
-	if (number_of_retweets_in_db_at_end - number_of_retweets_in_db_at_start) != len(list_of_referencing_tweets):
+	if (number_of_retweets_in_db_at_end - number_of_retweets_in_db_at_start) != (len(list_of_referencing_tweets) - how_many_duplicate_retweets):
 		raise ValueError(f"Wrong number of Tweets in 'retweets' table.\n\
 			Started with: {number_of_retweets_in_db_at_start}\n\
 			Added: {len(list_of_referencing_tweets)}\n\
+			Duplicates: {how_many_duplicate_retweets}\n\
 			Ended With: {number_of_retweets_in_db_at_end}")
-	if (number_of_referenced_tweets_in_db_at_end - number_of_referenced_tweets_in_db_at_start) != len(list_of_referenced_tweets):
+	if (number_of_referenced_tweets_in_db_at_end - number_of_referenced_tweets_in_db_at_start) != (len(list_of_referenced_tweets) - how_many_duplicate_referenced_tweets):
 		raise ValueError(f"Wrong number of Tweets in 'referenced_tweets' table.\n\
 			Started with: {number_of_referenced_tweets_in_db_at_start}\n\
 			Added: {len(list_of_referenced_tweets)}\n\
+			Duplicates: {how_many_duplicate_referenced_tweets}\n\
 			Ended With: {number_of_referenced_tweets_in_db_at_end}")
 	if (number_of_tweet_relationships_in_db_at_end - number_of_tweet_relationships_in_db_at_start) != len(list_of_tweet_relationships):
 		raise ValueError(f"Wrong number of relationships in 'tweet_relationships' table.\n\
@@ -258,18 +268,30 @@ def _retrieve_tweets(theUserID, **argumentDictionary):
 		#     raise Exception
 		# print("ID:", thisTweet.data.id)
 
-def mass_add_tweets_to_db(listOfTweets:list[tuple], database:str):
+def mass_add_tweets_to_db(listOfTweets:list[tuple], database:str) -> int:
 	thisDBClient = dbConnection.get_db_connection()
 	print(f'Adding {len(listOfTweets)} Tweets to {database}')
 	# howManyTweetsWeHave: int
 	# howManyTweetsWeEndUpWith: int
 	theStringToAppend = ','.join(map(str,listOfTweets))
+	preparation_queries:list[str] = []
+	cleanup_queries:list[str] = []
+	duplicate_count_query:str = ""
+	duplicate_tweet_count:int = 0
 	if database == 'tweets':
 		table_to_insert_query = dbConnection.query_add_tweet_to_db_IDAuthTextCreateLangConvo
 	elif database == 'retweets':
-		table_to_insert_query = dbConnection.query_add_retweet_to_db_IDAuthTextCreateLangConvo
+		preparation_queries.append(dbConnection.query_create_temporary_retweets_table)
+		insert_to_temp_table = dbConnection.query_insert_into_temporary_retweets
+		table_to_insert_query = dbConnection.query_insert_unique_from_temporary_retweets
+		duplicate_count_query = dbConnection.query_duplicate_count_from_temporary_retweets
+		cleanup_queries.append(dbConnection.query_drop_temporary_retweets)
 	elif database == 'referenced_tweets':
-		table_to_insert_query = dbConnection.query_add_referenced_tweet_to_db_IDAuthTextCreateLangConvo
+		preparation_queries.append(dbConnection.query_create_temporary_referenced_tweets_table)
+		insert_to_temp_table = dbConnection.query_insert_into_temporary_referenced_tweets
+		table_to_insert_query = dbConnection.query_insert_unique_from_temporary_referenced_tweets
+		duplicate_count_query = dbConnection.query_duplicate_count_from_temporary_referenced_tweets
+		cleanup_queries.append(dbConnection.query_drop_temporary_referenced_tweets)
 	else:
 		raise ValueError("mass_add_tweets_to_db() argument 'database' must be 'tweets', 'referenced_tweets', or 'retweets'")
 	with thisDBClient.cursor() as dbCursor:
@@ -279,13 +301,36 @@ def mass_add_tweets_to_db(listOfTweets:list[tuple], database:str):
 		# dbCursor.execute(dbConnection.query_bulk_add_tweets_to_db,(theStringToAppend,))
 		# .executemany() might as well be .insertmany(). It's optimized for insert, but ONLY insert.
 		try:
-			dbCursor.executemany(table_to_insert_query,listOfTweets)
+			for this_statement in preparation_queries:
+				dbCursor.execute(this_statement)
+				print(dbCursor.statement)
+				dbCursor.fetchall()
+			if (database == 'retweets' or database == 'referenced_tweets') and duplicate_tweet_count != len(listOfTweets):
+				dbCursor.executemany(insert_to_temp_table,listOfTweets)
+				dbCursor.fetchall()
+				if duplicate_count_query:
+					dbCursor.execute(duplicate_count_query)
+					print(dbCursor.statement)
+					duplicate_tweet_count = dbCursor.fetchone()[0]
+					print(f'Number of duplicate tweets: {duplicate_tweet_count}')
+				dbCursor.execute(table_to_insert_query)
+				print(dbCursor.statement)
+				dbCursor.fetchall()
+			elif database == 'tweets':
+				dbCursor.executemany(table_to_insert_query,listOfTweets)
+				dbCursor.fetchall()
+				print(dbCursor.statement)
+			for this_statement in cleanup_queries:
+				dbCursor.execute(this_statement)
+				print(dbCursor.statement)
+				dbCursor.fetchall()
 		except:
-			print(dbCursor.statement)
+			print(f'The problematic SQL query: {dbCursor.statement}')
+			print(f'In {database}, with {table_to_insert_query} as the query being used, {duplicate_tweet_count} duplicates in the temporary table (if it exists) and len(listOfTweets) == {len(listOfTweets)}')
+			print(f'The Tweets: {listOfTweets}')
 			raise
-		print(dbCursor.statement)
+	return duplicate_tweet_count
 		# print("Executing the equivalent of:\n",dbConnection.query_bulk_add_tweets_to_db % theStringToAppend)
-		dbCursor.fetchall()
 		# dbCursor.execute(dbConnection.query_count_of_retweets_from_company,(45550539,))
 		# print(dbCursor.fetchone()[0])
 

@@ -167,27 +167,21 @@ def main():
 		print ('hce' in ManageKeywords.get_list_of_technologies())
 
 	if False:
-		ManageHandles.add_handles_by_list("""Handle,AGCO_Power,agralesa,
-		ABCengine,jacmotorsglobal,arcticcat_snow,ArcticCatORV,AROpumps,
-		ALIndiaOfficial,AudiOfficial,allnewlada,basaktraktortr,vidhatagroup,
-		vidhataindia,FusoOfficial,WstrnStarTrucks,BharatBenz1,ThomasBuiltBus,
-		freightliner,DaimlerTruck,cmdbeml,bmcotomotivtr,BMWGroup,
-		briggsstratton,BRP_Rotax,ridecannondale,CaseCE,caterpillarinc,
-		CheryAutoCo,GMcanada,cnhindustrial,kohlerpower,crownequipment,cummins,
-		CushmanVehicles,kiotitractor,daftrucksnv,DemandDetroit,deutz_ag,
-		doosanportable,Progress_Rail,escortsgroup,fawde2017,stellantis,
-		fiatusa,stellantis,FPTIndustrial,ForceMotorsFML,ford,fordotosan,
-		FPTIndustrial,generaldynamics,generalelectric,chevroletbrasil,GWMGlobal,
-		GreavesCottonIN,Gac_Motor,HatzAmerica,HINOJapan,Honda,Hyundai_Global,
-		IndofarmTractor,NavistarNews,RUMOAUTOPECAS,SAICinc,DS_siliconmetal,
-		ScaniaGroup,motor_simpson,ssangyongcol,StandardMotors,steyr_motors,
-		subaru_usa,suzukicycles,bee_taiwan,Cummins,TataMotorsNews,TatraTrucks,
-		ToyotaMotorCorp,Tumosan,UDTrucks,UralMotors,UzelTraktor,vauxhall,
-		ETBIndia,VM_PRIDE,VW,volvocars,VolvoGroup,VolvoPentaNA,WeichaiPowerCo,
-		YamahaMotorUSA,zetortractors,zongshen1992,HitachiGlobal,XCMGGroup,
-		dongfeng_trucks,HINOTRUCKSUSA,IVECO,MANtruckandbus,mitsucars,ScaniaGroup,
-		TATAMotorTrucks,volvocars,VolvoGroup,VolvoPentaNA,VW,freightliner,
-		KenworthTruckCo,PeterbiltMotors,MackTrucks,WstrnStarTrucks,navistar""".split(','))
+		ManageHandles.add_handles_by_list("""jacmotorsglobal,arcticcat_snow,
+			ArcticCatORV,ALIndiaOfficial,AudiOfficial,briggsstratton,BRP_Rotax,
+			caterpillarinc,CheryAutoCo,cnhindustrial,cummins,kiotitractor,daftrucksnv,
+			JohnDeere,DemandDetroit,deutz_ag,doosanportable,escortsgroup,fawde2017,
+			FPTIndustrial,ForceMotorsFML,ford,fordotosan,FPTIndustrial,chevroletbrasil,
+			GWMGlobal,HINOJapan,Honda,Hyundai_Global,HYUNDAI,hmgnewsroom,jcbmachines,
+			Kia,MahindraRise,man_e_s,Maruti_Corp,MazdaUSA,MercedesBenzUSA,FusoOfficial,
+			mitsucars,navecofrance,NissanMotor,polarisinc,renaultgroup,SAICinc,
+			ScaniaGroup,motor_simpson,subaru_usa,suzukicycles,Cummins,TataMotorsNews,
+			ToyotaMotorCorp,UDTrucks,VM_PRIDE,VW,WeichaiPowerCo,YamahaMotorUSA,
+			volvocars,VolvoGroup,VolvoPentaNA,JCBGroupAutos,komatsuconstrna,ForkliftKomatsu,
+			deutz_ag,WeichaiPowerCo,DaimlerTruck,AGCO_Power,CaterpillarInc,cummins,
+			dongfeng_trucks,HINOTRUCKSUSA,IVECO,MANtruckandbus,mitsucars,ScaniaGroup,
+			TATAMotorTrucks,VW,freightliner,KenworthTruckCo,PeterbiltMotors,MackTrucks,
+			WstrnStarTrucks,navistar""".split(','))
 
 	if False:
 		filename = "" # Location of file goes here

@@ -31,6 +31,20 @@ from donaldson_asu_twitter.VaderAnalysis import TweetAnalysis
 from donaldson_asu_twitter.ReportingUI import matPlotThickens
 
 
+def test_function():
+	thisConn = dbConnection.get_db_connection()
+	with thisConn.cursor() as dbCursor:
+		dbCursor.execute("select count(*) from test_table")
+		print(dbCursor.fetchall())
+		dbCursor.execute("SELECT * FROM test_table")
+		print(dbCursor.fetchall())
+
+def test_function2():
+	thisConn = dbConnection.get_db_connection()
+	with thisConn.cursor() as dbCursor:
+		dbCursor.execute("INSERT INTO test_table VALUES(123)")
+		dbCursor.fetchall()
+
 
 def main():
 
@@ -102,10 +116,6 @@ def main():
 		if didItWork:
 			AddTweetsToDB.refresh_tweets(theCompanyID)
 
-	if False:
-		# LabelTweetsWithTechs.evaluate_new_tweets()
-
-		LabelTweetsWithTechs.updatelabels()
 	if False:
 		start2 = time.perf_counter()
 		TweetAnalysis.analyze_analyzed_tweets_in_DB()
@@ -187,19 +197,63 @@ def main():
 		filename = "" # Location of file goes here
 		ManageHandles.load_handle_CSV_file(filename)
 
-	if False:
+	if True:
 		allTheIDs = ManageHandles.get_all_ids_in_db()
 		for id in allTheIDs:
-			AddTweetsToDB.refresh_tweets(id)
+			AddTweetsToDB.refresh_tweets(id, exclude_responses=False)
 
 	if False:
-		AddTweetsToDB.refresh_tweets(45550539)
+		AddTweetsToDB.refresh_tweets(45550539, exclude_responses=False)
+
+	if False:
+		test_function2()
+		test_function()
+
+	if True:
+		# LabelTweetsWithTechs.evaluate_new_tweets()
+		LabelTweetsWithTechs.updatelabels()
+
+	if False:
+		thisTwitConnection = twitterConnection.get_twitter_connection()
+		response = thisTwitConnection.get_users_tweets(45550539, max_results = 5, **{
+			'tweet_fields': ['author_id', 'conversation_id', 'created_at', 'in_reply_to_user_id', 'lang', 'text', 'referenced_tweets'], 
+			'start_time': '2017-11-21T14:37:50Z', 
+			'until_id': 1530296024253796354, 
+			'end_time': '2022-05-27T21:12:58Z', 
+			'expansions': ['referenced_tweets.id']})
+		# print(response._fields)
+		# print(type(response.data))
+		print(type(response.includes['tweets']))
+		# print(response.data)
+		print(response.includes['tweets'])
+		for thisResponse in response.data:
+			print(f'A Response in data:\nID: {thisResponse.id}\n' +
+				 f'Text: {thisResponse.text}\nAuthor_ID: {thisResponse.author_id}\n' +
+				 f'Convo_ID: {thisResponse.conversation_id}\nCreatedAt: {thisResponse.created_at}\n' +
+				 f'In_Reply_To_User_ID: {thisResponse.in_reply_to_user_id}\nLang: {thisResponse.lang}\n' + 
+				 f'Referenced_Tweets: {thisResponse.referenced_tweets}\n')
+			if thisResponse.referenced_tweets:
+				print(thisResponse.referenced_tweets[0])
+				# for referencedTweet in thisResponse.referenced_tweets:
+				# 	print(f'A Response in referenced_tweets: ID: {referencedTweet.id},' +
+				# 		f'Text: {referencedTweet.text}, Author_ID: {referencedTweet.author_id}, ' +
+				# 		f'Convo_ID: {referencedTweet.conversation_id}, CreatedAt: {referencedTweet.created_at}, ' +
+				# 		f'In_Reply_To_User_ID: {referencedTweet.in_reply_to_user_id}, Lang: {referencedTweet.lang} ' + 
+				# 		f'Referenced_Tweets: {referencedTweet.referenced_tweets}\n')
+		for thisResponse in response.includes['tweets']:
+			print(f'A Response in includes: ID: {thisResponse.id},' +
+				 f'Text: {thisResponse.text}, Author_ID: {thisResponse.author_id}, ' +
+				 f'Convo_ID: {thisResponse.conversation_id}, CreatedAt: {thisResponse.created_at}, ' +
+				 f'In_Reply_To_User_ID: {thisResponse.in_reply_to_user_id}, Lang: {thisResponse.lang} ' + 
+				 f'Referenced_Tweets: {thisResponse.referenced_tweets}\n')
+			# print(dir(thisResponse))
+			print(type(thisResponse))
+			
 
 	if False:
 		ManageKeywords.add_keyword_for_technology('hce')
   
-	if False:
-		matPlotThickens.tester()
+	
 
 	if True:
 		from donaldson_asu_twitter.VaderAnalysis import vader_experimental
@@ -211,6 +265,9 @@ def main():
 		start2 = time.perf_counter()
 		vader_experimental.test_experimental_VADER(loop=True)
 		print(f"That took {(time.perf_counter()-start2):.2f} seconds.\n")
+	
+	if True:
+		matPlotThickens.tester()
 
 if __name__ == "__main__":
 	main()

@@ -286,14 +286,14 @@ def mass_add_tweets_to_db(listOfTweets:list[tuple], database:str) -> int:
 	duplicate_tweet_count:int = 0
 	if database == 'tweets':
 		table_to_insert_query_list = [dbConnection.query_add_tweet_to_db_IDAuthTextCreateLangConvo]
-		for x in range(len(listOfTweets)):
+		for _ in range(len(listOfTweets)):
 			table_to_insert_query_list.append(', (%s, %s, %s, %s, %s, %s)')
 		table_to_insert_query = ''.join(table_to_insert_query_list[:-1])
 		listOfTweetsTuple = tuple(chain.from_iterable(listOfTweets))
 	elif database == 'retweets':
 		preparation_queries.append(dbConnection.query_create_temporary_retweets_table)
 		insert_to_temp_table_list = [dbConnection.query_insert_into_temporary_retweets]
-		for x in range(len(listOfTweets)):
+		for _ in range(len(listOfTweets)):
 			insert_to_temp_table_list.append(', (%s, %s, %s, %s, %s, %s, %s)')
 		insert_to_temp_table = ''.join(insert_to_temp_table_list[:-1])
 		listOfTweetsTuple = tuple(chain.from_iterable(listOfTweets))
@@ -303,7 +303,7 @@ def mass_add_tweets_to_db(listOfTweets:list[tuple], database:str) -> int:
 	elif database == 'referenced_tweets':
 		preparation_queries.append(dbConnection.query_create_temporary_referenced_tweets_table)
 		insert_to_temp_table_list = [dbConnection.query_insert_into_temporary_referenced_tweets]
-		for x in range(len(listOfTweets)):
+		for _ in range(len(listOfTweets)):
 			insert_to_temp_table_list.append(', (%s, %s, %s, %s, %s, %s, %s)')
 		insert_to_temp_table = ''.join(insert_to_temp_table_list[:-1])
 		listOfTweetsTuple = tuple(chain.from_iterable(listOfTweets))

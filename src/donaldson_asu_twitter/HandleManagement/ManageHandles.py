@@ -1,12 +1,19 @@
 import csv
+import re
 
 import mysql.connector
 
 from ..SharedConnectors import dbConnection
 from . import HandleDataCollector
 
+#https://stackoverflow.com/questions/1323364/in-python-how-to-check-if-a-string-only-contains-certain-characters
+valid_username_characters = re.compile(r'[a-zA-Z0-9_]*').fullmatch
+
 #import json
 
+def check_username_validity(this_username:str) -> bool:
+    # print(valid_username_characters(this_username))
+    return ((len(this_username) >= 4) and (len(this_username) <= 15) and bool(valid_username_characters(this_username)))
 
 def add_handle_to_database(twitter_username: str) -> tuple[bool, int]:
     """Adds a Twitter ID, username, description, and name to the database.
@@ -17,6 +24,9 @@ def add_handle_to_database(twitter_username: str) -> tuple[bool, int]:
     Returns:
         `tuple(bool,int)`: A bool representing whether or not the user was added successfully, and an int that is the ID# of Twitter user
     """
+    if not check_username_validity(twitter_username):
+        print(f'Bad username, skipping {twitter_username}.')
+        return False, -1
     theDBConnection = dbConnection.get_db_connection()
     # print(theDBConnection)
     # print(dir(theDBConnection))

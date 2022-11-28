@@ -206,6 +206,13 @@ SET
 WHERE
     (text LIKE '%natural%gas%')"""
 
+query_updatenatgasref = """
+UPDATE referenced_tweets 
+SET 
+    powertrain_set = CONCAT_WS(',', powertrain_set, 'natgas')
+WHERE
+    (text LIKE '%natural%gas%')"""    
+
 query_updatehce = """
 UPDATE tweets 
 SET 

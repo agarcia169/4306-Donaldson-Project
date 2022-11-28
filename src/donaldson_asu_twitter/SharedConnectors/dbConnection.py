@@ -220,6 +220,26 @@ SET
 WHERE
     (text LIKE '%hydrogen%combustion%engine%'
         OR text LIKE '%hydrogen%engine%')"""
+
+
+query_updatehcert = """
+UPDATE retweets 
+SET 
+    powertrain_set = CONCAT_WS(',', powertrain_set, 'hce')
+WHERE
+    (text LIKE '%hydrogen%combustion%engine%'
+        OR text LIKE '%hydrogen%engine%')"""
+
+
+query_updatehceref = """
+UPDATE referenced_tweets 
+SET 
+    powertrain_set = CONCAT_WS(',', powertrain_set, 'hce')
+WHERE
+    (text LIKE '%hydrogen%combustion%engine%'
+        OR text LIKE '%hydrogen%engine%')"""
+
+
 # PowertrainManagement.ManageKeywords
 query_get_powertrain_words = "SELECT word FROM %s"
 #PowertrainManagement.CompanyPowertrains

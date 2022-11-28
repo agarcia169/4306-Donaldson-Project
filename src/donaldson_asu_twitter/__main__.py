@@ -209,7 +209,7 @@ def main():
 		test_function2()
 		test_function()
 
-	if True:
+	if False:
 		# LabelTweetsWithTechs.evaluate_new_tweets()
 		LabelTweetsWithTechs.updatelabels()
 
@@ -264,6 +264,8 @@ def main():
 		print("Running VADER analysis compiling data, then saving data to DB in one large update...")
 		start2 = time.perf_counter()
 		vader_experimental.test_experimental_VADER(loop=True)
+		vader_experimental.test_experimental_VADER(the_database='retweets',loop=True)
+		vader_experimental.test_experimental_VADER(the_database='referenced_tweets',loop=True)
 		print(f"That took {(time.perf_counter()-start2):.2f} seconds.\n")
 	
 	if False:

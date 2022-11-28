@@ -46,7 +46,7 @@ def test_experimental_VADER_slow_and_bad():
             # dbCursor.execute(updateString)
             # print(dbCursor.fetchall())
             # dbCursor.execute(merge_temp_and_tweets)
-            dbCursor.execute(dbConnection.query_select_idAndScore_where_ID,((tweetsPlusID[0][0]),))
+            dbCursor.execute(dbConnection.query_select_idAndScore_in_tweets_where_ID,((tweetsPlusID[0][0]),))
             print(f'Grabbing Tweet ID# {tweetsPlusID[0][0]} from DB:')
             print(dbCursor.fetchall())
             print('That Tweet had the scores', str(VADERAnalyzer.polarity_scores(tweetsPlusID[0][1])), 'before being added to the DB')
@@ -54,16 +54,19 @@ def test_experimental_VADER_slow_and_bad():
         dbLink.commit()
 
 
-def test_experimental_VADER(*, loop=False):
+def test_experimental_VADER(*, the_database:str='tweets', loop:bool=False):
     dbLink:dbConnection._connection = dbConnection.get_db_connection()
     VADERAnalyzer = SentimentIntensityAnalyzer()
+    unVADERed_query_dictionary = {'tweets':dbConnection.query_select_unVADERed_tweets,'retweets':dbConnection.query_select_unVADERed_retweets,'referenced_tweets':dbConnection.query_select_unVADERed_referenced_tweets}
+    merge_query_dictionary = {'tweets':dbConnection.query_merge_temp_and_tweets,'retweets':dbConnection.query_merge_temp_and_retweets,'referenced_tweets':dbConnection.query_merge_temp_and_referenced_tweets}
+    sanity_check_query_dictionary = {'tweets':dbConnection.query_select_idAndScore_in_tweets_where_ID,'retweets':dbConnection.query_select_idAndScore_in_retweets_where_ID,'referenced_tweets':dbConnection.query_select_idAndScore_in_referenced_tweets_where_ID}
+    grab_unVADERed_tweets_query = unVADERed_query_dictionary.get(the_database,dbConnection.query_select_unVADERed_tweets)
 
-    grab_unVADERed_tweets_query = dbConnection.query_select_unVADERed_tweets
     # update_tweet_with_VADER_scores = 'UPDATE tweets SET VADERneg = %s, VADERneu = %s, VADERpos = %s, VADERcompound = %s WHERE id = %s'
     update_temp_table = dbConnection.query_insert_into_temp_table_TupleList_Insecure
     # https://stackoverflow.com/questions/1262786/mysql-update-query-based-on-select-query
 
-    merge_temp_and_tweets = dbConnection.query_merge_temp_and_tweets
+    merge_temp_and_tweets = merge_query_dictionary.get(the_database,dbConnection.query_merge_temp_and_tweets)
     # update_duplicate_trickery = 'INSERT INTO tweets(id, VADERneg, VADERneu, VADERpos, VADERcompound) VALUES %s AS new(newid, nega, neu, pos, compound) ON DUPLICATE KEY UPDATE VADERneg = nega, VADERneu = neu, VADERpos = pos, VADERcompound = compound'
     # ^ nega not neg. Huh. Weird.
     # Nah, need to have defaults for non-nulls such as author_id. Just do a temporary table and move data over.
@@ -103,9 +106,10 @@ def test_experimental_VADER(*, loop=False):
             dbCursor.execute(merge_temp_and_tweets)
             dbCursor.execute(dbConnection.query_delete_rows_in_temporary_table)
             dbCursor.fetchall()
-            dbCursor.execute(dbConnection.query_select_idAndScore_where_ID,((tweetsPlusID[0][0]),))
+            dbCursor.execute(sanity_check_query_dictionary.get(the_database,dbConnection.query_select_idAndScore_in_tweets_where_ID),((tweetsPlusID[0][0]),))
             print(f'Grabbing Tweet ID# {tweetsPlusID[0][0]} from DB:')
-            print(dbCursor.fetchall())
+            sanity_check_result = dbCursor.fetchall()
+            print(sanity_check_result)
             print('That Tweet had the scores', str(VADERAnalyzer.polarity_scores(tweetsPlusID[0][1])), 'before being added to the DB')
         dbLink.commit()
     if loop:

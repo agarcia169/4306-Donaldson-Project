@@ -250,12 +250,12 @@ def main():
 			print(type(thisResponse))
 			
 
-	if False:
+	if True:
 		ManageKeywords.add_keyword_for_technology('hce')
   
 	
 
-	if True:
+	if False:
 		from donaldson_asu_twitter.VaderAnalysis import vader_experimental
 		# print("Running VADER analysis and saving data one Tweet at a time...")
 		# start1 = time.perf_counter()

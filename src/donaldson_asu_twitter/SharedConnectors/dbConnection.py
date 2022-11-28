@@ -123,6 +123,11 @@ query_add_to_battElec_words = "INSERT into battElec values(%s)"
 query_add_to_hce_words = "INSERT into hce values(%s)"
 query_add_to_natgas_words = "INSERT into natgas values(%s)"
 query_add_to_hfuelcell_words = "INSERT into hfuelcell values(%s)"
+
+query_delete_from_battElec_phrases = "DELETE from battelec where word=%s"
+query_delete_from_hFuelCell_phrases = "DELETE from hfuelcell where word=%s"
+query_delete_from_natgas_phrases = "DELETE from natgas where word=%s"
+query_delete_from_hce_phrases = "DELETE from hce where word=%s"
 # checking for tweets that haven't been evaluated
 query_revaluate_all_tweets = """
 SELECT 

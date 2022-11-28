@@ -51,3 +51,19 @@ def add_keyword_for_technology(technology:str):
 		dbCursor.execute(theQueryToAdd,(theInputString,))
 		dbCursor.fetchall()
 	thisDB.commit()
+
+def delete_phrase_for_technology(the_category_to_delete_from:str, the_phrase_to_delete:str):
+	the_category_to_delete_from = the_category_to_delete_from.lower()
+	dict_query_to_delete = {'hce':dbConnection.query_delete_from_hce_phrases,'battelec':dbConnection.query_delete_from_battElec_phrases,'natgas':dbConnection.query_delete_from_natgas_phrases,'hfuelcell':dbConnection.query_delete_from_hFuelCell_phrases}
+	if not the_phrase_to_delete:
+		raise ValueError(f'Null phrase value passed to {delete_phrase_for_technology.__name__}')
+	if not the_category_to_delete_from:
+		raise ValueError(f'Null category value passed to {delete_phrase_for_technology.__name__}')
+	if the_category_to_delete_from not in get_list_of_technologies():
+		raise ValueError(f'Unknown technology: {the_category_to_delete_from}')
+	if the_phrase_to_delete not in get_list_of_keywords_for_technology(the_category_to_delete_from):
+		raise ValueError(f'Phrase does not exist within {the_category_to_delete_from}: {the_phrase_to_delete}')
+	with dbConnection.get_db_connection().cursor() as dbCursor:
+		dbCursor.execute(dict_query_to_delete.get(the_category_to_delete_from),(the_phrase_to_delete,))
+		dbCursor.fetchall()
+	dbConnection.get_db_connection().commit()

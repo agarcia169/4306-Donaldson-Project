@@ -144,6 +144,31 @@ WHERE
         OR text LIKE '%batteries%'
         OR text LIKE '%electric%'
         OR text LIKE '%electrify%')"""
+
+query_updatebattElecRT = """
+UPDATE retweets 
+SET 
+    powertrain_set = CONCAT_WS(',', powertrain_set, 'battElec')
+WHERE
+    (text LIKE '%battery%'
+        OR text LIKE '%Lithium%'
+        OR text LIKE '%batteries%'
+        OR text LIKE '%electric%'
+        OR text LIKE '%electrify%')"""
+
+
+query_updatebattElecref = """
+UPDATE referenced_tweets 
+SET 
+    powertrain_set = CONCAT_WS(',', powertrain_set, 'battElec')
+WHERE
+    (text LIKE '%battery%'
+        OR text LIKE '%Lithium%'
+        OR text LIKE '%batteries%'
+        OR text LIKE '%electric%'
+        OR text LIKE '%electrify%')"""
+
+
 query_updatehfuelcell = """
 UPDATE tweets 
 SET 

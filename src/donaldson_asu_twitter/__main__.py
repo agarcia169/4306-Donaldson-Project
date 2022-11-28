@@ -250,10 +250,21 @@ def main():
 			print(type(thisResponse))
 			
 
-	if True:
-		ManageKeywords.add_keyword_for_technology('hce')
+	if False:
+		ManageKeywords.add_phrase_for_technology('hce')
   
-	
+	if False:
+		# ManageKeywords.delete_phrase_for_technology('hfuelcell','%hydrogen%')
+		# ManageKeywords.delete_phrase_for_technology('hfuelcell','Hydrogen powered')
+		# ManageKeywords.delete_phrase_for_technology('hfuelcell',r'#fuelcell')
+		# ManageKeywords.delete_phrase_for_technology('hce',r'Hydrogen')
+		# ManageKeywords.add_phrase_for_technology('hfuelcell','%hydrogen%')
+		# ManageKeywords.add_phrase_for_technology('hfuelcell','%hydrogen%powered%')
+		# ManageKeywords.add_phrase_for_technology('hfuelcell',r'%fuel%cell%')
+		# ManageKeywords.add_phrase_for_technology('hfuelcell',r'%#fuelcell%')
+		# ManageKeywords.add_phrase_for_technology('natgas',r'%natural%gas%engine%')
+		# ManageKeywords.add_phrase_for_technology('natgas',r'%natural%gas%pipeline%')
+		pass
 
 	if False:
 		from donaldson_asu_twitter.VaderAnalysis import vader_experimental

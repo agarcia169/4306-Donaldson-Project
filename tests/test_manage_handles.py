@@ -22,7 +22,11 @@ def test_get_twitter_id_by_handle(input, expected):
     ('@wookies',False),
     ('@_wookies',False),
     ('IAMTHEWALRUS',True),
-    ('N/A',False)
+    ('N/A',False),
+    ('n-a',False),
+    ('n\a',False),
+    ('1234567890ABCDEF',False),
+    ('1234567890ABCDE',True),
 ])
 def test_handle_validity(handle_to_test, expected):
     assert ManageHandles.check_username_validity(handle_to_test) == expected

@@ -37,18 +37,23 @@ def get_list_of_keywords_for_technology(technology:str) -> tuple:
 		results = tuple([theWord[0] for theWord in results])
 	return results
 
-def add_keyword_for_technology(technology:str):
-	technology = technology.lower()
-	if technology not in get_list_of_technologies():
+def add_phrase_for_technology(technology_category:str,/,the_phrase_to_add:str):
+	technology_category = technology_category.lower()
+	if technology_category not in get_list_of_technologies():
 		print("Nope!")
 		return
 	else:
-		thisTechIsCalled = get_list_of_technologies().get(technology)[0]
-		theQueryToAdd = get_list_of_technologies().get(technology)[2]
-	theInputString = str(input(f'What pattern would you like to match when marking Tweets relating to {thisTechIsCalled} technology?\n'))
+		thisTechIsCalled = get_list_of_technologies().get(technology_category)[0]
+		we_have_these_phrases_already = get_list_of_technologies().get(technology_category)[1]
+		theQueryToAdd = get_list_of_technologies().get(technology_category)[2]
+	if not the_phrase_to_add:
+		the_phrase_to_add = str(input(f'What pattern would you like to match when marking Tweets relating to {thisTechIsCalled} technology?\n'))
+	if the_phrase_to_add in get_list_of_keywords_for_technology:
+		print(f'{the_phrase_to_add} is already in {technology_category}')
+		return
 	thisDB = dbConnection.get_db_connection()
 	with thisDB.cursor() as dbCursor:
-		dbCursor.execute(theQueryToAdd,(theInputString,))
+		dbCursor.execute(theQueryToAdd,(the_phrase_to_add,))
 		dbCursor.fetchall()
 	thisDB.commit()
 

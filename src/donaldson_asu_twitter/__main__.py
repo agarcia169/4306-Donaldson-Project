@@ -250,12 +250,12 @@ def main():
 			print(type(thisResponse))
 			
 
-	if False:
+	if True:
 		ManageKeywords.add_keyword_for_technology('hce')
   
 	
 
-	if True:
+	if False:
 		from donaldson_asu_twitter.VaderAnalysis import vader_experimental
 		# print("Running VADER analysis and saving data one Tweet at a time...")
 		# start1 = time.perf_counter()
@@ -266,7 +266,7 @@ def main():
 		vader_experimental.test_experimental_VADER(loop=True)
 		print(f"That took {(time.perf_counter()-start2):.2f} seconds.\n")
 	
-	if True:
+	if False:
 		matPlotThickens.tester()
 
 if __name__ == "__main__":

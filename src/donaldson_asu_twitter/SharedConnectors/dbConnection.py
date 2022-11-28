@@ -175,6 +175,17 @@ SET
     powertrain_set = CONCAT_WS(',', powertrain_set, 'hfuelcell')
 WHERE
     (text LIKE '%hydrogen%fuel%cell%')"""
+
+
+query_updatehfuelcellrt = """
+UPDATE retweets 
+SET 
+    powertrain_set = CONCAT_WS(',', powertrain_set, 'hfuelcell')
+WHERE
+    (text LIKE '%hydrogen%fuel%cell%')"""
+
+
+
 query_updatenatgas = """
 UPDATE tweets 
 SET 

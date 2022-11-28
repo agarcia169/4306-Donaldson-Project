@@ -250,8 +250,8 @@ def main():
 			print(type(thisResponse))
 			
 
-	if False:
-		ManageKeywords.add_phrase_for_technology('hce')
+	if True:
+		ManageKeywords.add_keyword_for_technology('natgas')
   
 	if False:
 		# ManageKeywords.delete_phrase_for_technology('hfuelcell','%hydrogen%')

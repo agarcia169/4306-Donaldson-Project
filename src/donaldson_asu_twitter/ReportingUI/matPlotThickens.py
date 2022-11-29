@@ -189,19 +189,19 @@ def tester():
     N = 50
     x = datesScatter1
     y = compoundScatter1 
-    plt.scatter(x, y, s=area, color='FF0000')
+    plt.scatter(x, y, s=area, color='#FF0000')
     x = datesScatter2
     y = compoundScatter2
-    plt.scatter(x, y,s=area, color='0000FF')
+    plt.scatter(x, y,s=area, color='#0000FF')
     x = datesScatter3
     y = compoundScatter3
-    plt.scatter(x, y,s=area, color='FFA500')
+    plt.scatter(x, y,s=area, color='#FFA500')
     x = datesScatter4
     y = compoundScatter4
-    plt.scatter(x, y,s=area, color='FF0000')
+    plt.scatter(x, y,s=area, color='#FF0000')
     x = datesScatter5
     y = compoundScatter5
-    plt.scatter(x, y,s=area, color='00FF00')
+    plt.scatter(x, y,s=area, color='#00FF00')
     #plt.scatter(x2, y2, alpha=0.5, color = '#88c999')
     #plt.scatter(x, y, s=area, c=colors, alpha=0.5)
     #plt.scatter(x, y)

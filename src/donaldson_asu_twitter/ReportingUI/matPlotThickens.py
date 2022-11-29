@@ -150,19 +150,16 @@ def tester():
     # Fixing random state for reproducibility
     # np.random.seed(19680801)
 
+    area = (50)  # 0 to 15 point radii
     N = 50
     x = datesScatter1
     y = compoundScatter1
-    plt.scatter(x, y, s=area, alpha=0.5)
+    plt.scatter(x, y, s=area, alpha=0.5, color = '#FFFFFF')
     x2 = datesScatter2
     y2 = compoundScatter2
-    plt.scatter(x2, y2, s=area, alpha=0.5)
-    #colors = np.random.rand(N)
-    area = (50)  # 0 to 15 point radii
-
+    #plt.scatter(x2, y2, alpha=0.5, color = '#88c999')
     #plt.scatter(x, y, s=area, c=colors, alpha=0.5)
     plt.axes(ylim=(-1,1))
-    plt.scatter(x, y, s=area, alpha=0.5)
     plt.xlabel('Time')
     plt.ylabel('Compound Sentiment')
     plt.grid()

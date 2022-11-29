@@ -185,28 +185,29 @@ def tester():
     # Fixing random state for reproducibility
     # np.random.seed(19680801)
 
-    area = (50)  # 0 to 15 point radii
-    N = 50
+    area = (10)  # 0 to 15 point radiiS
     x = datesScatter1
     y = compoundScatter1 
-    plt.scatter(x, y, s=area, color='#FF0000')
+    plt.scatter(x, y, s=area, color='#FF0000', label = 'Battery Electric')
     x = datesScatter2
     y = compoundScatter2
-    plt.scatter(x, y,s=area, color='#0000FF')
+    plt.scatter(x, y,s=area, color='#0000FF', label = 'Hydrogen Combustion')
     x = datesScatter3
     y = compoundScatter3
-    plt.scatter(x, y,s=area, color='#FFA500')
+    plt.scatter(x, y,s=area, color='#A020F0', label = 'Hydrogen Fuel Cell')
     x = datesScatter4
     y = compoundScatter4
-    plt.scatter(x, y,s=area, color='#FF0000')
+    plt.scatter(x, y,s=area, color='#FFFF00', label = 'Natural Gas')
     x = datesScatter5
     y = compoundScatter5
-    plt.scatter(x, y,s=area, color='#00FF00')
+    plt.scatter(x, y,s=area, color='#00FF00', label = 'Non-Affiliated Hydrogen')
     #plt.scatter(x2, y2, alpha=0.5, color = '#88c999')
     #plt.scatter(x, y, s=area, c=colors, alpha=0.5)
     #plt.scatter(x, y)
-    plt.axes(ylim=(-1,1))
+    #plt.axes(ylim=(-1,1))
     plt.xlabel('Time')
     plt.ylabel('Compound Sentiment')
+    #'#FF0000', '#0000FF', '#FFA500', '#FF0000', '#00FF00'
+    plt.legend()
     plt.grid()
     plt.show()

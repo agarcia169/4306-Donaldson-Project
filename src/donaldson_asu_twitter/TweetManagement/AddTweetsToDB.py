@@ -31,7 +31,7 @@ def refresh_tweets(theUserID:int, *, maxDaysInPast:int=365*5, older_tweets:bool=
 		dbCursor.execute(dbConnection.query_count_of_tweets_from_company,(theUserID,))
 		howManyTweetsDoTheyHave = dbCursor.fetchall()[0][0]
 	if(howManyTweetsDoTheyHave):
-		print(f'\n{theUserID} had {howManyTweetsDoTheyHave} Tweets in the primary Tweets database')
+		print(f'\nTwitter account #{theUserID} had {howManyTweetsDoTheyHave} Tweets in the primary Tweets database')
 		if newer_tweets:
 			the_most_recent_tweet_id_query = dbConnection.query_the_most_recent_tweet_id
 			# grab the ID of the newest tweet currently in the database.

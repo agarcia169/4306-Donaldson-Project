@@ -71,6 +71,7 @@ query_scatter_plotter_mk1 = """ SELECT * FROM tweets WHERE powertrain_set = "bat
 query_scatter_plotter_mk2 = """ SELECT * FROM tweets WHERE powertrain_set = "hCE" and VADERcompound IS NOT NULL OR VADERcompound <> 0 """
 query_scatter_plotter_mk3 = """ SELECT * FROM tweets WHERE powertrain_set = "hFuelCell" and VADERcompound IS NOT NULL OR VADERcompound <> 0 """
 query_scatter_plotter_mk4 = """ SELECT * FROM tweets WHERE powertrain_set = "natGas" and VADERcompound IS NOT NULL OR VADERcompound <> 0 """
+query_scatter_plotter_mk5 = """ SELECT * FROM tweets WHERE powertrain_set IS NULL AND text LIKE '%hydrogen%' """
 
 
 #grabs all unique powertrain tags

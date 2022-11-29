@@ -143,7 +143,42 @@ def tester():
         powertrainMentions = dbCursor.fetchall()
         for items in powertrainMentions:
             datesScatter2.append(items[3])
-            compoundScatter2.append(float(items[7]))    
+            compoundScatter2.append(float(items[7]))  
+            
+            
+    datesScatter3 = []
+    compoundScatter3 = []
+    scatter_plotter_mk3 =  dbConnection.query_scatter_plotter_mk3
+    thisDBClient = dbConnection.get_db_connection()
+    with thisDBClient.cursor() as dbCursor:
+        dbCursor.execute(scatter_plotter_mk3)
+        powertrainMentions = dbCursor.fetchall()
+        for items in powertrainMentions:
+            datesScatter3.append(items[3])
+            compoundScatter3.append(float(items[7]))  
+            
+    
+    datesScatter4 = []
+    compoundScatter4 = []
+    scatter_plotter_mk4 =  dbConnection.query_scatter_plotter_mk4
+    thisDBClient = dbConnection.get_db_connection()
+    with thisDBClient.cursor() as dbCursor:
+        dbCursor.execute(scatter_plotter_mk4)
+        powertrainMentions = dbCursor.fetchall()
+        for items in powertrainMentions:
+            datesScatter4.append(items[3])
+            compoundScatter4.append(float(items[7]))  
+            
+    datesScatter5 = []
+    compoundScatter5 = []
+    scatter_plotter_mk5 =  dbConnection.query_scatter_plotter_mk5
+    thisDBClient = dbConnection.get_db_connection()
+    with thisDBClient.cursor() as dbCursor:
+        dbCursor.execute(scatter_plotter_mk5)
+        powertrainMentions = dbCursor.fetchall()
+        for items in powertrainMentions:
+            datesScatter5.append(items[3])
+            compoundScatter5.append(float(items[7]))  
     #scatter plot with date as the x axis, neg and pos as the yaxis and powertrains as individually colored dots 
     #https://matplotlib.org/stable/gallery/shapes_and_collections/scatter.html#sphx-glr-gallery-shapes-and-collections-scatter-py
     #make it so that there are 5 scatters including noTech
@@ -153,12 +188,23 @@ def tester():
     area = (50)  # 0 to 15 point radii
     N = 50
     x = datesScatter1
-    y = compoundScatter1
-    plt.scatter(x, y, s=area, alpha=0.5, color = '#FFFFFF')
-    x2 = datesScatter2
-    y2 = compoundScatter2
+    y = compoundScatter1 
+    plt.scatter(x, y, s=area, color='FF0000')
+    x = datesScatter2
+    y = compoundScatter2
+    plt.scatter(x, y,s=area, color='0000FF')
+    x = datesScatter3
+    y = compoundScatter3
+    plt.scatter(x, y,s=area, color='FFA500')
+    x = datesScatter4
+    y = compoundScatter4
+    plt.scatter(x, y,s=area, color='FF0000')
+    x = datesScatter5
+    y = compoundScatter5
+    plt.scatter(x, y,s=area, color='00FF00')
     #plt.scatter(x2, y2, alpha=0.5, color = '#88c999')
     #plt.scatter(x, y, s=area, c=colors, alpha=0.5)
+    #plt.scatter(x, y)
     plt.axes(ylim=(-1,1))
     plt.xlabel('Time')
     plt.ylabel('Compound Sentiment')

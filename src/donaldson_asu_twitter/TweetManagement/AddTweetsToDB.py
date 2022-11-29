@@ -215,10 +215,10 @@ def _retrieve_tweets(theUserID, **argumentDictionary):
 	list_of_referenced_tweets = [*set(list_of_referenced_tweets)]
 	list_of_referencing_tweets = [*set(list_of_referencing_tweets)]
 	list_of_tweet_relationships = [*set(list_of_tweet_relationships)]
-	print(f'ListOfTweets: {listOfTweets}')
-	print(f'list_of_referenced_tweets: {list_of_referenced_tweets}')
-	print(f'list_of_referencing_tweets: {list_of_referencing_tweets}')
-	print(f'list_of_tweet_relationships: {list_of_tweet_relationships}')
+	# print(f'ListOfTweets: {listOfTweets}')
+	# print(f'list_of_referenced_tweets: {list_of_referenced_tweets}')
+	# print(f'list_of_referencing_tweets: {list_of_referencing_tweets}')
+	# print(f'list_of_tweet_relationships: {list_of_tweet_relationships}')
 	thisDBClient = dbConnection.get_db_connection()
 	with thisDBClient.cursor() as dbCursor:
 		dbCursor.execute(dbConnection.query_count_of_tweets_from_company,(theUserID,))

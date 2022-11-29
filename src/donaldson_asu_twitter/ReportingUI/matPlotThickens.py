@@ -123,19 +123,27 @@ def tester():
     plt.show()
 
 
-    datesScatter = []
-    compoundScatter = []
+    datesScatter1 = []
+    compoundScatter1 = []
     scatter_plotter_mk1 =  dbConnection.query_scatter_plotter_mk1
     thisDBClient = dbConnection.get_db_connection()
     with thisDBClient.cursor() as dbCursor:
         dbCursor.execute(scatter_plotter_mk1)
         powertrainMentions = dbCursor.fetchall()
         for items in powertrainMentions:
-            datesScatter.append(items[3])
-            compoundScatter.append(float(items[7]))
-        print(datesScatter)
-        print(compoundScatter)
-        
+            datesScatter1.append(items[3])
+            compoundScatter1.append(float(items[7]))
+    
+    datesScatter2 = []
+    compoundScatter2 = []
+    scatter_plotter_mk2 =  dbConnection.query_scatter_plotter_mk2
+    thisDBClient = dbConnection.get_db_connection()
+    with thisDBClient.cursor() as dbCursor:
+        dbCursor.execute(scatter_plotter_mk2)
+        powertrainMentions = dbCursor.fetchall()
+        for items in powertrainMentions:
+            datesScatter2.append(items[3])
+            compoundScatter2.append(float(items[7]))    
     #scatter plot with date as the x axis, neg and pos as the yaxis and powertrains as individually colored dots 
     #https://matplotlib.org/stable/gallery/shapes_and_collections/scatter.html#sphx-glr-gallery-shapes-and-collections-scatter-py
     #make it so that there are 5 scatters including noTech
@@ -143,8 +151,12 @@ def tester():
     # np.random.seed(19680801)
 
     N = 50
-    x = datesScatter
-    y = compoundScatter
+    x = datesScatter1
+    y = compoundScatter1
+    plt.scatter(x, y, s=area, alpha=0.5)
+    x2 = datesScatter2
+    y2 = compoundScatter2
+    plt.scatter(x2, y2, s=area, alpha=0.5)
     #colors = np.random.rand(N)
     area = (50)  # 0 to 15 point radii
 

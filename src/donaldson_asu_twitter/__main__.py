@@ -250,7 +250,7 @@ def main():
 			print(type(thisResponse))
 			
 
-	if True:
+	if False:
 		ManageKeywords.add_keyword_for_technology('natgas')
   
 	if False:
@@ -279,7 +279,7 @@ def main():
 		vader_experimental.test_experimental_VADER(the_database='referenced_tweets',loop=True)
 		print(f"That took {(time.perf_counter()-start2):.2f} seconds.\n")
 	
-	if False:
+	if True:
 		matPlotThickens.tester()
 
 if __name__ == "__main__":

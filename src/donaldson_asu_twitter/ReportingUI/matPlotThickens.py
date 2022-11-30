@@ -125,14 +125,25 @@ def tester():
 
     datesScatter1 = []
     compoundScatter1 = []
+    posScatterBattElec = []
+    negScatterBattElec = []
+    battElecDates = []
     scatter_plotter_mk1 =  dbConnection.query_scatter_plotter_mk1
+    scatter_battelec_pair = dbConnection.query_vlines_battelec
     thisDBClient = dbConnection.get_db_connection()
     with thisDBClient.cursor() as dbCursor:
         dbCursor.execute(scatter_plotter_mk1)
         powertrainMentions = dbCursor.fetchall()
+        dbCursor.execute(scatter_battelec_pair)
+        batElecPosNeg = dbCursor.fetchall()
         for items in powertrainMentions:
             datesScatter1.append(items[3])
             compoundScatter1.append(float(items[7]))
+        for thisPoint in batElecPosNeg:
+            posScatterBattElec.append(thisPoint[0])
+            negScatterBattElec.append(thisPoint[1]*-1)
+            battElecDates.append(thisPoint[2])
+
     
     datesScatter2 = []
     compoundScatter2 = []
@@ -209,5 +220,11 @@ def tester():
     plt.ylabel('Compound Sentiment')
     #'#FF0000', '#0000FF', '#FFA500', '#FF0000', '#00FF00'
     plt.legend()
+    plt.grid()
+    plt.show()
+
+    plt.vlines(battElecDates,posScatterBattElec,negScatterBattElec)
+    plt.xlabel('Time')
+    plt.title('Positive and negative scores of Battery-Electric Tweets')
     plt.grid()
     plt.show()

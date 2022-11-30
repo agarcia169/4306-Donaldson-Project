@@ -112,9 +112,9 @@ def tester():
 
     fig, ax = plt.subplots()
 
-    ax.bar(labels, men_means, width, label='Neg')
+    ax.bar(labels, men_means, width, label='Neg', color='orange')
     ax.bar(labels, women_means, width,  bottom=men_means,
-           label='Pos')
+           label='Pos', color='blue')
 
     ax.set_ylabel('Scores')
     ax.set_title('Sentiment Scores by Powertrain')

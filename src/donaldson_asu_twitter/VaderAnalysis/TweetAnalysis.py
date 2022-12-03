@@ -10,6 +10,8 @@ from ..SharedConnectors import dbConnection
 # (ICWSM-14). Ann Arbor, MI, June 2014.
 
 def analyze_analyzed_tweets_in_DB():
+    """And older method of VADER analysis that is slow.
+    """
     TweetsToAnalyze = dbConnection.query_TweetsToAnalyze
     thisDBClient = dbConnection.get_db_connection()
     with thisDBClient.cursor() as dbCursor:

@@ -107,26 +107,59 @@ def main():
 	# print(ManageHandles.get_twitter_id('volvocars'))
 	# AddTweetsToDB.retrieve_older_tweets(342772500)
 	if False:
-		"""Set to true and replace the name for `theCompany` to add
-		that company to the database and grab some of their recent tweets."""
+		# Set to true and replace the name for `theCompany` to add
+		# that company to the database and grab some of their recent tweets.
 		theCompany = 'CheryAutoCo'
+
 		didItWork, theCompanyID = ManageHandles.add_handle_to_database(theCompany)
 		# theCompanyID = ManageHandles.get_twitter_id(theCompany)[0]
 		if didItWork:
 			AddTweetsToDB.refresh_tweets(theCompanyID)
 
 	if False:
-		"""This dumps a CSV of our entire Tweets database."""
+		start2 = time.perf_counter()
+		TweetAnalysis.analyze_analyzed_tweets_in_DB()
+		print(time.perf_counter()-start2)
+	if True:
+		start2 = time.perf_counter()
 		CSVOutput.CSV_dump()
 
 	if False:
-		"""A very simple way of printing what information we have about a given username."""
+		# AddTweetsToDB.refresh_tweets(3003844230,maxDaysInPast=365*2)
+		#print(TweetAnalysis.one_VADER_analysis("Volvo Insight: The cost of running an electric car can be lower than traditional cars."))
+		# testString = 'Not all heroes wear capes. Prepare for performance with (super) power, this is the fully electric Audi e-tron S. Discover more at https://t.co/WoOrQWM6Vp. #Audi #eMobility #etronS #FutureIsAnAttitude https://t.co/mBVOYF3cqi'
+		# print(testString, TweetAnalysis.one_VADER_analysis(testString))
+		# testString = 'Not all heroes wear capes.'
+		# print(testString, TweetAnalysis.one_VADER_analysis(testString))
+		# testString = ' Prepare for performance with (super) power, this is the fully electric Audi e-tron S. Discover more at https://t.co/WoOrQWM6Vp. #Audi #eMobility #etronS #FutureIsAnAttitude https://t.co/mBVOYF3cqi'
+		# print(testString, TweetAnalysis.one_VADER_analysis(testString))
+		# testString = 'Discover more at https://t.co/WoOrQWM6Vp. #Audi #eMobility #etronS #FutureIsAnAttitude https://t.co/mBVOYF3cqi'
+		# print(testString, TweetAnalysis.one_VADER_analysis(testString))
+		# testString = 'Not all heroes wear capes. Prepare for performance with (super) power, this is the fully electric Audi e-tron S.'
+		# print(testString, TweetAnalysis.one_VADER_analysis(testString))
+		testString = 'The movement towards a #CarbonNeutral world is gaining momentum. Any realistic carbon neutrality solution requires the use of #Hydrogen.'
+		print(testString, TweetAnalysis.one_VADER_analysis(testString))
+		testString = 'Catching the last rays of the day with your friends... Can you imagine a better end of the day? #JACMotors https://t.co/LBUBjdpIlv'
+		print(testString, TweetAnalysis.one_VADER_analysis(testString))
+		# print(TweetAnalysis.one_VADER_analysis('Strings with hashtag #stupid #useless #BAD'))
+
+	if True:
 		theUser = HandleDataCollector.get_handle_from_twitter(str(input("Handle?: ")))
 		print(theUser.data.description)
-		print("Description:", theUser)
 
 	if False:
-		"""This is where you come if you want to just add handles to the DB one name at a time."""
+		thisDB = dbConnection.get_db_connection()
+		with thisDB.cursor() as dbCursor:
+			dbCursor.execute("SELECT username FROM handles WHERE description is null")
+			theResults = dbCursor.fetchall()
+			for thisUsername in theResults:
+				theDescription:str = HandleDataCollector.get_handle_from_twitter(thisUsername[0]).data.description
+				dbCursor.execute("UPDATE handles SET description = %s WHERE username = %s",(theDescription.replace('\n','').replace('\t',''),thisUsername[0]))
+				print(dbCursor.fetchall(), thisUsername[0],theDescription.replace('\n','').replace('\t',''))
+			thisDB.commit()
+
+	if True:
+		# """This is where you come if you want to just add handles to the DB one name at a time."""
 		theHandleToAdd:str = str(input("What handle?: "))
 		if(str == "" or str == None):
 			return
@@ -137,15 +170,13 @@ def main():
 			print(f"Couldn't add {theHandleToAdd}, maybe they're in the database already?")
 
 	if False:
-		"""This shows the phrases you have for each technology in the database, and is an example of how to test for a technology's existence in the database."""
 		print(ManageKeywords.get_list_of_keywords_for_technology('battelec'))
 		print(ManageKeywords.get_list_of_keywords_for_technology('hce'))
 		print(ManageKeywords.get_list_of_keywords_for_technology('hfuelcell'))
 		print(ManageKeywords.get_list_of_keywords_for_technology('natgas'))
 		print ('hce' in ManageKeywords.get_list_of_technologies())
 
-	if False:
-		"""Here's how to add many handles at once in a string, separated by commas."""
+	if True:
 		ManageHandles.add_handles_by_list("""jacmotorsglobal,arcticcat_snow,
 			ArcticCatORV,ALIndiaOfficial,AudiOfficial,briggsstratton,BRP_Rotax,
 			caterpillarinc,CheryAutoCo,cnhindustrial,cummins,kiotitractor,daftrucksnv,
@@ -162,28 +193,67 @@ def main():
 			TATAMotorTrucks,VW,freightliner,KenworthTruckCo,PeterbiltMotors,MackTrucks,
 			WstrnStarTrucks,navistar""".split(','))
 
-	if False:
-		"""A comma or tab-delimited list of usernames could be added to a file and added via this method."""
+	if True:
 		filename = "" # Location of file goes here
 		ManageHandles.load_handle_CSV_file(filename)
 
-	if False:
-		"""Grab all Tweets you can for all companies in the database with this simple set of calls."""
+	if True:
 		allTheIDs = ManageHandles.get_all_ids_in_db()
 		for id in allTheIDs:
 			AddTweetsToDB.refresh_tweets(id, exclude_responses=False)
 
 	if False:
-		"""An example of how to update the Tweets for a single company."""
 		AddTweetsToDB.refresh_tweets(45550539, exclude_responses=False)
 
 	if False:
-		"""Go through and make sure all Tweets relevant to a powertrain are marked as related to that powertrain."""
+		test_function2()
+		test_function()
+
+	if True:
 		# LabelTweetsWithTechs.evaluate_new_tweets()
 		LabelTweetsWithTechs.updatelabels()
+
+	if False:
+		thisTwitConnection = twitterConnection.get_twitter_connection()
+		response = thisTwitConnection.get_users_tweets(45550539, max_results = 5, **{
+			'tweet_fields': ['author_id', 'conversation_id', 'created_at', 'in_reply_to_user_id', 'lang', 'text', 'referenced_tweets'], 
+			'start_time': '2017-11-21T14:37:50Z', 
+			'until_id': 1530296024253796354, 
+			'end_time': '2022-05-27T21:12:58Z', 
+			'expansions': ['referenced_tweets.id']})
+		# print(response._fields)
+		# print(type(response.data))
+		print(type(response.includes['tweets']))
+		# print(response.data)
+		print(response.includes['tweets'])
+		for thisResponse in response.data:
+			print(f'A Response in data:\nID: {thisResponse.id}\n' +
+				 f'Text: {thisResponse.text}\nAuthor_ID: {thisResponse.author_id}\n' +
+				 f'Convo_ID: {thisResponse.conversation_id}\nCreatedAt: {thisResponse.created_at}\n' +
+				 f'In_Reply_To_User_ID: {thisResponse.in_reply_to_user_id}\nLang: {thisResponse.lang}\n' + 
+				 f'Referenced_Tweets: {thisResponse.referenced_tweets}\n')
+			if thisResponse.referenced_tweets:
+				print(thisResponse.referenced_tweets[0])
+				# for referencedTweet in thisResponse.referenced_tweets:
+				# 	print(f'A Response in referenced_tweets: ID: {referencedTweet.id},' +
+				# 		f'Text: {referencedTweet.text}, Author_ID: {referencedTweet.author_id}, ' +
+				# 		f'Convo_ID: {referencedTweet.conversation_id}, CreatedAt: {referencedTweet.created_at}, ' +
+				# 		f'In_Reply_To_User_ID: {referencedTweet.in_reply_to_user_id}, Lang: {referencedTweet.lang} ' + 
+				# 		f'Referenced_Tweets: {referencedTweet.referenced_tweets}\n')
+		for thisResponse in response.includes['tweets']:
+			print(f'A Response in includes: ID: {thisResponse.id},' +
+				 f'Text: {thisResponse.text}, Author_ID: {thisResponse.author_id}, ' +
+				 f'Convo_ID: {thisResponse.conversation_id}, CreatedAt: {thisResponse.created_at}, ' +
+				 f'In_Reply_To_User_ID: {thisResponse.in_reply_to_user_id}, Lang: {thisResponse.lang} ' + 
+				 f'Referenced_Tweets: {thisResponse.referenced_tweets}\n')
+			# print(dir(thisResponse))
+			print(type(thisResponse))
+			
+
+	if False:
+		ManageKeywords.add_keyword_for_technology('natgas')
   
 	if False:
-		"""Here's a way to add a new phrase relating to natural gas powertrain, so that Tweets containing that phrase will be marked later."""
 		# ManageKeywords.delete_phrase_for_technology('hfuelcell','%hydrogen%')
 		# ManageKeywords.delete_phrase_for_technology('hfuelcell','Hydrogen powered')
 		# ManageKeywords.delete_phrase_for_technology('hfuelcell',r'#fuelcell')
@@ -196,8 +266,7 @@ def main():
 		# ManageKeywords.add_phrase_for_technology('natgas',r'%natural%gas%pipeline%')
 		pass
 
-	if False:
-		"""This is how you make sure all the Tweets in the database are marked with relevant VADER scores."""
+	if True:
 		# print("Running VADER analysis and saving data one Tweet at a time...")
 		# start1 = time.perf_counter()
 		# vader_experimental.test_experimental_VADER_slow_and_bad()
@@ -209,7 +278,7 @@ def main():
 		vader_experimental.test_experimental_VADER(the_database='referenced_tweets',loop=True)
 		print(f"That took {(time.perf_counter()-start2):.2f} seconds.\n")
 	
-	if False:
+	if True:
 		matPlotThickens.print_graphs()
 
 if __name__ == "__main__":

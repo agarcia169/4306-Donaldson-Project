@@ -16,17 +16,17 @@ We elected to work with them scraping data from Twitter. This is the tool we dev
 
 For this installation, you will need:
 
-Python3 installed, which you can install from https://www.python.org/downloads/. Make sure when installing, you have Python added to your PATH directory.
+Python3 installed, which you can install from <https://www.python.org/downloads/>. Make sure when installing, you have Python added to your PATH directory.
 
-A working MySQL server that you have full permissions to operate within. You can find out more information on how to install a local MySQL database from https://dev.mysql.com/doc/mysql-getting-started/en/
+A working MySQL server that you have full permissions to operate within. You can find out more information on how to install a local MySQL database from <https://dev.mysql.com/doc/mysql-getting-started/en/>
 
-A Twitter developer account, as well as a Bearer Token for an App, as allocated by them. Currently, you can sign up for an account at https://developer.twitter.com/en/portal/dashboard.
+A Twitter developer account, as well as a Bearer Token for an App, as allocated by them. Currently, you can sign up for an account at <https://developer.twitter.com/en/portal/dashboard>.
 
 __It is recommended that you set up a virtual development environment when installing or using our software.__
 
 (It may be easiest to set up the virtual environment in or near the same directory where you unzip our software. Please read all the instructions before performing the installation.)
 
-For more information on virtual Python environments, please see https://docs.python.org/3/tutorial/venv.html
+For more information on virtual Python environments, please see <https://docs.python.org/3/tutorial/venv.html>
 
 If you would like to set up a Python virtual environment, you can do so by typing `python -m venv env` (`env` will be the name of a directory created in the location you run this command. It stores some information about the virtual environment as well as scripts to activate/deactivate the environment.)
 
@@ -36,7 +36,7 @@ If you would like to be using the Python virtual environment you set up, type `.
 
 Navigate to:
 
-https://github.com/agarcia169/4306-Donaldson-Project
+<https://github.com/agarcia169/4306-Donaldson-Project>
 
 Click the "Code" button, and click "Download ZIP".
 

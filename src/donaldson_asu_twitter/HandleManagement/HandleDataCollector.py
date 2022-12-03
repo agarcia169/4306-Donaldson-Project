@@ -1,3 +1,5 @@
+"""Interface between this software and Tweepy, for the purposes of grabbing data based on a given Username"""
+
 from ..SharedConnectors import twitterConnection
 import requests
 from requests import Response

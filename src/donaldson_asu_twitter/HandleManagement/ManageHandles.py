@@ -1,3 +1,5 @@
+"""Module for managing Twitter data associated with a username in the database."""
+
 import csv
 import re
 

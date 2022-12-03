@@ -1,3 +1,5 @@
+"""Interface between our software and Tweepy"""
+
 import tweepy
 #import requests
 

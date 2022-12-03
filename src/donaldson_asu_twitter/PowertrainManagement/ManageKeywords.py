@@ -1,3 +1,5 @@
+"""Database interface to handle technology tracking and recognition within the database."""
+
 from ..SharedConnectors import dbConnection
 
 def get_list_of_technologies() -> dict[str,tuple[str,str]]:

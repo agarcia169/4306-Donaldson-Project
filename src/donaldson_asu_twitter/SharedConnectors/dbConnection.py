@@ -1,3 +1,5 @@
+"""The interface between our software and a MySQL database, and all relevant queries that might be needed for all other module interactions"""
+
 import atexit
 import mysql.connector
 from mysql.connector import MySQLConnection

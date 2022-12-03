@@ -210,6 +210,7 @@ def main():
 		print(f"That took {(time.perf_counter()-start2):.2f} seconds.\n")
 	
 	if False:
+		"""Here's how you display graphs."""
 		matPlotThickens.print_graphs()
 
 if __name__ == "__main__":

@@ -12,11 +12,19 @@ valid_username_characters = re.compile(r'[a-zA-Z0-9_]*').fullmatch
 #import json
 
 def check_username_validity(this_username:str) -> bool:
+    """Checks if a given string is a valid Twitter username.
+
+    Args:
+        this_username (str): The given string.
+
+    Returns:
+        bool: Whether or not it's valid.
+    """
     # print(valid_username_characters(this_username))
     return ((len(this_username) >= 4) and (len(this_username) <= 15) and bool(valid_username_characters(this_username)))
 
 def add_handle_to_database(twitter_username: str) -> tuple[bool, int]:
-    """Adds a Twitter ID, username, description, and name to the database.
+    """Adds a Twitter ID, username, description, and name to the database with a given username.
 
     Args:
         `twitter_username` (`str`): The username Twitter knows the user by.

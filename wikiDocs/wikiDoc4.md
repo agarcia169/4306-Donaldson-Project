@@ -56,7 +56,7 @@ This modular or repository-style approach will mean easier development, and will
 
 ### Hardware/software mapping
 
-![Hardware and Software Mapping](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/iteration4/Hardware%20Mapping.drawio.png)
+![Hardware and Software Mapping](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/77f59aa1ead40ead911aa8f703d6a305db97d20d/images/iteration4/Hardware%20Mapping.drawio.svg)
 
 ### Persistent data management
 
@@ -78,7 +78,7 @@ This program will be used when Donaldson would like to search their databases fo
 
 ## Subsystem services
 
-![SubSystem Class Diagram](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/e3d7e288dae789d03da3720b0b706250d67f5c30/images/iteration4/Iteration4SubsystemClassDiagram.drawio.svg)
+![SubSystem Class Diagram](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/fd1ff84fb9927db82ac29efd374b4f4fa760adb9/images/iteration4/Iteration4SubsystemClassDiagram.drawio.svg)
 
 ## Glossary
 

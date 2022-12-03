@@ -4,7 +4,7 @@ from ..SharedConnectors import dbConnection
 
 
 #For neg and pos only take whichever one is larger i.e if a tweet is .4 pos and .1 neg dont even take into account the neg
-def tester():
+def print_graphs():
     # #grabs shit for the "x-axis" of the pie
     # distinct_powertrains =  dbConnection.query_distinct_powertrains
     # thisDBClient = dbConnection.get_db_connection()

@@ -12,6 +12,9 @@ def refresh_tweets(theUserID:int, *, maxDaysInPast:int=365*5, older_tweets:bool=
 	Args:
 		theUserID (int): The Twitter User ID#.
 		maxDaysInPast (int, optional): The maximum number of days into the past to look. Defaults to 365*5.
+		older_tweets (bool, defaults to True): Do we want Tweets older than the ones we currently have?
+		newer_tweets (bool, defaults to True): Do we want Tweets younger than the ones we currently have?
+		exclude_responses (bool, defaults to True): Do we want to avoid grabbing retweets, replies, etc? If True, we only get Tweets directly from the company themselves, but only up to the latest 800 Tweets. If False, we get everything they Tweet, Retweet, etc, and can grab up to the 3200 most recent Tweets.
 	"""
 	timeToGrab = datetime.timedelta(days=maxDaysInPast)
 	how_long_to_grab = (DateTime.now() - timeToGrab).replace(microsecond=0)
@@ -61,6 +64,14 @@ def refresh_tweets(theUserID:int, *, maxDaysInPast:int=365*5, older_tweets:bool=
 	print(olderTweetsKwargs)
 
 def _retrieve_tweets(theUserID, **argumentDictionary):
+	"""Reaches out to Twitter to get Tweets for the given UserID. The argumentDictionary should be prepopulated with any necessary limits by refresh_tweets(). Then this function adds those Tweets to the relevant table in the database, checking to make sure we don't end up with a incorrect count of Tweets after we put them in, before committing.
+
+	Args:
+		theUserID (int): The userID (from Twitter) of the user we want Tweets for.
+
+	Raises:
+		ValueError: After adding Tweets, if the math is wrong (tweets we had, plus tweets we added, minus duplicate tweets), something must have gone wrong with the code. Abort, do not commit.
+	"""
 	thisTwitterClient = twitterConnection.get_twitter_connection()
 	listOfTweets = []
 	list_of_referencing_tweets = []
@@ -143,11 +154,11 @@ def _retrieve_tweets(theUserID, **argumentDictionary):
 		dbCursor.execute(dbConnection.query_number_of_tweet_relationships)
 		number_of_tweet_relationships_in_db_at_start = dbCursor.fetchone()[0]
 	if listOfTweets:
-		mass_add_tweets_to_db(listOfTweets, database='tweets')
+		_mass_add_tweets_to_db(listOfTweets, database='tweets')
 	if list_of_referenced_tweets or list_of_referencing_tweets:
-		how_many_duplicate_referenced_tweets = mass_add_tweets_to_db(list_of_referenced_tweets, database='referenced_tweets')
-		how_many_duplicate_retweets = mass_add_tweets_to_db(list_of_referencing_tweets, database='retweets')
-		add_relationships(list_of_tweet_relationships)
+		how_many_duplicate_referenced_tweets = _mass_add_tweets_to_db(list_of_referenced_tweets, database='referenced_tweets')
+		how_many_duplicate_retweets = _mass_add_tweets_to_db(list_of_referencing_tweets, database='retweets')
+		_add_relationships(list_of_tweet_relationships)
 	with thisDBClient.cursor() as dbCursor:
 		dbCursor.execute(dbConnection.query_count_of_tweets_from_company,(theUserID,))
 		number_of_tweets_in_db_at_end = dbCursor.fetchone()[0]
@@ -185,7 +196,19 @@ def _retrieve_tweets(theUserID, **argumentDictionary):
 		#     raise Exception
 		# print("ID:", thisTweet.data.id)
 
-def mass_add_tweets_to_db(listOfTweets:list[tuple], database:str) -> int:
+def _mass_add_tweets_to_db(listOfTweets:list[tuple], database:str) -> int:
+	"""Adds a large clump of Tweets to the relevant database.
+
+	Args:
+		listOfTweets (list[tuple]): All the Tweets we want to add.
+		database (str): The database we want to add them to. Must be 'tweets', 'referenced_tweets', or 'retweets'.
+
+	Raises:
+		ValueError: Did you ask to add to a database that doesn't exist?
+
+	Returns:
+		int: The number of Tweets we already had that we didn't add, because they would be duplicates.
+	"""
 	thisDBClient = dbConnection.get_db_connection()
 	theNumberOfTweets = len(listOfTweets)
 	print(f'Adding {theNumberOfTweets} Tweets to {database}')
@@ -279,7 +302,7 @@ def mass_add_tweets_to_db(listOfTweets:list[tuple], database:str) -> int:
 	# 		Tweets in database after add: {howManyTweetsWeEndUpWith}
 	# 		Mismatch: {howManyTweetsToAdd + howManyTweetsWeHave} != {howManyTweetsWeEndUpWith}''')
 
-def add_relationships(list_of_relations:list[tuple]):
+def _add_relationships(list_of_relations:list[tuple]):
 	thisDBClient = dbConnection.get_db_connection()
 	with thisDBClient.cursor() as dbCursor:
 		try:

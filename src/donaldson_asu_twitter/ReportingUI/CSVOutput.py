@@ -3,7 +3,7 @@ from ..SharedConnectors import dbConnection
 
 
 
-def dumpy():
+def CSV_dump():
     thisDBClient = dbConnection.get_db_connection()
     query_create_csv_string = dbConnection.query_csv_creation
     with thisDBClient.cursor() as dbCursor:

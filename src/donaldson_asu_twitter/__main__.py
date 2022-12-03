@@ -122,7 +122,7 @@ def main():
 		print(time.perf_counter()-start2)
 	if False:
 		start2 = time.perf_counter()
-		CSVOutput.dumpy()
+		CSVOutput.CSV_dump()
 
 	if False:
 		# AddTweetsToDB.refresh_tweets(3003844230,maxDaysInPast=365*2)
@@ -197,7 +197,7 @@ def main():
 		filename = "" # Location of file goes here
 		ManageHandles.load_handle_CSV_file(filename)
 
-	if False:
+	if True:
 		allTheIDs = ManageHandles.get_all_ids_in_db()
 		for id in allTheIDs:
 			AddTweetsToDB.refresh_tweets(id, exclude_responses=False)
@@ -266,7 +266,7 @@ def main():
 		# ManageKeywords.add_phrase_for_technology('natgas',r'%natural%gas%pipeline%')
 		pass
 
-	if False:
+	if True:
 		from donaldson_asu_twitter.VaderAnalysis import vader_experimental
 		# print("Running VADER analysis and saving data one Tweet at a time...")
 		# start1 = time.perf_counter()
@@ -279,8 +279,8 @@ def main():
 		vader_experimental.test_experimental_VADER(the_database='referenced_tweets',loop=True)
 		print(f"That took {(time.perf_counter()-start2):.2f} seconds.\n")
 	
-	if True:
-		matPlotThickens.tester()
+	if False:
+		matPlotThickens.print_graphs()
 
 if __name__ == "__main__":
 	main()

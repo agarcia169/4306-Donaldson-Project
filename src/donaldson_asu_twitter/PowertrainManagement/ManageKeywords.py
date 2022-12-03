@@ -38,6 +38,16 @@ def get_list_of_keywords_for_technology(technology:str) -> tuple:
 	return results
 
 def add_phrase_for_technology(technology_category:str,/,the_phrase_to_add:str):
+	"""Add a phrase to be associated with a particular given technology.
+
+	Args:
+		technology_category (str):  
+		'hce' = Hydrogen Combustion Engine
+		'hfuelcell' = Hydrogen Fuel Cell
+		'natgas' = Natural Gas
+		'battelec' = Electric Battery?
+		the_phrase_to_add (str): The new phrase
+	"""
 	technology_category = technology_category.lower()
 	if technology_category not in get_list_of_technologies():
 		print("Nope!")
@@ -58,6 +68,16 @@ def add_phrase_for_technology(technology_category:str,/,the_phrase_to_add:str):
 	thisDB.commit()
 
 def delete_phrase_for_technology(the_category_to_delete_from:str, the_phrase_to_delete:str):
+	"""Removes a phrase associated with a particular given technology.
+
+	Args:
+		the_category_to_delete_from (str):  
+		'hce' = Hydrogen Combustion Engine
+		'hfuelcell' = Hydrogen Fuel Cell
+		'natgas' = Natural Gas
+		'battelec' = Electric Battery?
+		the_phrase_to_delete (str): The new phrase
+	"""
 	the_category_to_delete_from = the_category_to_delete_from.lower()
 	dict_query_to_delete = {'hce':dbConnection.query_delete_from_hce_phrases,'battelec':dbConnection.query_delete_from_battElec_phrases,'natgas':dbConnection.query_delete_from_natgas_phrases,'hfuelcell':dbConnection.query_delete_from_hFuelCell_phrases}
 	if not the_phrase_to_delete:

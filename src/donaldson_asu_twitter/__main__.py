@@ -120,7 +120,7 @@ def main():
 		start2 = time.perf_counter()
 		TweetAnalysis.analyze_analyzed_tweets_in_DB()
 		print(time.perf_counter()-start2)
-	if False:
+	if True:
 		start2 = time.perf_counter()
 		CSVOutput.CSV_dump()
 

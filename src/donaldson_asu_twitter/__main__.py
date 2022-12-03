@@ -143,7 +143,7 @@ def main():
 		print(testString, TweetAnalysis.one_VADER_analysis(testString))
 		# print(TweetAnalysis.one_VADER_analysis('Strings with hashtag #stupid #useless #BAD'))
 
-	if False:
+	if True:
 		theUser = HandleDataCollector.get_handle_from_twitter(str(input("Handle?: ")))
 		print(theUser.data.description)
 
@@ -158,7 +158,7 @@ def main():
 				print(dbCursor.fetchall(), thisUsername[0],theDescription.replace('\n','').replace('\t',''))
 			thisDB.commit()
 
-	if False:
+	if True:
 		# """This is where you come if you want to just add handles to the DB one name at a time."""
 		theHandleToAdd:str = str(input("What handle?: "))
 		if(str == "" or str == None):
@@ -176,7 +176,7 @@ def main():
 		print(ManageKeywords.get_list_of_keywords_for_technology('natgas'))
 		print ('hce' in ManageKeywords.get_list_of_technologies())
 
-	if False:
+	if True:
 		ManageHandles.add_handles_by_list("""jacmotorsglobal,arcticcat_snow,
 			ArcticCatORV,ALIndiaOfficial,AudiOfficial,briggsstratton,BRP_Rotax,
 			caterpillarinc,CheryAutoCo,cnhindustrial,cummins,kiotitractor,daftrucksnv,
@@ -193,7 +193,7 @@ def main():
 			TATAMotorTrucks,VW,freightliner,KenworthTruckCo,PeterbiltMotors,MackTrucks,
 			WstrnStarTrucks,navistar""".split(','))
 
-	if False:
+	if True:
 		filename = "" # Location of file goes here
 		ManageHandles.load_handle_CSV_file(filename)
 
@@ -209,7 +209,7 @@ def main():
 		test_function2()
 		test_function()
 
-	if False:
+	if True:
 		# LabelTweetsWithTechs.evaluate_new_tweets()
 		LabelTweetsWithTechs.updatelabels()
 
@@ -278,7 +278,7 @@ def main():
 		vader_experimental.test_experimental_VADER(the_database='referenced_tweets',loop=True)
 		print(f"That took {(time.perf_counter()-start2):.2f} seconds.\n")
 	
-	if False:
+	if True:
 		matPlotThickens.print_graphs()
 
 if __name__ == "__main__":

@@ -1,3 +1,5 @@
+"""Two methods for interfacing with VADER Sentiment Analysis and applying those scores to Tweets in our database."""
+
 from ..SharedConnectors import dbConnection
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 # from multiprocessing import (Process, Queue)

@@ -1,3 +1,5 @@
+"""Module that interfaces between our Twitter interface and the Database to move Tweets from Twitter to our database"""
+
 from datetime import datetime as DateTime
 from itertools import chain
 import datetime

@@ -229,11 +229,19 @@ get_handle_from_twitter(): # Returns a Twitter ID, username, description, and na
 #### ManageHandles
 
 ```python
+check_username_validity() # Checks if a given string is a valid Twitter username.
+
+get_all_ids_in_db()  # Returns the IDs of all companies in the database.
+
 add_handle_to_database(): # Adds a Twitter Handle to the database.
 
 get_twitter_handle (): # Gets the handle from the DB of a provided Twitter ID#
 
-get_twitter_id (): # Get the ID# from the DB of a provided handle
+get_twitter_id_by_handle() #  Get the ID# from the DB of a provided handle. Includes error checking 
+
+add_handles_by_list()  # Takes a list of company Twitter handles (as strings) and adds them to the database. Excess spaces before/after the handle are ignored.
+
+load_handle_CSV_file()  # Loads a CSV file containing Twitter handles and adds any that aren't already in the company DB to the DB.
 ```
 
 ### SharedConnectors
@@ -267,6 +275,24 @@ evaluate_new_tweets(): # checks whether new Tweets in the database have had VADE
 updatelabels(): # updates database entries to reflect what power-train mentions if any are present
 ```
 
+#### companyPowertrains
+
+```python
+find_all_techs_by_company() # became obsolete with later code, now included in dbconnection.py under SharedConnectors
+```
+
+#### ManageKeywords
+
+```python
+get_list_of_technologies() # Technologies matched with the query to return the keywords for that tech.
+
+get_list_of_keywords_for_technology() # When provided one of the four technologies, 'hce', 'battelec', 'natgas', or 'hfuelcell it returns the list of keywords we currently have assigned to mark tweets as relating to that technology.
+
+add_phrase_for_technology() # Add a phrase to be associated with a particular given technology.
+
+delete_phrase_for_technology() # Removes a phrase associated with a particular given technology
+```
+
 ### TweetManagement
 
 <https://github.com/agarcia169/4306-Donaldson-Project/tree/main/src/donaldson_asu_twitter/TweetManagement>
@@ -274,26 +300,29 @@ updatelabels(): # updates database entries to reflect what power-train mentions 
 #### AddTweetsToDB
 
 ```python
-add_tweet_to_db(): # checks whether new Tweets in the database have had VADER 
+refresh tweets() # Grab any Tweets we don't have yet. 
 
-retrieve_recent_tweets(): # retrieves tweet that was most recently put into DB
+_ retrieve_tweets() # Reaches out to Twitter to get Tweets for the given UserID. The argumentDictionary should be prepopulated with any necessary limits by refresh_tweets().
 
-retrieve_older_tweets(): # retrieves oldest tweet that was put into DB
+mass_add_tweets_to_db() # Adds a large clump of Tweets to the relevant database.
 
-retrieve_many_tweets(): # retrieves multiple tweets from DB
-
-retrieve_tweets(): # retrieves a tweet from the DB with a specific tweet ID
+add_relationships() # Accepts a list of relationship links between two Tweets and saves that list to the DB. 
 ```
 
-### NLTK/VADER Analysis
+### VADER Analysis
 
 <https://github.com/agarcia169/4306-Donaldson-Project/tree/main/src/donaldson_asu_twitter/VaderAnalysis>
 
 #### TweetAnalysis
 
 ```python
-analyze_analyzed_tweets_in_DB(): # analyzes all Tweets in database and then for any 
-# that don't analyze them and store the results in the database
+analyze_analyzed_tweets_in_DB(): # An older method of VADER analysis that is slow.
+
+one_VADER_analysis() # Provide this one string of text, get one VADER analysis for that string back.
+
+test_experimental_VADER_slow_and_bad() # VERY SLOWLY gets a VADER score for any Tweet in the database that doesn't have one
+
+test_experimental_VADER() # Gets a VADER score for any Tweet in the database that doesn't have one.
 ```
 
 ### ReportingUI
@@ -303,6 +332,11 @@ analyze_analyzed_tweets_in_DB(): # analyzes all Tweets in database and then for 
 #### CSVOutput
 
 ```python
-dumpy(): # goes through the MySQL database and outputs all tweets with analysis
-# into a .csv file
+CSV_dump() # saves a .csv to a users local PC.
+```
+
+#### matPlotThickens
+
+```python
+print_graphs() # generates a pie graph, stacked bar chart, scatterplot and a vlines graph
 ```

@@ -148,7 +148,7 @@ Also, we will attempt to build methods of extracting potentially useful informat
 
 ### Use Case
 
-![Use Case](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/useCaseModel3.drawio.png)
+![Use Case](https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/iteration4/useCaseModel3.drawio.png)
 
 ### User Stories
 
@@ -182,19 +182,7 @@ Donaldson has also requested graphs. I don't believe any of us have any serious 
 
 #### Code Diagrams
 
-  ![Architecture](https://github.com/agarcia169/4306-Donaldson-Project/blob/main/images/iteration2/architecture-Shrunk.drawio.png)
-
-  ![SharedConnectors](https://github.com/agarcia169/4306-Donaldson-Project/blob/main/images/iteration2/classes/architecture-ConnectorsClass.drawio.png)
-
-  ![HandleManagement](https://github.com/agarcia169/4306-Donaldson-Project/blob/main/images/iteration2/classes/architecture-HandleManagement.drawio.png)
-
-  ![PowertrainManagement](https://github.com/agarcia169/4306-Donaldson-Project/blob/main/images/iteration2/classes/architecture-PowertrainManagement.drawio.png)
-
-  ![TweetManagement](https://github.com/agarcia169/4306-Donaldson-Project/blob/main/images/iteration2/classes/architecture-TweetManipClass.drawio.png)
-
-  ![VADERAnalysisManagement](https://github.com/agarcia169/4306-Donaldson-Project/blob/main/images/iteration2/classes/architecture-VADERAnalysisClass.drawio.png)
-
-  Expanded architecture may be viewed here, but is too large for viewing in this page: <https://github.com/agarcia169/4306-Donaldson-Project/blob/main/images/iteration2/architecture-Expanded.drawio.png>
+  Architecture may be viewed here, but is too large for viewing in this page: <https://raw.githubusercontent.com/agarcia169/4306-Donaldson-Project/main/images/iteration4/architecture.drawioi1.png>
 
 ***
 

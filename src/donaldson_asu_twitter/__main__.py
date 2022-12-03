@@ -29,7 +29,7 @@ from donaldson_asu_twitter.SharedConnectors import dbConnection, twitterConnecti
 from donaldson_asu_twitter.TweetManagement import AddTweetsToDB
 from donaldson_asu_twitter.VaderAnalysis import TweetAnalysis
 from donaldson_asu_twitter.ReportingUI import matPlotThickens
-
+from donaldson_asu_twitter.VaderAnalysis import vader_experimental
 
 def test_function():
 	thisConn = dbConnection.get_db_connection()
@@ -267,7 +267,6 @@ def main():
 		pass
 
 	if True:
-		from donaldson_asu_twitter.VaderAnalysis import vader_experimental
 		# print("Running VADER analysis and saving data one Tweet at a time...")
 		# start1 = time.perf_counter()
 		# vader_experimental.test_experimental_VADER_slow_and_bad()

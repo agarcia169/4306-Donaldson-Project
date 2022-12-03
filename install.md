@@ -46,7 +46,7 @@ Type `python -m pip install -e .\4306-Donaldson-Project-main\` to install our pa
 
 This should install our software, and all necessary Python dependencies.
 
-__MySQL DATABASE DESIGN SETUP GOES HERE__
+Use the `databaseSetup.sql` file to create all the relevant tables needed within a database of your choosing on the MySQL server you set up.
 
 You will now need to create a config.cfg file in the proper directory. In the same directory you unzipped `4306-Donaldson-Project-main` to, navigate to a sibling directory named `config` and create two files, `api_keys.cfg` and `server.cfg`.
 

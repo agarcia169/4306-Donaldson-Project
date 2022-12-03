@@ -5,6 +5,12 @@ from itertools import chain
 
 
 def test_experimental_VADER_slow_and_bad():
+    """VERY SLOWLY gets a VADER score for any Tweet in the database that doesn't have one.
+
+    Args:
+        the_database (str, optional): Which database to analyze Can only be 'tweets', 'retweets', or 'referenced_tweets'. Defaults to 'tweets'.
+        loop (bool, optional): If there are more Tweets than can be analyzed in one iteration, do you want the function to continue running on the next set of Tweets? Defaults to False.
+    """
     dbLink:dbConnection._connection = dbConnection.get_db_connection()
     VADERAnalyzer = SentimentIntensityAnalyzer()
 

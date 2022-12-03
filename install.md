@@ -71,4 +71,3 @@ port=
 ```
 
 Include the username and password to your local MySQL database, the host and port address, and the name of the database you created for this software to use.
-

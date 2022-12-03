@@ -303,6 +303,11 @@ def _mass_add_tweets_to_db(listOfTweets:list[tuple], database:str) -> int:
 	# 		Mismatch: {howManyTweetsToAdd + howManyTweetsWeHave} != {howManyTweetsWeEndUpWith}''')
 
 def _add_relationships(list_of_relations:list[tuple]):
+	"""Accepts a list of relationship links between two Tweets and saves that list to the DB.
+
+	Args:
+		list_of_relations (list[tuple]): Tweet that is retweeting/replying/quoting another Tweet, and what kind of connection (retweet, reply, quote) it is.
+	"""
 	thisDBClient = dbConnection.get_db_connection()
 	with thisDBClient.cursor() as dbCursor:
 		try:

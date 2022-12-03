@@ -2,6 +2,10 @@
 
 ## Introduction
 
+Alex Garcia, Adelonle Balogun, Joel King
+
+12/2/2022
+
 ### Purpose of the System
 
 Donaldson Company would like to try and anticipate what technologies future industries are going to push towards to replace traditional internal combustion engines, as some of their business currently involves making filters for gasoline and diesel. One possible means of predicting future technologies is possibly through analysis of content published via social media. In our case, we're syphoning information from Twitter to attempt to analyze what technologies companies might be leaning towards in the future.

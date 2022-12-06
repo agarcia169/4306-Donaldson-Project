@@ -69,6 +69,8 @@ query_hCEpos_powertrain_mention_count = """ SELECT AVG(VADERpos) FROM tweets WHE
 query_hFuelCellpos_powertrain_mention_count = """ SELECT AVG(VADERpos) FROM tweets WHERE FIND_IN_SET("hFuelCell", powertrain_set) AND author_id LIKE %s  """
 query_natGaspos_powertrain_mention_count = """ SELECT AVG(VADERpos) FROM tweets WHERE FIND_IN_SET("natGas", powertrain_set) AND author_id LIKE %s  """
 
+query_author_filter = "AND author_id LIKE %s"
+
 #AND VADERcompound <> 0 
 query_scatter_plotter_mk1 = """ SELECT * FROM tweets WHERE FIND_IN_SET('battElec', powertrain_set) AND VADERcompound IS NOT NULL AND author_id LIKE %s """
 query_scatter_plotter_mk2 = """ SELECT * FROM tweets WHERE FIND_IN_SET('hCE', powertrain_set) AND VADERcompound IS NOT NULL AND author_id LIKE %s """

@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from ..SharedConnectors import dbConnection
+from ..HandleManagement import ManageHandles
+from . import dataGathering
 
 
 #For neg and pos only take whichever one is larger i.e if a tweet is .4 pos and .1 neg dont even take into account the neg
@@ -158,9 +160,6 @@ def print_graphs(*,company_name:str=None):
 
     datesScatter1 = []
     compoundScatter1 = []
-    posScatterBattElec = []
-    negScatterBattElec = []
-    battElecDates = []
     scatter_plotter_mk1 =  dbConnection.query_scatter_plotter_mk1
     scatter_battelec_pair = dbConnection.query_vlines_battelec
     thisDBClient = dbConnection.get_db_connection()
@@ -172,10 +171,6 @@ def print_graphs(*,company_name:str=None):
         for items in powertrainMentions:
             datesScatter1.append(items[3])
             compoundScatter1.append(float(items[7]))
-        for thisPoint in batElecPosNeg:
-            posScatterBattElec.append(thisPoint[0])
-            negScatterBattElec.append(thisPoint[1]*-1)
-            battElecDates.append(thisPoint[2])
 
     
     datesScatter2 = []
@@ -256,6 +251,11 @@ def print_graphs(*,company_name:str=None):
     plt.grid()
     plt.show()
 
+    graph_pos_neg_vlines(*dataGathering.get_pos_neg_scores(company_id=18238328),company_id=18238328)
+
+def graph_pos_neg_vlines(battElecDates:list, posScatterBattElec:list, negScatterBattElec:list, *,company_id:int=None):
+    if company_id is not None:
+        company_name = ManageHandles.get_twitter_handle(company_id)
     plt.vlines(battElecDates,posScatterBattElec,negScatterBattElec)
     plt.xlabel('Time')
     this_chart_title = 'Positive and negative scores of Battery-Electric Tweets'

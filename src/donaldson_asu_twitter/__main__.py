@@ -213,5 +213,11 @@ def main():
 		"""Here's how you display graphs."""
 		matPlotThickens.print_graphs()
 
+	if True:
+		LabelTweetsWithTechs.updatelabels()
+	if False:
+		ManageKeywords.add_phrase_for_technology('battElec')
+
+
 if __name__ == "__main__":
 	main()

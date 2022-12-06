@@ -133,6 +133,18 @@ query_keywCell = "Select word FROM hfuelcell"
 query_keywNat = "Select word FROM natgas"
 query_keywH = "Select word FROM hce"
 
+select_dict ={
+'natgas':"Select word From natgas",
+'battElec':"Select word From battElec",
+'hce':"Select word From hce",
+'hfuelcell':"Select word From hfuelcell"
+}
+
+updatetweets = "update tweets set powertrain_set = CONCAT_WS(',', powertrain_set, '" # 1st part of update query
+updateretweets = "update retweets set powertrain_set = CONCAT_WS(',', powertrain_set, '"
+updatereferenced_tweets = "update referenced_tweets set powertrain_set = CONCAT_WS(',', powertrain_set, '"
+textlike = "') where text like %s" # 2nd part of update query 
+
 query_add_to_battElec_words = "INSERT into battElec values(%s)"
 query_add_to_hce_words = "INSERT into hce values(%s)"
 query_add_to_natgas_words = "INSERT into natgas values(%s)"

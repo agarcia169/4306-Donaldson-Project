@@ -39,7 +39,7 @@ def get_list_of_keywords_for_technology(technology:str) -> tuple:
 		results = tuple([theWord[0] for theWord in results])
 	return results
 
-def add_phrase_for_technology(technology_category:str,/,the_phrase_to_add:str=None):
+def add_phrase_for_technology(technology_category:str,the_phrase_to_add:str=None):
 	"""Add a phrase to be associated with a particular given technology.
 
 	Args:
@@ -69,7 +69,7 @@ def add_phrase_for_technology(technology_category:str,/,the_phrase_to_add:str=No
 		dbCursor.fetchall()
 	thisDB.commit()
 
-def delete_phrase_for_technology(the_category_to_delete_from:str, the_phrase_to_delete:str):
+def delete_phrase_for_technology(the_category_to_delete_from:str, the_phrase_to_delete:str=None):
 	"""Removes a phrase associated with a particular given technology.
 
 	Args:

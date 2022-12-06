@@ -209,11 +209,11 @@ def main():
 		vader_experimental.test_experimental_VADER(the_database='referenced_tweets',loop=True)
 		print(f"That took {(time.perf_counter()-start2):.2f} seconds.\n")
 	
-	if False:
+	if True:
 		"""Here's how you display graphs."""
 		matPlotThickens.print_graphs()
 
-	if True:
+	if False:
 		LabelTweetsWithTechs.updatelabels()
 	if False:
 		ManageKeywords.add_phrase_for_technology('battElec')

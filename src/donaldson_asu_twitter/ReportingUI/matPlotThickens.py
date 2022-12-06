@@ -22,32 +22,7 @@ def print_graphs(*,company_name:str=None):
     
      
     x_axis = ["battElec", "hCE", "hFuelCell", "natGas"]     
-    y_axis = []
-    #grabs shit for the "y-axis" of the pie
-    #grabs all tweets with the powertrain value that was passed to it,then finds the count for it
-    
-    battElec_powertrain_mention_count =  dbConnection.query_battElec_powertrain_mention_count
-    hCE_powertrain_mention_count =  dbConnection.query_hCE_powertrain_mention_count
-    hFuelCell_powertrain_mention_count =  dbConnection.query_hFuelCell_powertrain_mention_count
-    natGas_powertrain_mention_count =  dbConnection.query_natGas_powertrain_mention_count
-    thisDBClient = dbConnection.get_db_connection()
-    with thisDBClient.cursor() as dbCursor:
-        dbCursor.execute(battElec_powertrain_mention_count, (company_to_filter,))
-        powertrainMentions = dbCursor.fetchall()
-        y_axis.append(powertrainMentions[0][0])
-    with thisDBClient.cursor() as dbCursor:
-        dbCursor.execute(hCE_powertrain_mention_count, (company_to_filter,))
-        powertrainMentions = dbCursor.fetchall()
-        y_axis.append(powertrainMentions[0][0])
-    with thisDBClient.cursor() as dbCursor:
-        dbCursor.execute(hFuelCell_powertrain_mention_count, (company_to_filter,))
-        powertrainMentions = dbCursor.fetchall()
-        y_axis.append(powertrainMentions[0][0])
-    with thisDBClient.cursor() as dbCursor:
-        dbCursor.execute(natGas_powertrain_mention_count, (company_to_filter,))
-        powertrainMentions = dbCursor.fetchall()
-        y_axis.append(powertrainMentions[0][0])
-    print(y_axis)
+
 
     second_y_axis = []
     battElecneg_powertrain_mention_count =  dbConnection.query_battElecneg_powertrain_mention_count

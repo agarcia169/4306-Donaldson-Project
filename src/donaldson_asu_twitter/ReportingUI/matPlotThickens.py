@@ -251,16 +251,31 @@ def print_graphs(*,company_name:str=None):
     plt.grid()
     plt.show()
 
-    graph_pos_neg_vlines(*dataGathering.get_pos_neg_scores(company_id=18238328),company_id=18238328)
+    graph_pos_neg_vlines(*dataGathering.get_pos_neg_scores(company_id=[18238328,63479512,342772500]),company_id=[18238328,63479512,342772500])
 
-def graph_pos_neg_vlines(battElecDates:list, posScatterBattElec:list, negScatterBattElec:list, *,company_id:int=None):
+def graph_pos_neg_vlines(battElecDates:list, posScatterBattElec:list, negScatterBattElec:list, *,company_id:int|list[int]=None):
+    singleCompany = isinstance(company_id,int)
+    companyGroup = isinstance(company_id,list)
+    name_list = []
     if company_id is not None:
-        company_name = ManageHandles.get_twitter_handle(company_id)
+        if singleCompany:
+            name_list.append(ManageHandles.get_twitter_handle(company_id))
+        elif companyGroup:
+            for this_id in company_id:
+                name_list.append(ManageHandles.get_twitter_handle(this_id))
     plt.vlines(battElecDates,posScatterBattElec,negScatterBattElec)
     plt.xlabel('Time')
     this_chart_title = 'Positive and negative scores of Battery-Electric Tweets'
-    if company_name is not None:
-        this_chart_title += ' for ' + company_name
+    if company_id is not None:
+        if companyGroup:
+            if len(name_list) == 2:
+                company_names = " and ".join(name_list)
+            elif len(name_list) > 2:
+                company_names = ", and ".join([",".join(name_list[:-1]),name_list[-1]])
+            else:
+                # Something weird happened, lets fallback.
+                company_names = str(name_list) # Can I do this?
+        this_chart_title += ' for ' + company_names
     plt.title(this_chart_title)
     plt.grid()
     plt.show()

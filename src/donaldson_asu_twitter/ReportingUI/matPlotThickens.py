@@ -165,7 +165,7 @@ def print_graphs(*,company_name:str=None):
     scatter_battelec_pair = dbConnection.query_vlines_battelec
     thisDBClient = dbConnection.get_db_connection()
     with thisDBClient.cursor() as dbCursor:
-        dbCursor.execute(scatter_plotter_mk1)
+        dbCursor.execute(scatter_plotter_mk1, (company_to_filter,))
         powertrainMentions = dbCursor.fetchall()
         dbCursor.execute(scatter_battelec_pair)
         batElecPosNeg = dbCursor.fetchall()
@@ -183,7 +183,7 @@ def print_graphs(*,company_name:str=None):
     scatter_plotter_mk2 =  dbConnection.query_scatter_plotter_mk2
     thisDBClient = dbConnection.get_db_connection()
     with thisDBClient.cursor() as dbCursor:
-        dbCursor.execute(scatter_plotter_mk2)
+        dbCursor.execute(scatter_plotter_mk2, (company_to_filter,))
         powertrainMentions = dbCursor.fetchall()
         for items in powertrainMentions:
             datesScatter2.append(items[3])
@@ -195,7 +195,7 @@ def print_graphs(*,company_name:str=None):
     scatter_plotter_mk3 =  dbConnection.query_scatter_plotter_mk3
     thisDBClient = dbConnection.get_db_connection()
     with thisDBClient.cursor() as dbCursor:
-        dbCursor.execute(scatter_plotter_mk3)
+        dbCursor.execute(scatter_plotter_mk3, (company_to_filter,))
         powertrainMentions = dbCursor.fetchall()
         for items in powertrainMentions:
             datesScatter3.append(items[3])
@@ -207,7 +207,7 @@ def print_graphs(*,company_name:str=None):
     scatter_plotter_mk4 =  dbConnection.query_scatter_plotter_mk4
     thisDBClient = dbConnection.get_db_connection()
     with thisDBClient.cursor() as dbCursor:
-        dbCursor.execute(scatter_plotter_mk4)
+        dbCursor.execute(scatter_plotter_mk4, (company_to_filter,))
         powertrainMentions = dbCursor.fetchall()
         for items in powertrainMentions:
             datesScatter4.append(items[3])
@@ -218,7 +218,7 @@ def print_graphs(*,company_name:str=None):
     scatter_plotter_mk5 =  dbConnection.query_scatter_plotter_mk5
     thisDBClient = dbConnection.get_db_connection()
     with thisDBClient.cursor() as dbCursor:
-        dbCursor.execute(scatter_plotter_mk5)
+        dbCursor.execute(scatter_plotter_mk5, (company_to_filter,))
         powertrainMentions = dbCursor.fetchall()
         for items in powertrainMentions:
             datesScatter5.append(items[3])
@@ -228,7 +228,7 @@ def print_graphs(*,company_name:str=None):
     #make it so that there are 5 scatters including noTech
     # Fixing random state for reproducibility
     # np.random.seed(19680801)
-
+    plt.axes(ylim=(-1,1))
     area = (10)  # 0 to 15 point radiiS
     x = datesScatter1
     y = compoundScatter1 
@@ -241,7 +241,7 @@ def print_graphs(*,company_name:str=None):
     plt.scatter(x, y,s=area, color='#A020F0', label = 'Hydrogen Fuel Cell')
     x = datesScatter4
     y = compoundScatter4
-    plt.scatter(x, y,s=area, color='#FFFF00', label = 'Natural Gas')
+    plt.scatter(x, y,s=area, color='#000000', label = 'Natural Gas')
     x = datesScatter5
     y = compoundScatter5
     plt.scatter(x, y,s=area, color='#00FF00', label = 'Non-Affiliated Hydrogen')

@@ -4,7 +4,7 @@ from ..SharedConnectors import dbConnection
 
 
 #For neg and pos only take whichever one is larger i.e if a tweet is .4 pos and .1 neg dont even take into account the neg
-def print_graphs():
+def print_graphs(*,company_name:str=None):
     # #grabs shit for the "x-axis" of the pie
     # distinct_powertrains =  dbConnection.query_distinct_powertrains
     # thisDBClient = dbConnection.get_db_connection()
@@ -117,7 +117,10 @@ def print_graphs():
            label='Pos', color='blue')
 
     ax.set_ylabel('Scores')
-    ax.set_title('Sentiment Scores by Powertrain')
+    this_chart_title = 'Sentiment Scores by Powertrain'
+    if company_name is not None:
+        this_chart_title += ' for ' + company_name
+    ax.set_title(this_chart_title)
     ax.legend()
 
     plt.show()
@@ -225,6 +228,9 @@ def print_graphs():
 
     plt.vlines(battElecDates,posScatterBattElec,negScatterBattElec)
     plt.xlabel('Time')
-    plt.title('Positive and negative scores of Battery-Electric Tweets')
+    this_chart_title = 'Positive and negative scores of Battery-Electric Tweets'
+    if company_name is not None:
+        this_chart_title += ' for ' + company_name
+    plt.title(this_chart_title)
     plt.grid()
     plt.show()

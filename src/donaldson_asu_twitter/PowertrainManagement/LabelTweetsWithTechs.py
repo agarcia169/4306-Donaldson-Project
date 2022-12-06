@@ -44,7 +44,9 @@ def updatelabels():
                 #print(dbCursor.statement)
                 dbCursor.execute(dbConnection.updatereferenced_tweets + thisTech + dbConnection.textlike,(phrase,))
                 #print(dbCursor.statement)
-                
+        dbCursor.execute(dbConnection.query_update_hydrogen_tweets)
+        dbCursor.execute(dbConnection.query_update_hydrogen_retweets)
+        dbCursor.execute(dbConnection.query_update_hydrogen_referenced_tweets)
     thisDBClient.commit()
                     
 

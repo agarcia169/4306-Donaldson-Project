@@ -145,6 +145,10 @@ updateretweets = "update retweets set powertrain_set = CONCAT_WS(',', powertrain
 updatereferenced_tweets = "update referenced_tweets set powertrain_set = CONCAT_WS(',', powertrain_set, '"
 textlike = "') where text like %s" # 2nd part of update query 
 
+query_update_hydrogen_tweets = f"update tweets set powertrain_set = CONCAT_WS(',', powertrain_set, 'hydrogen') where text like '%hydrogen%'"
+query_update_hydrogen_retweets = f"update retweets set powertrain_set = CONCAT_WS(',', powertrain_set, 'hydrogen') where text like '%hydrogen%'"
+query_update_hydrogen_referenced_tweets = f"update referenced_tweets set powertrain_set = CONCAT_WS(',', powertrain_set, 'hydrogen') where text like '%hydrogen%'"
+
 query_add_to_battElec_words = "INSERT into battElec values(%s)"
 query_add_to_hce_words = "INSERT into hce values(%s)"
 query_add_to_natgas_words = "INSERT into natgas values(%s)"

@@ -69,7 +69,7 @@ def add_phrase_for_technology(technology_category:str,the_phrase_to_add:str=None
 		dbCursor.fetchall()
 	thisDB.commit()
 
-def delete_phrase_for_technology(the_category_to_delete_from:str, the_phrase_to_delete:str=None):
+def delete_phrase_for_technology(the_category_to_delete_from:str, the_phrase_to_delete:str):
 	"""Removes a phrase associated with a particular given technology.
 
 	Args:

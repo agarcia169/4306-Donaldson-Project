@@ -12,16 +12,11 @@ def print_graphs(*,company_name:str=None):
     
     # enter the companies author id here! if no filtration is needed just enter '''  company_to_filter = "%%"  '''
     company_to_filter = "2510215220"
-    
+    x_axis = ["battElec", "hCE", "hFuelCell", "natGas"] 
     
     
     #dbCursor.execute(query_check_for_id, (twitter_username,))
     
-         
-    
-    
-     
-    x_axis = ["battElec", "hCE", "hFuelCell", "natGas"]     
 
 
     second_y_axis = []
@@ -97,27 +92,6 @@ def print_graphs(*,company_name:str=None):
         else :
             third_y_axis.append(float(powertrainMentions[0][0]))
     print(third_y_axis)
-
-    #pie chart with slices as the unique powertrain and slice thickness as the amount of powertrain mentions per powertrain
-    def graph_pos_neg_vlines(y_axis:list,  *,company_id:int=None):
-        labels = x_axis
-        sizes = y_axis
-        
-        if company_id is not None:
-            company_name = ManageHandles.get_twitter_handle(company_id)
-        
-        this_chart_title = 'Pie graph for percentage of powertrains mentioned'
-        if company_name is not None:
-            this_chart_title += ' for ' + company_name
-        
-        fig1, ax1 = plt.subplots()
-        ax1.pie(sizes, labels=labels, autopct='%1.1f%%',
-                shadow=False, startangle=90)
-        ax1.axis('equal')
-
-        plt.show()
-
-
     #stacked bar chart with powertrains as the x axis and powertrain neg vs pos as the bars on the y axis
     labels = x_axis
     men_means = second_y_axis
@@ -235,6 +209,7 @@ def print_graphs(*,company_name:str=None):
     plt.show()
 
     graph_pos_neg_vlines(*dataGathering.get_pos_neg_scores(company_id=[18238328,63479512,342772500]),company_id=[18238328,63479512,342772500])
+    graph_pie_chart(*dataGathering.get_pie_slices(company_id=[18238328]),company_id=[18238328])
 
 def graph_pos_neg_vlines(battElecDates:list, posScatterBattElec:list, negScatterBattElec:list, *,company_id:int|list[int]=None):
     singleCompany = isinstance(company_id,int)
@@ -262,3 +237,21 @@ def graph_pos_neg_vlines(battElecDates:list, posScatterBattElec:list, negScatter
     plt.title(this_chart_title)
     plt.grid()
     plt.show()
+def graph_pie_chart(y_axis:list,  *,company_id:int=None):
+        x_axis = ["battElec", "hCE", "hFuelCell", "natGas"] 
+        labels = x_axis
+        sizes = y_axis
+        company_name = company_id
+        #if company_id is not None:
+        #    company_name = ManageHandles.get_twitter_handle(company_id)
+        
+        this_chart_title = 'Pie graph for percentage of powertrains mentioned'
+        if company_name is not None:
+            this_chart_title += ' for ' + company_name
+        
+        fig1, ax1 = plt.subplots()
+        ax1.pie(sizes, labels=labels, autopct='%1.1f%%',
+                shadow=False, startangle=90)
+        ax1.axis('equal')
+
+        plt.show()

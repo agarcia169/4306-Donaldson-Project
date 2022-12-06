@@ -46,7 +46,7 @@ def get_pos_neg_scores(*,company_id:int|list[int]|tuple[int]=None) -> tuple[list
             battElecDates.append(thisPoint[2])
     return (battElecDates,posScatterBattElec,negScatterBattElec)
 
-def get_pie_slices(*,company_id:int=None) -> tuple[list]:
+def get_pie_slices(*,company_id:int|list[int]|tuple[int]=None) -> tuple[list]:
     y_axis = []
     battElec_powertrain_mention_count =  dbConnection.query_battElec_powertrain_mention_count
     hCE_powertrain_mention_count =  dbConnection.query_hCE_powertrain_mention_count

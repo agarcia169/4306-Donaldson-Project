@@ -99,15 +99,23 @@ def print_graphs(*,company_name:str=None):
     print(third_y_axis)
 
     #pie chart with slices as the unique powertrain and slice thickness as the amount of powertrain mentions per powertrain
-    labels = x_axis
-    sizes = y_axis
+    def graph_pos_neg_vlines(y_axis:list,  *,company_id:int=None):
+        labels = x_axis
+        sizes = y_axis
+        
+        if company_id is not None:
+            company_name = ManageHandles.get_twitter_handle(company_id)
+        
+        this_chart_title = 'Pie graph for percentage of powertrains mentioned'
+        if company_name is not None:
+            this_chart_title += ' for ' + company_name
+        
+        fig1, ax1 = plt.subplots()
+        ax1.pie(sizes, labels=labels, autopct='%1.1f%%',
+                shadow=False, startangle=90)
+        ax1.axis('equal')
 
-    fig1, ax1 = plt.subplots()
-    ax1.pie(sizes, labels=labels, autopct='%1.1f%%',
-            shadow=False, startangle=90)
-    ax1.axis('equal')
-
-    plt.show()
+        plt.show()
 
 
     #stacked bar chart with powertrains as the x axis and powertrain neg vs pos as the bars on the y axis

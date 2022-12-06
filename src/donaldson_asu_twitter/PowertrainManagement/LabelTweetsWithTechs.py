@@ -26,12 +26,33 @@ def evaluate_new_tweets():
     # call updatelabel function
     # call revaluate all tweets
     # call updatelabel function
-
+    #able to update the labels based on the words within the keyword table
 
 def updatelabels():
     thisDBClient = dbConnection.get_db_connection()
     with thisDBClient.cursor() as dbCursor:
-        updatebattElec_query = dbConnection.query_updatebattElec
+        for thisTech in dbConnection.select_dict:       
+            dbCursor.execute(dbConnection.select_dict[thisTech])
+            keywordstemp = dbCursor.fetchall()
+            keywords = [phraselist[0] for phraselist in keywordstemp ]
+            #print(keywords)                               
+            for phrase in keywords:
+                #print(phrase) 
+                dbCursor.execute(dbConnection.updatetweets + thisTech + dbConnection.textlike,(phrase,))
+               #print(dbCursor.statement)
+                dbCursor.execute(dbConnection.updateretweets + thisTech + dbConnection.textlike,(phrase,))
+                #print(dbCursor.statement)
+                dbCursor.execute(dbConnection.updatereferenced_tweets + thisTech + dbConnection.textlike,(phrase,))
+                #print(dbCursor.statement)
+                
+    thisDBClient.commit()
+                    
+
+
+#def updatelabels():
+    #thisDBClient = dbConnection.get_db_connection()
+    #with thisDBClient.cursor() as dbCursor:
+      #  updatebattElec_query = dbConnection.query_updatebattElec
         # updatebattElec_query2 = """
         #	UPDATE tweets #tweet is the table
         #	SET
@@ -39,12 +60,12 @@ def updatelabels():
         #	WHERE
         #		text LIKE '%battery%';"""
         # updatebattElec_query = "UPDATE tweets SET powertrain_set = CONCAT(powertrain_set,",'battElec'") WHERE text in('battery','Lithium')"#marks tweets that have battery in them with battElec ?
-        updatehfuelcell_query = dbConnection.query_updatehfuelcell
-        updatenatgas_query = dbConnection.query_updatenatgas
-        updatehce_query = dbConnection.query_updatehce  # what exactly is hce ??
-        dbCursor.execute(updatebattElec_query)
+       # updatehfuelcell_query = dbConnection.query_updatehfuelcell
+       # updatenatgas_query = dbConnection.query_updatenatgas
+       # updatehce_query = dbConnection.query_updatehce  # what exactly is hce ??
+       # dbCursor.execute(updatebattElec_query)
         # hopefully would commit the query showing the powertrain set for those tweets
-        thisDBClient.commit()
+       # thisDBClient.commit()
         # update labels to show if tweet is tech related or not
 
 

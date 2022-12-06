@@ -54,27 +54,27 @@ def get_db_connection(**kwargs: str) -> mysql.connector.MySQLConnection:
 __all__ = ["get_db_connection"]
 
 #grabs all tweets with a specific mention of the powertrain that was passed to it
-query_battElec_powertrain_mention_count = """ SELECT COUNT(id) FROM tweets WHERE FIND_IN_SET('battElec', powertrain_set) """
-query_hCE_powertrain_mention_count = """ SELECT COUNT(id) FROM tweets WHERE FIND_IN_SET("hCE", powertrain_set) """
-query_hFuelCell_powertrain_mention_count = """ SELECT COUNT(id) FROM tweets WHERE FIND_IN_SET("hFuelCell", powertrain_set) """
-query_natGas_powertrain_mention_count = """ SELECT COUNT(id) FROM tweets WHERE FIND_IN_SET("natGas", powertrain_set) """
+query_battElec_powertrain_mention_count = """ SELECT COUNT(id) FROM tweets WHERE FIND_IN_SET('battElec', powertrain_set) AND author_id = "%s" """
+query_hCE_powertrain_mention_count = """ SELECT COUNT(id) FROM tweets WHERE FIND_IN_SET("hCE", powertrain_set) AND author_id = "%s" """
+query_hFuelCell_powertrain_mention_count = """ SELECT COUNT(id) FROM tweets WHERE FIND_IN_SET("hFuelCell", powertrain_set) AND author_id = "%s" """
+query_natGas_powertrain_mention_count = """ SELECT COUNT(id) FROM tweets WHERE FIND_IN_SET("natGas", powertrain_set) AND author_id = "%s" """
 
-query_battElecneg_powertrain_mention_count = """ SELECT AVG(VADERneg) FROM tweets WHERE FIND_IN_SET('battElec', powertrain_set)  """
-query_hCEneg_powertrain_mention_count = """ SELECT AVG(VADERneg) FROM tweets WHERE FIND_IN_SET('hCE', powertrain_set) """
-query_hFuelCellneg_powertrain_mention_count = """ SELECT AVG(VADERneg) FROM tweets WHERE FIND_IN_SET("hFuelCell", powertrain_set) """
-query_natGasneg_powertrain_mention_count = """ SELECT AVG(VADERneg) FROM tweets WHERE FIND_IN_SET("natGas", powertrain_set) """
+query_battElecneg_powertrain_mention_count = """ SELECT AVG(VADERneg) FROM tweets WHERE FIND_IN_SET('battElec', powertrain_set) AND author_id = "%s"  """
+query_hCEneg_powertrain_mention_count = """ SELECT AVG(VADERneg) FROM tweets WHERE FIND_IN_SET('hCE', powertrain_set) AND author_id = "%s" """
+query_hFuelCellneg_powertrain_mention_count = """ SELECT AVG(VADERneg) FROM tweets WHERE FIND_IN_SET("hFuelCell", powertrain_set) AND author_id = "%s" """
+query_natGasneg_powertrain_mention_count = """ SELECT AVG(VADERneg) FROM tweets WHERE FIND_IN_SET("natGas", powertrain_set) AND author_id = "%s"  """
 
-query_battElecpos_powertrain_mention_count = """ SELECT AVG(VADERpos) FROM tweets WHERE FIND_IN_SET('battElec', powertrain_set) """
-query_hCEpos_powertrain_mention_count = """ SELECT AVG(VADERpos) FROM tweets WHERE FIND_IN_SET("hCE", powertrain_set) """
-query_hFuelCellpos_powertrain_mention_count = """ SELECT AVG(VADERpos) FROM tweets WHERE FIND_IN_SET("hFuelCell", powertrain_set) """
-query_natGaspos_powertrain_mention_count = """ SELECT AVG(VADERpos) FROM tweets WHERE FIND_IN_SET("natGas", powertrain_set) """
+query_battElecpos_powertrain_mention_count = """ SELECT AVG(VADERpos) FROM tweets WHERE FIND_IN_SET('battElec', powertrain_set) AND author_id = "%s"  """
+query_hCEpos_powertrain_mention_count = """ SELECT AVG(VADERpos) FROM tweets WHERE FIND_IN_SET("hCE", powertrain_set) AND author_id = "%s"  """
+query_hFuelCellpos_powertrain_mention_count = """ SELECT AVG(VADERpos) FROM tweets WHERE FIND_IN_SET("hFuelCell", powertrain_set) AND author_id = "%s"  """
+query_natGaspos_powertrain_mention_count = """ SELECT AVG(VADERpos) FROM tweets WHERE FIND_IN_SET("natGas", powertrain_set) AND author_id = "%s"  """
 
 #AND VADERcompound <> 0 
-query_scatter_plotter_mk1 = """ SELECT * FROM tweets WHERE FIND_IN_SET('battElec', powertrain_set) AND VADERcompound IS NOT NULL AND VADERcompound <> 0 """
-query_scatter_plotter_mk2 = """ SELECT * FROM tweets WHERE FIND_IN_SET('hCE', powertrain_set) AND VADERcompound IS NOT NULL AND VADERcompound <> 0 """
-query_scatter_plotter_mk3 = """ SELECT * FROM tweets WHERE FIND_IN_SET('hFuelCell', powertrain_set) AND VADERcompound IS NOT NULL AND VADERcompound <> 0 """
-query_scatter_plotter_mk4 = """ SELECT * FROM tweets WHERE FIND_IN_SET('natGas', powertrain_set) AND VADERcompound IS NOT NULL AND VADERcompound <> 0 """
-query_scatter_plotter_mk5 = """ SELECT * FROM tweets WHERE powertrain_set IS NULL AND text LIKE '%hydrogen%' AND VADERcompound <> 0 """
+query_scatter_plotter_mk1 = """ SELECT * FROM tweets WHERE FIND_IN_SET('battElec', powertrain_set) AND VADERcompound IS NOT NULL AND VADERcompound <> 0  AND author_id = "%s" """
+query_scatter_plotter_mk2 = """ SELECT * FROM tweets WHERE FIND_IN_SET('hCE', powertrain_set) AND VADERcompound IS NOT NULL AND VADERcompound <> 0  AND author_id = "%s" """
+query_scatter_plotter_mk3 = """ SELECT * FROM tweets WHERE FIND_IN_SET('hFuelCell', powertrain_set) AND VADERcompound IS NOT NULL AND VADERcompound <> 0  AND author_id = "%s" """
+query_scatter_plotter_mk4 = """ SELECT * FROM tweets WHERE FIND_IN_SET('natGas', powertrain_set) AND VADERcompound IS NOT NULL AND VADERcompound <> 0  AND author_id = "%s" """
+query_scatter_plotter_mk5 = """ SELECT * FROM tweets WHERE powertrain_set IS NULL AND text LIKE '%hydrogen%' AND VADERcompound <> 0  AND author_id = "%s" """
 query_vlines_battelec = """
 SELECT 
     VADERpos, VADERneg, created_at
@@ -82,6 +82,8 @@ FROM
     tweets
 WHERE
     FIND_IN_SET('battElec', powertrain_set)"""
+    
+companies_to_filter_query = """ SELECT * FROM tweets WHERE FIND_IN_SET('%s', author_id) """
 
 
 #grabs all unique powertrain tags

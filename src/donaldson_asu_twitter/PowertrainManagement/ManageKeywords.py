@@ -39,7 +39,7 @@ def get_list_of_keywords_for_technology(technology:str) -> tuple:
 		results = tuple([theWord[0] for theWord in results])
 	return results
 
-def add_phrase_for_technology(technology_category:str,/,the_phrase_to_add:str):
+def add_phrase_for_technology(technology_category:str,/,the_phrase_to_add:str=None):
 	"""Add a phrase to be associated with a particular given technology.
 
 	Args:
@@ -60,7 +60,7 @@ def add_phrase_for_technology(technology_category:str,/,the_phrase_to_add:str):
 		theQueryToAdd = get_list_of_technologies().get(technology_category)[2]
 	if not the_phrase_to_add:
 		the_phrase_to_add = str(input(f'What pattern would you like to match when marking Tweets relating to {thisTechIsCalled} technology?\n'))
-	if the_phrase_to_add in get_list_of_keywords_for_technology:
+	if the_phrase_to_add in get_list_of_keywords_for_technology(technology_category):
 		print(f'{the_phrase_to_add} is already in {technology_category}')
 		return
 	thisDB = dbConnection.get_db_connection()

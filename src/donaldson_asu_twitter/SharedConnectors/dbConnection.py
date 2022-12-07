@@ -53,6 +53,8 @@ def get_db_connection(**kwargs: str) -> mysql.connector.MySQLConnection:
 # List of stuff accessible to importers of this module. Just in case
 __all__ = ["get_db_connection"]
 
+powertrain_set_values = ['hfuelcell']
+
 #grabs all tweets with a specific mention of the powertrain that was passed to it
 query_battElec_powertrain_mention_count = """ SELECT COUNT(id) FROM tweets WHERE FIND_IN_SET('battElec', powertrain_set)  """
 query_hCE_powertrain_mention_count = """ SELECT COUNT(id) FROM tweets WHERE FIND_IN_SET("hCE", powertrain_set)  """
@@ -74,6 +76,8 @@ query_author_piecemeal_filter = "author_id = %s"
 query_and = " AND "
 query_or = " OR "
 
+query_hydrogen_filter = " AND NOT FIND_IN_SET('hce',powertrain_set) AND NOT FIND_IN_SET('hFuelCell',powertrain_set)"
+
 #AND VADERcompound <> 0 
 query_scatter_plotter_mk1 = """ SELECT * FROM tweets WHERE FIND_IN_SET('battElec', powertrain_set) AND VADERcompound IS NOT NULL AND author_id LIKE %s """
 query_scatter_plotter_mk2 = """ SELECT * FROM tweets WHERE FIND_IN_SET('hCE', powertrain_set) AND VADERcompound IS NOT NULL AND author_id LIKE %s """
@@ -90,6 +94,9 @@ WHERE
     
 companies_to_filter_query = """ SELECT * FROM tweets WHERE FIND_IN_SET('%s', author_id) """
 
+query_scatter_plotter_piece1 = "SELECT * FROM "
+query_scatter_plotter_piece2 = " WHERE FIND_IN_SET("
+query_scatter_plotter_piece3 = ", powertrain_set) AND VADERcompound IS NOT NULL"
 
 #grabs all unique powertrain tags
 query_distinct_powertrains = """ SELECT DISTINCT powertrain_set FROM donaldsontwitter.tweets  """

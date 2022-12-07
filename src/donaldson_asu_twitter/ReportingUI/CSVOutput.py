@@ -5,7 +5,7 @@ from ..SharedConnectors import dbConnection
 
 
 def CSV_dump():
-    fileLocation = r'..\tweets.csv'
+    fileLocation = r'.\dumps\tweets.csv'
     thisDBClient = dbConnection.get_db_connection()
     query_create_csv_string = dbConnection.query_csv_creation
     with thisDBClient.cursor() as dbCursor:
@@ -27,7 +27,7 @@ def CSV_dump():
     
 
 def CSV_dump_retweets():
-    fileLocation = r'..\retweets.csv'
+    fileLocation = r'.\dumps\retweets.csv'
     thisDBConnection = dbConnection.get_db_connection()
     with thisDBConnection.cursor() as dbCursor:
         # dbCursor.execute(dbConnection.query_csv2_tweets)

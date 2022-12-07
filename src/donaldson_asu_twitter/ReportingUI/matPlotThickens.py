@@ -223,36 +223,69 @@ def print_graphs(*,company_name:str=None):
     plt.legend()
     plt.grid()
     plt.show()
-
+    graph_scatter_for_tech(company_id=2510215220)
+    graph_scatter_for_tech(company_id=[18238328,63479512,342772500])
     graph_pos_neg_vlines(*dataGathering.get_pos_neg_scores(company_id=[18238328,63479512,342772500]),company_id=[18238328,63479512,342772500])
     graph_pie_chart(dataGathering.get_pie_slices(company_id=2510215220),company_id=2510215220)
 
-def graph_pos_neg_vlines(battElecDates:list, posScatterBattElec:list, negScatterBattElec:list, *,company_id:int|list[int]=None):
+def demo_graphs(filter):
+    graph_scatter_for_tech(company_id=filter)
+    graph_pos_neg_vlines(*dataGathering.get_pos_neg_scores(company_id=filter),company_id=filter)
+
+def _company_name_parser(company_id):
     singleCompany = isinstance(company_id,int)
-    companyGroup = isinstance(company_id,list)
+    companyGroup = isinstance(company_id,list|tuple)
+    # print(company_id, "BLAH", singleCompany, companyGroup)
     name_list = []
+    company_names = ""
     if company_id is not None:
         if singleCompany:
-            name_list.append(ManageHandles.get_twitter_handle(company_id))
+            company_names = ManageHandles.get_twitter_handle(company_id)
         elif companyGroup:
             for this_id in company_id:
                 name_list.append(ManageHandles.get_twitter_handle(this_id))
+            if len(name_list) == 2:
+                company_names = " and ".join(name_list)
+            elif len(name_list) > 2:
+                company_names = ", and ".join([", ".join(name_list[:-1]),name_list[-1]])
+            else:
+                # Something weird happened, lets fallback.
+                company_names = str(name_list) # Can I do this?
+    print(company_names)
+    return company_names
+
+# def graph_bar_average_sentiment_powertrain():
+#     x_axis = ["battElec", "hCE", "hFuelCell", "natGas", "hydrogen"]
+#     second_y_axis = []
+#     query_neg_dict = {
+#         'battelec':dbConnection.query_battElecneg_powertrain_mention_count,
+#         'hce':dbConnection.query_hCEneg_powertrain_mention_count,
+#         'hfuelcell':dbConnection.query_hFuelCellneg_powertrain_mention_count,
+#         'natgas':dbConnection.query_natGasneg_powertrain_mention_count
+#     }
+#     query_pos_dict = {
+#         'battelec':dbConnection.query_battElecpos_powertrain_mention_count,
+#         'hce':dbConnection.query_hCEpos_powertrain_mention_count,
+#         'hfuelcell':dbConnection.query_hFuelCellpos_powertrain_mention_count,
+#         'natgas':dbConnection.query_natGaspos_powertrain_mention_count
+#     }
+#     thisDBClient = dbConnection.get_db_connection()
+#     with thisDBClient.cursor() as dbCursor:
+#         for tech in x_axis:
+#             this_neg_query = query_neg_dict[tech]
+#             if company_id
+
+def graph_pos_neg_vlines(battElecDates:list, posScatterBattElec:list, negScatterBattElec:list, *,company_id:int|list[int]=None):
     plt.vlines(battElecDates,posScatterBattElec,negScatterBattElec)
     plt.xlabel('Time')
     this_chart_title = 'Positive and negative scores of Battery-Electric Tweets'
     if company_id is not None:
-        if companyGroup:
-            if len(name_list) == 2:
-                company_names = " and ".join(name_list)
-            elif len(name_list) > 2:
-                company_names = ", and ".join([",".join(name_list[:-1]),name_list[-1]])
-            else:
-                # Something weird happened, lets fallback.
-                company_names = str(name_list) # Can I do this?
+        company_names = _company_name_parser(company_id)
         this_chart_title += ' for ' + company_names
     plt.title(this_chart_title)
     plt.grid()
     plt.show()
+
 def graph_pie_chart(y_axis:list,  *,company_id:int=None):
         x_axis = ["battElec", "hCE", "hFuelCell", "natGas"] 
         labels = x_axis
@@ -273,3 +306,25 @@ def graph_pie_chart(y_axis:list,  *,company_id:int=None):
         plt.title(this_chart_title)
 
         plt.show()
+
+def graph_scatter_for_tech(*,company_id:None|int|list[int]=None):
+    plt.axes(ylim=(-1,1))
+    area = (10)
+    techs = {'battelec':('#FF0000','Battery Electric'),
+            'hce':('#0000FF','Hydrogen Combustion Engine'),
+            'hfuelcell':('#A020F0','Hydrogen Fuel Cell'),
+            'natgas':('#000000','Natural Gas'),
+            'hydrogen':('#00FF00','Non-Affiliated Hydrogen')}
+    for tech in techs:
+        plt.scatter(*dataGathering.get_compound_for_tech(tech=tech,company_id=company_id),s=area,color=techs[tech][0],label=techs[tech][1])
+    this_chart_title = 'Compound VADER scores by powertrain over time'
+    if company_id is not None:
+        company_names = _company_name_parser(company_id=company_id)
+        this_chart_title += ' for ' + company_names
+    plt.xlabel('Time')
+    plt.ylabel('Compound Sentiment')
+    plt.title(this_chart_title)
+    #'#FF0000', '#0000FF', '#FFA500', '#FF0000', '#00FF00'
+    plt.legend()
+    plt.grid()
+    plt.show()

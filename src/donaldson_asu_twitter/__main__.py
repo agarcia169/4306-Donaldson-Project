@@ -115,7 +115,7 @@ def main():
 		if didItWork:
 			AddTweetsToDB.refresh_tweets(theCompanyID)
 
-	if True:
+	if False:
 		"""This dumps a CSV of our entire Tweets database."""
 		CSVOutput.CSV_dump()
 
@@ -212,11 +212,43 @@ def main():
 	if False:
 		"""Here's how you display graphs."""
 		matPlotThickens.print_graphs()
+	
+	if True:
+		companies_to_filter = {
+			'Volvo':(18238328,63479512,342772500),
+			'JCB':819722048,
+			'John Deere':18726666,
+			'Daimler':(12637732,3728212392,788748740899311618,107122128,23650884,224359740,895107313068945408,23651888,41201893),
+			# Obtained with:
+			# SELECT 
+			# 	handles.id, handles.name
+			# FROM
+			# 	(SELECT 
+			# 		tweetships.text, tweetships.author_id
+			# 	FROM
+			# 		(SELECT DISTINCT
+			# 		*
+			# 	FROM
+			# 		retweets
+			# 	LEFT JOIN tweet_relationships ON tweet_relationships.this_tweet = retweets.id) AS tweetships
+			# 	LEFT JOIN referenced_tweets ON tweetships.refers_to = referenced_tweets.id
+			# 	WHERE
+			# 		referenced_tweets.author_id = 12637732) AS bigtable
+			# 		LEFT JOIN
+			# 	handles ON handles.id = bigtable.author_id
+			# GROUP BY id;
+			# ... Yes, really. --Joel
+			'ACGO':1148529339203543040,
+			'Caterpillar':15101714,
+			'Cummins':87299367
+		}
+		for thisCompany in companies_to_filter:
+			matPlotThickens.demo_graphs(companies_to_filter[thisCompany])
 
 	if False:
 		ManageKeywords.add_phrase_for_technology('battElec')
 
-	if True:
+	if False:
 		CSVOutput.CSV_dump_retweets()
 
 if __name__ == "__main__":

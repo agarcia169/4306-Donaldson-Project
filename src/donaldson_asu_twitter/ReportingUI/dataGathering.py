@@ -46,7 +46,7 @@ def get_pos_neg_scores(*,company_id:int|list[int]|tuple[int]=None) -> tuple[list
             battElecDates.append(thisPoint[2])
     return (battElecDates,posScatterBattElec,negScatterBattElec)
 
-def get_pie_slices(*,company_id:int|list[int]|tuple[int]=None) -> tuple[list]:
+def get_pie_slices(*,company_id:int=None) -> list:
     y_axis = []
     battElec_powertrain_mention_count =  dbConnection.query_battElec_powertrain_mention_count
     hCE_powertrain_mention_count =  dbConnection.query_hCE_powertrain_mention_count
@@ -54,6 +54,9 @@ def get_pie_slices(*,company_id:int|list[int]|tuple[int]=None) -> tuple[list]:
     natGas_powertrain_mention_count =  dbConnection.query_natGas_powertrain_mention_count
     if company_id is not None:
         battElec_powertrain_mention_count += " " + dbConnection.query_author_filter
+        hCE_powertrain_mention_count += " " + dbConnection.query_author_filter
+        hFuelCell_powertrain_mention_count += " " + dbConnection.query_author_filter
+        natGas_powertrain_mention_count += " " + dbConnection.query_author_filter
     thisDBClient = dbConnection.get_db_connection()
     with thisDBClient.cursor() as dbCursor:
         if company_id is not None:

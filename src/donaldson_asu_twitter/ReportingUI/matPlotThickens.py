@@ -26,7 +26,11 @@ def print_graphs(*,company_name:str=None):
     natGasneg_powertrain_mention_count =  dbConnection.query_natGasneg_powertrain_mention_count
     thisDBClient = dbConnection.get_db_connection()
     with thisDBClient.cursor() as dbCursor:
-        dbCursor.execute(battElecneg_powertrain_mention_count, (company_to_filter,))
+        if company_to_filter is not None:
+            battElecneg_powertrain_mention_count += " " + dbConnection.query_author_filter
+            dbCursor.execute(battElecneg_powertrain_mention_count, (company_to_filter,))
+        else:
+            dbCursor.execute(battElecneg_powertrain_mention_count)
         print(dbCursor.statement)
         powertrainMentions = dbCursor.fetchall()
         if (powertrainMentions[0][0] is None):
@@ -34,21 +38,33 @@ def print_graphs(*,company_name:str=None):
         else :
             second_y_axis.append(float(powertrainMentions[0][0]))
     with thisDBClient.cursor() as dbCursor:
-        dbCursor.execute(hCEneg_powertrain_mention_count, (company_to_filter,))
+        if company_to_filter is not None:
+            hCEneg_powertrain_mention_count += " " + dbConnection.query_author_filter
+            dbCursor.execute(hCEneg_powertrain_mention_count, (company_to_filter,))
+        else:
+            dbCursor.execute(hCEneg_powertrain_mention_count)
         powertrainMentions = dbCursor.fetchall()
         if (powertrainMentions[0][0] is None):
             second_y_axis.append(float(0))
         else :
             second_y_axis.append(float(powertrainMentions[0][0]))
     with thisDBClient.cursor() as dbCursor:
-        dbCursor.execute(hFuelCellneg_powertrain_mention_count, (company_to_filter,))
+        if company_to_filter is not None:
+            hFuelCellneg_powertrain_mention_count += " " + dbConnection.query_author_filter
+            dbCursor.execute(hFuelCellneg_powertrain_mention_count, (company_to_filter,))
+        else:
+            dbCursor.execute(hFuelCellneg_powertrain_mention_count)
         powertrainMentions = dbCursor.fetchall()
         if (powertrainMentions[0][0] is None):
             second_y_axis.append(float(0))
         else :
             second_y_axis.append(float(powertrainMentions[0][0]))
     with thisDBClient.cursor() as dbCursor:
-        dbCursor.execute(natGasneg_powertrain_mention_count, (company_to_filter,))
+        if company_to_filter is not None:
+            natGasneg_powertrain_mention_count += " " + dbConnection.query_author_filter
+            dbCursor.execute(natGasneg_powertrain_mention_count, (company_to_filter,))
+        else:
+            dbCursor.execute(natGasneg_powertrain_mention_count)
         powertrainMentions = dbCursor.fetchall()
         if (powertrainMentions[0][0] is None):
             second_y_axis.append(float(0))
@@ -209,7 +225,7 @@ def print_graphs(*,company_name:str=None):
     plt.show()
 
     graph_pos_neg_vlines(*dataGathering.get_pos_neg_scores(company_id=[18238328,63479512,342772500]),company_id=[18238328,63479512,342772500])
-    graph_pie_chart(*dataGathering.get_pie_slices(company_id=[18238328]),company_id=[18238328])
+    graph_pie_chart(dataGathering.get_pie_slices(company_id=2510215220),company_id=2510215220)
 
 def graph_pos_neg_vlines(battElecDates:list, posScatterBattElec:list, negScatterBattElec:list, *,company_id:int|list[int]=None):
     singleCompany = isinstance(company_id,int)
@@ -241,7 +257,7 @@ def graph_pie_chart(y_axis:list,  *,company_id:int=None):
         x_axis = ["battElec", "hCE", "hFuelCell", "natGas"] 
         labels = x_axis
         sizes = y_axis
-        company_name = company_id
+        company_name = ManageHandles.get_twitter_handle(company_id)
         #if company_id is not None:
         #    company_name = ManageHandles.get_twitter_handle(company_id)
         

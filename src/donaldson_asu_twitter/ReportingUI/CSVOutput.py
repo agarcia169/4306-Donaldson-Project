@@ -11,7 +11,7 @@ def CSV_dump():
     with thisDBClient.cursor() as dbCursor:
         dbCursor.execute(query_create_csv_string)
         table = dbCursor.fetchall()
-        columnNames = [columnDesc[0] for columnDesc in dbCursor.description]
+        # columnNames = [columnDesc[0] for columnDesc in dbCursor.description]
         print(f'Retrieved {dbCursor.rowcount} Tweets')
     #i dont think i need this
     #table = '\t'.join(map(str,chain.from_iterable(table)))
@@ -19,7 +19,7 @@ def CSV_dump():
     with open(fileLocation, 'w',encoding="utf-8", newline="\n") as csvfile:
         #do i even need delimiter?
         writer = csv.writer(csvfile, delimiter="\t")
-        writer.writerow(columnNames)
+        # writer.writerow(columnNames)
         for row in table:
             row = (row[0],row[1], row[2].replace("\n","").replace("\t",""), row[3], row[4], row[5], str(row[6]), row[7], row[8], row[9], row[10])
             writer.writerow(row)

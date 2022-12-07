@@ -20,7 +20,12 @@ def CSV_dump():
     csvfile.close()
     
 
-
+def CSV_dump_v2():
+    thisDBConnection = dbConnection.get_db_connection()
+    with thisDBConnection.cursor() as dbCursor:
+        dbCursor.execute(dbConnection.query_csv2_tweets)
+        theTweetDataDump = dbCursor.fetchall()
+        print(dbCursor.description)
 
 #save string to a new file
 #open('workfile', 'w', encoding="utf-8")

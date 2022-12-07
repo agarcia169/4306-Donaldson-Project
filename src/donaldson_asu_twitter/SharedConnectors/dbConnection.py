@@ -98,6 +98,22 @@ query_distinct_powertrains = """ SELECT DISTINCT powertrain_set FROM donaldsontw
 query_csv_creation = """ (SELECT 'id','author_id','text','created_at','lang','conversation_id','powertrain_set','VADERcompound','VADERneg','VADERneu','VADERpos') UNION 
                     SELECT * FROM tweets WHERE VADERcompound IS NOT NULL """
 
+query_csv2_tweets = """
+SELECT 
+    *
+FROM
+    tweets;
+"""
+
+query_csv2_retweets = """
+SELECT 
+    COUNT(id)
+FROM
+    retweets
+        INNER JOIN
+    tweet_relationships ON retweets.id = tweet_relationships.this_tweet;
+"""
+
 
 # VaderAnalysis.TweetAnalysis
 query_TweetsToAnalyze = """SELECT 

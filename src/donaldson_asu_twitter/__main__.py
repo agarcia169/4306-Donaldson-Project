@@ -216,6 +216,8 @@ def main():
 	if False:
 		ManageKeywords.add_phrase_for_technology('battElec')
 
+	if True:
+		CSVOutput.CSV_dump_v2()
 
 if __name__ == "__main__":
 	main()

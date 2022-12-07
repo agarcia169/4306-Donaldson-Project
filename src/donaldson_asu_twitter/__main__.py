@@ -115,7 +115,7 @@ def main():
 		if didItWork:
 			AddTweetsToDB.refresh_tweets(theCompanyID)
 
-	if False:
+	if True:
 		"""This dumps a CSV of our entire Tweets database."""
 		CSVOutput.CSV_dump()
 
@@ -209,7 +209,7 @@ def main():
 		vader_experimental.test_experimental_VADER(the_database='referenced_tweets',loop=True)
 		print(f"That took {(time.perf_counter()-start2):.2f} seconds.\n")
 	
-	if True:
+	if False:
 		"""Here's how you display graphs."""
 		matPlotThickens.print_graphs()
 
@@ -217,7 +217,7 @@ def main():
 		ManageKeywords.add_phrase_for_technology('battElec')
 
 	if True:
-		CSVOutput.CSV_dump_v2()
+		CSVOutput.CSV_dump_retweets()
 
 if __name__ == "__main__":
 	main()

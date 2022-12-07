@@ -1,9 +1,11 @@
+from os.path import abspath
 import csv
 from ..SharedConnectors import dbConnection
 
 
 
 def CSV_dump():
+    fileLocation = r'..\tweets.csv'
     thisDBClient = dbConnection.get_db_connection()
     query_create_csv_string = dbConnection.query_csv_creation
     with thisDBClient.cursor() as dbCursor:
@@ -12,7 +14,8 @@ def CSV_dump():
         columnNames = [columnDesc[0] for columnDesc in dbCursor.description]
     #i dont think i need this
     #table = '\t'.join(map(str,chain.from_iterable(table)))
-    with open('C:\\temp\\csvfile.csv', 'w',encoding="utf-8", newline="\n") as csvfile:
+    print(f'Printing to: {abspath(fileLocation)}')
+    with open(fileLocation, 'w',encoding="utf-8", newline="\n") as csvfile:
         #do i even need delimiter?
         writer = csv.writer(csvfile, delimiter="\t")
         writer.writerow(columnNames)
@@ -23,6 +26,7 @@ def CSV_dump():
     
 
 def CSV_dump_retweets():
+    fileLocation = r'..\retweets.csv'
     thisDBConnection = dbConnection.get_db_connection()
     with thisDBConnection.cursor() as dbCursor:
         # dbCursor.execute(dbConnection.query_csv2_tweets)
@@ -31,10 +35,15 @@ def CSV_dump_retweets():
         dbCursor.execute(dbConnection.query_csv2_retweets)
         theReTweetDataDump = dbCursor.fetchall()
         columnNames = [columnDesc[0] for columnDesc in dbCursor.description]
-    with open(r'.\tweets.csv', 'w', encoding='utf-8') as thisCSVFile:
+    print(f'Printing to: {abspath(fileLocation)}')
+    with open(fileLocation, 'w', encoding='utf-8') as thisCSVFile:
         writer = csv.writer(thisCSVFile, delimiter='\t')
         writer.writerow(columnNames)
-        for row in theTweetDataDump:
+        for row in theReTweetDataDump:
+            row = [*row]
+            for index, item in enumerate(row):
+                if isinstance(item,str):
+                    row[index] = item.replace('\n','').replace('\t','')
             writer.writerow(row)
     
 

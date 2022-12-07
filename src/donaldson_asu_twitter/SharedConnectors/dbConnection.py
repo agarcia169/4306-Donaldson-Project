@@ -107,11 +107,15 @@ FROM
 
 query_csv2_retweets = """
 SELECT 
-    COUNT(id)
+    *
 FROM
     retweets
-        INNER JOIN
-    tweet_relationships ON retweets.id = tweet_relationships.this_tweet;
+        LEFT JOIN
+    (SELECT 
+        *
+    FROM
+        retweets
+    INNER JOIN tweet_relationships ON retweets.id = tweet_relationships.this_tweet) AS tweetships ON retweets.id = tweetships.refers_to;
 """
 
 

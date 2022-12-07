@@ -12,6 +12,7 @@ def CSV_dump():
         dbCursor.execute(query_create_csv_string)
         table = dbCursor.fetchall()
         columnNames = [columnDesc[0] for columnDesc in dbCursor.description]
+        print(f'Retrieved {dbCursor.rowcount} Tweets')
     #i dont think i need this
     #table = '\t'.join(map(str,chain.from_iterable(table)))
     print(f'Printing to: {abspath(fileLocation)}')
@@ -35,16 +36,28 @@ def CSV_dump_retweets():
         dbCursor.execute(dbConnection.query_csv2_retweets)
         theReTweetDataDump = dbCursor.fetchall()
         columnNames = [columnDesc[0] for columnDesc in dbCursor.description]
+        print(f'Retrieved {dbCursor.rowcount} Retweets/Replies/Quotes')
     print(f'Printing to: {abspath(fileLocation)}')
-    with open(fileLocation, 'w', encoding='utf-8') as thisCSVFile:
+    with open(fileLocation, 'w', encoding='utf-8', newline='\n') as thisCSVFile:
         writer = csv.writer(thisCSVFile, delimiter='\t')
         writer.writerow(columnNames)
+        newRow = []
+        replacementCount = 0
         for row in theReTweetDataDump:
             row = [*row]
-            for index, item in enumerate(row):
+            for item in row:
                 if isinstance(item,str):
-                    row[index] = item.replace('\n','').replace('\t','')
-            writer.writerow(row)
+                    newRow.append(item.replace('\n','').replace('\t','').replace('\r',''))
+                    replacementCount+=1
+                # elif item is None:
+                #     newRow.append("'")
+                # elif isinstance(item,int|float):
+                #     newRow.append('"' + str(item) + '"')
+                else:
+                    newRow.append(item)
+            writer.writerow(newRow)
+            newRow = []
+    print(f'Replaced newline and tabs in {replacementCount} text fields')
     
 
 #save string to a new file

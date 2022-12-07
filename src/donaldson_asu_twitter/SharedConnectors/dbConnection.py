@@ -109,13 +109,13 @@ query_csv2_retweets = """
 SELECT 
     *
 FROM
-    retweets
-        LEFT JOIN
-    (SELECT 
+    (SELECT DISTINCT
         *
     FROM
         retweets
-    INNER JOIN tweet_relationships ON retweets.id = tweet_relationships.this_tweet) AS tweetships ON retweets.id = tweetships.refers_to;
+    LEFT JOIN tweet_relationships ON tweet_relationships.this_tweet = retweets.id) AS tweetships
+        LEFT JOIN
+    referenced_tweets ON tweetships.refers_to = referenced_tweets.id;
 """
 
 

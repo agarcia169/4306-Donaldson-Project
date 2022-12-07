@@ -270,4 +270,6 @@ def graph_pie_chart(y_axis:list,  *,company_id:int=None):
                 shadow=False, startangle=90)
         ax1.axis('equal')
 
+        plt.title(this_chart_title)
+
         plt.show()

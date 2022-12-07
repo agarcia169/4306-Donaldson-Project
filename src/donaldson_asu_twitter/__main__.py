@@ -167,7 +167,7 @@ def main():
 		filename = "" # Location of file goes here
 		ManageHandles.load_handle_CSV_file(filename)
 
-	if False:
+	if True:
 		"""Grab all Tweets you can for all companies in the database with this simple set of calls."""
 		allTheIDs = ManageHandles.get_all_ids_in_db()
 		for id in allTheIDs:
@@ -196,7 +196,7 @@ def main():
 		# ManageKeywords.add_phrase_for_technology('natgas',r'%natural%gas%pipeline%')
 		pass
 
-	if False:
+	if True:
 		"""This is how you make sure all the Tweets in the database are marked with relevant VADER scores."""
 		# print("Running VADER analysis and saving data one Tweet at a time...")
 		# start1 = time.perf_counter()
@@ -209,7 +209,7 @@ def main():
 		vader_experimental.test_experimental_VADER(the_database='referenced_tweets',loop=True)
 		print(f"That took {(time.perf_counter()-start2):.2f} seconds.\n")
 	
-	if False:
+	if True:
 		"""Here's how you display graphs."""
 		matPlotThickens.print_graphs()
 	
